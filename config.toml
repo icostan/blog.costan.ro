@@ -1,4 +1,4 @@
-baseurl = "https://icostan.gitlab.io"
+baseurl = "http://blog.iuliancostan.com"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
@@ -10,8 +10,8 @@ theme = "beautifulhugo"
 metaDataFormat = "yaml"
 pygmentsUseClasses = true
 pygmentCodeFences = true
-#disqusShortname = "XXX"
-#googleAnalytics = "XXX"
+# disqusShortname = "XXX"
+googleAnalytics = "UA-354095-4"
 
 [Params]
   subtitle = "The hard way, the easy way"
