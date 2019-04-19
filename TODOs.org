@@ -1,0 +1,76 @@
+* TODOs                                                                 :BLOG:
+** Posts
+*** DONE write 2018 review
+    CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
+*** signature aggregation schemas (Schnorr, Threshold, Ring)
+*** DONE open source Actihunt
+    CLOSED: [2019-02-14 Thu] SCHEDULED: <2019-02-14 Thu>
+*** deribit-api-ruby library
+*** deribit-api-elixir
+*** DONE bitmex-api-ruby library
+    CLOSED: [2019-02-02 Sat] SCHEDULED: <2019-02-02 Sat>
+*** bitmex mobile app
+*** organize projects with org-mode/agenda
+*** DONE add Google analytics
+    CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
+*** Homomorphic commitments: Pedersen vs. ElGamal
+*** Schnorr vs. Threshold signature aggregations
+*** literate blogging with Orgmode
+    - evaluate block inline
+    - counting lines
+    - pass results between blocks
+    - edit block's content in native buffer
+    - exporting to multiple formats
+*** DONE Week/Day close tradingview indicator
+    CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
+*** cryptographic trap-doors
+*** homomorphic encryption
+*** zero-knowledge proofs
+*** DONE RSA encryption scheme
+    CLOSED: [2019-03-18 Mon] SCHEDULED: <2019-03-15 Fri>
+*** personal finance with Ledger
+*** DONE ElGamal encryption scheme
+    CLOSED: [2019-03-27 Wed 15:18] SCHEDULED: <2019-03-26 Tue>
+   :LOGBOOK:
+   CLOCK: [2019-03-27 Wed 11:14]--[2019-03-27 Wed 15:17] => 4:03
+   :END:
+*** NTRU lattice-based encryption scheme
+*** DONE from Jekyll to Hugo
+    CLOSED: [2019-04-19 Fri 14:50]
+    :LOGBOOK:
+    CLOCK: [2019-04-19 Fri 14:07]--[2019-04-19 Fri 14:50] =>  0:43
+    :END:
+*** DONE ECDSA signature scheme
+    CLOSED: [2019-04-09 Tue 17:12]
+    :LOGBOOK:
+    CLOCK: [2019-04-09 Tue 11:37]--[2019-04-09 Tue 17:12] =>  5:35
+    CLOCK: [2019-04-07 Sun 07:48]--[2019-04-07 Sun 18:45] => 10:57
+    :END:
+** Fixes
+*** add Euler's method to RSA
+*** add tags to all posts
+*** DONE use session for Python src blocks
+    CLOSED: [2019-03-26 Tue]
+*** use naming conventions: p - prime, m - message, c - cipher, t - trapdoor
+*** use latex formulas
+*** links with ' sign
+*** use org citation, references
+*** add subtitles
+** Tasks
+*** DONE Wakatime reports=B$9
+    CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
+*** Runkeeper reports
+*** TODO add comments
+*** DONE migrate blog to Hugo+Gitlab
+    CLOSED: [2019-04-19 Fri 13:41]
+   :LOGBOOK:
+   CLOCK: [2019-04-19 Fri 09:50]--[2019-04-19 Fri 13:41] =>  3:51
+   CLOCK: [2019-04-18 Thu 16:07]--[2019-04-18 Thu 17:34] =>  1:27
+   :END:
+*** TODO write new blog
+    SCHEDULED: <2019-04-18 Thu +2w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2019-04-09 Tue 17:12]
+    :END:
+    - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
+    - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
