@@ -1,19 +1,29 @@
 ---
 title: About me
-subtitle: Why you'd want to hang out with me
+subtitle: The hard way, the easy way
 comments: false
 ---
 
-My name is The Dude. I have the following qualities:
+"I work for no one, I trust no one, I am just a soldier of fortune" - Julius Cornelius
 
-- I rock a great beard
-- I'm extremely loyal to my friends
-- I like bowling
+An old fashion "Jack of all trades, master of none" kind of guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto land.
 
-That rug really tied the room together.
+### Coding activity and languages that I "speak"
 
-### my history
+<figure><embed src="https://wakatime.com/share/@icostan/28b5cc40-90c8-4141-863e-36f35400a3cd.svg"></embed></figure>
+<figure><embed src="https://wakatime.com/share/@icostan/a03ced1a-26bc-4e1a-955a-711998cf7791.svg"></embed></figure>
 
-To be honest, I'm having some trouble remembering right now, so why don't you
-just watch [my movie](https://en.wikipedia.org/wiki/The_Big_Lebowski) and it
-will answer **all** your questions.
+### Sports activity
+
+Coming soon.
+
+### Why the blog name?
+
+
+Why the hard way?
+
+I am a slow-learner who does not understand high level concepts and I like to dig deeper into the unknown to get better touch of low level implementations.
+
+Why the easy way?
+
+Once I understand things "the hard way" then everything else is just common sense.

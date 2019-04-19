@@ -2,7 +2,7 @@ baseurl = "https://icostan.gitlab.io"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
-title = "Beautiful Hugo"
+title = "Decentralized meta-learning"
 canonifyurls  = true
 
 DefaultContentLanguage = "en"
@@ -14,8 +14,8 @@ pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
 [Params]
-  subtitle = "Hugo Blog Template for GitLab Pages"
-  logo = "img/avatar-icon.png"
+  subtitle = "The hard way, the easy way"
+  logo = "img/avatar.jpg"
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false
@@ -34,29 +34,29 @@ pygmentCodeFences = true
 #  desc = "Hexagon"
 
 [Author]
-  name = "Some Person"
-  email = "youremail@domain.com"
-  facebook = "username"
-  googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
-  gitlab = "username"
-  github = "username"
-  twitter = "username"
-  reddit = "username"
-  linkedin = "username"
-  xing = "username"
-  stackoverflow = "users/XXXXXXX/username"
-  snapchat = "username"
-  instagram = "username"
-  youtube = "user/username" # or channel/channelname
-  soundcloud = "username"
-  spotify = "username"
-  bandcamp = "username"
-  itchio = "username"
-  keybase = "username"
+  name = "Iulian Costan"
+  email = "iulian.costan@gmail.com"
+  facebook = "iuliancostan"
+  # googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
+  gitlab = "icostan"
+  github = "icostan"
+  twitter = "iuliancostan"
+  reddit = "icostan"
+  linkedin = "iuliancostan"
+  # xing = "username"
+  stackoverflow = "users/4423469/icostan"
+  # snapchat = "username"
+  instagram = "iuliancostan"
+  youtube = "c/iuliancostan" # or channel/channelname
+  # soundcloud = "username"
+  spotify = "iuliancostan"
+  # bandcamp = "username"
+  # itchio = "username"
+  # keybase = "username"
 
 
 [[menu.main]]
-    name = "Blog"
+    name = "Home"
     url = ""
     weight = 1
 
@@ -66,26 +66,26 @@ pygmentCodeFences = true
     weight = 3
 
 [[menu.main]]
-    identifier = "samples"
-    name = "Samples"
+    identifier = "cryptography"
+    name = "Cryptography"
     weight = 2
 
 [[menu.main]]
-    parent = "samples"
-    name = "Big Image Sample"
-    url = "post/2017-03-07-bigimg-sample"
+    parent = "cryptography"
+    name = "3. ECDSA"
+    url = "post/2019-04-09-ecdsa"
     weight = 1
 
 [[menu.main]]
-    parent = "samples"
-    name = "Math Sample"
-    url = "post/2017-03-05-math-sample"
+    parent = "cryptography"
+    name = "2. ElGamal"
+    url = "post/2019-03-26-elgamal"
     weight = 2
 
 [[menu.main]]
-    parent = "samples"
-    name = "Code Sample"
-    url = "post/2016-03-08-code-sample"
+    parent = "cryptography"
+    name = "1. RSA"
+    url = "post/2019-03-16-rsa"
     weight = 3
 
 [[menu.main]]

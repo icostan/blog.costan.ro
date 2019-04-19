@@ -1,9 +1,7 @@
-## Front Page Content
+Why Decentralized?
 
-This website is powered by [GitLab Pages](https://about.gitlab.com/features/pages/)
-/ [Hugo](https://gohugo.io) and can be built in under 1 minute.
-Literally. It uses the `beautifulhugo` theme which supports content on your front page.
-Edit `/content/_index.md` to change what appears here. Delete `/content/_index.md`
-if you don't want any content here.
+Because this is how the future looks like, the power will be taken from imagined-organizations (governments, corporations, etc) and put back into the hands of individuals.
 
-Head over to the [GitLab project](https://gitlab.com/pages/hugo) to get started.
+Why meta-learning?
+
+The are two problems in the world, not enough information and too much information and we need to "learn to learn" to acquire new knowledge and filter out fake data.
