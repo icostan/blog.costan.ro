@@ -1,0 +1,19 @@
+---
+layout: post
+title:  Year 2009 in review (imported from old Blogspot)
+date:   2010-01-03
+tags: ["review"]
+---
+
+I am thinking to write down some things I've done in 2009, mostly for me as history. I remember I did it last year also but it was an offline doc and I lost it :). Stupid.
+
+So, here they are as blog post this time:
+
+ * Travel - visited 2 new countries: Italy (Rome and Venice), Bulgary (Golden Sands)
+ * Trading - vanished one trading account (high risk FX investments), got 40% yield on another one (mostly futures and bonds). Overall I am positive on 2009, which is good.
+ * eXtreme Sports - water ski: after one failure on a natural lake, i finally did it on open sea water with waves, wind, everything. related to snowboarding, doing much better, worked mostly on jumps, landing and board stability.
+ * Workout/Sports - I put lot of effort in and learned to swim like a pro. I master freestyle stroke pretty well: sides breathing, body rotation, legs propulsion. I also learned ice skating, beginner stage but still there is time.
+ * Professional - launched zuppler.com and improved my Ruby/RoR skills.
+ * Family - my house construction is half way thru. the planning went pretty well and we are on track (budget estimation, time, quality ...).
+
+C ya in 2011.

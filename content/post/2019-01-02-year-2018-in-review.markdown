@@ -1,0 +1,34 @@
+---
+layout: post
+title:  Year 2018 in review
+date:   2019-01-02
+tags: ["review"]
+---
+
+Back to annual review after 8 years, hopefully for real this time with the goods and the bads of 2018:
+
+* **Trading**: overall a good year but it could have been better
+    * CFDs (Forex & Commodities) account - UPnL: 5%
+    * Crypto futures account - RPnL: 440% (aka 4.4x), UPnL: 180% (aka 1.8x)
+    * Bitcoin options account - UPnL: 2%
+* **Crypto**: the come back and I am "all in" this time
+    * finally understanding the underlying tech/math/cryptography
+    * invested in coins that I love (Bitcoin, Monero, etc) and plan to HODL
+    * lots of study/courses and research
+* **Technology**: a bit of slow down
+    * security research study, pen-testing and forensics analysis
+    * kick off cryptos-ruby project and bitmex-api, deribit-api REST-API libraries
+* **Sports**: set back due to multiple injuries :(
+    * Running - still recovering after an ankle injury in Sep
+    * Walking - did a lot of walking and listen to 10 audio books and lots of podcasts
+    * Snowboarding - carving is getting better and better but had a shoulder injury and I still feel a bit of pain
+    * Swimming - paused swimming in summer due to shoulder injury, hope to resume soon
+* **Travel**: mostly business travel
+    * Ukraine - winter snowboarding vacation
+    * India - spent 6 weeks in Delhi to do knowledge transfer and a few days in Goa
+    * USA - 3 weeks in Conshohocken with business matters
+* **Business**: new horizons
+    * Zuppler - stepping down and unwinding responsibilities/work
+    * getting ready to start my next gig with all the pros and cons
+
+C ya in 2020.
