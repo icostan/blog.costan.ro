@@ -67,7 +67,8 @@
    CLOCK: [2019-04-19 Fri 09:50]--[2019-04-19 Fri 13:41] =>  3:51
    CLOCK: [2019-04-18 Thu 16:07]--[2019-04-18 Thu 17:34] =>  1:27
    :END:
-*** add SSL: https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
+*** DONE add SSL: https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
+    CLOSED: [2019-04-20 Sat 12:03]
 *** TODO write new blog
     SCHEDULED: <2019-05-02 Thu +2w>
     :PROPERTIES:
