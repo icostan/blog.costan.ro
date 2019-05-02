@@ -60,7 +60,11 @@
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
 *** Runkeeper reports
-*** TODO add comments
+*** DONE add comments
+    CLOSED: [2019-05-02 Thu 10:03]
+    :LOGBOOK:
+    CLOCK: [2019-05-02 Thu 09:30]--[2019-05-02 Thu 10:02] =>  0:32
+    :END:
 *** DONE migrate blog to Hugo+Gitlab
     CLOSED: [2019-04-19 Fri 13:41]
    :LOGBOOK:
