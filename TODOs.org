@@ -5,7 +5,11 @@
 *** signature aggregation schemas (Schnorr, Threshold, Ring)
 *** DONE open source Actihunt
     CLOSED: [2019-02-14 Thu] SCHEDULED: <2019-02-14 Thu>
-*** deribit-api-ruby library
+*** DONE deribit-api-ruby library
+    CLOSED: [2019-05-03 Fri 20:10]
+    :LOGBOOK:
+    CLOCK: [2019-05-03 Fri 17:10]--[2019-05-03 Fri 20:10] =>  3:00
+    :END:
 *** deribit-api-elixir
 *** DONE bitmex-api-ruby library
     CLOSED: [2019-02-02 Sat] SCHEDULED: <2019-02-02 Sat>
@@ -34,7 +38,14 @@
    :LOGBOOK:
    CLOCK: [2019-03-27 Wed 11:14]--[2019-03-27 Wed 15:17] => 4:03
    :END:
-*** NTRU lattice-based encryption scheme
+*** TODO NTRU lattice-based encryption scheme
+    :PROPERTIES:
+    :ID:       750DD774-7C04-45F2-90BF-5FE3FFB4E26E
+    :END:
+    :LOGBOOK:
+    CLOCK: [2019-05-03 Fri 11:49]--[2019-05-03 Fri 15:09] =>  3:20
+    CLOCK: [2019-05-02 Thu 10:12]--[2019-05-02 Thu 18:04] =>  7:52
+    :END:
 *** DONE from Jekyll to Hugo
     CLOSED: [2019-04-19 Fri 14:50]
     :LOGBOOK:

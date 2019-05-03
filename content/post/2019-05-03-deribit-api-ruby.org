@@ -1,0 +1,51 @@
+#+title: Ruby library for Deribit API
+#+date: 2019-05-03
+#+tags: deribit ruby api trading sdk
+I just want to introduce the new open-source Ruby library for [[https://docs.deribit.com][Deribit API]].
+
+Here is a short intro, for more information please check the [[https://github.com/icostan/deribit-api-ruby][source code repo]] and [[https://www.rubydoc.info/gems/deribit-api][documentation]].
+
+
+*** Installation
+
+#+BEGIN_SRC sh
+  gem install deribit-api
+#+END_SRC
+
+#+RESULTS:
+| Successfully | installed | deribit-api-0.1.2 |
+|            1 | gem       | installed         |
+
+*** Usage
+
+#+BEGIN_SRC ruby :session deribit-ruby :results none
+  require 'deribit-api'
+  client = Deribit::Client.new
+#+END_SRC
+
+Get last 3 option trades via HTTP API:
+
+#+BEGIN_SRC ruby :session deribit-ruby :exports both
+  trades = client.trades 'options', count: 3
+  trades.first.instrument
+#+END_SRC
+
+#+RESULTS:
+: BTC-10MAY19-5500-P
+
+
+Stream ongoing trades via Websocket API:
+
+#+BEGIN_SRC ruby :session deribit-ruby :exports both :results output
+  client.trades do |trade|
+   puts trade.instrument
+  end
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+|BTC-28JUN19|
+|BTC-27SEP19|
+#+end_example
+
+Happy automated trading!
