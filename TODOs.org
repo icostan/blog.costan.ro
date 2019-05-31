@@ -87,10 +87,11 @@
 *** DONE add SSL: https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
     CLOSED: [2019-04-20 Sat 12:03]
 *** TODO write new blog
-    SCHEDULED: <2019-05-22 Thu +2w>
+    SCHEDULED: <2019-06-05 Wed +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-05-03 Fri 20:18]
+    :LAST_REPEAT: [2019-05-31 Fri 16:58]
     :END:
+    - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
     - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
     - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
     - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]

@@ -2,7 +2,7 @@
 layout: post
 title:  "Bitcoin: private key, public key, address"
 date:   2018-10-09
-tags: ["bitcoin", "cryptography", "math", "ruby"]
+tags: ["bitcoin", "cryptography", "math", "ruby", "private-key", "public-key"]
 ---
 
 # The hard way series - Bitcoin: private key, public key, address

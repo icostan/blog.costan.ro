@@ -2,7 +2,7 @@
 layout: post
 title:  Idiomatic Ruby library for BitMEX API
 date:   2019-01-28
-tags: ["bitmex", "api", "sdk", "ruby", "trading", "ruby"]
+tags: ["bitmex", "ruby", "api", "sdk", "trading"]
 ---
 
 Fully featured, idiomatic Ruby library for BitMEX API. Support for both REST and Websocket APIs as described in [API Overview](https://www.bitmex.com/app/apiOverview).

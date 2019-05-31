@@ -2,7 +2,7 @@
 layout: post
 title:  "Tradingview: weekly/monthly close indicator"
 date:   2019-02-28
-tags: ["tradingview", "trading", "indicators"]
+tags: ["tradingview", "trading", "indicator", "silver", "XAGUSD"]
 ---
 
 I've decided to release a few personal indicators that I use in day by day trading and here is the first one: Weekly/Monthly close.

@@ -2,7 +2,7 @@
 layout: post
 title:  Year 2018 in review
 date:   2019-01-02
-tags: ["review"]
+tags: ["review", "2018"]
 ---
 
 Back to annual review after 8 years, hopefully for real this time with the goods and the bads of 2018:
