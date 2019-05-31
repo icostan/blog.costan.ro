@@ -1,0 +1,14 @@
+#+title: Tradingview: slices of Bitcoin indicator
+#+date: 2019-05-31
+#+tags: tradingview trading indicator bitcoin
+
+My second indicator in this series is Slices of Bitcoin, a very simple indicator that shows how many times a currency fits into Bitcoin.
+Here is the [[https://www.tradingview.com/script/KpC7qdOE-Slices-of-Bitcoin/][source code]].
+
+In other words, the higher the value of indicator, the weaker the currency against Bitcoin.
+
+You can easily see that since the beginning of 2019 [[https://www.stellar.org/][Stellar Lumen (XLM)]] lost half of its BTC value while the USD value was constant.
+
+[[/img/slices-of-bitcoin.png]]
+
+Trade short and prosper!

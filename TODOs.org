@@ -2,7 +2,7 @@
 ** Posts
 *** DONE write 2018 review
     CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
-*** signature aggregation schemas (Schnorr, Threshold, Ring)
+*** TODO signature aggregation schemas (Schnorr, Threshold, Ring)
 *** DONE open source Actihunt
     CLOSED: [2019-02-14 Thu] SCHEDULED: <2019-02-14 Thu>
 *** DONE deribit-api-ruby library
@@ -38,7 +38,7 @@
    :LOGBOOK:
    CLOCK: [2019-03-27 Wed 11:14]--[2019-03-27 Wed 15:17] => 4:03
    :END:
-*** TODO NTRU lattice-based encryption scheme
+*** NTRU lattice-based encryption scheme
     :PROPERTIES:
     :ID:       750DD774-7C04-45F2-90BF-5FE3FFB4E26E
     :END:
@@ -57,6 +57,8 @@
     CLOCK: [2019-04-09 Tue 11:37]--[2019-04-09 Tue 17:12] =>  5:35
     CLOCK: [2019-04-07 Sun 07:48]--[2019-04-07 Sun 18:45] => 10:57
     :END:
+*** DONE slices of Bitcoin indicator
+    CLOSED: [2019-05-31 Fri 16:20]
 ** Fixes
 *** add Euler's method to RSA
 *** add tags to all posts
