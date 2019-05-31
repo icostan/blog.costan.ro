@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Tradingview indicators: weekly/monthly close"
+title:  "Tradingview: weekly/monthly close indicator"
 date:   2019-02-28
 tags: ["tradingview", "trading", "indicators"]
 ---

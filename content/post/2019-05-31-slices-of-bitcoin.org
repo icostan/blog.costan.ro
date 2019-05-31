@@ -9,6 +9,6 @@ In other words, the higher the value of indicator, the weaker the currency again
 
 You can easily see that since the beginning of 2019 [[https://www.stellar.org/][Stellar Lumen (XLM)]] lost half of its BTC value while the USD value was constant.
 
-[[/img/slices-of-bitcoin.png]]
+[[file:../../img/slices-of-bitcoin.png]]
 
 Trade short and prosper!
