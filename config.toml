@@ -61,19 +61,14 @@ googleAnalytics = "UA-354095-4"
     weight = 1
 
 [[menu.main]]
-    name = "About"
-    url = "page/about/"
-    weight = 3
-
-[[menu.main]]
     identifier = "cryptography"
     name = "Cryptography"
     weight = 2
 
 [[menu.main]]
     parent = "cryptography"
-    name = "3. ECDSA"
-    url = "post/2019-04-09-ecdsa"
+    name = "1. RSA"
+    url = "post/2019-03-16-rsa"
     weight = 1
 
 [[menu.main]]
@@ -84,11 +79,22 @@ googleAnalytics = "UA-354095-4"
 
 [[menu.main]]
     parent = "cryptography"
-    name = "1. RSA"
-    url = "post/2019-03-16-rsa"
+    name = "3. ECDSA"
+    url = "post/2019-04-09-ecdsa"
+    weight = 3
+
+[[menu.main]]
+    parent = "cryptography"
+    name = "4. Schnorr"
+    url = "post/2019-06-19-schnorr"
+    weight = 4
+
+[[menu.main]]
+    name = "About"
+    url = "page/about/"
     weight = 3
 
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 3
+    weight = 4

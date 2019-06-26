@@ -1,0 +1,140 @@
+#+EXPORT_FILE_NAME: 2019-06-19-schnorr
+#+OPTIONS: toc:nil
+#+OPTIONS: -:nil
+
+:FRONTMATTER:
+---
+layout: post
+title:  "Cryptography: Schnorr"
+date:   2019-06-19
+tags: ["cryptography", "schnorr", "discrete-logarithm", "math", "sagemath"]
+---
+:END:
+
+* Overview
+
+  #+begin_src  txt
+"If you can't explain it simply, you don't understand it well enough" - Einstein
+  #+end_src
+
+[[https://en.wikipedia.org/wiki/Schnorr_signature][Schnorr]] is another digital signature scheme known for its simplicity, no division, no inversion, just plain old multiplication. Here is my simple 16 lines implementation in Python.
+
+#+begin_src sage -n :session schnorr :exports both
+  import random, hashlib
+  p = 103
+  q = 17
+  r  = 6
+  h = random.choice([h for h in range(1, p) if h**r % p != 1 ])
+  g = h**r % p
+  k = random_prime(q)
+  y = g**k % q
+  m = 6
+  t = random_prime(q)
+  r = g**t % q
+  e = int(hashlib.sha1(str(r) + str(m)).hexdigest(), 16) % q
+  s = (t - k*e)
+  rv = (g**s * y**e) % q
+  ev = int(hashlib.sha1(str(rv) + str(m)).hexdigest(), 16) % q
+  print "YOU ARE A CRYPTOSTAR!" if ev == e else "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: 2
+: YOU ARE A CRYPTOSTAR!
+
+* Discrete logarithm trapdoor
+
+  To generate a Schnorr group that stands at the base of our Schnorr signature scheme we need to generate `p`, `q` and `r` numbers that satisfy the equation: `p = q*r + 1` where `p` and `q` are primes.
+You can use any algorithm (even brute-force) to generate the numbers, here are mine:
+
+#+begin_src sage -n :session schnorr
+  p = 103
+  q = 17
+  r  = 6
+#+end_src
+
+Next we need to find a generator `g` that generates our sub-group of order `q`. Basically we brute-force and select all numbers less than `p` that satisfy the equation `h**r % p != 1`, choose a random one then the remainder is our generator `g`. The math is a bit involved, please see [[https://en.wikipedia.org/wiki/Schnorr_group][Schnorr group]] for more info:
+
+#+begin_src sage +n :session schnorr
+  h = random.choice([h for h in range(1, p) if h**r % p != 1 ])
+  g = h**r % p
+#+end_src
+
+Once we have the generator `g` we need to pick a [[https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n][random prime number]] as private key `k` and generate the public key `y`.
+
+#+begin_src sage +n :session schnorr :exports both
+  k = random_prime(q)
+  y = g**k % q
+#+end_src
+
+And finally `g`, `y` are public parameters while `k` is kept secret:
+
+#+begin_src sage :session schnorr :exports both
+  (g, y)
+#+end_src
+
+* Signature
+
+  For signing we first generate a temporary random nonce `t` and the corresponding member of the group `r`. Then group member `r` gets concatenated with the message `m` that we need to sign, hash everything together and create pre-image `e`. And finally the challenge signature number `s`.
+
+#+begin_src sage +n :session schnorr
+  m = 6
+  t = random_prime(q)
+  r = g**t % q
+  e = int(hashlib.sha1(str(r) + str(m)).hexdigest(), 16) % q
+  s = (t - k*e)
+#+end_src
+
+#+RESULTS:
+
+The signature that is made public to third-party for verification is the pair `s, e`:
+
+#+begin_src sage :session schnorr :exports both
+  (s, e)
+#+end_src
+
+#+RESULTS:
+: (-93, 14)
+
+* Verification
+
+  Given the public parameters and the signature above we can easily calculate random group member `rv` that is used to hash the final pre-image for verification:
+
+#+begin_src sage +n :session schnorr :exports both
+  rv = (g**s * y**e) % q
+  ev = int(hashlib.sha1(str(rv) + str(m)).hexdigest(), 16) % q
+  print "YOU ARE A CRYPTOSTAR!" if ev == e else "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+* Intuition
+
+  Starting with the verification equation and replacing `s` and `y` with corresponding formulas we end up with `rv == r`.
+
+#+begin_src sage -n :session schnorr :exports both
+  rv = g**s * y**e
+  rv = g**(t - k*e) * y**e
+  rv = g**(t - k*e) * g**(k*e)
+  rv = g**t
+#+end_src
+
+Because `rv` and `r` are equal the two pre-image hashes must be equal as well. MAGIC!
+
+#
+# Find the generator
+#
+#+begin_src sage -n :session schnorr :exports none
+  p = 199
+  q = 109
+  q
+  r = [r for r in range(1, 1000) if p == q*r + 1 ]
+  r
+  # q = [i for i in prime_range(103) if p == q*r+ 1]
+  # q
+#+end_src
+
+#+RESULTS:
+: 109
+: []

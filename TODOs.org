@@ -2,7 +2,7 @@
 ** Posts
 *** DONE write 2018 review
     CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
-*** TODO signature aggregation schemas (Schnorr, Threshold, Ring)
+*** signature aggregation schemas (Threshold, Ring)
 *** DONE open source Actihunt
     CLOSED: [2019-02-14 Thu] SCHEDULED: <2019-02-14 Thu>
 *** DONE deribit-api-ruby library
@@ -59,6 +59,8 @@
     :END:
 *** DONE slices of Bitcoin indicator
     CLOSED: [2019-05-31 Fri 16:20]
+*** TODO Schnorr signatures
+
 ** Fixes
 *** add Euler's method to RSA
 *** add tags to all posts
@@ -70,6 +72,17 @@
 *** use org citation, references
 *** add subtitles
 ** Tasks
+*** TODO write new blog
+    SCHEDULED: <2019-06-19 Wed +2w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2019-06-26 Wed 18:10]
+    :END:
+    - State "DONE"       from "TODO"       [2019-06-26 Wed 18:10]
+    - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
+    - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
+    - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
+    - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
+    - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
 *** Runkeeper reports
@@ -86,13 +99,4 @@
    :END:
 *** DONE add SSL: https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
     CLOSED: [2019-04-20 Sat 12:03]
-*** TODO write new blog
-    SCHEDULED: <2019-06-05 Wed +2w>
-    :PROPERTIES:
-    :LAST_REPEAT: [2019-05-31 Fri 16:58]
-    :END:
-    - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
-    - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
-    - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
-    - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
-    - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
+*** use Sage interpreter in Hugo
