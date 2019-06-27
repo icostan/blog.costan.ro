@@ -51,7 +51,7 @@ We start the show by generating a random private key \`k\` and calculate the pub
 
     P
 
-    (7 : 91 : 1)
+    (68 : 86 : 1)
 
 
 # Signature
@@ -73,7 +73,7 @@ Then the returned signature is a tuple of a point on elliptic curve and scalar v
 
     (R, s)
 
-    ((53 : 7 : 1), 95)
+    ((85 : 56 : 1), 96)
 
 
 # Verification

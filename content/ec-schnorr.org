@@ -1,4 +1,4 @@
-#+EXPORT_FILE_NAME: 2019-06-25-ec-schnorr
+#+EXPORT_FILE_NAME: post/2019-06-25-ec-schnorr
 #+OPTIONS: toc:nil
 #+OPTIONS: -:nil
 
