@@ -87,10 +87,10 @@ And finally `g`, `y` are public parameters while `k` is kept secret:
 
 #+RESULTS:
 
-The signature that is made public to third-party for verification is the pair `s, e`:
+The signature that is made public to third-party for verification is the pair `e, s`:
 
 #+begin_src sage :session schnorr :exports both
-  (s, e)
+  (e, s)
 #+end_src
 
 #+RESULTS:

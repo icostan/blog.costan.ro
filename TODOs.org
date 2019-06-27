@@ -59,7 +59,8 @@
     :END:
 *** DONE slices of Bitcoin indicator
     CLOSED: [2019-05-31 Fri 16:20]
-*** TODO Schnorr signatures
+*** DONE Schnorr signatures
+    CLOSED: [2019-06-27 Thu 10:56]
 
 ** Fixes
 *** add Euler's method to RSA
@@ -73,10 +74,11 @@
 *** add subtitles
 ** Tasks
 *** TODO write new blog
-    SCHEDULED: <2019-06-19 Wed +2w>
+    SCHEDULED: <2019-07-03 Wed +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-06-26 Wed 18:10]
+    :LAST_REPEAT: [2019-06-27 Thu 10:56]
     :END:
+    - State "DONE"       from "TODO"       [2019-06-27 Thu 10:56]
     - State "DONE"       from "TODO"       [2019-06-26 Wed 18:10]
     - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
     - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
