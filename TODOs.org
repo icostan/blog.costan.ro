@@ -71,8 +71,6 @@
 *** add subtitles
 *** DONE fix URLs points to other posts
     CLOSED: [2019-07-05 Fri 11:27]
-*** DONE menu sections
-    CLOSED: [2019-07-05 Fri 11:20]
 ** Tasks
 *** TODO write new blog
     SCHEDULED: <2019-07-03 Wed +2w>
@@ -105,3 +103,11 @@
 *** use Sage interpreter in Hugo
 *** DONE add Google analytics
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
+*** DONE menu sections
+    CLOSED: [2019-07-05 Fri 11:20]
+*** TODO Renew Lets Encrypt SSL certificate
+    SCHEDULED: <2019-09-13 Fri +10w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2019-07-05 Fri 13:17]
+    :END:
+    - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
