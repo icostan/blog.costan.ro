@@ -69,7 +69,8 @@
 *** links with ' sign
 *** use org citation, references
 *** add subtitles
-*** fix URLs points to other posts
+*** DONE fix URLs points to other posts
+    CLOSED: [2019-07-05 Fri 11:27]
 *** DONE menu sections
     CLOSED: [2019-07-05 Fri 11:20]
 ** Tasks

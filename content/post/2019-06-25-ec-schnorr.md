@@ -10,7 +10,7 @@ tags: ["cryptography", "schnorr", "math", "elliptic-curve", "sagemath"]
 
     "If you can't explain it simply, you don't understand it well enough" - Einstein
 
-EC-Schnorr, as the name suggests, is a Schnorr-type digital signature scheme over elliptic curve, it's [ECDSA](file:///post/2019-04-09-ecdsa)'s little sister and [Schnorr](file:///post/2019-06-19-schnorr)'s big brother with multiple implementations out there: maybe most widely deployed being [EdDSA](https://en.wikipedia.org/wiki/EdDSA) (used in [Monero](https://web.getmonero.org)) or the upcoming [MuSig](https://blockstream.com/2018/01/23/en-musig-key-aggregation-schnorr-signatures/) implementation in Bitcoin.
+EC-Schnorr, as the name suggests, is a Schnorr-type digital signature scheme over elliptic curve, it's [ECDSA](https://blog.iuliancostan.com/post/2019-04-09-ecdsa)'s little sister and [Schnorr](https://blog.iuliancostan.com/post/2019-06-19-schnorr)'s big brother with multiple implementations out there: maybe most widely deployed being [EdDSA](https://en.wikipedia.org/wiki/EdDSA) (used in [Monero](https://web.getmonero.org)) or the upcoming [MuSig](https://blockstream.com/2018/01/23/en-musig-key-aggregation-schnorr-signatures/) implementation in Bitcoin.
 
 It is also one of my favorite digital signature scheme because of its simplicity. As you will see later it is just a linear equation that opens the door to multi signatures and signature aggregation.
 
@@ -51,7 +51,7 @@ We start the show by generating a random private key \`k\` and calculate the pub
 
     P
 
-    (68 : 86 : 1)
+    (66 : 66 : 1)
 
 
 # Signature
@@ -73,7 +73,7 @@ Then the returned signature is a tuple of a point on elliptic curve and scalar v
 
     (R, s)
 
-    ((85 : 56 : 1), 96)
+    ((25 : 64 : 1), 63)
 
 
 # Verification
