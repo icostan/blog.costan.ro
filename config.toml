@@ -96,11 +96,34 @@ googleAnalytics = "UA-354095-4"
     weight = 5
 
 [[menu.main]]
+    identifier = "opensource"
+    name = "Open Source"
+    weight = 3
+
+[[menu.main]]
+    parent = "opensource"
+    name = "1. Bitmex-API"
+    url = "post/2019-01-27-bitmex-api-ruby"
+    weight = 1
+
+[[menu.main]]
+    parent = "opensource"
+    name = "2. Actihunt"
+    url = "post/2019-02-14-opensourcing-actihunt"
+    weight = 2
+
+[[menu.main]]
+    parent = "opensource"
+    name = "3. Deribit-API"
+    url = "post/2019-05-03-deribit-api-ruby"
+    weight = 3
+
+[[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 4
+    weight = 5

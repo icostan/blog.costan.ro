@@ -10,13 +10,10 @@
     :LOGBOOK:
     CLOCK: [2019-05-03 Fri 17:10]--[2019-05-03 Fri 20:10] =>  3:00
     :END:
-*** deribit-api-elixir
 *** DONE bitmex-api-ruby library
     CLOSED: [2019-02-02 Sat] SCHEDULED: <2019-02-02 Sat>
 *** bitmex mobile app
 *** organize projects with org-mode/agenda
-*** DONE add Google analytics
-    CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** Homomorphic commitments: Pedersen vs. ElGamal
 *** Schnorr vs. Threshold signature aggregations
 *** literate blogging with Orgmode
@@ -72,6 +69,9 @@
 *** links with ' sign
 *** use org citation, references
 *** add subtitles
+*** fix URLs points to other posts
+*** DONE menu sections
+    CLOSED: [2019-07-05 Fri 11:20]
 ** Tasks
 *** TODO write new blog
     SCHEDULED: <2019-07-03 Wed +2w>
@@ -102,3 +102,5 @@
 *** DONE add SSL: https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
     CLOSED: [2019-04-20 Sat 12:03]
 *** use Sage interpreter in Hugo
+*** DONE add Google analytics
+    CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
