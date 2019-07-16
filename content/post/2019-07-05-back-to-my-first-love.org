@@ -1,0 +1,71 @@
+---
+title:  "Back to my first love"
+subtitle: Linux
+date:   2019-07-05
+tags: ["arch", "linux"]
+markup: org
+---
+
+** The journey
+
+   Here is my long journey with Linux and other operating systems:
+
+   - [[https://www.redhat.com][RedHat]] - 1997 - this is was installed on all university's computers and I did not have my own personal computer at that time
+   - [[https://en.wikipedia.org/wiki/Windows_98][Windows 98]] - 1998 - bought my own Pentium 166 MHz PC, mostly for [[https://en.wikipedia.org/wiki/StarCraft:_Brood_War][StarCraft: Brood War]] :)
+   - [[http://www.slackware.com][Slackware]] - 2000 - because I was never happy with RPM package manager but I enjoyed the simplicity of Slack
+   - [[https://github.com/icostan/iulix][IuLiX]] - 2002 - my own Linux distro based on [[http://www.linuxfromscratch.org/][Linux from scratch]] and Slackware philosophy
+   - [[https://www.gentoo.org/][Gentoo]] / [[https://en.wikipedia.org/wiki/Windows_XP][Windows XP]] - 2003 - starting to slip away from Linux, don't know, maybe Gentoo source based distro was too complicated/time consuming for me at that time
+   - [[https://www.microsoft.com/en-us/windows][Windows XP]] - 2005 - no more dual boots, coincidence or not, this was also the low of my professional career :(
+   - [[https://www.apple.com/mac/][Mac]] - 2008 - Mac era because all cool dudes had moved to Mac and iPhone
+   - [[https://www.archlinux.org/][Arch]] - 2019 - and back to my first love, should I get a "Linux per sempre" tattoo on my arm?
+
+** The motivation
+
+   Why Arch?
+
+   1. it's a KISS (Keep It Simple Stupid) and DIY (Do It Yourself) distribution - base install takes 15 minutes or so then you get a black screen and TTY prompt and the configuration party begins
+   2. rollout releases - life is too short to wait 1, 2 years for next major release, in software industry you either "go big, go fast and go hard or go home"
+   3. community is awesome and [[https://wiki.archlinux.org/][Arch Wiki]] is one of the best Linux documentation sites out there
+
+** The Arch
+
+    [[https://gitlab.com/icostan/arch.d][Arch journals]] and [[https://gitlab.com/icostan/dotfiles][dotfiles]] that still need a lot of cleanup and fine-tuning but so far it works quite well and I am pretty happy about it.
+
+   For the curious minds, here are the most important tools that I use on daily basis:
+
+*** Window manager - [[https://i3wm.org/][i3]]
+    I was never a big fan of complicated Desktop Environments (DE) like Gnome or KDE and i3wm is exactly what I need: a non-intrusive tilling window manager.
+     [[file:../../img/i3.png][i3]]
+
+*** Status bar - [[https://github.com/polybar/polybar][Polybar]]
+    This is still work in progress as I need to add more tools but for now only WiFi, battery and clock.
+     [[file:../../img/polybar.png][polybar]]
+
+*** Terminal emulator - [[https://sw.kovidgoyal.net/kitty/index.html][Kitty]]
+     [[file:../../img/kitty.png][Kitty]]
+
+*** Application launcher - [[https://github.com/davatorium/rofi][Rofi]]
+     [[file:../../img/rofi.png][rofi]]
+
+*** Browser - [[https://brave.com/][Brave]]
+    A fork of Chromium that is focused on privacy/security without Google's non-sense.
+     [[file:../../img/brave.png][Brave]]
+
+*** Window compositor - [[https://github.com/yshui/compton][Compton]]
+    In case you don't know what a window compositor is, here is a short desc: just a cool daemon that adds shades and transparency to windows.
+    Enjoy the sunset background of [[https://en.wikipedia.org/wiki/Vernazza][Vernazza, Italy]] thanks to [[https://unsplash.com/@andersjilden][Anders Jilden]]
+     [[file:../../img/compton.png][compton]]
+
+*** Editors - [[http://spacemacs.org/][Spacemacs]] / [[https://www.vim.org/][Vim]]
+     [[file:../../img/emacs.png][emacs]]
+
+   - Pomodoro technique - [[http://tomighty.org/][Tomighty]]
+
+   - Display manager - [[https://github.com/CanonicalLtd/lightdm][LightDM]]
+
+   - Screenshot - [[http://freshmeat.sourceforge.net/projects/scrot][Scrot]]
+
+   - Configuration manager - [[https://github.com/lra/mackup][Mackup]]
+
+
+And this is it folks, the power of Linux, you are free to use any tool you love and configure everything the way you want.

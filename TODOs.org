@@ -58,6 +58,8 @@
     CLOSED: [2019-05-31 Fri 16:20]
 *** DONE Schnorr signatures
     CLOSED: [2019-06-27 Thu 10:56]
+*** DONE Arch linux
+    CLOSED: [2019-07-16 Tue 21:13]
 
 ** Fixes
 *** add Euler's method to RSA
