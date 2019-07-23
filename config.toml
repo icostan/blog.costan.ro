@@ -119,6 +119,11 @@ googleAnalytics = "UA-354095-4"
     weight = 3
 
 [[menu.main]]
+    parent = "opensource"
+    name = "4. 3DP"
+    url = "post/2019-07-18-3dp"
+    weight = 3
+[[menu.main]]
     name = "About"
     url = "page/about/"
     weight = 4

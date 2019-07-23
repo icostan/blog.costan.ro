@@ -1,0 +1,710 @@
+---
+title:  "3 Days Project"
+subtitle: Open source
+date:   2019-07-18
+tags: ["3DP", "startup", "MVP", "ruby", "rails"]
+markup: org
+---
+
+Introducing [[https://github.com/icostan/3dp][3 Days Project aka 3DP]], a new Rails app generator template that adds and configures all the cool libraries/services that are needed to bootstrap new projects in no time.
+
+Here is the magic one-liner command that does all the tricks for you:
+
+#+BEGIN_SRC sh :exports both :results output
+rails new blog -m ~/Projects/3dp/rails-template.rb  --skip-test-unit  --skip-turbolinks
+#+END_SRC
+
+Let's dive in and see whats going on under the hood but keep in mind that this project is in continuous development and things change quite often.
+
+The first generation part is nothing than standard ``rails new`` generator in action, spitting out files and directories:
+
+#+RESULTS:
+#+BEGIN_EXAMPLE
+      create
+      create  README.md
+      create  Rakefile
+      create  .ruby-version
+      create  config.ru
+      create  .gitignore
+      create  Gemfile
+         run  git init from "."
+Initialized empty Git repository in /home/icostan/Projects/icostan.gitlab.io/content/post/blog/.git/
+      create  package.json
+      create  app
+      create  app/assets/config/manifest.js
+      create  app/assets/javascripts/application.js
+      create  app/assets/javascripts/cable.js
+      create  app/assets/stylesheets/application.css
+      create  app/channels/application_cable/channel.rb
+      create  app/channels/application_cable/connection.rb
+      create  app/controllers/application_controller.rb
+      create  app/helpers/application_helper.rb
+      create  app/jobs/application_job.rb
+      create  app/mailers/application_mailer.rb
+      create  app/models/application_record.rb
+      create  app/views/layouts/application.html.erb
+      create  app/views/layouts/mailer.html.erb
+      create  app/views/layouts/mailer.text.erb
+      create  app/assets/images/.keep
+      create  app/assets/javascripts/channels
+      create  app/assets/javascripts/channels/.keep
+      create  app/controllers/concerns/.keep
+      create  app/models/concerns/.keep
+      create  bin
+      create  bin/bundle
+      create  bin/rails
+      create  bin/rake
+      create  bin/setup
+      create  bin/update
+      create  bin/yarn
+      create  config
+      create  config/routes.rb
+      create  config/application.rb
+      create  config/environment.rb
+      create  config/cable.yml
+      create  config/puma.rb
+      create  config/storage.yml
+      create  config/environments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/application_controller_renderer.rb
+      create  config/initializers/assets.rb
+      create  config/initializers/backtrace_silencers.rb
+      create  config/initializers/content_security_policy.rb
+      create  config/initializers/cookies_serializer.rb
+      create  config/initializers/cors.rb
+      create  config/initializers/filter_parameter_logging.rb
+      create  config/initializers/inflections.rb
+      create  config/initializers/mime_types.rb
+      create  config/initializers/new_framework_defaults_5_2.rb
+      create  config/initializers/wrap_parameters.rb
+      create  config/locales
+      create  config/locales/en.yml
+      create  config/master.key
+      append  .gitignore
+      create  config/boot.rb
+      create  config/database.yml
+      create  db
+      create  db/seeds.rb
+      create  lib
+      create  lib/tasks
+      create  lib/tasks/.keep
+      create  lib/assets
+      create  lib/assets/.keep
+      create  log
+      create  log/.keep
+      create  public
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/apple-touch-icon-precomposed.png
+      create  public/apple-touch-icon.png
+      create  public/favicon.ico
+      create  public/robots.txt
+      create  tmp
+      create  tmp/.keep
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor
+      create  vendor/.keep
+      create  test/fixtures
+      create  test/fixtures/.keep
+      create  test/fixtures/files
+      create  test/fixtures/files/.keep
+      create  test/controllers
+      create  test/controllers/.keep
+      create  test/mailers
+      create  test/mailers/.keep
+      create  test/models
+      create  test/models/.keep
+      create  test/helpers
+      create  test/helpers/.keep
+      create  test/integration
+      create  test/integration/.keep
+      create  test/test_helper.rb
+      create  test/system
+      create  test/system/.keep
+      create  test/application_system_test_case.rb
+      create  storage
+      create  storage/.keep
+      create  tmp/storage
+      create  tmp/storage/.keep
+      remove  config/initializers/cors.rb
+      remove  config/initializers/new_framework_defaults_5_2.rb
+#+END_EXAMPLE
+
+Once default Rails app generation is finished, the 3DP project template is executed and it starts to inject needed gems and configuration files:
+
+#+BEGIN_EXAMPLE
+       apply  /home/icostan/Projects/3dp/rails-template.rb
+   identical    .ruby-version
+ initializer    generators.rb
+#+END_EXAMPLE
+
+Bootstrap front-end framework, SimpleForm with HAML templating, and Devise for authentication:
+
+#+BEGIN_EXAMPLE
+     gemfile    less-rails
+     gemfile    less-rails-bootstrap
+     gemfile    therubyracer
+      insert    app/assets/stylesheets/application.css
+      insert    app/assets/javascripts/application.js
+      create    public/apple-touch-icon.ico
+      create    public/apple-touch-icon-precomposed.ico
+      create    public/css
+      create    public/css/bootstrap.min.css
+      create    public/css/styles.css
+      create    public/js
+      create    public/js/bootstrap.min.js
+      create    public/index.html
+     gemfile    haml-rails
+     gemfile    simple_form
+     gemfile    country_select
+     gemfile    bootstrap-generators
+     gemfile    momentjs-rails
+     gemfile    bootstrap3-datetimepicker-rails
+     gemfile    bower-rails
+     gemfile    devise
+#+END_EXAMPLE
+
+Resque/Redis for background processing jobs:
+
+#+BEGIN_EXAMPLE
+     gemfile    redis
+     gemfile    resque
+     gemfile    resque-web
+     gemfile    resque-scheduler
+#+END_EXAMPLE
+
+Lots of gems for testing, monitoring or linting:
+
+- Cucumber - user acceptance testing
+- RSpec - integration/unit testing
+- Jasmine - headless JavaScript testing
+- Factory_bot - mocking and dynamic fixtures
+- Webmock - mocking HTTP requests
+- VCR - record/reply HTTP interactions
+
+#+BEGIN_EXAMPLE
+     gemfile    rspec-rails
+      insert    config/initializers/generators.rb
+     gemfile    jasmine-rails
+     gemfile    cucumber-rails
+     gemfile    capybara-screenshot
+     gemfile    database_cleaner
+     gemfile    rubocop
+     gemfile    guard
+     gemfile    guard-rspec
+     gemfile    guard-jasmine
+     gemfile    factory_bot_rails
+     gemfile    faker
+     gemfile    vcr
+     gemfile    webmock
+     gemfile    rack-tracker
+     gemfile    newrelic_rpm
+     gemfile    rollbar
+     gemfile    powder
+#+END_EXAMPLE
+
+Dependencies check and gems installation:
+
+#+BEGIN_EXAMPLE
+         run  bundle install
+Fetching gem metadata from https://rubygems.org/.........
+Fetching gem metadata from https://rubygems.org/.
+Resolving dependencies......
+Using rake 12.3.2
+Using concurrent-ruby 1.1.5
+Using i18n 1.6.0
+Using minitest 5.11.3
+Using thread_safe 0.3.6
+Using tzinfo 1.2.5
+Using activesupport 5.2.3
+Using builder 3.2.3
+Using erubi 1.8.0
+Using mini_portile2 2.4.0
+Using nokogiri 1.10.3
+Using rails-dom-testing 2.0.3
+Using crass 1.0.4
+Using loofah 2.2.3
+Using rails-html-sanitizer 1.0.4
+Using actionview 5.2.3
+Using rack 2.0.7
+Using rack-test 1.1.0
+Using actionpack 5.2.3
+Using nio4r 2.4.0
+Using websocket-extensions 0.1.4
+Using websocket-driver 0.7.1
+Using actioncable 5.2.3
+Using globalid 0.4.2
+Using activejob 5.2.3
+Using mini_mime 1.0.2
+Using mail 2.7.1
+Using actionmailer 5.2.3
+Using activemodel 5.2.3
+Using arel 9.0.0
+Using activerecord 5.2.3
+Using mimemagic 0.3.3
+Using marcel 0.3.3
+Using activestorage 5.2.3
+Using public_suffix 3.1.1
+Using addressable 2.6.0
+Using io-like 0.3.0
+Using archive-zip 0.12.0
+Using ast 2.4.0
+Using backports 3.15.0
+Using bcrypt 3.1.13
+Using bindex 0.8.1
+Using msgpack 1.3.0
+Using bootsnap 1.4.4
+Using method_source 0.9.2
+Using thor 0.20.3
+Using railties 5.2.3
+Using bootstrap-generators 3.3.4
+Using momentjs-rails 2.20.1
+Using bootstrap3-datetimepicker-rails 4.17.47
+Using bower-rails 0.11.0
+Using bundler 2.0.2
+Using byebug 11.0.1
+Using regexp_parser 1.6.0
+Using xpath 3.2.0
+Using capybara 3.26.0
+Using launchy 2.4.3
+Using capybara-screenshot 1.0.23
+Using childprocess 1.0.1
+Using chromedriver-helper 2.1.1
+Using coderay 1.1.2
+Using coffee-script-source 1.12.2
+Using execjs 2.7.0
+Using coffee-script 2.4.1
+Using coffee-rails 4.2.2
+Using commonjs 0.2.7
+Using i18n_data 0.8.0
+Using sixarm_ruby_unaccent 1.2.0
+Using unicode_utils 1.4.0
+Using countries 3.0.0
+Using sort_alphabetical 1.1.0
+Using country_select 4.0.0
+Using safe_yaml 1.0.5
+Using crack 0.4.3
+Using cucumber-tag_expressions 1.1.1
+Using gherkin 5.1.0
+Using cucumber-core 3.2.1
+Using cucumber-expressions 6.0.1
+Using cucumber-wire 0.0.1
+Using diff-lcs 1.3
+Using multi_json 1.13.1
+Using multi_test 0.1.2
+Using cucumber 3.1.2
+Using mime-types-data 3.2019.0331
+Using mime-types 3.2.2
+Using cucumber-rails 1.7.0
+Using database_cleaner 1.7.0
+Using orm_adapter 0.5.0
+Using responders 3.0.0
+Using warden 1.2.8
+Using devise 4.6.2
+Using erubis 2.7.0
+Using et-orbi 1.2.1
+Using factory_bot 5.0.2
+Using factory_bot_rails 5.0.2
+Using faker 1.9.6
+Using ffi 1.11.1
+Using sassc 2.0.1
+Using font-awesome-sass 5.9.0
+Using formatador 0.2.5
+Using raabro 1.1.6
+Using fugit 1.2.3
+Using rb-fsevent 0.10.3
+Using rb-inotify 0.10.0
+Using ruby_dep 1.5.0
+Using listen 3.1.5
+Using lumberjack 1.0.13
+Using nenv 0.3.0
+Using shellany 0.0.1
+Using notiffany 0.1.1
+Using pry 0.12.2
+Using guard 2.15.0
+Using guard-compat 1.2.1
+Using jasmine-core 3.4.0
+Using phantomjs 2.1.1.0
+Using jasmine 3.4.0
+Using tilt 2.0.9
+Using guard-jasmine 3.1.0
+Using rspec-support 3.8.2
+Using rspec-core 3.8.2
+Using rspec-expectations 3.8.4
+Using rspec-mocks 3.8.1
+Using rspec 3.8.0
+Using guard-rspec 4.7.3
+Using temple 0.8.1
+Using haml 5.1.1
+Using sexp_processor 4.12.1
+Using ruby_parser 3.13.1
+Using html2haml 2.2.0
+Using haml-rails 2.0.1
+Using hashdiff 1.0.0
+Using jaro_winkler 1.5.3
+Using sprockets 3.7.2
+Using sprockets-rails 3.2.1
+Using jasmine-rails 0.15.0
+Using jbuilder 2.9.1
+Using jquery-rails 4.3.5
+Using less 2.6.0
+Using less-rails 2.8.0
+Using less-rails-bootstrap 3.3.5.0
+Using libv8 3.16.14.19 (x86_64-linux)
+Using mono_logger 1.1.0
+Using mustermann 1.0.3
+Using newrelic_rpm 6.5.0.357
+Using parallel 1.17.0
+Using parser 2.6.3.0
+Using powder 0.4.0
+Using puma 3.12.1
+Using rack-protection 2.0.5
+Using rack-tracker 1.10.0
+Using rails 5.2.3
+Using rainbow 3.0.0
+Using redis 4.1.2
+Using redis-namespace 1.6.0
+Using ref 2.0.0
+Using sinatra 2.0.5
+Using vegas 0.1.11
+Using resque 2.0.0
+Using rufus-scheduler 3.6.0
+Using resque-scheduler 4.4.0
+Using sass-listen 4.0.0
+Using sass 3.7.4
+Using sass-rails 5.0.7
+Using twitter-bootstrap-rails 4.0.0
+Using resque-web 0.0.12
+Using rollbar 2.21.0
+Using rspec-rails 3.8.2
+Using ruby-progressbar 1.10.1
+Using unicode-display_width 1.6.0
+Using rubocop 0.73.0
+Using rubyzip 1.2.3
+Using selenium-webdriver 3.142.3
+Using simple_form 4.1.0
+Using sqlite3 1.4.1
+Using therubyracer 0.12.3
+Using uglifier 4.1.20
+Using vcr 5.0.0
+Using web-console 3.7.0
+Using webmock 3.6.0
+Bundle complete! 47 Gemfile dependencies, 179 gems now installed.
+Bundled gems are installed into `/home/icostan/.gem`
+#+END_EXAMPLE
+
+Now the fun part begins, code generation and configuration.
+
+First thing first, the UI section with Bootstrap, SimpleForm and HAML:
+
+#+BEGIN_EXAMPLE
+      remove  app/views/layouts/application.html.erb
+    generate  simple_form:install --bootstrap --force
+      create  config/initializers/simple_form.rb
+      create  config/initializers/simple_form_bootstrap.rb
+       exist  config/locales
+      create  config/locales/simple_form.en.yml
+      create  lib/templates/haml/scaffold/_form.html.haml
+=========================================================================
+
+  Be sure to have a copy of the Bootstrap stylesheet available on your
+  application, you can get it on http://getbootstrap.com/.
+
+  Inside your views, use the 'simple_form_for' with the Bootstrap form
+  class, '.form-inline', as the following:
+
+    = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
+
+=========================================================================
+    generate  bootstrap:install --template-engine=haml --skip-turbolinks
+      insert  app/assets/javascripts/application.js
+      create  app/assets/javascripts/bootstrap.js.coffee
+      create  app/assets/stylesheets/bootstrap_and_overrides.css.less
+      create  config/locales/en.bootstrap.yml
+        gsub  app/assets/stylesheets/application.css
+    generate  bower_rails:initialize
+      create  Bowerfile
+      create  config/initializers/bower_rails.rb
+#+END_EXAMPLE
+
+Awesome Devise gem for authentication and authorization:
+
+#+BEGIN_EXAMPLE
+    generate  devise:install
+      create  config/initializers/devise.rb
+      create  config/locales/devise.en.yml
+==========================================================================
+
+Some setup you must do manually if you havent yet:
+
+  1. Ensure you have defined default url options in your environments files. Here
+     is an example of default_url_options appropriate for a development environment
+     in config/environments/development.rb:
+
+       config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+     In production, :host should be set to the actual host of your application.
+
+  2. Ensure you have defined root_url to *something* in your config/routes.rb.
+     For example:
+
+       root to: "home#index"
+
+  3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+     For example:
+
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+  4. You can copy Devise views (for customization) to your app by running:
+
+       rails g devise:views
+
+==========================================================================
+#+END_EXAMPLE
+
+Devise's User generation, the template is smart enough to detect that we have RSpec and FactoryBot gems and generate the appropriate "spec" and "factory" files.
+
+#+BEGIN_EXAMPLE
+    generate  devise User
+      invoke  active_record
+      create    db/migrate/20190720181253_devise_create_users.rb
+      create    app/models/user.rb
+      invoke    rspec
+      create      spec/models/user_spec.rb
+      invoke      factory_bot
+      create        spec/factories/users.rb
+      insert    app/models/user.rb
+       route  devise_for :users
+#+END_EXAMPLE
+
+Configuration for Cucumber/RSpec and other testing gems:
+
+#+BEGIN_EXAMPLE
+    generate  rspec:install
+      create  .rspec
+       exist  spec
+      create  spec/spec_helper.rb
+      create  spec/rails_helper.rb
+    generate  jasmine_rails:install
+   identical  spec/javascripts/support/jasmine.yml
+       route  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+    generate  cucumber:install --capybara --rspec
+      create  config/cucumber.yml
+      create  script/cucumber
+       chmod  script/cucumber
+      create  features/step_definitions
+      create  features/step_definitions/.gitkeep
+      create  features/support
+      create  features/support/env.rb
+       exist  lib/tasks
+      create  lib/tasks/cucumber.rake
+        gsub  config/database.yml
+        gsub  config/database.yml
+       force  config/database.yml
+        gsub  features/support/env.rb
+      create  features/support/webmock.rb
+      create  .rubocop.yml
+         run  guard init from "."
+      create  spec/vcr_helper.rb
+      insert  .rspec
+      create  config/initializer/rack-tracker.rb
+      create  config/newrelic.yml
+    generate  rollbar
+Generator run without an access token; assuming you want to configure using an environment variable.
+You'll need to add an environment variable ROLLBAR_ACCESS_TOKEN with your access token:
+
+$ export ROLLBAR_ACCESS_TOKEN=yourtokenhere
+
+If that's not what you wanted to do:
+
+$ rm config/initializers/rollbar.rb
+$ rails generate rollbar yourtokenhere
+
+      create  config/initializers/rollbar.rb
+      create  .powder
+      create  .powrc
+#+END_EXAMPLE
+
+Initialize git repo and add initial git commit:
+
+#+BEGIN_EXAMPLE
+         run  git init from "."
+Reinitialized existing Git repository in /home/icostan/Projects/icostan.gitlab.io/content/post/blog/.git/
+         run  git add . from "."
+         run  git commit -a -m 'Initial commit' from "."
+[master (root-commit) 662b8e0] Initial commit
+ 116 files changed, 3341 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 .powder
+ create mode 100644 .powrc
+ create mode 100644 .rspec
+ create mode 100644 .rubocop.yml
+ create mode 100644 .ruby-version
+ create mode 100644 Bowerfile
+ create mode 100644 Gemfile
+ create mode 100644 Gemfile.lock
+ create mode 100644 README.md
+ create mode 100644 Rakefile
+ create mode 100644 app/assets/config/manifest.js
+ create mode 100644 app/assets/images/.keep
+ create mode 100644 app/assets/javascripts/application.js
+ create mode 100644 app/assets/javascripts/bootstrap.js.coffee
+ create mode 100644 app/assets/javascripts/cable.js
+ create mode 100644 app/assets/javascripts/channels/.keep
+ create mode 100644 app/assets/stylesheets/application.css
+ create mode 100644 app/assets/stylesheets/bootstrap_and_overrides.css.less
+ create mode 100644 app/channels/application_cable/channel.rb
+ create mode 100644 app/channels/application_cable/connection.rb
+ create mode 100644 app/controllers/application_controller.rb
+ create mode 100644 app/controllers/concerns/.keep
+ create mode 100644 app/helpers/application_helper.rb
+ create mode 100644 app/jobs/application_job.rb
+ create mode 100644 app/mailers/application_mailer.rb
+ create mode 100644 app/models/application_record.rb
+ create mode 100644 app/models/concerns/.keep
+ create mode 100644 app/models/user.rb
+ create mode 100644 app/views/layouts/mailer.html.erb
+ create mode 100644 app/views/layouts/mailer.text.erb
+ create mode 100755 bin/bundle
+ create mode 100755 bin/rails
+ create mode 100755 bin/rake
+ create mode 100755 bin/setup
+ create mode 100755 bin/update
+ create mode 100755 bin/yarn
+ create mode 100644 config.ru
+ create mode 100644 config/application.rb
+ create mode 100644 config/boot.rb
+ create mode 100644 config/cable.yml
+ create mode 100644 config/credentials.yml.enc
+ create mode 100644 config/cucumber.yml
+ create mode 100644 config/database.yml
+ create mode 100644 config/environment.rb
+ create mode 100644 config/environments/development.rb
+ create mode 100644 config/environments/production.rb
+ create mode 100644 config/environments/test.rb
+ create mode 100644 config/initializer/rack-tracker.rb
+ create mode 100644 config/initializers/application_controller_renderer.rb
+ create mode 100644 config/initializers/assets.rb
+ create mode 100644 config/initializers/backtrace_silencers.rb
+ create mode 100644 config/initializers/bower_rails.rb
+ create mode 100644 config/initializers/content_security_policy.rb
+ create mode 100644 config/initializers/cookies_serializer.rb
+ create mode 100644 config/initializers/devise.rb
+ create mode 100644 config/initializers/filter_parameter_logging.rb
+ create mode 100644 config/initializers/generators.rb
+ create mode 100644 config/initializers/inflections.rb
+ create mode 100644 config/initializers/mime_types.rb
+ create mode 100644 config/initializers/rollbar.rb
+ create mode 100644 config/initializers/simple_form.rb
+ create mode 100644 config/initializers/simple_form_bootstrap.rb
+ create mode 100644 config/initializers/wrap_parameters.rb
+ create mode 100644 config/locales/devise.en.yml
+ create mode 100644 config/locales/en.bootstrap.yml
+ create mode 100644 config/locales/en.yml
+ create mode 100644 config/locales/simple_form.en.yml
+ create mode 100644 config/newrelic.yml
+ create mode 100644 config/puma.rb
+ create mode 100644 config/routes.rb
+ create mode 100644 config/storage.yml
+ create mode 100644 db/migrate/20190720181253_devise_create_users.rb
+ create mode 100644 db/seeds.rb
+ create mode 100644 features/step_definitions/.gitkeep
+ create mode 100644 features/support/env.rb
+ create mode 100644 features/support/webmock.rb
+ create mode 100644 lib/assets/.keep
+ create mode 100644 lib/tasks/.keep
+ create mode 100644 lib/tasks/cucumber.rake
+ create mode 100644 lib/templates/haml/scaffold/_form.html.haml
+ create mode 100644 log/.keep
+ create mode 100644 package.json
+ create mode 100644 public/404.html
+ create mode 100644 public/422.html
+ create mode 100644 public/500.html
+ create mode 100644 public/apple-touch-icon-precomposed.ico
+ create mode 100644 public/apple-touch-icon-precomposed.png
+ create mode 100644 public/apple-touch-icon.ico
+ create mode 100644 public/apple-touch-icon.png
+ create mode 100644 public/css/bootstrap.min.css
+ create mode 100644 public/css/styles.css
+ create mode 100644 public/favicon.ico
+ create mode 100644 public/index.html
+ create mode 100644 public/js/bootstrap.min.js
+ create mode 100644 public/robots.txt
+ create mode 100755 script/cucumber
+ create mode 100644 spec/factories/users.rb
+ create mode 100644 spec/javascripts/support/jasmine.yml
+ create mode 100644 spec/models/user_spec.rb
+ create mode 100644 spec/rails_helper.rb
+ create mode 100644 spec/spec_helper.rb
+ create mode 100644 spec/vcr_helper.rb
+ create mode 100644 storage/.keep
+ create mode 100644 test/application_system_test_case.rb
+ create mode 100644 test/controllers/.keep
+ create mode 100644 test/fixtures/.keep
+ create mode 100644 test/fixtures/files/.keep
+ create mode 100644 test/helpers/.keep
+ create mode 100644 test/integration/.keep
+ create mode 100644 test/mailers/.keep
+ create mode 100644 test/models/.keep
+ create mode 100644 test/system/.keep
+ create mode 100644 test/test_helper.rb
+ create mode 100644 tmp/.keep
+ create mode 100644 vendor/.keep
+#+END_EXAMPLE
+
+PAM, Pam!! and last, generate the very first model with all the magic bullets linked together:
+
+#+BEGIN_SRC sh :exports both :results output
+rails generate scaffold product name price:decimal
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_EXAMPLE
+      invoke  active_record
+      create    db/migrate/20190723132502_create_products.rb
+      create    app/models/product.rb
+      invoke    rspec
+      create      spec/models/product_spec.rb
+      invoke      factory_bot
+      create        spec/factories/products.rb
+      invoke  resource_route
+       route    resources :products
+      invoke  scaffold_controller
+      create    app/controllers/products_controller.rb
+      invoke    haml
+      create      app/views/products
+      create      app/views/products/index.html.haml
+      create      app/views/products/edit.html.haml
+      create      app/views/products/show.html.haml
+      create      app/views/products/new.html.haml
+      create      app/views/products/_form.html.haml
+      invoke    rspec
+      create      spec/controllers/products_controller_spec.rb
+      create      spec/views/products/edit.html.haml_spec.rb
+      create      spec/views/products/index.html.haml_spec.rb
+      create      spec/views/products/new.html.haml_spec.rb
+      create      spec/views/products/show.html.haml_spec.rb
+      create      spec/routing/products_routing_spec.rb
+      invoke      rspec
+      create        spec/requests/products_spec.rb
+      invoke    helper
+      create      app/helpers/products_helper.rb
+      invoke      rspec
+      create        spec/helpers/products_helper_spec.rb
+      invoke    jbuilder
+      create      app/views/products/index.json.jbuilder
+      create      app/views/products/show.json.jbuilder
+      create      app/views/products/_product.json.jbuilder
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/products.coffee
+      invoke    scss
+#+END_EXAMPLE
+
+Happy crafting and releasing cool new features.
