@@ -4,12 +4,17 @@ layoutdir     = "layouts"
 publishdir    = "public"
 title = "Decentralized meta-learning"
 canonifyurls  = true
-
 DefaultContentLanguage = "en"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
-pygmentsUseClasses = true
-pygmentCodeFences = true
+summaryLength = 16
+
+# pygmentsUseClasses = true
+# pygmentsCodeFences = true
+# pygmentsStyle = "trac"
+# pygmentsCodefencesGuessSyntax = true
+# pygmentsOptions = "linenos=inline"
+
 disqusShortname = "icostan"
 googleAnalytics = "UA-354095-4"
 
@@ -21,6 +26,12 @@ googleAnalytics = "UA-354095-4"
   commit = false
   rss = true
   comments = true
+  readingTime = true
+  wordCount = true
+  useHLJS = true
+  # socialShare = true
+  # delayDisqus = true
+  # showRelatedPosts = true
 #  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
 
 #[[Params.bigimg]]
