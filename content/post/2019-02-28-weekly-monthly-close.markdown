@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Tradingview: weekly/monthly close indicator"
+title:  "Weekly/monthly close TradingView indicator"
+subtitle: Trading
 date:   2019-02-28
 tags: ["tradingview", "trading", "indicator", "silver", "XAGUSD"]
 ---

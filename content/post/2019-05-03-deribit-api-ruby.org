@@ -1,6 +1,8 @@
 #+title: Ruby library for Deribit API
+#+subtitle: Open-source
 #+date: 2019-05-03
-#+tags: deribit ruby api trading sdk
+#+tags[]: deribit ruby api trading sdk
+
 I just want to introduce the new open-source Ruby library for [[https://docs.deribit.com][Deribit API]].
 
 Here is a short intro, for more information please check the [[https://github.com/icostan/deribit-api-ruby][source code repo]] and [[https://www.rubydoc.info/gems/deribit-api][documentation]].

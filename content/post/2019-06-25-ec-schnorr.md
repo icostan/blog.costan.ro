@@ -1,14 +1,10 @@
 ---
 layout: post
-title:  "Cryptography: EC-Schnorr"
+title:  "EC-Schnorr"
+subtitle: Cryptography
 date:   2019-06-25
 tags: ["cryptography", "schnorr", "math", "elliptic-curve", "sagemath"]
 ---
-
-
-# Overview
-
-    "If you can't explain it simply, you don't understand it well enough" - Einstein
 
 EC-Schnorr, as the name suggests, is a Schnorr-type digital signature scheme over elliptic curve, it's [ECDSA](https://blog.iuliancostan.com/post/2019-04-09-ecdsa)'s little sister and [Schnorr](https://blog.iuliancostan.com/post/2019-06-19-schnorr)'s big brother with multiple implementations out there: maybe most widely deployed being [EdDSA](https://en.wikipedia.org/wiki/EdDSA) (used in [Monero](https://web.getmonero.org)) or the upcoming [MuSig](https://blockstream.com/2018/01/23/en-musig-key-aggregation-schnorr-signatures/) implementation in Bitcoin.
 

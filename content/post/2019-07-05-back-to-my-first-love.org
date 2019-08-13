@@ -1,14 +1,11 @@
----
-title:  "Back to my first love"
-subtitle: Linux
-date:   2019-07-05
-tags: ["arch", "linux"]
-markup: org
----
+#+title:  Back to my first love
+#+subtitle: Linux
+#+date:   2019-07-05
+#+tags[]: linux arch i3 emacs vim
+
+The operating system of a life time with all the goods and the bads, here is my long journey in Linux.
 
 ** The journey
-
-   Here is my long journey with Linux and other operating systems:
 
    - [[https://www.redhat.com][RedHat]] - 1997 - this is was installed on all university's computers and I did not have my own personal computer at that time
    - [[https://en.wikipedia.org/wiki/Windows_98][Windows 98]] - 1998 - bought my own Pentium 166 MHz PC, mostly for [[https://en.wikipedia.org/wiki/StarCraft:_Brood_War][StarCraft: Brood War]] :)

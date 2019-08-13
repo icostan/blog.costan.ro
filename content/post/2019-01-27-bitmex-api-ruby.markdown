@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Idiomatic Ruby library for BitMEX API
+subtitle: Open-source
 date:   2019-01-28
 tags: ["bitmex", "ruby", "api", "sdk", "trading"]
 ---

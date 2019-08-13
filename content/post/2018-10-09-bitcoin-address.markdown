@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Bitcoin: private key, public key, address"
+subtitle: Crypto
 date:   2018-10-09
 tags: ["bitcoin", "cryptography", "math", "ruby", "private-key", "public-key"]
 ---

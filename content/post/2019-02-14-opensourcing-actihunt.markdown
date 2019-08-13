@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Open-sourcing Actihunt project
+subtitle: Open-source
 date:   2019-02-14
 tags: ["strava", "runkeeper", "sports", "health", "open-source", "ruby", "ruby-on-rails"]
 ---

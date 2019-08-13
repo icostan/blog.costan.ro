@@ -1,6 +1,7 @@
-#+title: Tradingview: slices of Bitcoin indicator
+#+title: Slices of Bitcoin TradingView indicator
+#+subtitle: Trading
 #+date: 2019-05-31
-#+tags: tradingview trading indicator stellar XLMUSD
+#+tags[]: tradingview trading indicator stellar XLMUSD
 
 My second indicator in this series is Slices of Bitcoin, a very simple indicator that shows how many times a currency fits into Bitcoin.
 Here is the [[https://www.tradingview.com/script/KpC7qdOE-Slices-of-Bitcoin/][source code]].

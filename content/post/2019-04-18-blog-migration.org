@@ -1,10 +1,7 @@
----
-title:  "From Jekyll to Hugo"
-subtitle: Blog migration
-date:   2019-04-18
-tags: ["blog", "jekyll", "hugo", "org-mode", "gitlab", "emacs", "literate-programming"]
-markup: org
----
+#+title:  From Jekyll to Hugo
+#+subtitle: Blog
+#+date:   2019-04-18
+#+tags[]: blog jekyll hugo org-mode gitlab emacs literate-programming
 
 Since nobody wants to embrace the dark side of Wordpress anymore, the easiest way (that I knew of) to bootstrap a personal website was [[https://jekyllrb.com][Jekyll]] and [[https://www.netlify.com][Netlify]].
 I am a huge advocate of getting things done fast, no fluff, just real stuff and this is what I did, but quite soon I realized that static Jekyll is not enough anymore and I needed to find new home.

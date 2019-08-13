@@ -68,14 +68,16 @@
     CLOSED: [2019-07-23 Tue 16:40]
 ** Fixes
 *** add Euler's method to RSA
-*** add tags to all posts
+*** DONE add tags to all posts
+    CLOSED: [2019-08-13 Tue 13:19]
 *** DONE use session for Python src blocks
     CLOSED: [2019-03-26 Tue]
 *** use naming conventions: p - prime, m - message, c - cipher, t - trapdoor
 *** use latex formulas
 *** links with ' sign
 *** use org citation, references
-*** add subtitles
+*** DONE add subtitles
+    CLOSED: [2019-08-13 Tue 13:19]
 *** DONE fix URLs points to other posts
     CLOSED: [2019-07-05 Fri 11:27]
 ** Tasks

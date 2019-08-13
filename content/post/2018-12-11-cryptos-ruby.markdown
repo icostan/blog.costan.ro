@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  Introducing Cryptos-ruby project
+subtitle: Open-source
 date:   2018-12-11
 tags: ["bitcoin", "litecoin", "monero", "cryptography", "crypto", "math", "ruby"]
 ---
