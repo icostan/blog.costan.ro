@@ -60,7 +60,10 @@
     CLOSED: [2019-06-27 Thu 10:56]
 *** DONE Arch linux
     CLOSED: [2019-07-16 Tue 21:13]
-*** application manager - apps installed from sources
+*** application management with Pacman, Yay?, Stow
+*** DONE password management with Bitwarden
+    CLOSED: [2019-08-13 Tue 10:55]
+*** configuration management with Mackup
 *** DONE 3DP project
     CLOSED: [2019-07-23 Tue 16:40]
 ** Fixes
@@ -77,10 +80,11 @@
     CLOSED: [2019-07-05 Fri 11:27]
 ** Tasks
 *** TODO write new blog
-    SCHEDULED: <2019-08-05 Mon +2w>
+    SCHEDULED: <2019-08-19 Mon +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-07-23 Tue 16:43]
+    :LAST_REPEAT: [2019-08-13 Tue 10:57]
     :END:
+    - State "DONE"       from "TODO"       [2019-08-13 Tue 10:57]
     - State "DONE"       from "TODO"       [2019-07-23 Tue 16:43]
     - State "DONE"       from "TODO"       [2019-07-16 Tue 21:31]
     - State "DONE"       from "TODO"       [2019-06-27 Thu 10:56]
@@ -117,3 +121,17 @@
     :LAST_REPEAT: [2019-07-05 Fri 13:17]
     :END:
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
+*** new theme
+    examples:
+    - https://themes.gohugo.io//theme/cupper-hugo-theme/post/
+    - https://themes.gohugo.io//theme/vanilla-bootstrap-hugo-theme/tags/
+    - https://themes.gohugo.io//theme/hugo-bootstrap/
+    - https://themes.gohugo.io//theme/minimal/post/
+    - https://themes.gohugo.io//theme/hugo-now//
+    - https://themes.gohugo.io//theme/minimo/
+    requirements:
+    - [ ] disqus
+    - [ ] google analytics
+    - [ ] tags
+    - [ ] categories
+    - [ ] social links
