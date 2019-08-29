@@ -26,7 +26,8 @@
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** cryptographic trap-doors
 *** homomorphic encryption
-*** zero-knowledge proofs
+*** DONE zero-knowledge proofs
+    CLOSED: [2019-08-29 Thu 17:16]
 *** DONE RSA encryption scheme
     CLOSED: [2019-03-18 Mon] SCHEDULED: <2019-03-15 Fri>
 *** personal finance with Ledger
@@ -66,6 +67,7 @@
 *** configuration management with Mackup
 *** DONE 3DP project
     CLOSED: [2019-07-23 Tue 16:40]
+*** cmdline verification of GnuPG signature
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -80,6 +82,9 @@
     CLOSED: [2019-08-13 Tue 13:19]
 *** DONE fix URLs points to other posts
     CLOSED: [2019-07-05 Fri 11:27]
+*** fix Arch post's images
+*** double check Schnorr signature s = t - m*x?
+*** fix the fucking orgmode
 ** Tasks
 *** TODO write new blog
     SCHEDULED: <2019-08-19 Mon +2w>
@@ -137,3 +142,4 @@
     - [ ] tags
     - [ ] categories
     - [ ] social links
+*** use relative URLs to other posts

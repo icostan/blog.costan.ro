@@ -1,0 +1,296 @@
+#+title: Zero-knowledge proofs
+#+subtitle: Cryptography
+#+date: 2019-08-26
+#+tags[]: cryptography zero-knowledge-proof python math
+#+export_file_name: post/2019-08-26-zero-knowledge-proofs
+#+options: toc:nil
+#+options: -:nil
+
+
+:FRONTMATTER:
+---
+layout: post
+title:  "Zero-knowledge proofs"
+subtitle: Cryptography
+date:   2019-08-26
+tags: ["cryptography", "zero-knowledge-proof", "math", "python", "zcash"]
+---
+:END:
+
+[[https://en.wikipedia.org/wiki/Zero-knowledge_proof][Zero-knowledge]] is a method to prove that you know a secret ``x`` (e.g. a password, private key, piece of knowledge, etc) without revealing that secret.
+
+Let's have a look at a few examples and implementations of zero-knowledge proof (ZKP) using different cryptographic schemes.
+
+*** Peggy has the private key
+
+    Let's say that Peggy (the prover) wants to prove to Victor (the verifier) that she has the private key ``x`` for public key ``X``.
+
+    #+begin_src python -n :results output :exports both
+      from random import randint
+      p = 7
+      g = 3
+      x = 4
+      X = g**x % p
+      r = randint(1, p-1)
+      R = g**r % p
+      proof = g**((x+r)%(p-1)) % p
+      check = X * R % p
+      print("Peggy has the private key!" ) if proof == check else print("Peggy lies!")
+    #+end_src
+
+    #+RESULTS:
+    : Peggy has the private key!
+
+    This is the simplest zero-knowledge implementation based on [[https://en.wikipedia.org/wiki/Discrete_logarithm][the discrete logarithm]], let's see how it works.
+
+    First of all please see [[https://blog.iuliancostan.com/post/2019-03-26-elgamal/][ElGamal]] post to understand discrete logarithm's parameters: prime number ``p`` and generator ``g``.
+
+    #+begin_src python -n :results output :exports both
+      from random import randint
+      p = 7
+      g = 3
+    #+end_src
+
+    Next, Peggy generates a random integer ``r``, computes the corresponding public key ``R`` and calculates the ``proof`` value that will be sent to Victor.
+
+    #+begin_src python +n :results output :exports both
+      x = 4
+      X = g**x % p
+      r = randint(1, p-1)
+      R = g**r % p
+      proof = g**((x+r)%(p-1)) % p
+    #+end_src
+
+    Victor takes the public keys ``X`` and ``R``, calculates his own ``check`` value and verifies if Peggy tells the truth or not.
+
+    #+begin_src python +n :results output :exports both
+      check = X * R % p
+      print("Peggy has the private key!" ) if proof == check else print("Peggy lies!")
+    #+end_src
+
+    Apply the distributive law at line #8 and #9 to see the equality:
+
+    #+begin_src python
+      proof == check
+      g**(x+r) == X * R
+      g**(x+r) == g**x * g**r
+    #+end_src
+
+*** Peggy knows the password
+
+    These days, pretty much all password-based authentications are implemented the same way; you fill in the password that is sent to server side where:
+    - the password is hashed and saved in database (the worst)
+    - or adding a salt into the mix to prevent [[https://en.wikipedia.org/wiki/Rainbow_table][Rainbow table attacks]] (at best)
+
+    But what about not sending the password at all, and instead provide a cryptographic proof for your identity?
+
+    #+begin_src python -n :results output :exports both
+      from random import randint
+      q = 17
+      g = 64
+      x = 4
+      X = g**x % q
+      r = randint(1, q-1)
+      R = g**r % q
+      c = randint(1, 9999)
+      s = r + c*x
+      proof = R * X**c % q
+      check = g**s % q
+      print("Peggy knows the password!" ) if proof == check else print("Peggy lies!")
+    #+end_src
+
+    #+RESULTS:
+    : Peggy knows the password!
+
+    This is called Schnorr identification scheme and as you will see below, it is an interactive identification scheme.
+
+    Please see [[https://blog.iuliancostan.com/post/2019-06-19-schnorr/][Schnorr]] post to understand where these ``q`` and ``g`` parameters come from.
+
+    #+begin_src python -n :results output :exports both
+      from random import randint
+      q = 17
+      g = 64
+    #+end_src
+
+    Nothing new so far, the same private key ``x`` (which in this case is just a hash of the actual password), public keys ``X`` and the temporary ones ``r`` and ``R``.
+
+    #+begin_src python +n :results output :exports both
+      x = 4
+      X = g**x % q
+      r = randint(1, q-1)
+      R = g**r % q
+    #+end_src
+
+    Here comes the clever part, Victor (the verifier) generates a random integer ``c`` called `the challenge` that is sent to Peggy to create the signature ``s`` and the ``proof``.
+
+    #+begin_src python +n :results output :exports both
+      c = randint(1, 9999)
+      s = r + c*x
+      proof = R * X**c % q
+    #+end_src
+
+    Victor takes the signature ``s``, calculates his own ``check`` value  and again verifies if Peggy knows the password or not.
+
+    #+begin_src python +n :results output :exports both
+      check = g**s % q
+      print("Peggy knows the password!" ) if proof == check else print("Peggy lies!")
+    #+end_src
+
+    Distributive and power laws are applied here as well:
+
+    #+begin_src python
+      proof == check
+      R * X**c == g**s
+      g**r * (g**x)**c == g**(r + c*x)
+      g**r * g**(x*c) == g**(r + c*x)
+      g**(r + x*c) == g**(r + c*x)
+    #+end_src
+
+*** Peggy knows two (or many) secrets
+
+    Victor wants to check if Peggy knows two numbers that add up to `5` without asking Peggy to reveal the actual numbers.
+
+    #+begin_src python -n :results output :exports both
+      p = 7
+      g = 3
+      a1 = 2
+      A1 = g**a1 % p
+      a2 = 3
+      A2 = g**a2 % p
+      proof = A1 * A2 % p
+      s = 5
+      check = g**s % p
+      print("Peggy knows the two numbers!" ) if proof == check else print("Peggy lies!")
+    #+end_src
+
+    #+RESULTS:
+    : Peggy knows the two numbers!
+
+    This is called 'Homomorphic Hiding - HH' and is one of the core concepts in [[https://en.wikipedia.org/wiki/Non-interactive_zero-knowledge_proof][zk-SNARKs]] that was first implemented in [[https://z.cash][Zcash]] then ZClassic, Bitcoin Private and so on.
+
+    Same prime number ``p`` and generator ``g`` from our [[https://en.wikipedia.org/wiki/Trapdoor_function][trapdoor function]].
+
+    #+begin_src python -n :results output :exports both
+      p = 7
+      g = 3
+    #+end_src
+
+    ``a1`` and ``a2`` are the secrets that Peggy needs to prove, ``A1`` and ``A2`` are the corresponding public keys.
+
+    #+begin_src python +n :results output :exports both
+      a1 = 2
+      A1 = g**a1 % p
+      a2 = 3
+      A2 = g**a2 % p
+      proof = A1 * A2 % p
+    #+end_src
+
+    Since Victor knows the expected result, he only needs to calculate the ``check`` value and verify if Peggy tells the truth or not.
+
+    #+begin_src python +n :results output :exports both
+      s = 5
+      check = g**s % p
+      print("Peggy knows the two numbers!" ) if proof == check else print("Peggy lies!")
+    #+end_src
+
+    It is easy to see the equality is true but why it works the way it works?
+
+    #+begin_src python
+      proof == check
+      g**a1 * g**a2 = g**s
+      g**a1 * g**a2 = g**(a1 + a2)
+    #+end_src
+
+    Let's say we have a simple algebraic structure ``a + b``, the discrete logarithm trapdoor function ``E`` and substitute one in the other:
+
+    #+begin_src python
+      E(x) = g**x
+      E(a + b) = g**(a + b)
+      E(a + b) = g**a * g**b
+      E(a + b) = E(a) * E(b)
+    #+end_src
+
+    It looks pretty simple and clever to me and this is why we multiply the two values to produce the ``proof`` at line #7.
+
+    This is all based on [[https://en.wikipedia.org/wiki/Homomorphic_encryption][Homomorphic encryption]] and will be the subject of another post but for now this is all you need to remember:
+    *Homomorphic encryption is a method that allows computation on encrypted data.*
+
+*** Alice knows the algorithm
+
+    So far, we've proved that Peggy has/knows a private key/password but what about a piece of knowledge like a top-secret algorithm.
+
+    #+begin_src python -n :results output :exports both
+      p = 7
+      g = 3
+      a = 2
+      b = 5
+      x = 4
+      h1 = g**x % p
+      h2 = g**(x**2) % p
+      result = h1**a * h2**b % p
+      P = a*x + b*x**2
+      check = g**P % p
+      print("Alice knows the algorithm!" ) if result == check else print("Alice lies!")
+    #+end_src
+
+    #+RESULTS:
+    : Alice knows the algorithm!
+
+    This is called 'blind evaluation' of polynomials and is also part of the Zcash implementation, a bit more complex but lets see the details.
+
+    Same old, same old ``p`` and ``g`` parameters for discrete logarithm trapdoor.
+
+    #+begin_src python -n
+      p = 7
+      g = 3
+    #+end_src
+
+    Alice knows the secret algorithm `P(x) = a*x + b*x**2` and the parameters ``a``, ``b``.
+
+    #+begin_src python +n
+      a = 2
+      b = 5
+    #+end_src
+
+    Bob has the input value ``x`` and wants the final result without revealing the input ``x``. This is the bread and the butter, he needs to calculate two values ``h1`` and ``h2`` called the `hidings` that are sent to Alice for final computation:
+
+    #+begin_src python +n
+      x = 4
+      h1 = g**x % p
+      h2 = g**(x**2) % p
+    #+end_src
+
+    Alice takes the hidings and calculates the final result without leaking the secret algorithm:
+
+    #+begin_src python +n
+      result = h1**a * h2**b % p
+    #+end_src
+
+    Now, we will do the computation by ourselves and see if it matches Alice's result.
+
+    #+begin_src python +n :results output :exports both
+      P = a*x + b*x**2
+      check = g**P % p
+      print("Alice knows the algorithm!" ) if result == check else print("Alice lies!")
+    #+end_src
+
+    #+RESULTS:
+    : Alice knows the algorithm!
+
+    Bingo! zero-knowledge proof on steroids folks, Alice does not learn the input ``x`` and Bob does not learn the algorithm, where is the catch?
+
+    Let's use the same ``E`` function with a more complex algebraic structure ``a*x + b*y`` where `a`, `b` are parameters and `x`, `y` are variables.
+
+    #+begin_src python
+      E(i) = g**i
+      E(a*x + b*y) = g**(a*x + b*y)
+      E(a*x + b*y) = g**(a*x) * g**(b*y)
+      E(a*x + b*y) = (g**x)**a * (g**y)**b
+      E(a*x + b*y) = E(x)**a * E(y)**b
+    #+end_src
+
+    This is the trick that was used at line #8 to calculate the final result without knowing the actual input value.
+
+    And with this we are stepping into the land of polynomials and quantum resistant cryptography. Whoever freaks out because quantum computers are coming and will break all cryptosystems, stay calm, the tech is there and is called [[https://en.wikipedia.org/wiki/Lattice-based_cryptography][Lattice-based cryptography]] and is the subject of yet another post.
+
+    Happy hiding.
