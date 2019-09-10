@@ -1,0 +1,140 @@
+#+title:  Package management
+#+subtitle: Productivity
+#+date:   2019-09-10
+#+tags[]: productivity package-management linux arch pacman rua stow
+
+I've finally put together a fast, reliable and non-intrusive way to install/query/clean pretty much any software package on the planet in 3 easy steps.
+
+* A. Installation
+*** 1. Official packages with Pacman
+
+    The official [[https://archlinux.org/packages][Arch Linux repository]] contains more than 10k that can be installed with Pacman, the default package manager that is simple, yet very powerful:
+
+   Search and install package from official repository:
+   #+begin_src sh
+     pacman -Ss bitcoin # search a package
+     pacman -S bitcoin # sync (install/update) a package
+   #+end_src
+
+*** 2. AUR packages with Rua
+
+   If your tool is not present in official Arch repo then we can try [[https://aur.archlinux.org/packages/][Arch Linux User Repo - AUR]] that has 60k more packages at your disposal to install using [[https://github.com/vn971/rua][Rua]]. These are standard Arch packages, the only difference is that they are maintained by third-party users who might or might not be trusted.
+
+   Search and install a package from AUR repo:
+   #+begin_src sh
+     rua search monero # search for 'monero'
+     rua install monero # install a package
+   #+end_src
+
+*** 3. From source code with Stow
+
+   And last, if your tool cannot be found in neither official Arch repo nor AUR then the last option is to install it from source code. But there is a catch: the classical ``configure, make, make install`` trinity works fine, the problem is the system pollution. After a while I find that I have hundreds of binaries installed in ``/usr/local/bin`` and I have no idea where they come from, let alone that a lot of tools do no provide an ``uninstall`` option and there is no easy way to clean up the system.
+
+   My solution is a combination of separate folder installation and a symlink manager called [[https://www.gnu.org/software/stow/][Stow]].
+   Lets take an example and install [[https://github.com/cacalabs/libcaca][Libcaca]] from source code. ("caca" means poop in Romanian :), you might guess why I choose this lib to demo)
+
+   - Configure with prefix and install into separate folder:
+      #+begin_src sh
+        ./configure --prefix=/usr/local/stow/libcaca
+      #+end_src
+      After ``make, make install`` we end up with the following structure:
+      #+begin_src sh
+        ls -l /usr/local/stow/libcaca
+      #+end_src
+
+      #+RESULTS:
+      | total      | 16 |         |       |      |     |    |       |         |
+      | drwxr-xr-x |  2 | icostan | users | 4096 | Aug | 31 | 08:12 | bin     |
+      | drwxr-xr-x |  2 | icostan | users | 4096 | Aug | 31 | 08:12 | include |
+      | drwxr-xr-x |  4 | icostan | users | 4096 | Aug | 31 | 08:12 | lib     |
+      | drwxr-xr-x |  3 | icostan | users | 4096 | Aug | 31 | 08:12 | share   |
+
+   - Stow (aka symlink) ``libcaca`` package into ``/usr/local/``:
+      #+begin_src sh
+        stow --dir=/usr/local/stow --target=/usr/local/ --stow libcaca
+      #+end_src
+
+      After Stow-ing we have nice and clean ``/usr/local/bin`` folder with symlinks only.
+      #+begin_src sh
+        ls -l /usr/local/bin
+      #+end_src
+
+      #+RESULTS:
+      | total      | 4 |      |      |      |     |    |       |            |    |                                |
+      | lrwxrwxrwx | 1 | root | root |   29 | Aug | 31 | 08:18 | cacaclock  | -> | ../stow/libcaca/bin/cacaclock  |
+      | lrwxrwxrwx | 1 | root | root |   28 | Aug | 31 | 08:18 | cacademo   | -> | ../stow/libcaca/bin/cacademo   |
+      | lrwxrwxrwx | 1 | root | root |   28 | Aug | 31 | 08:18 | cacafire   | -> | ../stow/libcaca/bin/cacafire   |
+      | lrwxrwxrwx | 1 | root | root |   28 | Aug | 31 | 08:18 | cacaplay   | -> | ../stow/libcaca/bin/cacaplay   |
+      | lrwxrwxrwx | 1 | root | root |   30 | Aug | 31 | 08:18 | cacaserver | -> | ../stow/libcaca/bin/cacaserver |
+      | lrwxrwxrwx | 1 | root | root |   28 | Aug | 31 | 08:18 | cacaview   | -> | ../stow/libcaca/bin/cacaview   |
+
+* B. Query installed packages
+*** 1. Official packages
+   Search locally installed packages and show package info:
+
+   #+begin_src sh :output raw
+     pacman -Qs bitcoin # search local package database
+     pacman -Qi bitcoin # local package info
+   #+end_src
+
+   And one of my favorite, list all files in a package or find package ownership:
+
+   #+begin_src sh
+     pacman -Ql bitcoin # list all files installed by bitcoin package
+     pacman -Qo /usr/bin/bitcoind # find the package that owns the specified file
+   #+end_src
+
+*** 2. AUR packages
+    We can query for all packages that are installed with different package manager like Rua:
+    #+begin_src sh
+      pacman -Qm
+    #+end_src
+
+    #+RESULTS:
+    | brave-bin               |            0.68.132-1 |
+    | create-react-native-app |               1.0.0-3 |
+    | exponent-exp            |              57.2.1-1 |
+    | heroku-cli              |              7.29.0-1 |
+    | ledger-live-bin         |              1.12.0-1 |
+    | mackup                  |              0.8.26-1 |
+    | monero                  |            0.14.1.2-1 |
+    | polybar                 |               3.4.0-2 |
+    | popcorntime-bin         |              0.3.10-5 |
+    | react-native-cli        |               2.0.1-2 |
+    | rua                     |              0.14.6-2 |
+    | vue-cli                 |              3.11.0-1 |
+    | vue-native-cli          |               0.0.2-1 |
+
+*** 3. From Source code
+   We can list Stow folder and see what we have installed:
+   #+begin_src sh
+     ls -l /usr/local/stow/
+   #+end_src
+
+   #+RESULTS:
+   | total      | 8 |      |       |      |     |    |       |         |
+   | drwxr-xr-x | 2 | root | users | 4096 | Sep |  6 | 17:46 | ihsec   |
+   | drwxrwxr-x | 6 | root | users | 4096 | Aug | 31 | 08:12 | libcaca |
+* C. Cleaning
+*** 1. Official packages
+    Remove an installed package:
+    #+begin_src sh
+      pacman -R bitcoin
+    #+end_src
+
+*** 2. AUR packages
+    All packages installed with Rua are standard Pacman packages and can be easily removed:
+    #+begin_src sh
+      pacman -R mackup
+    #+end_src
+
+*** 3. From Source code
+    Cleaning up is as simple as:
+    - un-stow (aka remove symlinks) from ``/usr/local``
+    #+begin_src sh
+      stow -R libcaca
+    #+end_src
+    - delete the installation folder ``/usr/local/stow/libcaca``
+
+
+**** And this is it, the easiest way to keep your Arch system clean all the time.

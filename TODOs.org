@@ -61,13 +61,17 @@
     CLOSED: [2019-06-27 Thu 10:56]
 *** DONE Arch linux
     CLOSED: [2019-07-16 Tue 21:13]
-*** application management with Pacman, Yay?, Stow
+*** DONE package management with Pacman, Rua, Stow
+    CLOSED: [2019-09-10 Tue 16:09]
+    :LOGBOOK:
+    CLOCK: [2019-09-10 Tue 11:30]--[2019-09-10 Tue 16:09] =>  4:39
+    :END:
 *** DONE password management with Bitwarden
     CLOSED: [2019-08-13 Tue 10:55]
-*** configuration management with Mackup
+*** configuration management with Mackup and Etckeeper
 *** DONE 3DP project
     CLOSED: [2019-07-23 Tue 16:40]
-*** cmdline verification of GnuPG signature
+*** cmdline verification of GPG signature
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -87,10 +91,11 @@
 *** fix the fucking orgmode
 ** Tasks
 *** TODO write new blog
-    SCHEDULED: <2019-08-19 Mon +2w>
+    SCHEDULED: <2019-09-07 Mon +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-08-13 Tue 10:57]
+    :LAST_REPEAT: [2019-08-30 Fri 10:47]
     :END:
+    - State "DONE"       from "TODO"       [2019-08-30 Fri 10:47]
     - State "DONE"       from "TODO"       [2019-08-13 Tue 10:57]
     - State "DONE"       from "TODO"       [2019-07-23 Tue 16:43]
     - State "DONE"       from "TODO"       [2019-07-16 Tue 21:31]
