@@ -63,89 +63,105 @@ googleAnalytics = "UA-354095-4"
   spotify = "iuliancostan"
   # bandcamp = "username"
   # itchio = "username"
-  # keybase = "username"
+  keybase = "icostan"
 
 
 [[menu.main]]
-    name = "Home"
-    url = ""
+    name = "About"
+    url = "page/about/"
     weight = 1
 
 [[menu.main]]
     identifier = "cryptography"
     name = "Cryptography"
     weight = 2
-
 [[menu.main]]
     parent = "cryptography"
-    name = "1. RSA"
+    name = "RSA"
     url = "post/2019-03-16-rsa"
     weight = 1
-
 [[menu.main]]
     parent = "cryptography"
-    name = "2. ElGamal"
+    name = "ElGamal"
     url = "post/2019-03-26-elgamal"
     weight = 2
-
 [[menu.main]]
     parent = "cryptography"
-    name = "3. ECDSA"
+    name = "ECDSA"
     url = "post/2019-04-09-ecdsa"
     weight = 3
-
 [[menu.main]]
     parent = "cryptography"
-    name = "4. Schnorr"
+    name = "Schnorr"
     url = "post/2019-06-19-schnorr"
     weight = 4
-
 [[menu.main]]
     parent = "cryptography"
-    name = "5. EC-Schnorr"
+    name = "EC-Schnorr"
     url = "post/2019-06-25-ec-schnorr"
     weight = 5
-
 [[menu.main]]
     parent = "cryptography"
-    name = "6. Zero-knowledge proofs"
+    name = "Zero-knowledge proofs"
     url = "post/2019-08-26-zero-knowledge-proofs"
     weight = 6
 
 [[menu.main]]
     identifier = "opensource"
-    name = "Open Source"
+    name = "OpenSource"
+    weight = 3
+[[menu.main]]
+    parent = "opensource"
+    name = "Bitmex-API"
+    url = "post/2019-01-27-bitmex-api-ruby"
+    weight = 1
+[[menu.main]]
+    parent = "opensource"
+    name = "Actihunt"
+    url = "post/2019-02-14-opensourcing-actihunt"
+    weight = 2
+[[menu.main]]
+    parent = "opensource"
+    name = "Deribit-API"
+    url = "post/2019-05-03-deribit-api-ruby"
+    weight = 3
+[[menu.main]]
+    parent = "opensource"
+    name = "3DP"
+    url = "post/2019-07-18-3dp"
     weight = 3
 
 [[menu.main]]
-    parent = "opensource"
-    name = "1. Bitmex-API"
-    url = "post/2019-01-27-bitmex-api-ruby"
-    weight = 1
-
+    identifier = "productivity"
+    name = "Productivity"
+    weight = 4
 [[menu.main]]
-    parent = "opensource"
-    name = "2. Actihunt"
-    url = "post/2019-02-14-opensourcing-actihunt"
+    parent = "productivity"
+    name = "Password management"
+    url = "post/2019-08-12-password-management-with-bitwarden"
+    weight = 1
+[[menu.main]]
+    parent = "productivity"
+    name = "Package management"
+    url = "post/2019-09-10-package-management"
     weight = 2
 
 [[menu.main]]
-    parent = "opensource"
-    name = "3. Deribit-API"
-    url = "post/2019-05-03-deribit-api-ruby"
-    weight = 3
-
-[[menu.main]]
-    parent = "opensource"
-    name = "4. 3DP"
-    url = "post/2019-07-18-3dp"
-    weight = 3
-[[menu.main]]
-    name = "About"
-    url = "page/about/"
+    identifier = "trading"
+    name = "Trading"
     weight = 4
+[[menu.main]]
+    parent = "trading"
+    name = "Weekly/Monthly close indicator"
+    url = "post/2019-02-28-weekly-monthly-close"
+    weight = 1
+[[menu.main]]
+    parent = "trading"
+    name = "Slices of Bitcoin indicator"
+    url = "post/2019-05-31-slices-of-bitcoin"
+    weight = 2
 
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 5
+    weight = 6
