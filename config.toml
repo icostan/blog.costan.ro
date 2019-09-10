@@ -67,8 +67,8 @@ googleAnalytics = "UA-354095-4"
 
 
 [[menu.main]]
-    name = "About"
-    url = "page/about/"
+    name = "Home"
+    url = ""
     weight = 1
 
 [[menu.main]]
@@ -149,7 +149,7 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     identifier = "trading"
     name = "Trading"
-    weight = 4
+    weight = 5
 [[menu.main]]
     parent = "trading"
     name = "Weekly/Monthly close indicator"
@@ -162,6 +162,11 @@ googleAnalytics = "UA-354095-4"
     weight = 2
 
 [[menu.main]]
+    name = "About"
+    url = "page/about/"
+    weight = 6
+
+[[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 6
+    weight = 7
