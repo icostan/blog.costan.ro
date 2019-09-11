@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/icostan
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://blog.iuliancostan.com
+  * I am icostan (https://keybase.io/icostan) on keybase.
+  * I have a public key ASDKtREJZfoZi1cp8-lpg7dO9i9g5mI02wnhtV3_1Qc7_Ao
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120362628466bddd16ab291184088cb07ef73b57ea4b5760ca51d9c2338374ba03c0a",
+      "host": "keybase.io",
+      "kid": "0120cab5110965fa198b5729f3e96983b74ef62f60e66234db09e1b55dffd5073bfc0a",
+      "uid": "118bbb1a72de04a616751d1357c47a19",
+      "username": "icostan"
+    },
+    "merkle_root": {
+      "ctime": 1568208280,
+      "hash": "6a94aed8d439021e54566c5a830fe3602e18cdf88ef25b7e85e4765a42a485d4e2d9b6afaeb84824a88ea62c6e6bb03e0d1cd85b1443352afc7b0efcf9bae233",
+      "hash_meta": "9bb637e5624645e8dce18d92bbf5dcf4728e2df8edff69a41b881121dd5b7575",
+      "seqno": 6713170
+    },
+    "service": {
+      "entropy": "7040KsrOkYMq36xj3V+aKM9n",
+      "hostname": "blog.iuliancostan.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.4.0"
+  },
+  "ctime": 1568208316,
+  "expire_in": 504576000,
+  "prev": "c755d4b06057f036a6f2ad753cb6a477965905a7e5e8d025762e5a0342a0d599",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgyrURCWX6GYtXKfPpaYO3TvYvYOZiNNsJ4bVd/9UHO/wKp3BheWxvYWTESpcCDMQgx1XUsGBX8Dam8q11PLakd5ZZBafl6NAldi5aA0Kg1ZnEIAQK0kDMM5Vj3pEnmIGuWv/nr0LGq0as+wn6x7+lqyFhAgHCo3NpZ8RAgdOPJG6dMaRt5fnUg4Ubkj7wYX/fD6EZq+WgqaZlRYdGAI0vUFr9EvtA/KjB2ptYgqcOoVepGDoyAS93bpsuB6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIDaldvZ8lhoT8QS5Xk+hHbtSHMCMzHlORZ8cuJxdI/YYo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/icostan
+
+==================================================================
