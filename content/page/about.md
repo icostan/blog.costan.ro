@@ -8,10 +8,19 @@ comments: false
 
 An old fashion "Jack of all trades" kind of guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto land.
 
-### Coding activity and languages that I "speak"
+### Coding activity
 
 <figure><embed src="https://wakatime.com/share/@icostan/28b5cc40-90c8-4141-863e-36f35400a3cd.svg"></embed></figure>
-<figure><embed src="https://wakatime.com/share/@icostan/a03ced1a-26bc-4e1a-955a-711998cf7791.svg"></embed></figure>
+<!-- <figure><embed src="https://wakatime.com/share/@icostan/a03ced1a-26bc-4e1a-955a-711998cf7791.svg"></embed></figure> -->
+
+### Travel activity
+
+<center>
+<a href="https://nomadlist.com/@icostan" target="_blank">Trips and profile</a>
+(Powered by <a href="https://nomadlist.com/" target="_blank">Nomadlist</a>)
+</center>
+
+<iframe width="800" height="600" style="background:#f9f9f9;" src="https://nomadlist.com/@icostan/embed" scrolling="no" frameborder="0" allowfullscreen></iframe>
 
 ### Sports activity
 
