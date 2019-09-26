@@ -3,11 +3,11 @@
 #+date:   2019-07-05
 #+tags[]: linux arch i3 emacs vim
 
-The operating system of a life time with all the goods and the bads, here is my long journey in Linux.
+Here is my long journey in Linux, the operating system of a life time with all the good and the bad, on and offs.
 
 ** The journey
 
-   - [[https://www.redhat.com][RedHat]] - 1997 - this is was installed on all university's computers and I did not have my own personal computer at that time
+   - [[https://www.redhat.com][RedHat]] - 1997 - this was installed on all university's computers and I did not have my own personal computer at that time
    - [[https://en.wikipedia.org/wiki/Windows_98][Windows 98]] - 1998 - bought my own Pentium 166 MHz PC, mostly for [[https://en.wikipedia.org/wiki/StarCraft:_Brood_War][StarCraft: Brood War]] :)
    - [[http://www.slackware.com][Slackware]] - 2000 - because I was never happy with RPM package manager but I enjoyed the simplicity of Slack
    - [[https://github.com/icostan/iulix][IuLiX]] - 2002 - my own Linux distro based on [[http://www.linuxfromscratch.org/][Linux from scratch]] and Slackware philosophy
@@ -30,32 +30,40 @@ The operating system of a life time with all the goods and the bads, here is my 
 
    For the curious minds, here are the most important tools that I use on daily basis:
 
-*** Window manager - [[https://i3wm.org/][i3]]
+*** Window manager - [[https://i3wm.org/][i3wm]]
     I was never a big fan of complicated Desktop Environments (DE) like Gnome or KDE and i3wm is exactly what I need: a non-intrusive tilling window manager.
-     [[file:../../img/i3.png][i3]]
+
+     [[file:../../img/i3.png]]
 
 *** Status bar - [[https://github.com/polybar/polybar][Polybar]]
     This is still work in progress as I need to add more tools but for now only WiFi, battery and clock.
-     [[file:../../img/polybar.png][polybar]]
+
+     [[file:../../img/polybar.png]]
 
 *** Terminal emulator - [[https://sw.kovidgoyal.net/kitty/index.html][Kitty]]
-     [[file:../../img/kitty.png][Kitty]]
+
+     [[file:../../img/kitty.png]]
 
 *** Application launcher - [[https://github.com/davatorium/rofi][Rofi]]
-     [[file:../../img/rofi.png][rofi]]
+
+     [[file:../../img/rofi.png]]
 
 *** Browser - [[https://brave.com/][Brave]]
     A fork of Chromium that is focused on privacy/security without Google's non-sense.
-     [[file:../../img/brave.png][Brave]]
+
+     [[file:../../img/brave.png]]
 
 *** Window compositor - [[https://github.com/yshui/compton][Compton]]
     In case you don't know what a window compositor is, here is a short desc: just a cool daemon that adds shades and transparency to windows.
     Enjoy the sunset background of [[https://en.wikipedia.org/wiki/Vernazza][Vernazza, Italy]] thanks to [[https://unsplash.com/@andersjilden][Anders Jilden]]
-     [[file:../../img/compton.png][compton]]
+
+     [[file:../../img/compton.png]]
 
 *** Editors - [[http://spacemacs.org/][Spacemacs]] / [[https://www.vim.org/][Vim]]
-     [[file:../../img/emacs.png][emacs]]
 
+     [[file:../../img/emacs.png]]
+
+*** Others
    - Pomodoro technique - [[http://tomighty.org/][Tomighty]]
 
    - Display manager - [[https://github.com/CanonicalLtd/lightdm][LightDM]]
@@ -65,4 +73,4 @@ The operating system of a life time with all the goods and the bads, here is my 
    - Configuration manager - [[https://github.com/lra/mackup][Mackup]]
 
 
-And this is it folks, the power of Linux, you are free to use any tool you love and configure everything the way you want.
+Linux Love!
