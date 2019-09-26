@@ -122,7 +122,9 @@
 *** DONE fix Arch post's images
     CLOSED: [2019-09-26 Thu 15:44]
 *** double check Schnorr signature s = t - m*x?
-*** fix the fucking org-mode
+*** DONE fix the fucking org-mode
+    CLOSED: [2019-09-26 Thu 17:54]
+*** add syntax highlight for older md files
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>

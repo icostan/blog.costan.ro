@@ -9,10 +9,11 @@ theme = "beautifulhugo"
 metaDataFormat = "yaml"
 summaryLength = 16
 
-# pygmentsUseClasses = true
-# pygmentsCodeFences = true
-# pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsStyle = "monokai"
+pygmentsCodeFences = true
 # pygmentsCodefencesGuessSyntax = true
+# pygmentsUseClassic = true
 # pygmentsOptions = "linenos=inline"
 
 disqusShortname = "icostan"
@@ -28,7 +29,7 @@ googleAnalytics = "UA-354095-4"
   comments = true
   readingTime = true
   wordCount = true
-  useHLJS = true
+  useHLJS = false
   # socialShare = true
   # delayDisqus = true
   # showRelatedPosts = true
