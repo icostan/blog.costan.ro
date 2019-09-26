@@ -97,7 +97,7 @@
 *** understanding GnuPG
 *** navigation in Spacemacs
      - with both avy and evil, use demo-it for presentation
-     - jumps to word, line, timer with avy
+     - jumps to word, line (with folded paragraphs), timer with avy
      - goto top/middle/bottom of the page
      - goto prev/next edit
      - code: variable, function, definition, documentation
@@ -105,6 +105,14 @@
      - find in current buffer, all open buffers, project, files
      - scroll (cursor remains on the same line, screen moves) horizontal/veritical by chars, lines, pages
      - move (cursor moves to new lines, screen remains) horizontal/veritical by char, line, pages, screens
+*** protect your digital life
+    - disk encryption
+    - multiple laptops / phones
+    - data in sync on all devices
+    - keep very critical stuff online (albums, important papers) as well for redundancy
+    - passwords manager with 3 layer protection: pass, 2FA, ?
+    - 2FA in sync on a few devices only
+*** FLASC trading strategy
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts

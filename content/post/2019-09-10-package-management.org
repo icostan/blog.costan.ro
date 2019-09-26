@@ -8,7 +8,7 @@ I've finally put together a fast, reliable and non-intrusive way to install/quer
 * A. Installation
 *** 1. Official packages with Pacman
 
-    The official [[https://archlinux.org/packages][Arch Linux repository]] contains more than 10k that can be installed with Pacman, the default package manager that is simple, yet very powerful:
+    The official [[https://archlinux.org/packages][Arch Linux repository]] contains more than 10k packages that can be installed with Pacman, the default package manager that is simple, yet very powerful:
 
    Search and install package from official repository:
    #+begin_src sh
