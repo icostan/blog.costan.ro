@@ -113,6 +113,9 @@
     - passwords manager with 3 layer protection: pass, 2FA, ?
     - 2FA in sync on a few devices only
 *** FLASC trading strategy
+*** DONE elliptic curves
+    CLOSED: [2019-10-01 Tue 17:38]
+*** finite fields with graphs
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts

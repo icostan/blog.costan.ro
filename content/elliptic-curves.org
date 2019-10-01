@@ -1,0 +1,296 @@
+#+export_file_name: post/2019-09-25-elliptic-curves
+#+options: toc:nil
+#+options: -:nil
+
+:FRONTMATTER:
+---
+title:  "Elliptic curves"
+subtitle: Cryptography
+date:   2019-09-25
+tags: ["cryptography", "elliptic-curve", "math", "sagemath", "python"]
+---
+:END:
+
+The easiest way to understand Elliptic Curve (EC), point addition, scalar multiplication and trapdoor function; explained with simple graphs and animations.
+
+** 1. Abstract
+
+   - What the heck is an elliptic curve?
+   - A plane algebraic curve defined by an equation of this form: */y^2 = x^3 + a*x + b/*
+
+   - Why are elliptic curves important in cryptography?
+   - Because elliptic curve scalar multiplication is a trapdoor function
+
+   - How does scalar multiplication works?
+   - Scalar/point multiplication is defined as repeated addition of a point to itself
+
+   - How does point addition works then?
+   - If we draw a line passing thru elliptic curve points (or draw a tangent to a single point) it will intersect another point on the curve and the inverse of this intersection point if the result of point addition
+
+   Since a picture is worth a thousand words then the following elliptic curve point addition/multiplication animation has 33 frames and is worth a lot more, do the math.
+
+   #+begin_src sage :session ec2 :exports results :file ./img/ec11-animate.gif
+     E = EllipticCurve([0,0,1,-1,0])
+     G = E([0, 0])
+     G2 = G + G
+     G3 = G2 + G
+     G4 = G3 + G
+     G5 = G4 + G
+     frames = []
+
+     g = E.plot()
+     frames.append(g)
+     g += text("P=k*G - trapdoor function", (0.1, 2.4), color="red", fontsize=10, horizontal_alignment="left")
+     frames.append(g)
+     g += text("P - public key", (0.1, 2.2), color="red", fontsize=10, horizontal_alignment="left")
+     frames.append(g)
+     g += text("k - private key, e.g. 5", (0.1, 2.0), color="red", fontsize=10, horizontal_alignment="left")
+     frames.append(g)
+     g += text("G - generator point, e.g. (0, 0)", (0.1, 1.8), color="red", fontsize=10, horizontal_alignment="left")
+     frames.append(g)
+
+     g += G.plot(legend_label="G", color="black", pointsize=200)
+     frames.append(g)
+
+     g += text("5*G - scalar multiplication", (0.1, 1.4), color="red", fontsize=10, horizontal_alignment="left")
+     frames.append(g)
+     g += text("G+G+G+G+G - point addition", (0.1, 1.2), color="red", fontsize=10, horizontal_alignment="left")
+     frames.append(g)
+
+     g2 = g
+     g2 += line([G.xy(), (-G2).xy()], color="green", thickness=2)
+     frames.append(g2)
+     g2 += line([(-G2).xy(), G2.xy()], color="green", thickness=2)
+     frames.append(g2)
+     g2 += G2.plot(legend_label="G2=G+G", color="green", pointsize=100)
+     frames.append(g2)
+     g += G2.plot(legend_label="G2=G+G", color="green", pointsize=100)
+     frames.append(g)
+
+     g3 = g
+     g3 += line([G2.xy(), (-G3).xy()], color="orange", thickness=2)
+     frames.append(g3)
+     g3 += line([(-G3).xy(), G3.xy()], color="orange", thickness=2)
+     frames.append(g3)
+     g3 += G3.plot(legend_label="G3=G2+G", color="orange", pointsize=100)
+     frames.append(g3)
+     g += G3.plot(legend_label="G3=G2+G", color="orange", pointsize=100)
+     frames.append(g)
+
+     g4 = g
+     g4 += line([G3.xy(), (-G4).xy()], color="purple", thickness=2)
+     frames.append(g4)
+     g4 += line([(-G4).xy(), G4.xy()], color="purple", thickness=2)
+     frames.append(g4)
+     g4 += G4.plot(legend_label="G4=G3+G", color="purple", pointsize=100)
+     frames.append(g4)
+     g += G4.plot(legend_label="G4=G3+G", color="purple", pointsize=100)
+     frames.append(g)
+
+     g5 = g
+     g5 += line([G4.xy(), (G).xy()], color="red", thickness=2)
+     frames.append(g5)
+     g5 += line([(-G5).xy(), G5.xy()], color="red", thickness=2)
+     frames.append(g5)
+     g5 += G5.plot(legend_label="G5=G4+G", color="red", pointsize=200)
+     frames.append(g5)
+     g += G5.plot(legend_label="G5=G4+G", color="red", pointsize=200)
+     frames.append(g)
+     g += text("P=5*G", (0.5, -1), color="red", fontsize=12)
+     frames.append(g)
+     g += text("the trapdoor function:", (-0.05, -2.8), color="red", fontsize=12, horizontal_alignment="right")
+     g += text("given G and P it is infeasible to find k", (0.05, -2.8), color="red", fontsize=12, horizontal_alignment="left")
+     frames.append(g)
+     frames.append(g)
+     frames.append(g)
+     frames.append(g)
+     frames.append(g)
+
+     a = animate(frames)
+     a.gif(savefile="img/ec11-animate.gif", delay=100)
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/animate.gif]]
+
+   Given an elliptic curve */E/* a point on elliptic curve */G/* (called the generator) and a private key */k/* we can calculate the public key */P/* where */P = k * G/*.
+
+   The whole idea behind elliptic curves cryptography is that point addition (multiplication) is a trapdoor function which means that given */G/* and */P/* points it is infeasible to find the private key */k/*.
+
+   Keep reading if you are interested to understand more about the subject.
+
+
+** 2. A bit of math
+
+   Before jumping into elliptic curves math lets do a recap of basic algebraic structures.
+
+**** Simple structures - no binary operation
+***** *Set* - collection of distinct objects
+***** *Unary* - a set and an unary operation over set
+
+**** Group-like structures - one binary operation
+***** *Magma* - a set with a closed binary operation
+***** *Semigroup* - an associative magma
+***** *Monoid* - a semigroup with identity element
+***** *Group* - a monoid with unary operation (inverse)
+****** Abelian group - a group whose binary operation is also commutative
+
+**** Takeaway - group's properties:
+   1. /is a collection of objects/numbers/
+   2. /has a closed binary operation/
+   3. /is associative/
+   4. /has an identity element/
+   5. /has inverse elements/
+   6. /might be commutative/
+
+
+** 3. Examples of elliptic curves
+
+   As always, I am going to leverage the power of the trinity (Emacs, Orgmode, Python/Sagemath) to draw a few explanatory graphs.
+
+   Let's start with a simple elliptic curve with the following parameters: a=0, b=7.
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec31.png
+     E = EllipticCurve([0, 7])
+     E.plot()
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec31.png]]
+
+   Not very interesting ... let's pick a fancy one with parameters: a=-1, b=0 (don't worry about the first 3 params)
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec32.png
+     E = EllipticCurve([0,0,1,-1,0])
+     E.plot()
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec32.png]]
+
+
+** 4. Points on elliptic curve
+
+*** Generator point
+
+   We can see that origin seems to be a point on our curve, let's check it out.
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec41.png
+     E = EllipticCurve([0,0,1,-1,0])
+     G = E([0, 0])
+     g = E.plot()
+     g += G.plot(legend_label="G", color="red", pointsize=100)
+     g.show()
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec41.png]]
+
+*** Inverse point
+
+   According to property #5, each point has an inverse point. What is the inverse operation with respect to addition? It's negation.
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec42.png
+     E = EllipticCurve([0,0,1,-1,0])
+     G = E([0, 0])
+     N = -G
+     g = E.plot()
+     g += G.plot(legend_label="G", color="red", pointsize=100)
+     g += N.plot(legend_label="N=-G", color="purple", pointsize=100)
+     g += line([(-1.5, -0.50), (2.4, -0.50)], color="gray", linestyle="dashed")
+     g.show()
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec42.png]]
+
+*** Identity point
+
+    According to property #4 we have an identity element. What is the result of */G - G/*? it is called point at infinity or identity */I/* and satisfy the equation */G + I = G/*. This is like */0/* in arithmetic where */3 + 0 = 3/*.
+
+    Unfortunately I can't draw it on the graph but you can imagine a vertical line passing thru */G/* and */-G/* points that "intersects" the curve in point at infinity.
+
+    One thing to remember is that our generator point above is (0, 0) but that is just a regular point on elliptic curve, nothing special about it.
+
+*** Closed points
+
+   Property #2 tells us that binary operation has to be closed, lets see what this means.
+
+   Adding the point */G/* to itself (doubling) we can see that resulting point is also on the curve.
+
+   If we keep adding more */G/* points we figure out that all points are on the curve and this gives us the */closed/* property of the elliptic curves addition.
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec44.png
+     E = EllipticCurve([0,0,1,-1,0])
+     G = E([0, 0])
+     G2 = G + G
+     G3 = G2 + G
+     G4 = G3 + G
+     G5 = G4 + G
+     g = E.plot()
+     g += G.plot(legend_label="G", color="red", pointsize=100)
+     g += G2.plot(legend_label="G2=G+G", color="green", pointsize=100)
+     g += G3.plot(legend_label="G3=G2+G", color="blue", pointsize=100)
+     g += G4.plot(legend_label="G4=G3+G", color="purple", pointsize=100)
+     g += G5.plot(legend_label="G5=G4+G", color="cyan", pointsize=100)
+     g.show()
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec44.png]]
+
+
+** 5. Elliptic curve addition
+
+   Geometrically, the main rule to add two points on elliptic curve is to draw a line passing thru those points that will intersect the curve in another point and the inverse of this intersection point if the result of point addition.
+   This is all, of course there are a few edge cases to this rule (like A = -B or A == B) but we will keep things simple and ignore the edge cases for now.
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec51.png
+     E = EllipticCurve([0,0,1,-1,0])
+     G = E([0, 0])
+     A = 4 * G
+     B = 5 * G
+     S = A + B
+     X = -S
+     g = E.plot()
+     g += A.plot(legend_label="A", color="green", pointsize=100)
+     g += B.plot(legend_label="B", color="cyan", pointsize=100)
+     g += X.plot(legend_label="X", color="blue", pointsize=100)
+     g += S.plot(legend_label="S=A+B", color="red", pointsize=100)
+     g += line([A.xy(), B.xy(), X.xy()], color="red", thickness=2)
+     g += line([X.xy(), S.xy()], color="red", thickness=2)
+     g.show()
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec51.png]]
+
+
+** 6. Elliptic curve over finite fields
+
+   What we've seen so far are elliptic curves over rational numbers but what is really used in cryptography are elliptic curves over finite fields.
+
+   - How does a elliptic curve over finite field looks like?
+   - Well, I am afraid you won't like the graph because elliptic curves defined over finite fields get cut off and are not intelligible to humans
+
+   And the nice thing about this is that all the elliptic curve's properties are preserved on finite fields as well and point addition / scalar multiplication works as expected.
+
+   #+begin_src sage :session ec2 :exports both :file ./img/ec61.png
+     F = FiniteField(11)
+     E = EllipticCurve(F, [0,0,1,-1,0])
+     G = E([0, 0])
+     G2 = G + G
+     G3 = G2 + G
+     G4 = G3 + G
+     G5 = G4 + G
+     g = E.plot()
+     g += G.plot(legend_label="G", color="red", pointsize=100)
+     g += G2.plot(legend_label="G2=G+G", color="green", pointsize=100)
+     g += G3.plot(legend_label="G3=G2+G", color="blue", pointsize=100)
+     g += G4.plot(legend_label="G4=G3+G", color="purple", pointsize=100)
+     g += G5.plot(legend_label="G5=G4+G", color="cyan", pointsize=100)
+     g.show(frame=True, axes=False)
+   #+end_src
+
+   #+RESULTS:
+   [[file:./img/ec61.png]]
