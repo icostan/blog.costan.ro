@@ -1,9 +1,10 @@
 * TODOs                                                                 :BLOG:
 *** TODO write new blog
-    SCHEDULED: <2019-09-21 Sat +2w>
+    SCHEDULED: <2019-10-05 Sat +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-09-10 Tue 16:59]
+    :LAST_REPEAT: [2019-10-01 Tue 17:55]
     :END:
+    - State "DONE"       from "TODO"       [2019-10-01 Tue 17:55]
     - State "DONE"       from "TODO"       [2019-09-10 Tue 16:59]
     - State "DONE"       from "TODO"       [2019-08-30 Fri 10:47]
     - State "DONE"       from "TODO"       [2019-08-13 Tue 10:57]
@@ -17,10 +18,11 @@
     - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
     - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
 *** TODO Renew Lets Encrypt SSL certificate
-    SCHEDULED: <2019-10-03 Fri +10w>
+    SCHEDULED: <2019-12-19 Thu +11w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-07-05 Fri 13:17]
+    :LAST_REPEAT: [2019-10-03 Thu 13:36]
     :END:
+    - State "DONE"       from "TODO"       [2019-10-03 Thu 13:36]
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
 ** Posts
 *** DONE write 2018 review
