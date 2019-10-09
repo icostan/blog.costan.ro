@@ -3,7 +3,7 @@
 #+date:   2019-07-05
 #+tags[]: linux arch i3 emacs vim
 
-Here is my long journey in Linux, the operating system of a life time with all the good and the bad, on and offs.
+Here is [[https://linux-hardware.org/index.php?computer=af3a4bc1494f][my current system]] and my long journey in Linux, the operating system of a life time with all the good and the bad, on and offs.
 
 ** The journey
 

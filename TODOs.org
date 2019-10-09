@@ -118,6 +118,8 @@
 *** DONE elliptic curves
     CLOSED: [2019-10-01 Tue 17:38]
 *** finite fields with graphs
+*** DONE leaving Apple/Googlle and /e/
+    CLOSED: [2019-10-09 Wed 14:40]
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts

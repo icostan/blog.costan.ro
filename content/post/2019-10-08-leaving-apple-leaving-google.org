@@ -1,0 +1,50 @@
+#+title:  Leaving Apple, leaving Google
+#+subtitle: Opensource
+#+date:   2019-10-08
+#+tags[]: /e/ lineageos microg opensource android
+
+I've finally broken the corporation cage and I am Apple and Google-free.
+
+From MacOS to Linux was an easy jump, [[https://www.lenovo.com/au/en/laptops/legion-laptops/lenovo-legion-y-series/Lenovo-Legion-Y7000-2019/p/88GMY501215][bought new laptop]], [[https://blog.iuliancostan.com/post/2019-07-05-back-to-my-first-love/][installed Arch Linux]] and done but phone is a different story and moving from Apple to Google is like going from bad to worst, it does not feel right.
+
+Unfortunately Linux based phones (like [[http://plasma-phone.org/][Plasma Mobile]]) are not there yet, and is not because they are more difficult to install/use, it's because they miss the apps ecosystem.
+
+I knew about [[https://www.indidea.org/gael/blog/leaving-apple-google-how-is-e-actually-google-free/][Gael Duval]] and his quest to leave Apple and Google and I have been watching [[https://e.foundation][/e Foundation/]] for quite a while  but never got the time to play with it.
+
+For those who don't know, [[https://e.foundation/][/e/OS]] is the alternative to Google monopoly on smartphones, is based on Android and is compatible with most existing Android applications.
+
+At high level /e/OS contains the following components:
+    1. a fork of [[https://lineageos.org/][LineageOS]] with [[https://www.kernel.org/][Linux Kernel]] 4.4 that we all love
+    2. [[https://microg.org/][MicroG]] that re-implements proprietary Google's user apps and libraries
+    3. new [[https://gitlab.e.foundation/e/apps/BlissLauncher][app launcher]] that puts together the simplicity of iOS and power of Android
+    4. multiple default mobile apps that are open-source and free to use
+    5. online services for Mail/Calendar/Drive/etc that come in two flavors: hosted at [[https://ecloud.global/][eCloud]] or self-hosted with [[https://www.docker.com/][Docker]] images
+
+And here are a few apps that come installed by default but you are free to use anything you like:
+    - Browser - [[https://www.bromite.org/][Bromite]] (an ungoogled fork of Chromium) but I don't use it, I only use [[https://brave.com/][Brave]] on all devices
+    - Maps - a fork of [[https://www.magicearth.com/][MagicEarth]] with data from Open Street Map
+    - Weather - a fork [[https://github.com/qqq3/good-weather][GoodWeather]] with data from Open Weather Map
+    - Mail - a fork of [[https://k9mail.github.io/][K9 Mail]]
+    - Camera - [[https://opencamera.sourceforge.io/][OpenCamera]]
+    - Phone - default Android dialer app
+    - Calendar - a fork of [[https://github.com/Etar-Group/Etar-Calendar][Etar]] app
+
+And so on, please read [[https://gitlab.e.foundation/e/wiki/en/wikis/e-product-description-pro-privacy-Android-ROM-and-online-services][/e/ product description]] for more details about how it works and what apps are included in /e/ firmware.
+
+** Installation
+
+I bought an OnePlus 5T phone and I went down the rabbit hole, please see [[https://gitlab.e.foundation/e/wiki/en/wikis/devices-list][the list]] of supported devices and check if your device is in there. Here is the [[https://gitlab.e.foundation/e/wiki/en/wikis/device/dumpling/install][installation]] for my 5T phone.
+
+
+Basically the entire installation process can be broken down in 3 steps:
+
+  1. unlock the bootloader
+  2. flash the recovery image using [[https://twrp.me/][TeamWin Recovery project]]'s custom recovery
+  3. flash the /e/OS firmware
+
+If your phone is supported then follow the installation guide that is specific to your phone, it not that complicated, the docs are quite comprehensive.
+Everything went pretty smooth except the latest TWRP's custom recovery that did not work for me and I ended up with black screen but an older one worked just fine.
+
+And last, if you do not want to go the hard way and flash the phone by yourself then I have good news, you can now [[https://e.foundation/e-pre-installed-refurbished-smartphones/][buy an /e/ phone]] that is ready to use out--of-the-box.
+
+There is a wonderful life outside Google and Apple. Enjoy it!
