@@ -73,49 +73,69 @@ googleAnalytics = "UA-354095-4"
     weight = 1
 
 [[menu.main]]
-    identifier = "cryptography"
-    name = "Cryptography"
+    identifier = "crypto"
+    name = "Crypto"
     weight = 2
 [[menu.main]]
-    parent = "cryptography"
+    parent = "crypto"
     name = "RSA"
     url = "post/2019-03-16-rsa"
     weight = 1
 [[menu.main]]
-    parent = "cryptography"
+    parent = "crypto"
     name = "ElGamal"
     url = "post/2019-03-26-elgamal"
     weight = 2
 [[menu.main]]
-    parent = "cryptography"
+    parent = "crypto"
     name = "ECDSA"
     url = "post/2019-04-09-ecdsa"
     weight = 3
 [[menu.main]]
-    parent = "cryptography"
+    parent = "crypto"
     name = "Schnorr"
     url = "post/2019-06-19-schnorr"
     weight = 4
 [[menu.main]]
-    parent = "cryptography"
+    parent = "crypto"
     name = "EC-Schnorr"
     url = "post/2019-06-25-ec-schnorr"
     weight = 5
 [[menu.main]]
-    parent = "cryptography"
-    name = "Zero-knowledge proofs"
+    parent = "crypto"
+    name = "Zero knowledge proofs"
     url = "post/2019-08-26-zero-knowledge-proofs"
     weight = 6
 [[menu.main]]
-    parent = "cryptography"
+    parent = "crypto"
     name = "Elliptic curves"
     url = "post/2019-09-25-elliptic-curves"
     weight = 7
 
 [[menu.main]]
+    identifier = "linux"
+    name = "Linux"
+    weight = 4
+[[menu.main]]
+    parent = "linux"
+    name = "Back to my first love"
+    url = "post/2019-07-05-back-to-my-first-love/"
+    weight = 1
+[[menu.main]]
+    parent = "linux"
+    name = "Package management"
+    url = "post/2019-09-10-package-management"
+    weight = 1
+[[menu.main]]
+    parent = "linux"
+    name = "Configuration management"
+    url = "post/2019-10-22-configuration-management"
+    weight = 1
+
+[[menu.main]]
     identifier = "opensource"
     name = "OpenSource"
-    weight = 3
+    weight = 4
 [[menu.main]]
     parent = "opensource"
     name = "Bitmex-API"
@@ -140,22 +160,17 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     identifier = "productivity"
     name = "Productivity"
-    weight = 4
+    weight = 5
 [[menu.main]]
     parent = "productivity"
     name = "Password management"
     url = "post/2019-08-12-password-management-with-bitwarden"
     weight = 1
-[[menu.main]]
-    parent = "productivity"
-    name = "Package management"
-    url = "post/2019-09-10-package-management"
-    weight = 2
 
 [[menu.main]]
     identifier = "trading"
     name = "Trading"
-    weight = 5
+    weight = 6
 [[menu.main]]
     parent = "trading"
     name = "Weekly/Monthly close indicator"
@@ -170,9 +185,9 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 6
+    weight = 7
 
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 7
+    weight = 8

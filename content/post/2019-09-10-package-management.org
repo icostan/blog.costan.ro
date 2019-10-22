@@ -1,5 +1,5 @@
 #+title:  Package management
-#+subtitle: Productivity
+#+subtitle: Linux
 #+date:   2019-09-10
 #+tags[]: productivity package-management linux arch pacman rua stow
 
