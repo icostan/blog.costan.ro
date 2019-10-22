@@ -1,0 +1,32 @@
+#+title:  Configuration management
+#+subtitle: Linux
+#+date:   2019-10-22
+#+tags[]: linux arch productivity dotfiles etckeeper mackup
+
+Syncing configuration files across multiple machines is one thing but it is more important to track the config changes and figure out what went wrong when the system breaks. Here is my setup for both user's dotfiles and system's configuration files.
+
+* Dotfiles configuration
+
+I think that we can split dotfiles configuration management in 3 main categories:
+ 1. dotfiles management with [[https://git-scm.com/][Git]] - this is the common practice, you just track all dotfiles changes with Git
+ 2. host-specific configuration - the same as above with different branches for each host or operating  system (MacOS vs. Linux)
+ 3. application level configuration - basically we save configuration for each app individually
+
+Option #3 works very well for me because I can fine-tune it and add/remove/update each application's configuration files individually without affecting anything else.
+
+The tool I use for this is [[https://github.com/lra/mackup][Mackup]] and it works on both Linux and MacOS and here is my public [[https://gitlab.com/icostan/dotfiles][dotfiles]] repo. It is as easy as adding new app to */.mackup.cfg/* file and execute */mackup backup/* command that copies and symlinks your files.
+If your app is not supported by default, you can easily create a mackup config file for it and specify what files you need to backup and this is it. And it works with pretty much any storage out there, Dropbox, Drive, etc.
+
+And yes, we eat our own dog food, we track mackup's configuration files with mackup itself, the beauty of application level's configuration management.
+
+* Etcfiles configuration
+
+So far we have covered user-specific configuration but what about system-wide configuration stored in *//etc/* folder?
+Well, this is a bit more complicated, first because of security reasons and second we cannot use symlinks because this will break many things.
+
+Let me introduce you [[https://etckeeper.branchable.com/][Etckeeper]] (also check [[https://wiki.archlinux.org/index.php/Etckeeper][Etckeeper on Arch Wiki]] for more details) which is a collection of scripts to keep track of *//etc/* in a Git repository. Basically it watches //etc/ folder and automatically commits changes before and after each package install/update. More than that it provides both [[https://www.freedesktop.org/wiki/Software/systemd/][SystemD]] timers and [[https://en.wikipedia.org/wiki/Cron][Cron]] scripts to automatically commit any manual changes on daily/weekly basis.
+
+No rocket science but it saved my ass so many times when my system broke that I cannot live without it anymore.
+
+
+Happy configuration!

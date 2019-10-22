@@ -1,9 +1,11 @@
 * TODOs                                                                 :BLOG:
 *** TODO write new blog
-    SCHEDULED: <2019-10-05 Sat +2w>
+    SCHEDULED: <2019-11-05 Sat +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-10-01 Tue 17:55]
+    :LAST_REPEAT: [2019-10-22 Tue 14:55]
     :END:
+    - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
+    - State "DONE"       from "TODO"       [2019-10-09 Wed 15:37]
     - State "DONE"       from "TODO"       [2019-10-01 Tue 17:55]
     - State "DONE"       from "TODO"       [2019-09-10 Tue 16:59]
     - State "DONE"       from "TODO"       [2019-08-30 Fri 10:47]
@@ -93,7 +95,8 @@
     :END:
 *** DONE password management with Bitwarden
     CLOSED: [2019-08-13 Tue 10:55]
-*** configuration management with Mackup and Etckeeper
+*** DONE configuration management with Mackup and Etckeeper
+    CLOSED: [2019-10-22 Tue 14:55]
 *** DONE 3DP project
     CLOSED: [2019-07-23 Tue 16:40]
 *** understanding GnuPG
