@@ -1,9 +1,10 @@
 * TODOs                                                                 :BLOG:
 *** TODO write new blog
-    SCHEDULED: <2019-11-05 Sat +2w>
+    SCHEDULED: <2019-11-19 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-10-22 Tue 14:55]
+    :LAST_REPEAT: [2019-11-08 Fri 23:02]
     :END:
+    - State "DONE"       from "TODO"       [2019-11-08 Fri 23:02]
     - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
     - State "DONE"       from "TODO"       [2019-10-09 Wed 15:37]
     - State "DONE"       from "TODO"       [2019-10-01 Tue 17:55]
@@ -100,16 +101,19 @@
 *** DONE 3DP project
     CLOSED: [2019-07-23 Tue 16:40]
 *** understanding GnuPG
-*** navigation in Spacemacs
+*** DONE in-file navigation in Emacs
+    CLOSED: [2019-11-08 Fri 22:56]
      - with both avy and evil, use demo-it for presentation
      - jumps to word, line (with folded paragraphs), timer with avy
      - goto top/middle/bottom of the page
      - goto prev/next edit
+     - scroll (cursor remains on the same line, screen moves) horizontal/veritical by chars, lines, pages
+     - move (cursor moves to new lines, screen remains) horizontal/veritical by char, line, pages, screens
+*** file navigation in Emacs
+     - goto prev/next edit
      - code: variable, function, definition, documentation
      - find files, buffers
      - find in current buffer, all open buffers, project, files
-     - scroll (cursor remains on the same line, screen moves) horizontal/veritical by chars, lines, pages
-     - move (cursor moves to new lines, screen remains) horizontal/veritical by char, line, pages, screens
 *** protect your digital life
     - disk encryption
     - multiple laptops / phones
