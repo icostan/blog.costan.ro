@@ -127,6 +127,12 @@
 *** finite fields with graphs
 *** DONE leaving Apple/Googlle and /e/
     CLOSED: [2019-10-09 Wed 14:40]
+*** disk encryption/block ciphers
+    - stacked filesystem vs. block device
+    - block ciphers: e.g. aes-xts-plain
+    - mode of operation: ECB, CBC, XTS https://en.wikipedia.org/wiki/Disk_encryption_theory
+*** DONE surviving Bali
+    CLOSED: [2019-11-19 Tue 18:33]
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
