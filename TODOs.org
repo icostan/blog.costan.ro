@@ -1,9 +1,13 @@
-* TODOs                                                                 :BLOG:
+* [[elisp:(org-projectile-open-project%20"icostan.gitlab.io")][icostan.gitlab.io]] [/]
+  :PROPERTIES:
+  :CATEGORY: icostan.gitlab.io
+  :END:
 *** TODO write new blog
-    SCHEDULED: <2019-11-19 Tue +2w>
+    SCHEDULED: <2019-12-06 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-11-08 Fri 23:02]
+    :LAST_REPEAT: [2019-11-21 Thu 22:36]
     :END:
+    - State "DONE"       from "TODO"       [2019-11-21 Thu 22:36]
     - State "DONE"       from "TODO"       [2019-11-08 Fri 23:02]
     - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
     - State "DONE"       from "TODO"       [2019-10-09 Wed 15:37]
@@ -133,6 +137,9 @@
     - mode of operation: ECB, CBC, XTS https://en.wikipedia.org/wiki/Disk_encryption_theory
 *** DONE surviving Bali
     CLOSED: [2019-11-19 Tue 18:33]
+*** surviving Vietnam
+*** Month breaks trading indicator
+*** SegWit address derivation
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -153,6 +160,7 @@
 *** DONE fix the fucking org-mode
     CLOSED: [2019-09-26 Thu 17:54]
 *** add syntax highlight for older md files
+*** DONE fix spelling in Surviging Bali, in-file navigation posts
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>

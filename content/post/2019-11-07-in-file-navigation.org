@@ -1,94 +1,97 @@
 #+title:  In-file navigation
-#+subtitle: Editors
+#+subtitle: Emacs
 #+date:   2019-11-07
 #+tags[]: emacs vim editors navigation productivity
 
-First thing first, lets split in-file navigation into 3 main categories:
+Here are my Emacs in-file navigation goodies that I use on daily basis, splitted into 3 main categories:
 
-  1. moving - moves the cursor anywhere within visible screen stands still
-  2. scrolling - screen moves but cursor's position remains the same
-  3. jumping - move anywhere within the current file/buffer, both cursor position and screen change
+  1. moving - cursor moves, screen does not
+  2. scrolling - screen moves, cursor does not
+  3. jumping - both cursor and screen move .
 
-And here are my main navigation goodies that I use in day-by-day development.
+** 1. Moving
+   Moves the cursor anywhere within visible screen, while the screen stands still.
 
-** Moving
-   Cursor moves, screen does not
-*** horizontally by char/column
+*** 1.1 horizontally by char/column
     - absolute column index: |, 5|
     - single char left/right: h, l
     - multiple chars: 4h, 3l
     - any char on the line: fc, Fc
    [[file:/img/out-5.gif]]
-*** horizontally by token/word
+*** 1.2 horizontally by token/word
     - beginning/end of next token: w, b
     - beginning/end of next word: W, B
     - multiple token: 3w, 3b
     - multiple words: 3W, 3B
     - end of current/next token/word: e, E
    [[file:/img/out-6.gif]]
-*** horizontally at beginning/end of line
+*** 1.3 horizontally at beginning/end of line
     - beginning of line: 0
     - end of line: $
     - first non-blank char: ^
     - last non-blank char: g_
    [[file:/img/out-7.gif]]
-*** vertically by line
+*** 1.4 vertically by line
     - single line: "j", "k"
     - multiple lines: "6j", "6k"
    [[file:/img/out-8.gif]]
-*** vertically by paragraph
+*** 1.5 vertically by paragraph
     - up: "}"
     - down: "{"
    [[file:/img/out-9.gif]]
-*** on visible screen
+*** 1.6 on visible screen
     - open/close brace: "%"
     - top/middle/bottom: "H", "M", "L"
     - char/word/line: "C-c m c", "C-c m w", "C-c m l"
    [[file:/img/out-10.gif]]
-** Scrolling
-   Screen moves, cursor does not
-*** top/middle/bottom
+
+** 2. Scrolling
+   Screen moves but cursor's position remains the same
+
+*** 2.1 top/middle/bottom
     - top of the screen: "zt"
     - middle of the screen: "zz"
     - bottom of the screen: "zb"
    [[file:/img/out-11.gif]]
-*** vertically by one line
+*** 2.2 vertically by one line
     - down: "C-y"
     - up: "C-e"
    [[file:/img/out-12.gif]]
-*** horizontally by one column
+*** 2.3 horizontally by one column
     - right: "zl"
     - left: "zh"
    [[file:/img/out-20.gif]]
-*** horizontally by screen
+*** 2.4 horizontally by screen
     - right: "zL"
     - left: "zH"
    [[file:/img/out-13.gif]]
 
-** Jumping
-   Both cursor and screen move
-*** at beginning/end of file
+
+** 3. Jumping
+   Jump anywhere within the current file/buffer, both cursor's position and screen change.
+
+*** 3.1 at beginning/end of file
     - top: "gg"
     - bottom: "G"
    [[file:/img/out-14.gif]]
-*** by full screen
+*** 3.2 by full screen
     - down: "C-f"
     - up: "C-b"
    [[file:/img/out-15.gif]]
-*** by half page
+*** 3.3 by half page
     - down: "C-d"
     - up: "C-u"
    [[file:/img/out-16.gif]]
-*** to line
+*** 3.4 to line
     - absolute: "34G", "70%"
    [[file:/img/out-17.gif]]
-*** mark/jump
+*** 3.5 mark/jump
     - mark: "mm"
     - beginning of marked line: "'m"
     - marked cursor position: "`m"
     - undo the jump: "''"
    [[file:/img/out-18.gif]]
-*** method/function
+*** 3.6 method/function
     - semantic: "C-c j f"
    [[file:/img/out-19.gif]]
 

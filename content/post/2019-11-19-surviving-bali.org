@@ -3,7 +3,7 @@
 #+date:   2019-11-19
 #+tags[]: nomad indonesia bali ubud
 
-  I survived a month in Ubud, Bali, Indonesia (29 days actually) with 2234 EUR :) I like the word survive but there is nothing to survive in Bali, especially in Ubud.
+  I survived a month in Ubud, Bali, Indonesia with 2112 EUR :) I like the word survive but there is nothing to survive in Bali, especially in Ubud.
 
   Actually it is the opposite, it is very easy to live, a soft landing and relative cheap destination for both nomads/tourists.
 
@@ -14,60 +14,58 @@
   3. diversity - lots and lots of food/drink/stay options
 
 ** Expenses
-   My initial budget was 1500 EUR (including the long flight) which was completely ruined but I will do better next time :). And here are all expenses grouped by top level accounts:
+   My initial budget was 1500 EUR (including the long flight) which was completely ruined but I will do better next time :).
 
-   #+RESULTS: bali-balances
-   #+begin_example
-            2234.55 EUR  Expenses
-             764.38 EUR    Accommodation
-               1.06 EUR    Bank
-              24.31 EUR    Clothing
-             182.69 EUR    Coworking
-             187.98 EUR    Drinks
-             146.18 EUR      Alcohol
-               9.62 EUR      Coffee
-              31.20 EUR      N/A
-               0.98 EUR      Tea
-              23.40 EUR    Electronics
-             204.10 EUR    Food
-              13.98 EUR      Burger
-               6.31 EUR      Desert
-               3.25 EUR      Fajitas
-               3.90 EUR      Fish
-               1.30 EUR      Focaccia
-              13.39 EUR      Fruits
-              19.50 EUR      Japanese
-               7.80 EUR      Pasta
-              23.92 EUR      Pizza
-               8.45 EUR      Salad
-               4.81 EUR      Snack
-               6.31 EUR      Soup
-               9.95 EUR      Tax
-               2.08 EUR      Tip
-               3.25 EUR    Haircut
-               7.93 EUR    Laundry
-              94.09 EUR    Online
-               4.88 EUR      Music
-              89.22 EUR      Travel
-              12.02 EUR    Phone
-               5.20 EUR    SPA:Massage
-             127.86 EUR    Sports
-               3.25 EUR      Surfing
-             124.61 EUR      Yoga
-              19.30 EUR    Toiletries
-              16.05 EUR      Suncream
-             576.98 EUR    Transportation
-             485.00 EUR      Airplane
-              91.98 EUR      Taxi
-   --------------------
-            2234.55 EUR
-   #+end_example
+   Here are all expenses grouped by top level accounts:
 
-   Alcohol is quite expenses, 2 EUR for a small beer (33ml) or 6 EUR for a cocktail pretty much everywhere but food prices are in different ranges:
-   1. low cost: 2 EUR - traditional Nasi/Mia Goreng (fried rice/noodle with chicken)
+    #+begin_example
+             2112.02 EUR  Expenses
+              760.33 EUR    Accommodation
+                1.05 EUR    Bank
+               24.31 EUR    Clothing
+              181.70 EUR    Coworking
+              187.98 EUR    Drinks
+              146.18 EUR      Alcohol
+                9.62 EUR      Coffee
+               21.77 EUR      N/A
+                0.98 EUR      Tea
+                9.42 EUR      Water
+              204.10 EUR    Food
+               13.98 EUR      Burger
+                6.31 EUR      Desert
+                3.25 EUR      Fajitas
+                3.90 EUR      Fish
+                1.30 EUR      Focaccia
+               13.39 EUR      Fruits
+               19.50 EUR      Japanese
+                7.80 EUR      Pasta
+               23.92 EUR      Pizza
+                8.45 EUR      Salad
+                4.81 EUR      Snack
+                6.31 EUR      Soup
+                9.95 EUR      Tax
+                2.08 EUR      Tip
+                3.25 EUR    Haircut
+                7.93 EUR    Laundry
+               12.02 EUR    Phone
+                5.20 EUR    SPA:Massage
+              127.86 EUR    Sports
+                3.25 EUR      Surfing
+              124.61 EUR      Yoga
+               19.30 EUR    Toiletries
+               16.05 EUR      Suncream
+              576.98 EUR    Transportation
+              485.00 EUR      Airplane
+               91.98 EUR      Taxi
+    --------------------
+             2112.02 EUR
+    #+end_example
+
+   Alcohol is quite expensive, 2 EUR for a small beer (330ml) or 6 EUR for a cocktail pretty much everywhere but food prices are in different ranges:
+   1. low cost: 2 EUR - traditional Nasi/Mia Goreng (fried rice/noodle with chicken/vegetable)
    2. mid range: 4 EUR - other traditional meals or salads
    3. high range: 6 EUR - pizza/pasta, tacos, international cuisines or vegetarian options
-   4. expensive: more than 10 EUR - steaks or fancy restaurants
+   4. expensive: more than 10 EUR - beef steaks or fancy restaurants
 
 ** Coworking
    There are two main coworking hubs in Ubud and besides these, there are plenty of fancy cafes, bigger or smaller with good internet, perfect spots for couple of hours of work everyday.
@@ -75,7 +73,7 @@
    1. [[https://destinationoutpost.co/][Outpost]] - the space is very nice with open and loud space upstairs and AC and very quite space downstairs. Internet was good (maybe except one evening when it was sluggish) and I constantly got around 30 Mbps download and upload.
    2. [[https://hubud.org/][Hubud]] - this is the big brother in town that was recently acquired by the same investors that own the famous [[https://www.dojobali.orga/][Dojo]] coworking space. A bit smaller than Outpost but nicely decorated in wooden traditional Balinese style with plenty of events every week and very active community.
 
-   Outpost was my choice and I got coworking/coliving package for 1000 USD / month just to see how everything works out. Not the best decision but I learn on the fly.
+   Outpost was my choice and I got coworking/coliving package for 900 EUR / month (coliving: 720 EUR/m, coworking: 180 EUR/m) just to see how everything works out. Not the best decision but I learn on the fly.
 
 ** Coliving
    Outpost has 3 coliving locations, I stayed in the Villas and only visited the Suites.
@@ -97,7 +95,7 @@
 ** Mountain side
 
    I climbed [[https://en.wikipedia.org/wiki/List_of_mountains_in_Bali][Batukaru]] mountain (2276m) in Bedugul volcanic area and it was a new and interesting experience.
-   One because was my first solo mountaineering experience in a remote and unfamiliar terrain/vegetation and second because above 2000m everything is wet and trails are getting slippery and the higher you go the jungle gets more thick and dense.
+   One, because it was my first solo mountaineering experience in a remote and unfamiliar terrain/vegetation and second, because above 2000m everything is wet and trails are getting slippery and the higher you go the jungle gets ticker and ticker.
 
 ** Must see
    I would say that there are 2 MUST SEE things in Bali, one is a rice terrace and second is a volcano/caldera. I've checked the first but unfortunately not the second.
@@ -106,7 +104,7 @@
    1. Jatiluwih - the biggest, the most beautiful and less touristy, a bit far away, central-north part of the island.
    2. Tegalalang - the most famous one and crowded, very close to Ubud
 
-** Tips
+** Travel tip
    And finally here are 3 simple rules to survive in hot and humid climate and walk around like a boss not like a wet dog:
 
    1. turn the fucking AC off - moving in and out of AC-ing area is the worst
