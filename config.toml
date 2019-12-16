@@ -173,14 +173,19 @@ googleAnalytics = "UA-354095-4"
     weight = 6
 [[menu.main]]
     parent = "trading"
-    name = "Weekly/Monthly close indicator"
+    name = "Weekly/Monthly Close"
     url = "post/2019-02-28-weekly-monthly-close"
     weight = 1
 [[menu.main]]
     parent = "trading"
-    name = "Slices of Bitcoin indicator"
+    name = "Slices of Bitcoin"
     url = "post/2019-05-31-slices-of-bitcoin"
     weight = 2
+[[menu.main]]
+    parent = "trading"
+    name = "Month Breaks"
+    url = "post/2019-12-16-month-breaks"
+    weight = 3
 
 [[menu.main]]
     name = "About"

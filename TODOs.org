@@ -138,7 +138,7 @@
 *** DONE surviving Bali
     CLOSED: [2019-11-19 Tue 18:33]
 *** surviving Vietnam
-*** Month breaks trading indicator
+*** DONE Month breaks trading indicator
 *** SegWit address derivation
 ** Fixes
 *** add Euler's method to RSA

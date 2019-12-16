@@ -1,0 +1,17 @@
+#+title: Month breaks
+#+subtitle: Trading
+#+date: 2019-12-16
+#+tags[]: tradingview trading indicator pivotpoints EURUSD
+
+A very simple [[https://www.tradingview.com/script/1BmaNfe5-Month-breaks/][TradingView indicator]] that marks the start of every month with a vertical line. By default the vertical line is gray with 80% transparency but you can customize the style/color/transparency as you like.
+
+I hate crowded charts, bloated with all kind of crazy shapes and I created this indicator for two main reasons:
+
+1. beginning/end of the month is an excellent pivot-point
+2. to be simple, easy to customize and non-intrusive with the underlying chart
+
+See the EURUSD daily chart below, at the beginning of every month the price pivoted up and down, can you figure out what happens at the end of Dec 2019?
+
+[[file:../../img/month-breaks.png]]
+
+Trade long and prosper!
