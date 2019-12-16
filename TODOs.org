@@ -161,6 +161,7 @@
     CLOSED: [2019-09-26 Thu 17:54]
 *** add syntax highlight for older md files
 *** DONE fix spelling in Surviging Bali, in-file navigation posts
+*** DONE raw html in about page
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>

@@ -45,6 +45,11 @@ googleAnalytics = "UA-354095-4"
 #  src = "img/hexagon.jpg"
 #  desc = "Hexagon"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [Author]
   name = "Iulian Costan"
   email = "iulian.costan@gmail.com"
