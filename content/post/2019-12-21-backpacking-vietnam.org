@@ -1,0 +1,115 @@
+#+title:  Backpacking Viet Nam
+#+subtitle: Nomad
+#+date:   2019-12-21
+#+tags[]: nomad vietnam hanoi sapa ninhbinh catba
+
+I backpacked northern Vietnam for about 3 weeks and spent 988 EUR.
+
+As far as prices go, Vietnam is a bit cheaper than Bali, you can get small beer for less than 1 EUR, a coffee for less than 2 EUR and a traditional Pho Bo (beef soup) for about 2 EUR.
+Also, transporation is important in backpacking and on average I paid about 10 EUR for a 6h sleeper bus trip.
+
+** Expenses
+    #+RESULTS: vietnam-balances
+    #+begin_example
+              988.47 EUR  Expenses
+               13.80 EUR    ATM
+              352.31 EUR    Accommodation
+               62.71 EUR      Homestay
+               76.78 EUR      Hostel
+              212.82 EUR      Hotel
+               10.20 EUR    Clothing
+                8.98 EUR    Coworking
+               75.71 EUR    Drinks
+               29.10 EUR      Alcohol
+               27.80 EUR      Coffee
+                5.31 EUR      N/A
+                5.92 EUR      Tea
+                0.08 EUR      Tip
+                7.51 EUR      Water
+              237.96 EUR    Food
+                2.24 EUR      Baquette
+                3.47 EUR      Burger
+               18.86 EUR      Desert
+                3.14 EUR      Fries
+                2.86 EUR      Frog
+                4.08 EUR      Hotpot
+                2.65 EUR      Icecream
+               20.04 EUR      Indian
+                4.82 EUR      Japanese
+                1.31 EUR      Milk
+                1.84 EUR      Noodle
+                5.31 EUR      Pasta
+               14.65 EUR      Pizza
+                7.96 EUR      Rice
+                1.84 EUR      Rolls
+                2.04 EUR      Salad
+                9.59 EUR      Seafood
+                2.24 EUR      Shawarma
+                3.55 EUR      Snack
+               61.22 EUR      Snake
+                0.78 EUR      Tax
+                0.08 EUR      Tip
+                4.49 EUR      Vegetarian
+               19.18 EUR      Vietnamese
+                1.22 EUR      Yogurt
+                6.12 EUR    Laundry
+               11.66 EUR    Online:Revolut
+                0.61 EUR    Others
+                8.57 EUR    Phone
+               10.00 EUR    SPA:Massage
+                2.45 EUR    Sports:Cycling
+                4.08 EUR    Tickets
+               14.29 EUR    Tours
+              203.28 EUR    Transportation
+              146.38 EUR      Airplane
+               44.65 EUR      Bus
+               12.24 EUR      Taxi
+               28.45 EUR    Visa
+    --------------------
+              988.47 EUR
+    #+end_example
+
+** Locations
+
+*** 1. Ha Noi
+    Unfortunately there is not much to do or see in Ha Noi, pretty much everything happens in or around [[https://en.wikipedia.org/wiki/Old_Quarter,_Hanoi][Old Quarter (Phố cổ Hà Nội)]], the old town, central area full of bar/restaurants/massage parlors/etc. Cheap alcohol (as cheap as 0.20 EUR / draft beer, the famous Bia Hoi), cheap food and very crowded during the weekends or football game nights.
+
+*** 2. Sa Pa
+    The mountains near the north-west Chinese border, the [[https://en.wikipedia.org/wiki/Fansipan][Fansipan]], the hightest mountain peak in Viet Nam / Indochina peninsula and by far the most over developed mountain I've ever seen.
+
+    Here is my [[https://connect.garmin.com/modern/activity/4289818370][hiking activity]] if you plan to climb the highest peak in Viet Nam but be aware of the fake guides. There is a security post at the start of the trail and they won't allow you to go up the mountain without so called guides which are just scammers. If you are confident climber and want to go by yourself then do what I did, just start the the hike very early morning before the sunset when nobody is at the security post. If you want to  play safe then go to a travel agency and get a tour with real guides, not the scammers that rip off tourists at the bottom of the mountain.
+
+*** 3. Cat Ba
+    Cat Ba island and town is part of the world famous Ha Long bay which is an area full of [[https://en.wikipedia.org/wiki/Karst][karsts]] (rock formations full of vegetation) that raise from the water, the same as the ones that you can find in [[https://en.wikipedia.org/wiki/Guilin][Guilin (China)]], [[https://en.wikipedia.org/wiki/Krabi][Krabi (Thailand)]] or [[https://en.wikipedia.org/wiki/El_Nido,_Palawan][EL Nido (Philippines)]].
+    Cat Ba town is important because it is a starting point of most of the tours and you can get a 1-day boat tour for around 20 EUR that includes kayking, swimming, sight-seeing traditional sea villages and so on.
+
+*** 4. Ninh Binh
+    The land of karsts that raise from the ground that is sometimes called dry Ha Long bay. Personally, I liked [[https://en.wikipedia.org/wiki/Ninh_B%C3%ACnh][Ninh Binh]] more, is very green, quite/peaceful, you can walk by the rivers and admire the karsts that are everywhere. I would say that Ninh Binh and Ha Long bay are MUST SEE places in northern Vietnam, especially if you've never seen karsts before.
+
+    [[file:../../img/ninhbinh.jpg]]
+
+
+** Travel tip
+   When it comes to bargain and price inflation then Viet Nam has no limits, its way ahead other countries in South-East Asia.
+
+   Street donuts:
+
+   - Act 0: 5 donuts for 150 VND - the very first ask price
+   - Act 1: 5 donuts for 40 VND - I did bargain to this price
+   - Act 2: 5 donuts for 10 VND
+   - Act 3: 5 donuts for 5 VND - my best buy
+
+   Socks:
+
+   - Act 0: 1 pair for 20 VND - the very first ask price
+   - Act 1: 1 pair for 10 VND - I did bargain to this one
+   - Act 2: 1 pair for 2 VND - my best buy
+
+   And here are a few rules to apply when you have no idea about the price of an item:
+
+   - the worst thing to do is to ask "how much" then buy it
+   - the best thing to do is to ask "how much" to get a price reference then walk away
+   - usually the very first ask price is at least 10x the price they are willing to sell for
+   - when you want to buy, just give them a price, what ever you feel is fair, dont be shy
+
+ Happy backpacking!

@@ -1,12 +1,14 @@
-* [[elisp:(org-projectile-open-project%20"icostan.gitlab.io")][icostan.gitlab.io]] [/]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [37/39]
   :PROPERTIES:
-  :CATEGORY: icostan.gitlab.io
+  :CATEGORY: blog
   :END:
 *** TODO write new blog
-    SCHEDULED: <2019-12-06 Tue +2w>
+    SCHEDULED: <2020-01-03 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-11-21 Thu 22:36]
+    :LAST_REPEAT: [2019-12-22 Sun 18:48]
     :END:
+    - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
+    - State "DONE"       from "TODO"       [2019-12-16 Mon 18:34]
     - State "DONE"       from "TODO"       [2019-11-21 Thu 22:36]
     - State "DONE"       from "TODO"       [2019-11-08 Fri 23:02]
     - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
@@ -25,7 +27,7 @@
     - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
     - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
 *** TODO Renew Lets Encrypt SSL certificate
-    SCHEDULED: <2019-12-19 Thu +11w>
+    SCHEDULED: <2020-01-01 Wed +3m>
     :PROPERTIES:
     :LAST_REPEAT: [2019-10-03 Thu 13:36]
     :END:
@@ -140,6 +142,7 @@
 *** surviving Vietnam
 *** DONE Month breaks trading indicator
 *** SegWit address derivation
+*** DONE backpacking Vietnam
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -199,3 +202,4 @@
     - [ ] categories
     - [ ] social links
 *** use relative URLs to other posts
+*** travel photo map coverage
