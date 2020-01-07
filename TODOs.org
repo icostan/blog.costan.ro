@@ -1,12 +1,13 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [37/39]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [38/39]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
-*** TODO write new blog
-    SCHEDULED: <2020-01-03 Fri +2w>
+*** TODO Write new blog
+    SCHEDULED: <2020-01-17 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2019-12-22 Sun 18:48]
+    :LAST_REPEAT: [2020-01-07 Tue 15:41]
     :END:
+    - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
     - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
     - State "DONE"       from "TODO"       [2019-12-16 Mon 18:34]
     - State "DONE"       from "TODO"       [2019-11-21 Thu 22:36]
@@ -26,13 +27,6 @@
     - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
     - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
     - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
-*** TODO Renew Lets Encrypt SSL certificate
-    SCHEDULED: <2020-01-01 Wed +3m>
-    :PROPERTIES:
-    :LAST_REPEAT: [2019-10-03 Thu 13:36]
-    :END:
-    - State "DONE"       from "TODO"       [2019-10-03 Thu 13:36]
-    - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
 ** Posts
 *** DONE write 2018 review
     CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
@@ -139,10 +133,10 @@
     - mode of operation: ECB, CBC, XTS https://en.wikipedia.org/wiki/Disk_encryption_theory
 *** DONE surviving Bali
     CLOSED: [2019-11-19 Tue 18:33]
-*** surviving Vietnam
 *** DONE Month breaks trading indicator
 *** SegWit address derivation
 *** DONE backpacking Vietnam
+*** diving Philippines
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -165,6 +159,7 @@
 *** add syntax highlight for older md files
 *** DONE fix spelling in Surviging Bali, in-file navigation posts
 *** DONE raw html in about page
+*** fix tag links
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -180,7 +175,7 @@
    CLOCK: [2019-04-19 Fri 09:50]--[2019-04-19 Fri 13:41] =>  3:51
    CLOCK: [2019-04-18 Thu 16:07]--[2019-04-18 Thu 17:34] =>  1:27
    :END:
-*** DONE add SSL: https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
+*** DONE add SSL: [[https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md][tutorial]]
     CLOSED: [2019-04-20 Sat 12:03]
 *** use Sage interpreter in Hugo
 *** DONE add Google analytics
@@ -203,3 +198,11 @@
     - [ ] social links
 *** use relative URLs to other posts
 *** travel photo map coverage
+*** DONE Renew Lets Encrypt SSL certificate
+    :PROPERTIES:
+    :LAST_REPEAT: [2020-01-06 Mon 16:28]
+    :END:
+    - State "DONE"       from "TODO"       [2020-01-06 Mon 16:28]
+    - State "DONE"       from "TODO"       [2019-10-03 Thu 13:36]
+    - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
+    https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md

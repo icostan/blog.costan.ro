@@ -1,0 +1,38 @@
+#+title:  Year 2019
+#+subtitle: Review
+#+date:   2020-01-06
+#+tags[]: 2020 review consulting trading nomad tech
+
+Another year ... another year passed by, I am getting older, getting wiser, here are the highlights of the year.
+
+
+Trading - RED
+ - Bitcoin futures - RPnL: +100% (aka 1x)
+ - Bitcoin options - RPnL: -10%
+ - Ethereum futures/options - RPnL: -15%
+ - Litecoin futures - RPnL: -30%
+ - Forex & Commodities - RPnL: -5%
+
+Crypto - HODL
+ - DeFi - RPnL: +3%
+ - averaging down currencies that I like
+
+Nomad - FAIL
+ - could not adapt my trading routine to 12h time gap (5PM New York closing bell)
+ - hard time balancing work and travel
+ - maybe too tight on monthly budget
+ - maybe more interactions would have helped
+
+Tech - GOOD
+ - [[https://gitlab.com/icostan/arch.d][Arch Linux]] - back to basics, just like old days, home brewed Linux.
+ - [[https://gitlab.com/icostan/emacs.d][Vanilla Emacs]] - back to vanilla emacs configuration after 2 years of Spacemacs
+ - [[https://e.foundation/][/e/]] Phone - I have finally flashed my phone and installed eOS.
+
+Consulting - END
+ - Zuppler - 1 year consulting agreement is due on Dec 31, 2019
+
+
+---
+
+
+Happy New Year ... 2020 !!!
