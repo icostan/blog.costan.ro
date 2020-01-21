@@ -163,14 +163,24 @@ googleAnalytics = "UA-354095-4"
     weight = 3
 
 [[menu.main]]
-    identifier = "productivity"
-    name = "Productivity"
+    identifier = "nomad"
+    name = "Nomad"
     weight = 5
 [[menu.main]]
-    parent = "productivity"
-    name = "Password management"
-    url = "post/2019-08-12-password-management-with-bitwarden"
+    parent = "nomad"
+    name = "Surviving Bali"
+    url = "post/2019-11-19-surviving-bali"
     weight = 1
+[[menu.main]]
+    parent = "nomad"
+    name = "Backpacking Viet Nam"
+    url = "post/2019-12-21-backpacking-vietnam"
+    weight = 2
+[[menu.main]]
+    parent = "nomad"
+    name = "Diving Palawan"
+    url = "post/2020-01-21-diving-palawan"
+    weight = 3
 
 [[menu.main]]
     identifier = "trading"

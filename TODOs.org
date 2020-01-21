@@ -1,12 +1,13 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [38/39]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [38/40]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
-*** TODO Write new blog
-    SCHEDULED: <2020-01-17 Fri +2w>
+*** TODO Write new blog post
+    SCHEDULED: <2020-02-07 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-01-07 Tue 15:41]
+    :LAST_REPEAT: [2020-01-21 Tue 17:46]
     :END:
+    - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
     - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
     - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
     - State "DONE"       from "TODO"       [2019-12-16 Mon 18:34]
@@ -136,7 +137,7 @@
 *** DONE Month breaks trading indicator
 *** SegWit address derivation
 *** DONE backpacking Vietnam
-*** diving Philippines
+*** DONE diving Philippines
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts

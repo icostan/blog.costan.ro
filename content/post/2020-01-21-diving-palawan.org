@@ -1,0 +1,74 @@
+#+title:  Diving Palawan
+#+subtitle: Nomad
+#+date:   2020-01-21
+#+tags[]: nomad philippines palawan elnido puertoprincesa
+
+I stayed 3 weeks on Palawan island ([[https://en.wikipedia.org/wiki/El_Nido,_Palawan][El Nido]] in the north and Puerto Princesa in the south) in Philippines and spent 1600 EUR.
+
+To keep the same blogging style I will start by saying that you can get a beer for 1.5 EUR, a coffee for 3 EUR and a meal for around 5 EUR.
+
+    #+RESULTS: philippines-balances
+    #+begin_example
+             1601.90 EUR  Expenses
+                8.52 EUR    ATM
+              532.26 EUR    Accommodation
+               53.37 EUR      Homestay
+              306.72 EUR      Hotel
+              172.17 EUR      Ashram
+              137.85 EUR    Drinks
+              122.69 EUR      Alcohol
+                6.48 EUR      Coffee
+                3.66 EUR      N/A
+                0.51 EUR      Tax
+                0.17 EUR      Tip
+                4.35 EUR      Water
+              279.71 EUR    Food
+                5.11 EUR      Arab
+                0.68 EUR      Burger
+                8.01 EUR      Desert
+               27.67 EUR      Filipino
+                3.75 EUR      Fries
+                1.79 EUR      Fruits
+                4.43 EUR      Greek
+                7.50 EUR      Indian
+                6.48 EUR      Italian
+                4.77 EUR      Japanese
+                8.88 EUR      Mexican
+               14.14 EUR      Seafood
+                2.22 EUR      Snack
+                0.34 EUR      Tax
+                0.09 EUR      Tip
+                0.85 EUR      Tot
+              170.40 EUR      Vegan
+                3.75 EUR    Gear
+                2.56 EUR    Haircut
+                4.60 EUR    Laundry
+               10.22 EUR    Others
+                6.82 EUR    SPA:Massage
+              412.37 EUR    Sports
+              238.56 EUR      Freediving
+                3.41 EUR      Tax
+              170.40 EUR      Yoga
+                1.28 EUR    Toiletries:Mouthwash
+               30.67 EUR    Tours
+                6.65 EUR    TransferWise
+              164.64 EUR    Transportation
+              125.61 EUR      Airplane
+               28.97 EUR      Bus
+               10.05 EUR      Taxi
+    --------------------
+             1601.90 EUR
+    #+end_example
+
+I will keep it short and I will only say that Philippines in general and Palawan in particular is a top diving destination.
+
+If you are into water sports (snorkeling, diving, kayaking, sailing, etc) then this is the place to go. There are lots and lots of options everywhere, rent a kayak and go visit nearby hidden beaches, take a scuba/free diving course and go swimming in/around shipwhreck and so on.
+For the first time, I tried freediving with these guys [[http://www.freediving-dimension.com/][Freediving Dimension]] and it was an awesome experience, no oxygen tube, no hassle, just you and the mother nature.
+
+Other than water sports you can rent a bike/bycicle and ride around the hilly island, enjoy fresh/cheap sea food by the beach or just admire the incredible scenery. Pay around 30 EUR for a boat tour and enjoy the amazing karsts that rise from the water.
+I've also seen [[https://en.wikipedia.org/wiki/Krabi][Krabi, Thailand]] and [[https://en.wikipedia.org/wiki/H%E1%BA%A1_Long_Bay][Ha Long bay, Vietnam]] but El Nido/Coron in northern Palawan has the best karsts and small isolated/inhabited islands/rocks everywhere.
+
+Another thing to consider is that this place is still unspoilet and not touched by mass tourism yet, expecialy the east and sourth parts of the island.
+Maybe El Nido and around is a bit touristy but nothing like popular destinations in Thailand or even Viet Nam.
+
+Happy diving!!!
