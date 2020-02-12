@@ -1,0 +1,222 @@
+#+title:  Bitcoin Bech32 Segwit Address
+#+subtitle: Crypto
+#+date:   2020-02-10
+#+tags[]: bitcoin bech32 segwit address generation derivation
+
+This is how to generate a Bech32 native segwit address (also called P2WPKH - Pay To Witness Public Key Hash) in a few lines of ZSH shell code.
+
+#+begin_src sh -n :results output
+openssl ecparam -genkey -name secp256k1 -out secret.pem
+key=$(openssl ec -pubout -in secret.pem -outform DER | tail -c 65 | xxd -p -c 65)
+sha256=$(echo $key | xxd -r -p | openssl sha256 | cut -f 2 -d ' ')
+ripemd160=$(echo $sha256 | xxd -r -p | openssl ripemd160 | cut -f 2 -d ' ')
+program_bin=( $(echo $ripemd160 | xxd -r -p | xxd -b -c 20 -g 0 | cut -f 2 -d ' ' | grep -o '[01]\{5\}') )
+program_dec=$(for b in ${program_bin[@]}; do echo "ibase=2;$b" | bc; done)
+hrp_dec=(3 3 0 2 3)
+ver_dec=(0)
+cs_dec=(0 0 0 0 0 0)
+data=(${hrp_dec[@]} ${ver_dec[@]} ${program_dec[@]} ${cs_dec[@]})
+source ./bech32_checksym.sh
+checksum=$(bech32_checksum ${data[@]})
+CHARSET=(q p z r y 9 x 8 g f 2 t v d w 0 s 3 j n 5 4 k h c e 6 m u a 7 l)
+address="bc1"
+for v in ${ver_dec[@]}; do address+=${CHARSET[v]}; done
+for p in ${program_dec[@]}; do address+=${CHARSET[p]}; done
+for c in ${checksum[@]}; do address+=${CHARSET[c]}; done
+echo $address
+#+end_src
+
+#+RESULTS:
+: bc1q4at0j6q56c2jytse278939dpv3q7tz63uw4de4
+
+You can take the resulting address for granted or go to [[http://bitcoin.sipa.be/bech32/demo/demo.html][Bech32 address validator]] and check it for youself.
+The curious minds please read the details below.
+
+* 0. Private key
+
+The very first thing to do is to generate private key using OpenSSL command line tool.
+
+#+begin_src sh :results output
+openssl ecparam -genkey -name secp256k1
+#+end_src
+
+#+RESULTS:
+: -----BEGIN EC PARAMETERS-----
+: BgUrgQQACg==
+: -----END EC PARAMETERS-----
+: -----BEGIN EC PRIVATE KEY-----
+: MHQCAQEEIH9oHlrZWpOREEztB9O5sJvvBe8C118k86oi6rm32BRboAcGBSuBBAAK
+: oUQDQgAEkQi1BmOCs9dqbJZw19nU5Ip1bTehA7YqNfzFFIqOlQw31c8iRZwmKqcl
+: ua0nPBzXBQT1uWWNO8g5xMff/K/nmA==
+: -----END EC PRIVATE KEY-----
+
+* 1. Public key
+
+And extract public key in uncompressed form:
+
+#+begin_src sh :session segwit :results output
+key=$(openssl ec -pubout -in secret.pem -outform DER | tail -c 65 | xxd -p -c 65); echo $key
+#+end_src
+
+#+RESULTS:
+: 04423943785c556abe3527fd5d989d32aa8a630523d6df36fa2698fb0263e2696648a39f996ec10ac2fc989a086e9c0bf52c161e9287b469a2cff99ed85902eb42
+
+Or compressed form if you like:
+
+#+begin_src sh :results output
+openssl ec -pubout -in secret.pem -outform DER -conv_form compressed \
+| tail -c 33 | xxd -p -c 33
+#+end_src
+
+#+RESULTS:
+: 02423943785c556abe3527fd5d989d32aa8a630523d6df36fa2698fb0263e26966
+
+If you want to manually generate private / public keys then have a look at [[https://blog.iuliancostan.com/post/2018-10-09-bitcoin-address/][Bitcoin: private key, public key, address]] and [[https://blog.iuliancostan.com/post/2019-09-25-elliptic-curves/][Elliptic Curves]] blog posts for the nitty-gritty details.
+
+* 2. SHA256
+
+Then take the SHA256 hash of the resulting public key:
+
+#+begin_src sh :session segwit :results output
+sha256=$(echo $key | xxd -r -p | openssl sha256 | cut -f 2 -d ' '); echo $sha256
+#+end_src
+
+#+RESULTS:
+: 31672645a2d26a37a4642fb64b85386788ec6b193fe700a9909791b89a22e15c
+
+* 3. RIPEMD160
+
+  And RIPEMD160 hash of the SHA256 hash:
+
+#+begin_src sh :session segwit :results output
+ripemd160=$(echo $sha256 | xxd -r -p | openssl ripemd160 | cut -f 2 -d ' '); echo $ripemd160
+#+end_src
+
+#+RESULTS:
+: af56f96814d615222e19578e5895a16441e58b51
+
+* 4. Program data
+  For our simple P2WPKH address, the program (or the scriptPubKey) is just the 20 chars RIPEMD160 hash calculated above.
+  As explained in BIP-173, we need to do the conversion from 8 bit to groups of 5 bit (2^5 = 32 right?) and take the decimal (base 32) values.
+
+#+begin_src sh :session segwit :results output
+program_bin=( $(echo $ripemd160 | xxd -r -p | xxd -b -c 20 -g 0 | cut -f 2 -d ' ' \
+| grep -o '[01]\{5\}') ); echo ${program_bin[@]}
+program_dec=( $(for b in ${program_bin[@]}; do echo "ibase=2;$b" | bc; done) ); echo ${program_dec[@]}
+#+end_src
+
+#+RESULTS:
+: 10101 11101 01011 01111 10010 11010 00000 10100 11010 11000 01010 10010 00100 01011 10000 11001 01010 11110 00111 00101 10001 00101 01101 00001 01100 10001 00000 11110 01011 00010 11010 10001
+: 21 29 11 15 18 26 0 20 26 24 10 18 4 11 16 25 10 30 7 5 17 5 13 1 12 17 0 30 11 2 26 17
+
+* 5. Checksum data
+
+  Now we put together 3 different parts to create the whole data that we need to calculte the checksum for:
+
+  - expanded human readable part (HRP): HRP is "bc" for mainnet and "tb" for testnet, expanded means that we concatenate /*{first 3 bits of each char}*/ + /*{0}*/ + /*{last 5 bits of each char}*/, it can be easily calculated but since it is hardcoed and I was lazy, I just dropped the final value.
+  - segwit version: for now is 0 but it will change in the future
+  - checksum placeholder: this is actually the checksum that we need to calculate, more details in next section
+
+#+begin_src sh :session segwit :results output
+hrp_dec=(3 3 0 2 3)
+ver_dec=(0)
+cs_dec=(0 0 0 0 0 0)
+data=(${hrp_dec[@]} ${ver_dec[@]} ${program_dec[@]} ${cs_dec[@]}); echo ${data[@]}
+#+end_src
+
+#+RESULTS:
+: 3 3 0 2 3 0 21 29 11 15 18 26 0 20 26 24 10 18 4 11 16 25 10 30 7 5 17 5 13 1 12 17 0 30 11 2 26 17 0 0 0 0 0 0
+
+
+* 6. Checksum calculation
+
+  Alright, we made it this far, it's time for the heavy stuff :). The checksum calculation is quite complex and is based on polynomial finite field aritmethic, feel free to check  [[https://en.wikipedia.org/wiki/Finite_field_arithmetic][Finite field arithmetic]] or [[https://github.com/bitcoin/bitcoin/blob/master/src/bech32.cpp#L30][implementation in Bitcoin]] which I took it for granted. I hope to write another blog post about polynomial arithmetic soon.
+
+  The logic is too long for one-liner shell script and I had to extract it as a function and without going into too many details, here are the takeaways:
+  - the checksum is 30 bit long (6 groups of 5 bit each) and represents the coeficients of the remainder of /*d(x) mod g(x)*/
+  - /*d(x)*/ is the polynomial created from our data that is passed as argument
+  - /*g(x)*/ is the generator polynomial defined in BIP-173.
+  - coeficients of these polynomials are not simple integers, they are values in GF(2^5) finite field, also called polynomials over GF.
+  - GF(p^m) is known as Gallois Field where /*p*/ is prime number (the characteristic of the field) and positive integer /*m*/ (the dimension of the field) and are constructed using a set of polynomials, also known as polynomial basis.
+  - addition and multiplication operations are executed /*mod g(x)*/
+
+#+begin_src sh :session segwit :results output
+source ./bech32_checksym.sh
+checksum=$(bech32_checksum ${data[@]}); echo ${checksum[@]}
+#+end_src
+
+#+RESULTS:
+: 28 14 21 13 25 21
+
+#+begin_src sh :tangle bech32_checksym.sh :results output
+  function bech32_checksum ()
+  {
+      c=1
+      for v_i in $@; do
+	  c0=$(( c >> 25 ))
+
+	  # shift 5 bit to the left (aka multiply the by x) and XOR (aka add v_i value)
+	  c=$(( ((c & 0x1ffffff) << 5) ^ v_i ))
+
+	  if ((c0 & 1)); then
+	      c=$(( c ^ 0x3b6a57b2 ))
+	  fi
+	  if ((c0 & 2)); then
+	      c=$(( c ^ 0x26508e6d ))
+	  fi
+	  if ((c0 & 4)); then
+	      c=$(( c ^ 0x1ea119fa ))
+	  fi
+	  if ((c0 & 8)); then
+	      c=$(( c ^ 0x3d4233dd ))
+	  fi
+	  if ((c0 & 16)); then
+	      c=$(( c ^ 0x2a1462b3 ))
+	  fi
+      done
+
+      mod=$(( c ^ 1 ))
+
+      # convert into 6 groups of 5-bit each
+      checksum=()
+      for i in {0..5}; do
+	  checksum[$i]=$(( (mod >> 5 * (5-i)) & 31 ))
+      done
+
+      # return array expansion
+      echo ${checksum[@]}
+  }
+#+end_src
+
+* 7. Generate segwit address
+  And finally generate Bitcoin native Bech32 segwit address. BIP-173 says that we need to concatenate 5 parts:
+  - the human readable part: "bc" for mainnet and "tb" for testnet
+  - delimiter: hardcoded as "1"
+  - segwit version: for now it is "0"
+  - program: program data constructed above
+  - checksum: our calculated checksum
+
+The first 2 parts are fixed but the last 3 needs to be encoded using the Bech32 CHARSET.
+
+Here you go:
+
+#+begin_src sh :session segwit :results output
+CHARSET=(q p z r y 9 x 8 g f 2 t v d w 0 s 3 j n 5 4 k h c e 6 m u a 7 l)
+address="bc1"
+for v in ${ver_dec[@]}; do address+=${CHARSET[v]}; done
+for p in ${program_dec[@]}; do address+=${CHARSET[p]}; done
+for c in ${checksum[@]}; do address+=${CHARSET[c]}; done
+echo $address
+#+end_src
+
+#+RESULTS:
+: bc1q4at0j6q56c2jytse278939dpv3q7tz63uw4de4
+
+Voila!
+
+* References
+  - [[https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki][BIP-173: Base32 address format for native v0-16 witness outputs]]
+  - [[https://www.youtube.com/watch?v=NqiN9VFE4CU][Pieter Wuille: New Address Type for SegWit Addresses (video)]]
+  - [[https://bitcoin.stackexchange.com/questions/59644/how-do-these-openssl-commands-create-a-bitcoin-private-key-from-a-ecdsa-keypair][Generating ECDSA keypair with OpenSSL]]
+  - [[https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285][(Some of) the math behind Bech32 addresses]]
+  - [[https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki][BIP-144: Segregated Witness (Consensus layer)]]

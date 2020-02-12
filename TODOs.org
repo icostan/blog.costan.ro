@@ -1,12 +1,13 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [38/40]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [39/40]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
 *** TODO Write new blog post
-    SCHEDULED: <2020-02-07 Fri +2w>
+    SCHEDULED: <2020-02-21 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-01-21 Tue 17:46]
+    :LAST_REPEAT: [2020-02-12 Wed 15:32]
     :END:
+    - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
     - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
     - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
     - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
@@ -135,9 +136,10 @@
 *** DONE surviving Bali
     CLOSED: [2019-11-19 Tue 18:33]
 *** DONE Month breaks trading indicator
-*** SegWit address derivation
+*** DONE SegWit address derivation
 *** DONE backpacking Vietnam
 *** DONE diving Philippines
+*** whales hour indicator
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -161,6 +163,8 @@
 *** DONE fix spelling in Surviging Bali, in-file navigation posts
 *** DONE raw html in about page
 *** fix tag links
+*** fix snippets colors
+*** fix code snippets, line numbers
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>

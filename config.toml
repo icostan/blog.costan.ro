@@ -116,6 +116,11 @@ googleAnalytics = "UA-354095-4"
     name = "Elliptic curves"
     url = "post/2019-09-25-elliptic-curves"
     weight = 7
+[[menu.main]]
+    parent = "crypto"
+    name = "Bitcoin Bech32 address"
+    url = "post/2020-02-10-bitcoin-bech32-segwit-address"
+    weight = 8
 
 [[menu.main]]
     identifier = "linux"
