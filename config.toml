@@ -52,7 +52,7 @@ googleAnalytics = "UA-354095-4"
 
 [Author]
   name = "Iulian Costan"
-  email = "iulian.costan@gmail.com"
+  email = "blog@iuliancostan.com"
   facebook = "iuliancostan"
   # googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
   gitlab = "icostan"
@@ -118,8 +118,8 @@ googleAnalytics = "UA-354095-4"
     weight = 7
 [[menu.main]]
     parent = "crypto"
-    name = "Bitcoin Bech32 address"
-    url = "post/2020-02-10-bitcoin-bech32-segwit-address"
+    name = "Commitment schemes"
+    url = "post/2020-02-25-commitment-schemes"
     weight = 8
 
 [[menu.main]]

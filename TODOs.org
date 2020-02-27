@@ -1,12 +1,13 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [39/40]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [41/42]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
 *** TODO Write new blog post
-    SCHEDULED: <2020-02-21 Fri +2w>
+    SCHEDULED: <2020-03-06 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-02-12 Wed 15:32]
+    :LAST_REPEAT: [2020-02-27 Thu 17:34]
     :END:
+    - State "DONE"       from "TODO"       [2020-02-27 Thu 17:34]
     - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
     - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
     - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
@@ -44,7 +45,8 @@
     CLOSED: [2019-02-02 Sat] SCHEDULED: <2019-02-02 Sat>
 *** bitmex mobile app
 *** organize projects with org-mode/agenda
-*** Homomorphic commitments: Pedersen vs. ElGamal
+*** DONE Homomorphic commitments: Pedersen vs. ElGamal
+    SCHEDULED: <2020-02-25 Tue>
 *** Schnorr vs. Threshold signature aggregations
 *** literate blogging with Orgmode
     - evaluate block inline
@@ -140,6 +142,10 @@
 *** DONE backpacking Vietnam
 *** DONE diving Philippines
 *** whales hour indicator
+*** a blog post for chapter in cryptography books
+    - Understanding cryptography
+    - Cryptography theory and practice
+    - Practical cryptography for developers
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -165,6 +171,7 @@
 *** fix tag links
 *** fix snippets colors
 *** fix code snippets, line numbers
+*** finite fields props: https://www.doc.ic.ac.uk/~mrh/330tutor/ch04.html, CAIN props, Abel :)
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>

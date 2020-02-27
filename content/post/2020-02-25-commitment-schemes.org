@@ -1,0 +1,274 @@
+#+title:  Commitment schemes
+#+subtitle: Cryptography
+#+date:   2020-02-25
+#+tags[]: cryptography commitment scheme pedersen elgamal elliptic-curve
+
+A cryptographic commitment scheme is a way of committing to a statement without revealing the statement itself or reveal it at a later time.
+
+Or as Wikipedia explains it:
+
+/A way to visualize a commitment scheme is to think of a sender as putting a message in a locked box, and giving the box to a receiver. The message in the box is hidden from the receiver, who cannot open the lock himself. Since the receiver has the box, the message inside cannot be changed—merely revealed if the sender chooses to give him the key at some later time./
+
+In general a commitment scheme is executed in 3 phases:
+1. *setup* - the prover, the verifier (and sometimes a trusted third-party for secret parameters) agree on common system's parameters
+2. *commit* - the prover generates some random value /*r*/, commits to message /*m*/ and calculates and sends the commitment /*c*/ to the verifier
+3. *verify* - also called decommit or open
+  - the prover reaveals the message /*m*/ and opening value /*r*/
+  - the verifier takes /*c*/, /*m*/ and  /*r*/ and returns true/false whether the verification succeeds or not
+
+Also, commitment schemes have two main properties that we need to consider:
+1. *hiding* or *confidentiality* - verifier's capability to learn any information, given only the commitment /*c*/:
+   - /perfectly hiding/ (or information teoretically hiding) - even an unbounded (with infinite computation power) adversary cannot reveal the *committed* message /*m*/
+   - /computationally hiding/ - with infinite computation power an adversary can solve a hard problem (aka trapdoor function: prime factorization, discrete logarithm, etc) and find the *committed* message /*m*/
+2. *binding* - prover's capability to find *another* message /*m'*/ and open the commitment /*c*/ without revealing the *committed* message /*m*/:
+   - /perfectly binding/ - there is absolutely no way for an unbounded adversary to find *another* message /*m'*/
+   - /computationally binding/ - an unbounded adversary can solve a hard problem and find *another* message /*m'*/
+
+Let's take a simple example of rolling a dice where Peggy (the prover) commits to a value and Victor (the verifier) checks whether she wins of not.
+
+* A. Hash-based commitments
+
+  These are the simplest forms of commitment that have been around since forever.
+
+** 1. Naive implementation
+
+  In /setup phase/ the involved parties agree to use the 'SHA1' hashing:
+
+  #+begin_src python -n :session hash
+    import random
+    from hashlib import sha1
+  #+end_src
+
+  During the /commit phase/, Peggy 'calls' her bet /*m*/ which will be kept secret for now, seals the bet and releases the commitment value /*c*/:
+
+  #+begin_src python -n :session hash :results output
+    m = 6
+    c = sha1(bytes(m)).hexdigest()
+    print(c)
+  #+end_src
+
+  #+RESULTS:
+  : 7722745105e9e02e8f1aaf17f7b3aac5c56cd805
+
+  Before the /verify phase/ the following events happen:
+  - Victor rolls the dice, let's assume it shows a 6
+  - Peggy reveals the secret message /*m*/
+
+  Then, during /verify phase/ Victor hashes the dice outcome and checks against commitment value /*c*/. If they are equal then Peggy won.
+
+  #+begin_src python -n :session hash :results output
+    o = 6
+    check = sha1(bytes(o)).hexdigest()
+    print("Peggy won!") if c == check else "Try again!"
+  #+end_src
+
+  #+RESULTS:
+  : Peggy won!
+
+  *Note:* We can easily notice that naive hash-based commitment is both *computationally hiding and binding* becasue an adversary with unlimited computation power can execute a preimage attack (by brute forcing or other algorithms) and:
+  - as a verifier/receiver - find the *committed* message *m* (the hiding property)
+  - as a prover/sender - find *another* message *m'* to open the commitment (the binding property)
+
+** 2. Salted implementation
+
+  So far so good but there is a problem with the above implementation: since all possible dice outputs are known in advance, Victor (or third-party) can precompute the hashes for all possible outcomes (known as Rainbow table attack) and bet against Peggy.
+
+  We can do better, instead of hashing only the committed message itself, we can concatenate with another random value called *salt* (or *blinding factor*) which will also be kept secret.
+
+  #+begin_src python -n :session hash :results output
+    m = 6
+    s = random.randint(1, 9999)
+    c = sha1(bytes(m + s)).hexdigest()
+    print(c)
+  #+end_src
+
+  #+RESULTS:
+  : 9a8e3678280e57c9b9f9d66f771a8f896f8517fe
+
+  This time, before the /verify phase/, Peggy releases both message value /*s*/ and random value (or opening value) /*s*/.
+
+  #+begin_src python -n :session hash :results output
+    o = 6
+    check = sha1(bytes(m + s)).hexdigest()
+    print("Peggy won!") if c == check else "Try again!"
+  #+end_src
+
+  #+RESULTS:
+  : Peggy won!
+
+  *Note:* Our salted hash-based commitment is also *computationally hiding and binding* because an unbounded adversary can find the concatenated value /*m + s*/ then find the *committed* message /*m*/, also a prover/sender adversary can find /*another*/ message /*m'*/ to open the commitment.
+
+* B. Cryptosystem-based commitments
+
+  It is known that any encryption scheme can be used as a commitment scheme, in our case we will look at non-interactive commitments, where the verifier/receiver does not send any information back to prover/sender/committer.
+
+** 1. ElGamal commitment
+
+   During /setup phase/ we agree on ElGamal's parameters. The /*p*/ and /*g*/ parameters are explained in [[https://blog.iuliancostan.com/post/2019-03-26-elgamal/][ElGamal blog]] while /*h*/ is another randomly chosen generator of prime order /*q*/.
+
+  #+begin_src python -n :session elgamal :results output
+  from random import randint
+  p = 11
+  q = 7
+  g = 3
+  s = randint(1, q-1)
+  h = g**s % p
+  print("h:", h, ", group:", [h**i % q for i in range(1, q)])
+  #+end_src
+
+  #+RESULTS:
+  : h: 5, group: [5, 4, 6, 2, 3, 1]
+
+  During /commit phase/, Peggy bets on message /*m*/, generates random value /*r*/ and releases commitment tuple /*(c0, c1)*/. Also, notice the *blinding factor* /*h**r*/ that is thrown into the /*c1*/ mix.
+
+  #+begin_src python -n :session elgamal :results output
+  m = 6
+  r = randint(1, q-1)
+  c0 = ((g**r)) % p
+  c1 = ((g**m) * (h**r)) % p
+  print((c0, c1))
+  #+end_src
+
+  #+RESULTS:
+  : (3, 4)
+
+  Then roll the dice, Peggy reveals the message /*m*/ and the opening value /*r*/ and Victor checks the commitment, if equal, Peggy wins.
+
+  #+begin_src python -n :session elgamal :results output
+  check = (g**m * h**r) % p
+  print("Peggy won!") if check == c1 else "Try again!"
+  #+end_src
+
+  #+RESULTS:
+  : Peggy won!
+
+  *Note:* maybe this is not so obvious but ElGamal commitment is *computational hiding* and *perfectly binding* because an unbounded adversary can try all possible values for /*r*/ and solve the discrete logarithm (dlog) behind /*c0*/ commitment, then using /*r*/ solve the dlog behind /*c1*/ commitment and figure out /*m*/.
+
+** 2. Pedersen commitment
+
+   Pedersen commitment is similar to ElGamal above with a few differences that we will see below:
+
+  #+begin_src python -n :session pedersen :results output
+  from random import randint
+  p = 11
+  q = 7
+  g = 3
+  s = randint(1, q-1)
+  h = g**s % p
+  print(h)
+  #+end_src
+
+  #+RESULTS:
+  : 5
+
+  Peggy commits on message /*m*/, generates random /*r*/ and releases commitment /*c*/:
+
+  #+begin_src python -n :session pedersen :results output
+  m = 6
+  r = randint(1, q-1)
+  c = ((g**m) * (h**r)) % p
+  print(c)
+  #+end_src
+
+  #+RESULTS:
+  : 4
+
+  At a later time the she reveals /*(m, r)*/ tuple to Victor to verify the commitment.
+
+  #+begin_src python -n :session pedersen :results output
+  check = (g**m * h**r) % p
+  print("Peggy won!") if check == c else "Try again!"
+  #+end_src
+
+  #+RESULTS:
+  : Peggy won!
+
+  *Note:* the Pedersen commitment is *perfectly hiding* and *computationally binding* because:
+  - as a verifier/receiver - has no way to uniquely identify the *committed* message /*m*/, there is an infinite number of /*(m, r)*/ pairs that satisfy the commitment equation
+  - as a prover/sender - with infinite computation power can solve the dlog and find *another* message /*m'*/
+
+So far, we can see that Pedersen commitment provides better security (*perfectly hiding*) than hash-based commitments but it has another property that makes it special.
+
+*** 2.1 Pedersen commitment on Elliptic Curve
+
+Encryption-based commitments are *additively homomorphic* which means that we can *add* the commitments together (while preserving the security and underlying properties), without actually opening the commitments.
+
+Also, Pedersen commitment can be implemented with Elliptic curve where /*p*/, /*F*/ and /*E*/ parameters are explained in [[https://blog.iuliancostan.com/post/2019-09-25-elliptic-curves/][Elliptic curve blog post]].
+
+During the setup phase a random secret parameter /*s*/ is used to create another elliptic curve generator /*H*/, the same as parameter /*h*/ in exponential implementation, the difference is that /*H*/ is a point on elliptic curve, not a scalar.
+
+#+begin_src sage :session homomorphic14
+  p = 103
+  F = FiniteField(p)
+  E = EllipticCurve(F, [0, 7])
+  print(E)
+  G = E([97, 10])
+  print(G)
+  s = randint(2, p)
+  H = s * G
+  print(H)
+#+end_src
+
+#+RESULTS:
+: Elliptic Curve defined by y^2 = x^3 + 7 over Finite Field of size 103
+: (97 : 10 : 1)
+: (33 : 10 : 1)
+
+During the commit phase, generate random value /*r*/, commit to message /*m*/ and release the commitment /*C*/, which is also a point on elliptic curve.
+
+#+begin_src sage :session homomorphic14
+  m = 2
+  r = randint(2, p)
+  C = m * H + r * G
+  print(C)
+#+end_src
+
+#+RESULTS:
+: (53 : 7 : 1)
+
+But this time we are not going to open the commitment, only leverage the additive homomorphic property, let's say to hide the amounts involved in a transaction, as shown in our final example below.
+
+Peggy has 7 XMR on two different addresses /*2 + 5*/ and wants to send /*6*/ XMR to Victor and /*1*/ XMR change back to her address but she also wants to keep it private so no-one will be able to see what amounts are being transferred.
+
+Peggy creates and releases the 4 commitments for each amount that is involved in transaction:
+
+#+begin_src sage :session homomorphic21
+  r = randint(2, p)
+  CI1 = 2 * H + r * G
+  CI2 = 5 * H + r * G
+  CO = 6 * H + r * G
+  CC = 1 * H + r * G
+#+end_src
+
+So far so good, now Victor has to verify if inputs are equal to outputs, if equal then transaction is valid and everybody is happy!
+
+#+begin_src sage :session homomorphic21
+  print "YOU ARE A CRYPTOSTAR!" if CI1 + CI2 == CO + CC else "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+** 3. Switch commitments
+
+Let's recap:
+
+1. hash-based commitments - provide both computationally hiding and binding
+2. ElGamal - is computationally hiding and perfectly binding
+3. Pedersen - is perfectly hiding and computationally binding
+
+Alright....
+
+- What about a commitment scheme that is both perfectly hiding and binding?
+- I am afraid you won't like the answer because hiding and biding properties are mutually exclusive, you can only have one or the other, not both
+- What the heck are switch commitments then?
+- It is just a combination of ElGamal and Pedersen commitments with the ability to toggle one or the other on the fly in case shit hits the fan and quantum computers break encryption schemes over night
+
+* References
+  - [[https://en.wikipedia.org/wiki/Commitment_scheme]]
+  - [[https://crypto.stackexchange.com/questions/9704/why-is-the-pedersen-commitment-computationally-binding?rq=1]]
+  - [[https://crypto.stackexchange.com/questions/11923/difference-between-pedersen-commitment-and-commitment-based-on-elgamal]]
+  - [[https://electriccoin.co/blog/snark-explain/]]
+  - [[https://crypto.stackexchange.com/questions/60279/what-is-the-reason-of-using-pedersen-commitment-scheme-over-hmac]]
+  - [[https://monero.stackexchange.com/questions/11213/what-is-the-impact-of-having-perfectly-hidden-but-only-computationally-bound-com]]
+  - [[https://github.com/mimblewimble/grin/blob/master/doc/switch_commitment.md]]
