@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Bitcoin transaction"
-subtitle: Crypto
+title:  "Bitcoin: transaction"
+subtitle: Bitcoin
 date:   2018-11-11
 tags: ["bitcoin", "transaction", "cryptography", "math", "ruby"]
 ---

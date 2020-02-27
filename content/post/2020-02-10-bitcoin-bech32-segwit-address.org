@@ -1,5 +1,5 @@
-#+title:  Bitcoin Bech32 Segwit Address
-#+subtitle: Crypto
+#+title:  Bech32 segwit address
+#+subtitle: Bitcoin
 #+date:   2020-02-10
 #+tags[]: bitcoin bech32 segwit address generation derivation
 
