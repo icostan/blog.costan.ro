@@ -172,7 +172,7 @@
 *** add syntax highlight for older md files
 *** DONE fix spelling in Surviging Bali, in-file navigation posts
 *** DONE raw html in about page
-*** fix tag links
+*** DONE fix tag links
 *** fix snippets colors
 *** fix code snippets, line numbers
 *** finite fields props: https://www.doc.ic.ac.uk/~mrh/330tutor/ch04.html, CAIN props, Abel :)
