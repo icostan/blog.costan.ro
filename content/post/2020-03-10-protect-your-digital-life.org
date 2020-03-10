@@ -1,0 +1,50 @@
+#+title:  Protect your digital life
+#+subtitle: Productivity
+#+date:   2020-03-10
+#+tags[]: productivity syncthing nextcloud icloud authy bitwarden linux
+
+This is how I keep all my data secure, encrypted and in sync between 2 phones (/ePhone/, [[https://blog.iuliancostan.com/post/2019-10-08-leaving-apple-leaving-google/][my Google-free phone]] and one /iPhone/), 2 laptops (/Lenovo/, [[https://blog.iuliancostan.com/post/2019-07-05-back-to-my-first-love/][my Linux machine]]  and a /Macbook/) and one desktop (an older iMac).
+
+** A. Device Syncronization
+   The very first step is to keep data in sync across all devices and I do this in two stages: from mobile device to laptop and from laptop to laptop/desktop:
+
+*** 1. phone to laptop
+**** /iPhone/ to Macbook via Apple iCloud
+     The default iCloud account is free and offers 5GB of free space, more than enough to move data (photos, docs) from phone to laptop and vice-versa, not for long term storage and backups.
+**** /ePhone/ to Lenovo via Next Cloud
+     Same strategy with [[https://nextcloud.com/][NextCloud]] which is the default cloud for /ePhone/ and also offers 5GB for free.
+*** 2. between laptops/desktop via /Syncthing/
+     [[https://syncthing.net/][Syncthing]] is installed on all my laptops/desktop and keeps everything in sync. This is my main (and the only one) backup strategy, I do not use online clouds (except for moving data from phone to laptop), external drives or anything else. All data (photos, docs, etc) is stored on all machines.
+
+   Basically, each phone is paired with a laptop then laptops/desktop talk to each other, so my /ePhone/ will never be connected with my /Macbook/ directly, /ePhone/ always talks to /Lenovo/ laptop which is turn talks to /Macbook/.
+
+   NextCloud/iCloud are only used to move data between phone and laptop, once data is on laptop I move it under Syncthing to synchronize across other laptops/desktop and this is it.
+
+** B. Data Encryption
+   OK, we now have the data in sync between all devices, it's time to encrypt it:
+
+*** on laptops/desktop
+**** /Mac/
+     This is as easy as opening /System Preferences/ -> /Security & Privacy/ and enable /FileVault/. Its file-based encryption but is a lot better than storing plain files on disk.
+**** /Linux/
+     In Lenovo is my main workstation I have different levels of encryption:
+     - /encryption of individual files/ - files with sensitive content are encrypted or at least compressed and password protected
+     - /disk or partition encryption/ - this is what I use at the moment and I have my */home* and */backups* partitions encrypted using the default Linux's kernel device mapper [[https://wiki.archlinux.org/index.php/Dm-crypt][DM-Crypt]]
+     - /full system encryption/ - planning to move to full system encryption with boot partition on removable media. Basically the system boots from an USB device which contains the passphrase/file used to decrypt and boot the entire system. No USB boot device, no party.
+*** on phones
+**** /iPhone/
+     I suppose the default encryption is good enough, I've never messed around with this on iPhone.
+**** /ePhone/
+     Since /ePhone/ is based on /LineageOS/ which is in turn is based on /Android/ it takes advantage of all Android's security/encryption without Google tracking everything.
+
+** C. Password manager
+   I do [[https://blog.iuliancostan.com/post/2019-08-12-password-management-with-bitwarden/][password management with Bitwarden]] and this is critical piece since an attacker gets access to all your passwords so its absolutely required to have at least 2, 3 levels of protection:
+   1. master password
+   2. 2FA with [[https://authy.com/][Authy]]
+   3. OTP with phone/email
+   4. FIDO with [[https://www.yubico.com/products/][Yubico hardware key]]
+
+*** on laptops/desktop
+    I only use Bitwarden extension for Brave browser, I never use the desktop app.
+*** on phones
+    Bitwarden mobile app with finger-printing/face-recognition enabled

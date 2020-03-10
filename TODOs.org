@@ -1,12 +1,13 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [41/42]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [42/43]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
 *** TODO Write new blog post
-    SCHEDULED: <2020-03-06 Fri +2w>
+    SCHEDULED: <2020-03-20 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-02-27 Thu 17:34]
+    :LAST_REPEAT: [2020-03-10 Tue 16:23]
     :END:
+    - State "DONE"       from "TODO"       [2020-03-10 Tue 16:23]
     - State "DONE"       from "TODO"       [2020-02-27 Thu 17:34]
     - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
     - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
@@ -118,7 +119,8 @@
      - code: variable, function, definition, documentation
      - find files, buffers
      - find in current buffer, all open buffers, project, files
-*** protect your digital life
+*** DONE protect your digital life
+    SCHEDULED: [2020-03-10 Tue]
     - disk encryption
     - multiple laptops / phones
     - data in sync on all devices
@@ -142,10 +144,12 @@
 *** DONE backpacking Vietnam
 *** DONE diving Philippines
 *** whales hour indicator
+*** session breaks indicator
 *** a blog post for chapter in cryptography books
     - Understanding cryptography
     - Cryptography theory and practice
     - Practical cryptography for developers
+    - Handbook of applied cryptography
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
