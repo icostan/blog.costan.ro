@@ -58,9 +58,12 @@ KDIR ?= /lib/modules/`uname -r`/build
 
 default:
 	$(MAKE) -C $(KDIR) M=$$PWD
+clean:
+	$(MAKE) -C $(KDIR) M=$$PWD clean
 #+end_src
 
-Makefile
+Compile
+
 #+begin_src sh :results output
 echo 'Compiling modules...'
 make
