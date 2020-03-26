@@ -1,0 +1,292 @@
+#+title:  Write Linux kernel module
+#+subtitle: Linux
+#+date:   2020-03-24
+#+tags[]: Linux kernel module c kbuild makefile symbol
+
+I am thinking to start a Linux Kernel series and write about modules, device drivers, proc and sysfs, unit test with kunit and so on; here is the first one, a simple Hello World module.
+
+* World module
+
+world.c
+#+begin_src c :tangle world.c
+#include <linux/init.h>
+#include <linux/module.h>
+
+static char *whom = "World";
+
+void world_print(char* greet)
+{
+	printk(KERN_INFO "%s, %s\n", greet, whom);
+}
+EXPORT_SYMBOL(world_print);
+
+static int __init world_init(void)
+{
+	printk(KERN_INFO "Init, %s\n", whom);
+	return 0;
+}
+module_init(world_init);
+
+static void __exit world_exit(void)
+{
+	printk(KERN_INFO "Exit, %s\n", whom);
+}
+module_exit(world_exit);
+
+MODULE_AUTHOR("Iulian Costan <blog@iuliancostan.com>");
+MODULE_DESCRIPTION("World module that exports a symbol");
+MODULE_LICENSE("Dual BSD/GPL");
+#+end_src
+
+Nothing crazy so far, a module is required to provide two functions *init*, *exit* and *MODULE_LICENSE* macro call.
+Then we have our main logic function *world_print* that is exported using *EXPORT_SYMBOL* macro and a char pointer variable.
+
+* Build module
+  [[https://www.kernel.org/doc/html/latest/kbuild/index.html][Kernel Build System]] requires a special file called /Kbuild/ that is used for compilation and contains all modules that need to be compiled.
+
+Kbuild
+#+begin_src make :tangle Kbuild
+obj-m += world.o
+obj-m += hello.o
+#+end_src
+
+And of course the /Makefile/ which is special as well, it must set *KDIR* variable that points to Linux kernel build tree.
+
+Makefile
+#+begin_src make :tangle Makefile
+KDIR ?= /lib/modules/`uname -r`/build
+
+default:
+	$(MAKE) -C $(KDIR) M=$$PWD
+#+end_src
+
+Makefile
+#+begin_src sh :results output
+echo 'Compiling modules...'
+make
+#+end_src
+
+#+RESULTS:
+: Compiling module...
+: make -C /lib/modules/`uname -r`/build M=$PWD
+: make[1]: Entering directory '/usr/lib/modules/5.5.10-arch1-1/build'
+:   Building modules, stage 2.
+:   MODPOST 2 modules
+: make[1]: Leaving directory '/usr/lib/modules/5.5.10-arch1-1/build'
+
+Once make-ing is done we end up with multiple files but most of them are not important right now.
+
+#+begin_src sh :results output
+ls -l *world*
+#+end_src
+
+#+RESULTS:
+: -rw-r--r-- 1 icostan users  554 Mar 26 12:14 world.c
+: -rw-r--r-- 1 icostan users 5608 Mar 26 12:14 world.ko
+: -rw-r--r-- 1 icostan users   50 Mar 26 12:14 world.mod
+: -rw-r--r-- 1 icostan users  560 Mar 26 12:06 world.mod.c
+: -rw-r--r-- 1 icostan users 2792 Mar 26 12:06 world.mod.o
+: -rw-r--r-- 1 icostan users 3984 Mar 26 12:14 world.o
+
+We only care about *.ko* files and this is how our world module looks like.
+
+#+begin_src sh :results output
+modinfo world.ko
+#+end_src
+
+#+RESULTS:
+#+begin_example
+filename:       /home/icostan/Projects/blog/content/post/world.ko
+description:    World module that exports a symbol
+author:         Iulian Costan
+license:        Dual BSD/GPL
+srcversion:     B5F7CB29CC1BBCBDE62D173
+depends:
+retpoline:      Y
+name:           world
+vermagic:       5.5.10-arch1-1 SMP preempt mod_unload
+parm:           whom:charp
+#+end_example
+
+With a tool called /nm/ we can show all symbols imported/exported by this module, notice out little function *world_print* that is marked with *T* which means function is exported while lowercase *t* means not exported.
+
+#+begin_src sh :results output
+nm world.ko
+#+end_src
+
+#+RESULTS:
+#+begin_example
+0000000000000000 T cleanup_module
+                 U __fentry__
+0000000000000000 T init_module
+0000000000000000 r __kstrtabns_world_print
+0000000000000001 r __kstrtab_world_print
+0000000000000000 r __ksymtab_world_print
+0000000000000000 r _note_6
+                 U param_ops_charp
+0000000000000000 r __param_str_whom
+0000000000000000 r __param_whom
+                 U printk
+0000000000000000 D __this_module
+000000000000002f r __UNIQUE_ID_author23
+0000000000000090 r __UNIQUE_ID_depends24
+0000000000000000 r __UNIQUE_ID_description24
+0000000000000044 r __UNIQUE_ID_license22
+00000000000000a5 r __UNIQUE_ID_name22
+0000000000000099 r __UNIQUE_ID_retpoline23
+000000000000006d r __UNIQUE_ID_srcversion25
+00000000000000b0 r __UNIQUE_ID_vermagic21
+0000000000000059 r __UNIQUE_ID_whomtype21
+0000000000000000 d whom
+0000000000000000 t world_exit
+0000000000000000 t world_init
+0000000000000000 T world_print
+#+end_example
+
+** Install module
+
+#+begin_src sh
+echo 'Installing module...'
+sudo insmod ./world.ko
+#+end_src
+
+Once our module was successfully installed,
+
+#+begin_src sh :results output
+journalctl -k | grep World
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Mar 26 12:17:49 drakarys kernel: Init, World
+#+end_example
+
+we can grep //proc/kallsyms/ file and filter by our function *world_print*, which is exported, marked with /T/.
+
+#+begin_src sh :results output
+grep world_print /proc/kallsyms
+#+end_src
+
+#+RESULTS:
+: 0000000000000000 r __ksymtab_world_print	[world]
+: 0000000000000000 r __kstrtab_world_print	[world]
+: 0000000000000000 r __kstrtabns_world_print	[world]
+: 0000000000000000 T world_print	[world]
+
+For the curious minds, you can check how many symbols your kernel exports:
+
+#+begin_src sh
+grep "T " /proc/kallsyms | wc -l
+#+end_src
+
+#+RESULTS:
+: 22574
+
+* Hello module
+
+hello.c
+#+begin_src c :tangle hello.c
+#include <linux/init.h>
+#include <linux/module.h>
+
+static int howmany = 1;
+module_param(howmany, int, S_IRUGO);
+static char *greet = "Hello";
+module_param(greet, charp, S_IRUGO);
+
+extern void world_print(char* greet);
+
+static int __init hello_init(void)
+{
+	printk(KERN_INFO "Init, Hello\n");
+	int i;
+	for (i = 0; i < howmany; i++) {
+		world_print(greet);
+	}
+	return 0;
+}
+
+static void __exit hello_exit(void)
+{
+	printk(KERN_INFO "Exit, Hello\n");
+}
+
+module_init(hello_init);
+module_exit(hello_exit);
+
+MODULE_AUTHOR("Iulian Costan <blog@iuliancostan.com>");
+MODULE_DESCRIPTION("Hello module that depends on World module");
+MODULE_LICENSE("Dual BSD/GPL");
+#+end_src
+
+This time, *init* function is special because it iterates over module parameter and calls external function (symbol) *world_print* that is implemented in World module.
+
+In addition to *init*, *exit* functions and macro calls we have two module parameters (that can be changed at compile, load or run time) and the declaration for *world_print* function that will be imported from *World* module.
+
+** Build module
+
+Execute /make/ using the same Makefile/Kbuild files above to compile and build /hello.ko/ module file.
+Notice the /depends/ line below, *Hello* module depends on *World* module and /parm/ lines with two params: *howmany* and *greet*.
+
+#+begin_src sh :results output
+modinfo hello.ko
+#+end_src
+
+#+RESULTS:
+#+begin_example
+filename:       /home/icostan/Projects/blog/content/post/hello.ko
+license:        Dual BSD/GPL
+description:    Hello module that depends on World module
+author:         Iulian Costan <blog@iuliancostan.com>
+srcversion:     383678A0A37C7B043C4D9B0
+depends:        world
+retpoline:      Y
+name:           hello
+vermagic:       5.5.10-arch1-1 SMP preempt mod_unload
+parm:           howmany:int
+parm:           greet:charp
+#+end_example
+
+** Install module
+
+As I mentioned before, during module install/load we can change the parameters as follows:
+
+#+begin_src sh
+echo 'Installing module...'
+sudo insmod ./hello.ko greet=Bonjour howmany=3
+#+end_src
+
+After successful installation,
+
+#+begin_src sh :results output
+journalctl -k | grep Hello
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Mar 26 13:20:31 drakarys kernel: Init, Hello
+#+end_example
+
+parameters are correctly set,
+
+#+begin_src sh :results output
+cat /sys/module/hello/parameters/greet
+cat /sys/module/hello/parameters/howmany
+#+end_src
+
+#+RESULTS:
+: Bonjour
+: 3
+
+and *world_print* function from World module was called 3 times, as expected.
+
+#+begin_src sh :results output
+journalctl -k | grep Bonjour
+#+end_src
+
+#+RESULTS:
+: Mar 26 13:20:31 drakarys kernel: Bonjour, World
+: Mar 26 13:20:31 drakarys kernel: Bonjour, World
+: Mar 26 13:20:31 drakarys kernel: Bonjour, World
+
+And this is it, our useless Hello World module, next time we will talk about /device drivers/ or maybe /ioctl/ and /syscalls/, let's see.

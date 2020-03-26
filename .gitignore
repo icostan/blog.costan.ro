@@ -1,1 +1,12 @@
 public/
+*.mod*
+*.cmd
+*.ko
+*.a
+*.o
+*.c
+*.sh
+modules.order
+Module.symvers
+Kbuild
+Makefile

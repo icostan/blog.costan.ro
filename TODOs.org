@@ -1,12 +1,13 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [42/43]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [44/45]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
 *** TODO Write new blog post
-    SCHEDULED: <2020-03-20 Fri +2w>
+    SCHEDULED: <2020-04-03 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-03-10 Tue 16:23]
+    :LAST_REPEAT: [2020-03-26 Thu 17:52]
     :END:
+    - State "DONE"       from "TODO"       [2020-03-26 Thu 17:52]
     - State "DONE"       from "TODO"       [2020-03-10 Tue 16:23]
     - State "DONE"       from "TODO"       [2020-02-27 Thu 17:34]
     - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
@@ -150,6 +151,8 @@
     - Cryptography theory and practice
     - Practical cryptography for developers
     - Handbook of applied cryptography
+*** DONE linux kernel module
+    SCHEDULED: <2020-03-24 Tue>
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
