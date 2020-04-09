@@ -10,8 +10,7 @@ An old fashion "Jack of all trades" kind of guy with 15+ years experience in sof
 
 ### Coding activity
 
-<figure><embed src="https://wakatime.com/share/@icostan/28b5cc40-90c8-4141-863e-36f35400a3cd.svg"></embed></figure>
-<!-- <figure><embed src="https://wakatime.com/share/@icostan/a03ced1a-26bc-4e1a-955a-711998cf7791.svg"></embed></figure> -->
+<figure><embed src="https://wakatime.com/share/@icostan/b8113d2a-134d-4e60-b329-415dce67837b.svg"></embed></figure>
 
 ### Travel activity
 
