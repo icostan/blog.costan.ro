@@ -1,0 +1,73 @@
+#+title:  Files/windows navigation
+#+subtitle: Emacs
+#+author: Iulian Costan
+#+date:   2020-04-04
+#+tags[]: emacs navigation productivity helm projectile
+
+** Intro.
+   In [[https://blog.iuliancostan.com/post/2019-11-07-in-file-navigation/][Part 1]] of Emacs series I presented /the movement/ (or navigation within a single buffer/window), in this part I am going to demo /the navigation/ between multiple windows/files/buffers.
+
+   In mode-line (status bar) you can see the keys that are being pressed and the functions that are executed.
+
+   A bit if Emacs terminology:
+   1. *Frame* - top level graphical object associated with underlying Emacs process
+   2. *Window* - a frame can be split in multiple windows
+   3. *File* - a file on disk
+   4. *Buffer* - a file that is opened in a window
+
+** 1 Frames navigation
+   Since a frame is just a GUI app it will not be very interesting to demo new/close or resize actions so I will skip it.
+*** 1.1 new/close frame
+    - new frame: *SPC-q-m*
+    - close frame: *SPC-q-d*
+    - quit emacs (close all frames): *SPC-q-q*
+    - restart emacs: *SPC-q-r*
+*** 1.2 resize frame
+    - toggle fullscreen: *SPC-q-f*
+** 2 Files navigation
+   Finding files is simple, yet very powerful and with 3 key stokes I can reach any file on my computer in no time.
+*** 2.1 find file
+    - in current project: *SPC-f-p*
+    - in all known projects: *SPC-f-P*
+    - globally (on disk): *SPC-f-G*
+    [[file:/img/emacs/find-file.gif]]
+*** 2.2 find directory
+    - parent of current file: *SPC f j*
+    - within project: *SPC f d*
+    [[file:/img/emacs/find-dir.gif]]
+*** 2.3 find extension
+    - file with different extension: *SPC f e*
+    [[file:/img/emacs/find-extension.gif]]
+** 3 Windows navigation
+   All /window/ related commands are bundled under *"SPC w"* keymap as follows.
+*** 3.1 split window (aka new)
+    - horizontally: *SPC-w-|*
+    - vertically: *SPC-w- -*
+    [[file:/img/emacs/split-window.gif]]
+*** 3.2 go to window
+    - left, right: *SPC-w-h*, *SPC-w-l*
+    - bottom, top: *SPC-w-j*, *SPC-w-k*
+    - selection: *SPC-w-w-1*, *SPC-w-w-5*
+    - swap: *SPC-w-s-4*
+    [[file:/img/emacs/go-to-window.gif]]
+*** 3.3 delete window
+    - selection: *SPC-w-D-3*
+    - this window: *SPC-w-d*
+    - other windows: *SPC-w-x*
+    [[file:/img/emacs/delete-window.gif]]
+*** 3.4 resize window
+    - golden ratio: *SPC w g*
+** 4 Buffers navigation
+   A /buffer/ is just a /file/ that is opened in a /window/.
+*** 4.1 switch to buffer
+    - project buffer: *SPC-b-p*
+    - select any buffer: *SPC-b-b*
+    - special buffers like dashboard: *SPC-b-g-d*
+    [[file:/img/emacs/switch-buffer.gif]]
+*** 4.2 new/save/close buffer
+    - new: *SPC-f-p* (automatically when a file is opened)
+    - close: *SPC-b-d*
+    - save: *SPC-b-s*
+** Summary
+
+   The curious minds please check the [[https://gitlab.com/icostan/emacs.d][config files for vanilla emacs]].

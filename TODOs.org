@@ -1,37 +1,7 @@
-* [[elisp:(org-projectile-open-project%20"blog")][blog]] [44/45]
+* [[elisp:(org-projectile-open-project%20"blog")][blog]] [0/1]
   :PROPERTIES:
   :CATEGORY: blog
   :END:
-*** TODO Write new blog post
-    SCHEDULED: <2020-04-03 Fri +2w>
-    :PROPERTIES:
-    :LAST_REPEAT: [2020-03-26 Thu 17:52]
-    :END:
-    - State "DONE"       from "TODO"       [2020-03-26 Thu 17:52]
-    - State "DONE"       from "TODO"       [2020-03-10 Tue 16:23]
-    - State "DONE"       from "TODO"       [2020-02-27 Thu 17:34]
-    - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
-    - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
-    - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
-    - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
-    - State "DONE"       from "TODO"       [2019-12-16 Mon 18:34]
-    - State "DONE"       from "TODO"       [2019-11-21 Thu 22:36]
-    - State "DONE"       from "TODO"       [2019-11-08 Fri 23:02]
-    - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
-    - State "DONE"       from "TODO"       [2019-10-09 Wed 15:37]
-    - State "DONE"       from "TODO"       [2019-10-01 Tue 17:55]
-    - State "DONE"       from "TODO"       [2019-09-10 Tue 16:59]
-    - State "DONE"       from "TODO"       [2019-08-30 Fri 10:47]
-    - State "DONE"       from "TODO"       [2019-08-13 Tue 10:57]
-    - State "DONE"       from "TODO"       [2019-07-23 Tue 16:43]
-    - State "DONE"       from "TODO"       [2019-07-16 Tue 21:31]
-    - State "DONE"       from "TODO"       [2019-06-27 Thu 10:56]
-    - State "DONE"       from "TODO"       [2019-06-26 Wed 18:10]
-    - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
-    - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
-    - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
-    - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
-    - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
 ** Posts
 *** DONE write 2018 review
     CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
@@ -115,11 +85,16 @@
      - goto prev/next edit
      - scroll (cursor remains on the same line, screen moves) horizontal/veritical by chars, lines, pages
      - move (cursor moves to new lines, screen remains) horizontal/veritical by char, line, pages, screens
-*** file navigation in Emacs
-     - goto prev/next edit
-     - code: variable, function, definition, documentation
+*** TODO file/window navigation in Emacs
      - find files, buffers
      - find in current buffer, all open buffers, project, files
+     - frames/windows
+*** advanced navigation
+     - goto prev/next edit
+     - go back/forward
+     - goto variable, function, declaration, import/include
+     - open/tooltip documentation
+     - file at point
 *** DONE protect your digital life
     SCHEDULED: [2020-03-10 Tue]
     - disk encryption
@@ -153,6 +128,8 @@
     - Handbook of applied cryptography
 *** DONE linux kernel module
     SCHEDULED: <2020-03-24 Tue>
+*** demo the demo-it in Emacs
+*** COVID-19 indicators
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -176,9 +153,10 @@
 *** DONE fix spelling in Surviging Bali, in-file navigation posts
 *** DONE raw html in about page
 *** DONE fix tag links
-*** fix snippets colors
-*** fix code snippets, line numbers
 *** finite fields props: https://www.doc.ic.ac.uk/~mrh/330tutor/ch04.html, CAIN props, Abel :)
+*** snippets colors
+*** code snippets, line numbers
+*** zero-knowledge proofs tag
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -225,3 +203,34 @@
     - State "DONE"       from "TODO"       [2019-10-03 Thu 13:36]
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
+** TODO Write new blog post
+    SCHEDULED: <2020-04-17 Fri +2w>
+    :PROPERTIES:
+    :LAST_REPEAT: [2020-04-09 Thu 15:41]
+    :END:
+    - State "DONE"       from "TODO"       [2020-04-09 Thu 15:41]
+    - State "DONE"       from "TODO"       [2020-03-26 Thu 17:52]
+    - State "DONE"       from "TODO"       [2020-03-10 Tue 16:23]
+    - State "DONE"       from "TODO"       [2020-02-27 Thu 17:34]
+    - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
+    - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
+    - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
+    - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
+    - State "DONE"       from "TODO"       [2019-12-16 Mon 18:34]
+    - State "DONE"       from "TODO"       [2019-11-21 Thu 22:36]
+    - State "DONE"       from "TODO"       [2019-11-08 Fri 23:02]
+    - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
+    - State "DONE"       from "TODO"       [2019-10-09 Wed 15:37]
+    - State "DONE"       from "TODO"       [2019-10-01 Tue 17:55]
+    - State "DONE"       from "TODO"       [2019-09-10 Tue 16:59]
+    - State "DONE"       from "TODO"       [2019-08-30 Fri 10:47]
+    - State "DONE"       from "TODO"       [2019-08-13 Tue 10:57]
+    - State "DONE"       from "TODO"       [2019-07-23 Tue 16:43]
+    - State "DONE"       from "TODO"       [2019-07-16 Tue 21:31]
+    - State "DONE"       from "TODO"       [2019-06-27 Thu 10:56]
+    - State "DONE"       from "TODO"       [2019-06-26 Wed 18:10]
+    - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
+    - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
+    - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
+    - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
+    - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
