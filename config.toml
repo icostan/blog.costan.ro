@@ -30,6 +30,10 @@ googleAnalytics = "UA-354095-4"
   readingTime = true
   wordCount = true
   useHLJS = false
+[Params.huveragy]
+  colors = ['#dc9658', '#d62728']
+  url = "https://icostan.github.io/huveragy/huveragy.json"
+
   # socialShare = true
   # delayDisqus = true
   # showRelatedPosts = true
@@ -181,6 +185,11 @@ googleAnalytics = "UA-354095-4"
     parent = "opensource"
     name = "3DP"
     url = "post/2019-07-18-3dp"
+    weight = 3
+[[menu.main]]
+    parent = "opensource"
+    name = "Huveragy"
+    url = "post/2020-04-27-huveragy"
     weight = 3
 
 [[menu.main]]

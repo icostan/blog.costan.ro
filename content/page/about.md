@@ -14,12 +14,7 @@ An old fashion "Jack of all trades" kind of guy with 15+ years experience in sof
 
 ### Travel activity
 
-<center>
-<a href="https://nomadlist.com/@icostan" target="_blank">Trips and profile</a>
-(Powered by <a href="https://nomadlist.com/" target="_blank">Nomadlist</a>)
-</center>
-
-<iframe width="800" height="600" style="background:#f9f9f9;" src="https://nomadlist.com/@icostan/embed" scrolling="no" frameborder="0" allowfullscreen></iframe>
+{{< partial "huveragy/huveragy.html" >}}
 
 ### Sports activity
 

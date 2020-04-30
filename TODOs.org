@@ -85,15 +85,16 @@
      - goto prev/next edit
      - scroll (cursor remains on the same line, screen moves) horizontal/veritical by chars, lines, pages
      - move (cursor moves to new lines, screen remains) horizontal/veritical by char, line, pages, screens
-*** TODO file/window navigation in Emacs
+*** DONE file/window navigation in Emacs
      - find files, buffers
      - find in current buffer, all open buffers, project, files
      - frames/windows
-*** advanced navigation
+*** advanced IDE-like Emacs
      - goto prev/next edit
      - go back/forward
      - goto variable, function, declaration, import/include
      - open/tooltip documentation
+     - auto completion
      - file at point
 *** DONE protect your digital life
     SCHEDULED: [2020-03-10 Tue]
@@ -121,7 +122,7 @@
 *** DONE diving Philippines
 *** whales hour indicator
 *** session breaks indicator
-*** a blog post for chapter in cryptography books
+*** a blog post for each chapter in cryptography books
     - Understanding cryptography
     - Cryptography theory and practice
     - Practical cryptography for developers
@@ -130,6 +131,10 @@
     SCHEDULED: <2020-03-24 Tue>
 *** demo the demo-it in Emacs
 *** COVID-19 indicators
+*** CTFs and cryptography attacks
+    - https://github.com/JohnHammond/ctf-katana/blob/master/README.md
+    - https://asecuritysite.com/challenges/
+*** DONE travel map coverage
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -194,7 +199,6 @@
     - [ ] categories
     - [ ] social links
 *** use relative URLs to other posts
-*** travel photo map coverage
 *** DONE Renew Lets Encrypt SSL certificate
     :PROPERTIES:
     :LAST_REPEAT: [2020-01-06 Mon 16:28]
@@ -204,10 +208,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-04-17 Fri +2w>
+    SCHEDULED: <2020-05-07 Thu +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-04-09 Thu 15:41]
+    :LAST_REPEAT: [2020-04-30 Thu 17:52]
     :END:
+    - State "DONE"       from "TODO"       [2020-04-30 Thu 17:52]
     - State "DONE"       from "TODO"       [2020-04-09 Thu 15:41]
     - State "DONE"       from "TODO"       [2020-03-26 Thu 17:52]
     - State "DONE"       from "TODO"       [2020-03-10 Tue 16:23]

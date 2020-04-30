@@ -1,0 +1,54 @@
+  <link rel="stylesheet" href="https://icostan.github.io/huveragy/jvectormap/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://icostan.github.io/huveragy/jvectormap/jquery-jvectormap-2.0.5.min.js"></script>
+  <script src="https://icostan.github.io/huveragy/jvectormap/jquery-jvectormap-world-mill.js"></script>
+
+  <script type="text/javascript">
+    jQuery(function($){
+	$.getJSON( {{ .Site.Params.huveragy.url }}, function(data){
+	// var countries = {{ .Site.Params.hoveragy.world.countries }};
+	// var data = {{ .Site.Params.hoveragy.world.data }};
+	// function to_map(acc, cur) {
+	//     index = countries.indexOf(cur);
+	//     if (index >= 0)
+	// 	acc[cur] = data[index];
+	//     else
+	// 	acc[cur] = 1;
+	//     return acc;
+	// }
+	// var coverage = countries.reduce(to_map, {});
+
+	// function to_upper(value, key, map) {
+	//     map[key.toUpperCase()] = value;
+	// }
+	// var coverage = {};
+	// {{ .Site.Params.hoveragy.world }}.forEach(to_upper, coverage);
+
+	// var data = {{ .Site.Params.hoveragy.world }};
+	// alert(JSON.stringify(data));
+	var coverage = data.world;
+	$('#world-map').vectorMap({
+	    map: 'world_mill',
+	    backgroundColor: '#a5bfdd',
+	    series: {
+		regions: [{
+		    values: data.world,
+		    scale: {{ .Site.Params.huveragy.colors }},
+		}]
+	    },
+	    onRegionTipShow: function(e, el, code){
+		var html = el.html();
+		if (data.home == code)
+		    html += ' (Home)'
+		else if (coverage[code])
+		    html += ' (Visits: ' + coverage[code] + ')';
+
+		el.html(html);
+	    }
+	});
+	});
+    });
+  </script>
+
+  <div id="world-map" style="width: 800px; height: 500px"></div>
