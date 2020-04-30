@@ -1,0 +1,13 @@
+#+title:  Introducing Huveragy
+#+subtitle: Blog
+#+date:   2020-04-27
+#+tags[]: blog hugo jvectormap naturalearthdata travel coverage map
+
+A simple [[https://gohugo.io/][Hugo]] partial template that renders a world coverage map using [[https://jvectormap.com/][jVectorMap]] SVG library and dataset from [[http://www.naturalearthdata.com/][Natural Earth]].
+
+I was never a huge fan of loading a fully featured map (like [[https://openstreetmap.org][OpenStreetMap]]) to only show country level coverage info, that's why I was looking for simpler solutions and SVG based is the best, light and fast, exactly what I need.
+
+Without further due, you can see it in action in [[/page/about][About page]] and play the [[https://github.com/icostan/huveragy][source code]].
+
+
+Happy travel!
