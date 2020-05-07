@@ -1,0 +1,25 @@
+#+title:  COVID-19 indicators
+#+subtitle: Trading
+#+date:   2020-05-07
+#+tags[]: trading covid19 coronavirus tradingview indicators
+
+I wrote a few indicators showing COVID-19 daily change/momentum for the entire world, EU vs. US and for most affected countries that have either more than 10k confirmed cases or more than  1k deaths.
+
+
+- [[https://www.tradingview.com/script/q6QOoOib-COVID-19-Daily-change/][Daily change]]
+- [[https://www.tradingview.com/script/dzIWVQT8-COVID-19-Daily-momentum/][Daily momentum]]
+
+
+Also, for EU only, daily change per capita, showing the number of cases/deaths per 1M people.
+
+- [[https://www.tradingview.com/script/8vzjXRsM-COVID-19-Daily-change-per-capita-EU-only/][Daily change per capita (EU only) ]]
+
+This one is quite interesting because a small country like Belgium seems to be the most affected.
+At this moment (May 7th) they have 12 deaths/1M people, down from ~28 deaths/1M people two weeks ago.
+
+See the embedded chart below (or a bigger one [[https://www.tradingview.com/x/w8EuVoCs/][online @ tradingview]]).
+
+[[file:/img/covid19/daily-change-per-capita.png]]
+
+
+Stay home, stay safe!!!
