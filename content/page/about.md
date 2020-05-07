@@ -8,13 +8,13 @@ comments: false
 
 An old fashion "Jack of all trades" kind of guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto land.
 
-### Coding activity
-
-<figure><embed src="https://wakatime.com/share/@icostan/b8113d2a-134d-4e60-b329-415dce67837b.svg"></embed></figure>
-
 ### Travel activity
 
 {{< partial "huveragy/huveragy.html" >}}
+
+### Coding activity
+
+<figure><embed src="https://wakatime.com/share/@icostan/b8113d2a-134d-4e60-b329-415dce67837b.svg"></embed></figure>
 
 ### Sports activity
 
