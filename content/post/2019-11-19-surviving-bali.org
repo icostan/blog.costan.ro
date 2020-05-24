@@ -1,9 +1,11 @@
 #+title:  Surviving Bali
 #+subtitle: Nomad
 #+date:   2019-11-19
-#+tags[]: nomad indonesia bali ubud
+#+tags[]: nomad travel indonesia bali ubud
 
   I survived a month in Ubud, Bali, Indonesia with 2112 EUR :) I like the word survive but there is nothing to survive in Bali, especially in Ubud.
+
+  [[/img/bali.jpg]]
 
   Actually it is the opposite, it is very easy to live, a soft landing and relative cheap destination for both nomads/tourists.
 

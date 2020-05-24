@@ -1,9 +1,11 @@
 #+title:  Diving Palawan
 #+subtitle: Nomad
 #+date:   2020-01-21
-#+tags[]: nomad philippines palawan elnido puertoprincesa
+#+tags[]: nomad travel philippines palawan elnido puertoprincesa
 
 I stayed 3 weeks on Palawan island ([[https://en.wikipedia.org/wiki/El_Nido,_Palawan][El Nido]] in the north and Puerto Princesa in the south) in Philippines and spent 1600 EUR.
+
+[[/img/philippines.jpg]]
 
 To keep the same blogging style I will start by saying that you can get a beer for 1.5 EUR, a coffee for 3 EUR and a meal for around 5 EUR.
 

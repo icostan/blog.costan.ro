@@ -1,9 +1,11 @@
 #+title:  Backpacking Viet Nam
 #+subtitle: Nomad
 #+date:   2019-12-21
-#+tags[]: nomad vietnam hanoi sapa ninhbinh catba
+#+tags[]: nomad travel vietnam hanoi sapa ninhbinh catba
 
 I backpacked northern Vietnam for about 3 weeks and spent 988 EUR.
+
+[[/img/vietnam.jpg]]
 
 As far as prices go, Vietnam is a bit cheaper than Bali, you can get small beer for less than 1 EUR, a coffee for less than 2 EUR and a traditional Pho Bo (beef soup) for about 2 EUR.
 Also, transporation is important in backpacking and on average I paid about 10 EUR for a 6h sleeper bus trip.
@@ -85,9 +87,6 @@ Also, transporation is important in backpacking and on average I paid about 10 E
 
 *** 4. Ninh Binh
     The land of karsts that raise from the ground that is sometimes called dry Ha Long bay. Personally, I liked [[https://en.wikipedia.org/wiki/Ninh_B%C3%ACnh][Ninh Binh]] more, is very green, quite/peaceful, you can walk by the rivers and admire the karsts that are everywhere. I would say that Ninh Binh and Ha Long bay are MUST SEE places in northern Vietnam, especially if you've never seen karsts before.
-
-    [[file:../../img/ninhbinh.jpg]]
-
 
 ** Travel tip
    When it comes to bargain and price inflation then Viet Nam has no limits, its way ahead other countries in South-East Asia.
