@@ -5,7 +5,7 @@
 
 I am thinking to start a Linux Kernel series and write about modules, device drivers, proc and sysfs, unit test with kunit and so on; here is the first one, a simple Hello World module.
 
-* World module
+* 1. World module
 
 world.c
 #+begin_src c :tangle world.c
@@ -41,7 +41,7 @@ MODULE_LICENSE("Dual BSD/GPL");
 Nothing crazy so far, a module is required to provide two functions *init*, *exit* and *MODULE_LICENSE* macro call.
 Then we have our main logic function *world_print* that is exported using *EXPORT_SYMBOL* macro and a char pointer variable.
 
-* Build module
+** 1.1 Build World
   [[https://www.kernel.org/doc/html/latest/kbuild/index.html][Kernel Build System]] requires a special file called /Kbuild/ that is used for compilation and contains all modules that need to be compiled.
 
 Kbuild
@@ -146,7 +146,7 @@ nm world.ko
 0000000000000000 T world_print
 #+end_example
 
-** Install module
+** 1.2 Install World
 
 #+begin_src sh
 echo 'Installing module...'
@@ -185,7 +185,7 @@ grep "T " /proc/kallsyms | wc -l
 #+RESULTS:
 : 22574
 
-* Hello module
+* 2. Hello module
 
 hello.c
 #+begin_src c :tangle hello.c
@@ -226,7 +226,7 @@ This time, *init* function is special because it iterates over module parameter 
 
 In addition to *init*, *exit* functions and macro calls we have two module parameters (that can be changed at compile, load or run time) and the declaration for *world_print* function that will be imported from *World* module.
 
-** Build module
+** 2.1 Build Hello
 
 Execute /make/ using the same Makefile/Kbuild files above to compile and build /hello.ko/ module file.
 Notice the /depends/ line below, *Hello* module depends on *World* module and /parm/ lines with two params: *howmany* and *greet*.
@@ -250,7 +250,7 @@ parm:           howmany:int
 parm:           greet:charp
 #+end_example
 
-** Install module
+** 2.2 Install Hello
 
 As I mentioned before, during module install/load we can change the parameters as follows:
 
