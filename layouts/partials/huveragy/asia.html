@@ -4,25 +4,11 @@
 <script src="https://icostan.github.io/huveragy/jqvmap/jquery.vmap.js"></script>
 <script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
 
+<script src="/js/huveragy.js"></script>
 <script type="text/javascript">
-    jQuery(document).ready(function( $ ) {
-	$('#vmap_asia').vectorMap({
-	    map: 'asia_en',
-	    backgroundColor: '#a5bfdd',
-	    borderOpacity: 0.25,
-	    borderWidth: 1,
-	    color: '#f4f3f0',
-	    enableZoom: true,
-	    hoverColor: '#c9dfaf',
-	    hoverOpacity: null,
-	    normalizeFunction: 'linear',
-	    scaleColors: {{ .Site.Params.huveragy.colors }},
-	    selectedColor: '#c9dfaf',
-	    selectedRegions: null,
-	    showTooltip: true,
-	    values: {{ .Site.Params.huveragy.countries }}
-	});
-    });
+  countries = {{ .Site.Params.huveragy.countries }};
+  colors = {{ .Site.Params.huveragy.colors }};
+  mmm('#vmap_asia', 'asia_en', countries, colors);
 </script>
 
 <div id="vmap_asia" style="width: 800px; height: 500px;"></div>

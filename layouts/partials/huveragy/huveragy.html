@@ -1,54 +1,69 @@
-  <link rel="stylesheet" href="https://icostan.github.io/huveragy/jvectormap/jquery-jvectormap-2.0.5.css" type="text/css" media="screen"/>
+<link rel="stylesheet" href="https://icostan.github.io/huveragy/jqvmap/jqvmap.css" type="text/css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://icostan.github.io/huveragy/huveragy.css" type="text/css" />
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-  <script src="https://icostan.github.io/huveragy/jvectormap/jquery-jvectormap-2.0.5.min.js"></script>
-  <script src="https://icostan.github.io/huveragy/jvectormap/jquery-jvectormap-world-mill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/jquery.vmap.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script type="text/javascript">
-    jQuery(function($){
-	$.getJSON( {{ .Site.Params.huveragy.url }}, function(data){
-	// var countries = {{ .Site.Params.hoveragy.world.countries }};
-	// var data = {{ .Site.Params.hoveragy.world.data }};
-	// function to_map(acc, cur) {
-	//     index = countries.indexOf(cur);
-	//     if (index >= 0)
-	// 	acc[cur] = data[index];
-	//     else
-	// 	acc[cur] = 1;
-	//     return acc;
-	// }
-	// var coverage = countries.reduce(to_map, {});
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/jquery.vmap.world.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
+<script src="https://icostan.github.io/huveragy/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 
-	// function to_upper(value, key, map) {
-	//     map[key.toUpperCase()] = value;
-	// }
-	// var coverage = {};
-	// {{ .Site.Params.hoveragy.world }}.forEach(to_upper, coverage);
+<script src="https://icostan.github.io/huveragy/huveragy.js"></script>
 
-	// var data = {{ .Site.Params.hoveragy.world }};
-	// alert(JSON.stringify(data));
-	var coverage = data.world;
-	$('#world-map').vectorMap({
-	    map: 'world_mill',
-	    backgroundColor: '#a5bfdd',
-	    series: {
-		regions: [{
-		    values: data.world,
-		    scale: {{ .Site.Params.huveragy.colors }},
-		}]
-	    },
-	    onRegionTipShow: function(e, el, code){
-		var html = el.html();
-		if (data.home == code)
-		    html += ' (Home)'
-		else if (coverage[code])
-		    html += ' (Visits: ' + coverage[code] + ')';
+<script type="text/javascript">
+  jQuery(document).ready(function( $ ) {
+      countries = {{ .Site.Params.huveragy.countries }};
+      colors = {{ .Site.Params.huveragy.colors }};
 
-		el.html(html);
-	    }
-	});
-	});
-    });
-  </script>
+      mmm('#vmap_world', 'world_en', countries, colors, $);
+      mmm('#vmap_europe', 'europe_en', countries, colors, $);
+      mmm('#vmap_asia', 'asia_en', countries, colors, $);
+      mmm('#vmap_africa', 'africa_en', countries, colors, $);
+      mmm('#vmap_australia', 'australia_en', countries, colors, $);
+      mmm('#vmap_north_america', 'north-america_en', countries, colors, $);
+      mmm('#vmap_south_america', 'south-america_en', countries, colors, $);
 
-  <div id="world-map" style="width: 800px; height: 500px"></div>
+      $(function() {
+          $( "#tabs" ).tabs();
+      });
+  });
+</script>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#world">World</a></li>
+    <li><a href="#africa">Africa</a></li>
+    <li><a href="#asia">Asia</a></li>
+    <li><a href="#australia">Australia</a></li>
+    <li><a href="#europe">Europe</a></li>
+    <li><a href="#north-america">N. America</a></li>
+    <li><a href="#south-america">S. America</a></li>
+  </ul>
+  <div id="world">
+    <div id="vmap_world" class="vmap"></div>
+  </div>
+  <div id="africa">
+    <div id="vmap_africa" class="vmap"></div>
+  </div>
+  <div id="asia">
+    <div id="vmap_asia" class="vmap"></div>
+  </div>
+  <div id="australia">
+    <div id="vmap_australia" class="vmap"></div>
+  </div>
+  <div id="europe">
+    <div id="vmap_europe" class="vmap"></div>
+  </div>
+  <div id="north-america">
+    <div id="vmap_north_america" class="vmap"></div>
+  </div>
+  <div id="south-america">
+    <div id="vmap_south_america" class="vmap"></div>
+  </div>
+</div>
