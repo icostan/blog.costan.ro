@@ -135,6 +135,22 @@
     - https://github.com/JohnHammond/ctf-katana/blob/master/README.md
     - https://asecuritysite.com/challenges/
 *** DONE travel map coverage
+*** earn decentralized income
+    - earn BAT by seeing ads with Brave
+    - earn BTC by map contribution with OsmAnd
+    - earn STEEM for articles with SteemIt
+    - earn DAI by lending via DyDx
+    - earn FIL by storage via Filecoin?
+    - mining / staking
+*** draw math functions
+    - x
+    - 2 * x, 2 + x
+    - x / 2, x - 2
+    - x ^ c, c ^ x
+    - log x
+    - x * log x
+*** DONE high-end Maldives
+*** outpost vs. hubud vs. hanoi coworking vs. el nido
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts

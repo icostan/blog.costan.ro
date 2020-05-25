@@ -1,0 +1,43 @@
+#+title:  High-end Maldives
+#+subtitle: Travel
+#+date:   2020-05-23
+#+tags[]: travel high-end maldives irufushi villa
+
+
+The one and only, Maldives! With private islands, luxury resorts, water/beach villas and fine dining, is one of the most expensive destination on Earth.
+
+[[/img/maldives.jpg]]
+
+I stayed 1 week at [[https://www.sunsiyam.com/][Sun Siyam Iru Fushi]] resort and spent ~12k USD, maybe a bit pricey but it is worth every penny. As you can imagine, everything is quite expensive, a dinner for 2 starts at $250 and it can go as high as few thousands dollars with black caviar and champagne.
+
+#+RESULTS: maldives-balances
+#+begin_example
+        12491.00 USD  Expenses
+         6175.00 USD    Accommodation:Villa
+         2918.00 USD      Beach
+         3257.00 USD      Water
+          100.00 USD    Concierge
+         3628.00 USD    Food&Drinks
+         2588.00 USD    Transportation
+         2512.00 USD      Flight
+         1512.00 USD        Airplane
+         1000.00 USD        Seaplane
+           76.00 USD      Taxi
+--------------------
+        12491.00 USD
+#+end_example
+
+*** Highlights
+
+- luxury water/beach villas - for ~1000 USD / night you get *la crème de la crème*, spacious villa with tons of amenities including private beach and coral reef
+- awesome weather and pristine waters - temp is ~30 degrees Celsius (at least in March), crystal clear, blue-turquoise water with colorful marine life.
+- fine dining with stunning sunrise/sunset - book a villa at the southernmost tip of the island and enjoy both the sunrise and the sunset from the comfort of your swimming pool
+
+*** Things to consider
+
+- the size of the island - this is important, the smaller the island, the more private and expensive but on the other side one might get easily bored. they usually have one or two restaurants and not too much to do around, except water sports.
+- the proximity to Male, the capital of Maldives on the main island - if it's close they will pick you up by boat, otherwise by private sea plane but expect to pay ~$500 1h return flight / person
+- there is no low-cost concept or island hoping tours - first of all, islands are private and you are not allowed to visit (there are a few resorts around Male that allow visitors but those are the exceptions) and second you might find cheaper resorts but it's like "getting the ice cream but not the cherry" kind of a thing. Go in style or go home.
+
+
+Happy high-ending !!!
