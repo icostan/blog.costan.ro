@@ -142,7 +142,8 @@
     - earn DAI by lending via DyDx
     - earn FIL by storage via Filecoin?
     - mining / staking
-*** draw math functions
+*** DONE draw math functions
+    - 1
     - x
     - 2 * x, 2 + x
     - x / 2, x - 2
@@ -224,10 +225,12 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-05-21 Thu +2w>
+    SCHEDULED: <2020-06-18 Thu +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-05-07 Thu 12:47]
+    :LAST_REPEAT: [2020-06-09 Tue 11:27]
     :END:
+    - State "DONE"       from "TODO"       [2020-06-09 Tue 11:27]
+    - State "DONE"       from "TODO"       [2020-05-25 Mon 20:03]
     - State "DONE"       from "TODO"       [2020-05-07 Thu 12:47]
     - State "DONE"       from "TODO"       [2020-04-30 Thu 17:52]
     - State "DONE"       from "TODO"       [2020-04-09 Thu 15:41]
