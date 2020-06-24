@@ -1,3 +1,4 @@
+#+TODO: TODO | DONE N/A
 * [[elisp:(org-projectile-open-project%20"blog")][blog]] [0/1]
   :PROPERTIES:
   :CATEGORY: blog
@@ -154,7 +155,7 @@
 *** DONE outpost vs. hanoi coworking vs. el nido
 *** review each Market Wizards books
 ** Fixes
-*** add Euler's method to RSA
+*** DONE add Euler's method to RSA
 *** DONE add tags to all posts
     CLOSED: [2019-08-13 Tue 13:19]
 *** DONE use session for Python src blocks
@@ -177,9 +178,10 @@
 *** DONE raw html in about page
 *** DONE fix tag links
 *** finite fields props: https://www.doc.ic.ac.uk/~mrh/330tutor/ch04.html, CAIN props, Abel :)
-*** snippets colors
+*** N/A snippets colors
 *** code snippets, line numbers
 *** zero-knowledge proofs tag
+*** replace old md with org files
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -197,7 +199,7 @@
    :END:
 *** DONE add SSL: [[https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md][tutorial]]
     CLOSED: [2019-04-20 Sat 12:03]
-*** use Sage interpreter in Hugo
+*** N/A use Sage interpreter in Hugo
 *** DONE add Google analytics
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** DONE menu sections
