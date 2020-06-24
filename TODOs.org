@@ -151,7 +151,8 @@
     - log x
     - x * log x
 *** DONE high-end Maldives
-*** outpost vs. hubud vs. hanoi coworking vs. el nido
+*** DONE outpost vs. hanoi coworking vs. el nido
+*** review each Market Wizards books
 ** Fixes
 *** add Euler's method to RSA
 *** DONE add tags to all posts
@@ -225,10 +226,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-06-18 Thu +2w>
+    SCHEDULED: <2020-07-02 Thu +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-06-09 Tue 11:27]
+    :LAST_REPEAT: [2020-06-24 Wed 13:51]
     :END:
+    - State "DONE"       from "TODO"       [2020-06-24 Wed 13:51]
     - State "DONE"       from "TODO"       [2020-06-09 Tue 11:27]
     - State "DONE"       from "TODO"       [2020-05-25 Mon 20:03]
     - State "DONE"       from "TODO"       [2020-05-07 Thu 12:47]

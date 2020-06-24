@@ -1,0 +1,49 @@
+#+title: Outpost, Toong, Clockin coworking
+#+subtitle: Nomad
+#+date: 2020-06-24
+#+tags[]: travel nomad coworking work
+
+A very short review of 3 coworking spaces in 3 countries by 4 different criteria: space, crowd, amenities, and location.
+
+The internet speed is pretty good (maybe a bit slower at Clock-in), this is no longer a concern.
+
+Here are the winners for each category:
+
+1. /the space/ - *Toong, Hanoi, Vietnam*
+2. /the crowd/ - *Outpost, Ubud, Bali, Indonesia*
+3. /amenities/ - *Outpost, Ubud, Bali, Indonesia*
+4. /location/ - *Clock-in, El Nido, Palawan, Philippines*
+
+And a few details for each coworking space:
+
+** Outpost
+   Known as quite/high productivity space with good nomad crowd.
+
+   1. /the space/ - entire building with AC, quite room downstairs, blah-blah room with balcony upstairs, Skype booths, conf rooms
+   2. /the crowd/ - foreigners, mostly nomads and a few residents
+   3. /amenities/ - cafeteria next door, swimming pool at Bali Spirit hotel (100m walk)
+   4. /location/ - off the main streets, south of Ubud
+   [[https://destinationoutpost.co/location/ubud]]
+
+** Toong
+   The very first Toong location, famous in Hanoi.
+
+   1. /the space/ - fancy, two levels, nice architecture, decorations, and painting
+   2. /the crowd/ - mostly locals working in outsource-ing and half dozen foreigners
+   3. /amenities/ - free coffee/tea, small balcony and one rest area
+   4. /location/ - city center, busy street near Hoam Kiem lake
+   [[https://toong.asia/trang-thi]]
+
+** Clock-in
+   If you want to chill-out at the beach and work once in a while.
+
+   1. /the space/ - small, a single room
+   2. /the crowd/ - empty most of the time, tourists once in a while
+   2. /amenities/ - only free coffee and tea
+   4. /location/ - great, near Lio beach (200m walk)
+   [[https://www.clock-in.com.ph/locations/lio]]
+
+
+ If you want to get things done and meet nomad crowd then go to Outpost, Bali.
+
+ Happy coworking!!!
