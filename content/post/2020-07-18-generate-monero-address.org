@@ -1,0 +1,160 @@
+#+title: Generate Monero address
+#+subtitle: Monero
+#+date: 2020-07-18
+#+tags[]: monero address generation python crypto
+
+Generate Monero address from the root private key using plain old Python, original Edwards curve's [[https://ed25519.cr.yp.to/python/ed25519.py][ed25519]] implementation, [[https://github.com/tiran/pysha3][Keccak]] hashing and Monero's [[https://github.com/bigreddmachine/MoneroPy/blob/master/moneropy/base58.py][Base58]] encoding.
+
+*** 0. Private key
+
+#+begin_src python :python python2 :results output :session monero
+  k = 50150511263649120662242166448273279564834046212138956557558374591624601073410
+  print(hex(k))
+#+end_src
+
+#+RESULTS:
+: 0x6ee02ef8647856f4080882a1ec4fabee19ec047ca24d3abb13c0ce589a46f702L
+
+*** 1. Private spend key
+
+Spend key is just the root private key in hex.
+
+#+begin_src python :python python2 :results output :session monero
+  sk = k
+  sk_hex = '%x' % sk
+  print(sk_hex)
+#+end_src
+
+#+RESULTS:
+: 6ee02ef8647856f4080882a1ec4fabee19ec047ca24d3abb13c0ce589a46f702
+
+*** 2. Private view key
+
+To calculate private view key we need to introduce a few helper methods to transform from int/hex to bytes and vice-versa. We also need Keccak hashing function.
+
+#+begin_src python :python python2 :results output :session monero
+  def bytes_to_int(bin):
+    return reduce(lambda r, n: r * 256 + n, [int(c) for c in bin])
+  def int_to_bytes(value):
+    return list(reversed([int(value >> (i * 8) & 0xff) for i in range(32)]))
+  def int_to_bin(n):
+    return ''.join([chr(b)for b in int_to_bytes(n)])
+
+  def hex_to_bytes(hex):
+    return map(lambda x: int(x, 16), split(hex))
+  def bytes_to_hex(bytes):
+    return ''.join(['%02x' % b for b in bytes])
+  def bin_to_hex(bin):
+    return ''.join(['%02x' % ord(c) for c in bin])
+  def hex_to_bin(hex):
+    return ''.join(chr(b) for b in hex_to_bytes(hex))
+
+  def reverse(hex):
+    return ''.join(reversed(split(hex)))
+  def split(hex):
+    return [hex[i*2:i*2+2] for i in range(32)]
+
+  def keccak(bin):
+    import sha3
+    h = sha3.keccak_256()
+    h.update(bin);
+    return h.hexdigest()
+#+end_src
+
+The derivation logic is as follows:
+- hash the private spend key with Keccak hashing function (note that SHA3 != Keccak)
+- transform the hash digest to integer (little endian, mind the /reverse/ method)
+- take modulo operation to reduce
+- and finally the resulting hex (little endian again) is our private view key
+
+#+begin_src python :python python2 :results output :session monero
+  import ed25519
+  hexdigest = keccak(int_to_bin(sk))
+  vk = bytes_to_int(hex_to_bytes(reverse(hexdigest)))
+  vk %= ed25519.l
+  vk_hex = reverse(bytes_to_hex(int_to_bytes(vk)))
+  print(vk_hex)
+#+end_src
+
+#+RESULTS:
+: fba03c096736c326b072fe44fc5c2868009986fb7e89e64bfd52f071d7e9b307
+
+*** 3. Public spend key
+
+Public key is a point on [[https://monerodocs.org/cryptography/asymmetric/edwards25519/#edwards25519-elliptic-curve][Edwards25519 elliptic curve]] and key derivation is best explained [[https://monerodocs.org/cryptography/asymmetric/public-key/][here]].
+
+What our little /publickey/ method does is as simple as:
+- transform private key hex to binary string
+- decode binary string into integer
+- execute [[https://blog.iuliancostan.com/post/2019-09-25-elliptic-curves/][elliptic curve multiplication]] *P = a*B*
+- encode result elliptic curve point into binary string
+
+#+begin_src python :python python2 :results output :session monero
+  def publickey(k_hex):
+    k_bin = hex_to_bin(k_hex)
+    a = ed25519.decodeint(k_bin)
+    A = ed25519.scalarmult(ed25519.B, a)
+    return ed25519.encodepoint(A)
+
+  Ps = publickey(sk_hex)
+  ps = bin_to_hex(Ps)
+  print(ps)
+#+end_src
+
+#+RESULTS:
+: 287fe37fc3c6b9309cacb2ea3882aed8b01a4e00343b6a0aa7cac956a5ed6011
+
+*** 4. Public view key
+
+Same elliptic curve multiplication here but instead of /private spend key/ (*sk_hex*) we now use /private view key/ (*vk_hex*).
+
+#+begin_src python :python python2 :results output :session monero
+  Pv = publickey(vk_hex)
+  pv = bin_to_hex(Pv)
+  print(pv)
+#+end_src
+
+#+RESULTS:
+: 36f877980a7916f5f293b6986d0099dbb46b82b9f8d2ff61fb12422b507260e6
+
+*** 5. Monero address
+
+And finally, time to generate Monero address:
+- concatenate network byte, public spend key and public view key
+- take Keccak hashing
+- append checksum (first 4 bytes of hexdigest) to original data
+- base58 encoding
+
+#+begin_src python :python python2 :results output :session monero
+  def base58(hex):
+    import base58
+    return base58.encode(hex)
+
+  network = '12'
+  data = network + ps + pv
+  hexdigest = keccak(hex_to_bin(data))
+  payload = data + hexdigest[0:8]
+  address = base58(payload)
+  print(address)
+#+end_src
+
+#+RESULTS:
+: 43A8A4fqgD698bedTnjaqBdF9MgHEiiCq2nNXNMtqzNj3t1Fv2VsDc9i8zyFh6srcgdkQs5bhpwrvHPY646xu8ijT3Bdxse
+
+*** Verification
+
+You can use the following /mnemonic seed/ and verify the address with [[https://xmr.llcoins.net/]].
+
+#+begin_example
+vinegar talent sorry hybrid ultimate template nimbly jukebox axes inactive veered toenail pride plotting chrome victim agnostic science bailed paddles wounded peaches king laptop king
+#+end_example
+
+Also mnemonic seed to private key derivation is a subject for another post.
+
+** References
+   - https://ed25519.cr.yp.to/python/ed25519.py
+   - [[https://github.com/bigreddmachine/MoneroPy/blob/master/moneropy/base58.py]]
+   - https://monero.stackexchange.com/questions/6050/what-is-the-base-point-g-from-the-whitepaper-and-how-is-it-represented-as-a
+   - [[https://monero.stackexchange.com/questions/2290/why-how-does-monero-generate-public-ed25519-keys-without-using-the-standard-publ]]
+   - [[https://stackoverflow.com/questions/8908287/why-do-i-need-b-to-encode-a-string-with-base64]]
+   - [[https://monero.stackexchange.com/questions/12156/curve-used-in-monero-a-subgroup-of-ed25519]]
