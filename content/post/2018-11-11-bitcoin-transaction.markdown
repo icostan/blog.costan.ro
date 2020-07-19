@@ -6,7 +6,7 @@ date:   2018-11-11
 tags: ["bitcoin", "transaction", "cryptography", "math", "ruby"]
 ---
 
-# The hard way - Bitcoin: Transaction
+# Transaction
 
 This is Part 2 of 'The hard way - Bitcoin' series and I will start with 'the easy way' section first because even this gets a bit complex, then will continue with the hard stuff, crafting a Bitcoin transaction from scratch using basic math and cryptography.
 

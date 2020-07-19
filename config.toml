@@ -79,6 +79,30 @@ googleAnalytics = "UA-354095-4"
 
 
 [[menu.main]]
+    identifier = "coins"
+    name = "Coins"
+    weight = -1
+[[menu.main]]
+    parent = "coins"
+    name = "Monero address"
+    url = "post/2020-07-18-generate-monero-address"
+    weight = 1
+[[menu.main]]
+    parent = "coins"
+    name = "Bitcoin Segwit address"
+    url = "post/2020-02-10-bitcoin-bech32-segwit-address/"
+    weight = 2
+[[menu.main]]
+    parent = "coins"
+    name = "Bitcoin transaction"
+    url = "post/2018-11-11-bitcoin-transaction/"
+    weight = 3
+[[menu.main]]
+    parent = "coins"
+    name = "Bitcoin address"
+    url = "post/2018-10-09-bitcoin-address/"
+    weight = 4
+[[menu.main]]
     identifier = "crypto"
     name = "Crypto"
     weight = 1
