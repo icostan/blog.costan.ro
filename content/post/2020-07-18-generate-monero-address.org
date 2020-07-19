@@ -3,9 +3,52 @@
 #+date: 2020-07-18
 #+tags[]: monero address generation python crypto
 
-Generate Monero address from the root private key using plain old Python, original Edwards curve's [[https://ed25519.cr.yp.to/python/ed25519.py][ed25519]] implementation, [[https://github.com/tiran/pysha3][Keccak]] hashing and Monero's [[https://github.com/bigreddmachine/MoneroPy/blob/master/moneropy/base58.py][Base58]] encoding.
+Generate Monero address from the root private key using plain old Python, Edwards curve's [[https://ed25519.cr.yp.to/python/ed25519.py][ed25519]] implementation, [[https://github.com/tiran/pysha3][Keccak-256]] hashing and Monero's [[https://github.com/bigreddmachine/MoneroPy/blob/master/moneropy/base58.py][Base58]] encoding.
+
+** Overview
+
+Very simple Python code using the original Edwards elliptic curve ([[https://ed25519.cr.yp.to/python/ed25519.py]]) Python2 implementation.
+
+#+begin_src python :python python2 :results output :session monero
+  sk = 50150511263649120662242166448273279564834046212138956557558374591624601073410
+  sk_hex = '%x' % sk
+  print('private spend key: ' + sk_hex)
+
+  import ed25519
+  hexdigest = keccak(int_to_bin(sk))
+  vk = bytes_to_int(hex_to_bytes(reverse(hexdigest)))
+  vk %= ed25519.l
+  vk_hex = reverse(bytes_to_hex(int_to_bytes(vk)))
+  print('private view key: ' + vk_hex)
+
+  Ps = publickey(sk_hex)
+  ps = bin_to_hex(Ps)
+  print('public spend key: ' + ps)
+
+  Pv = publickey(vk_hex)
+  pv = bin_to_hex(Pv)
+  print('public view key: ' + pv)
+
+  network = '12'
+  data = network + ps + pv
+  hexdigest = keccak(hex_to_bin(data))
+  payload = data + hexdigest[0:8]
+  address = base58(payload)
+  print('address: ' + address)
+#+end_src
+
+#+RESULTS:
+: private spend key: 6ee02ef8647856f4080882a1ec4fabee19ec047ca24d3abb13c0ce589a46f702
+: private view key: fba03c096736c326b072fe44fc5c2868009986fb7e89e64bfd52f071d7e9b307
+: public spend key: 287fe37fc3c6b9309cacb2ea3882aed8b01a4e00343b6a0aa7cac956a5ed6011
+: public view key: 36f877980a7916f5f293b6986d0099dbb46b82b9f8d2ff61fb12422b507260e6
+: address: 43A8A4fqgD698bedTnjaqBdF9MgHEiiCq2nNXNMtqzNj3t1Fv2VsDc9i8zyFh6srcgdkQs5bhpwrvHPY646xu8ijT3Bdxse
+
+Please read step by step details below.
 
 *** 0. Private key
+
+Just a very big number.
 
 #+begin_src python :python python2 :results output :session monero
   k = 50150511263649120662242166448273279564834046212138956557558374591624601073410
@@ -141,7 +184,7 @@ And finally, time to generate Monero address:
 #+RESULTS:
 : 43A8A4fqgD698bedTnjaqBdF9MgHEiiCq2nNXNMtqzNj3t1Fv2VsDc9i8zyFh6srcgdkQs5bhpwrvHPY646xu8ijT3Bdxse
 
-*** Verification
+** Verification
 
 You can use the following /mnemonic seed/ and verify the address with [[https://xmr.llcoins.net/]].
 
@@ -154,6 +197,7 @@ Also mnemonic seed to private key derivation is a subject for another post.
 ** References
    - https://ed25519.cr.yp.to/python/ed25519.py
    - [[https://github.com/bigreddmachine/MoneroPy/blob/master/moneropy/base58.py]]
+   - [[https://github.com/tiran/pysha3]]
    - https://monero.stackexchange.com/questions/6050/what-is-the-base-point-g-from-the-whitepaper-and-how-is-it-represented-as-a
    - [[https://monero.stackexchange.com/questions/2290/why-how-does-monero-generate-public-ed25519-keys-without-using-the-standard-publ]]
    - [[https://stackoverflow.com/questions/8908287/why-do-i-need-b-to-encode-a-string-with-base64]]
