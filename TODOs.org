@@ -123,12 +123,13 @@
 *** DONE diving Philippines
 *** whales hour indicator
 *** session breaks indicator
-*** a blog post for each chapter in cryptography books
+*** a blog post for each cryptography book/chapter
     - Understanding cryptography
     - Cryptography theory and practice
     - Practical cryptography for developers
     - Handbook of applied cryptography
-    - Serious cryptography?
+    - Serious cryptography
+    - An overview of cryptography
 *** DONE linux kernel module
     SCHEDULED: <2020-03-24 Tue>
 *** demo the demo-it in Emacs
@@ -155,6 +156,9 @@
 *** DONE high-end Maldives
 *** DONE outpost vs. hanoi coworking vs. el nido
 *** review each Market Wizards books
+    - [X] hedge fund market wizards
+    - [ ] new market wizards
+    - [ ] market wizards
 *** DONE generate monero address
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -230,10 +234,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-07-16 Thu +2w>
+    SCHEDULED: <2020-08-09 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-07-19 Sun 12:46]
+    :LAST_REPEAT: [2020-07-30 Thu 18:30]
     :END:
+    - State "DONE"       from "TODO"       [2020-07-30 Thu 18:30]
     - State "DONE"       from "TODO"       [2020-07-19 Sun 12:46]
     - State "DONE"       from "TODO"       [2020-06-24 Wed 13:51]
     - State "DONE"       from "TODO"       [2020-06-09 Tue 11:27]

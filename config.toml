@@ -272,6 +272,11 @@ googleAnalytics = "UA-354095-4"
     name = "COVID-19 indicators"
     url = "post/2020-05-07-covid-19-indicators"
     weight = 4
+[[menu.main]]
+    parent = "trading"
+    name = "Hedge Fund Market Wizards book"
+    url = "post/2020-07-28-hedge-fund-market-wizards-book"
+    weight = 5
 
 [[menu.main]]
     name = "Tags"

@@ -1,0 +1,375 @@
+#+title: Hedge Fund Market Wizards
+#+subtitle: Trading
+#+date: 2020-07-28
+#+tags[]: trading book review summary market wizards
+
+An actionable bullet points summary for one of my favorite, all time best-seller and trading bible: [[https://www.goodreads.com/book/show/13664829-hedge-fund-market-wizards][*Hedge Fund Market Wizards*]] book, released in 2012.
+
+** Part 1 - Macro Men
+*** C1 - Colm O'Shea: knowing when it's raining
+    - he does not forecast what will happen but recognize what has happened
+    - very difficult to pick tops/bottoms, better wait for confirmation events like the drying up liquidity in money market in Aug 2007
+    - trade implementation is more important than trade idea itself
+    - 2007: yield curve spread (long short-term rate/short long-term rate) instead of long/short rate instruments
+    - NASDAQ peak: long bond (economic slow down, lower interest rates) instead of short position in stocks (very likely to be stopped out on a 40% re-bounce)
+    - flexibility is important quality in trading - be ready to get out of a trade if  price action is inconsistent with the hypothesis
+    - Apr 2009 was pessimistic about market outlook but price action was telling the opposite and market started a Asia-led multi-year rally
+    - trade long side of a bubble
+      1. get in early
+      2. limit the downside in worst case scenario because bubble burst are sharp
+         - low volatility bubble markets are implemented with long calls instead of long outright positions
+    - sometimes there is no fundamental reason for the trade but price action can reveal important things
+      like:
+        - magnitude of the move
+        - invest first, investigate later - G. Soros
+    - decide at what price your initial hypothesis is wrong and set the stop loss there
+    - right skewed trades, maximum loss is constrained, win is unlimited
+*** C2 - Ray Dalio: the man who loves mistakes *
+    - fundamental systematic computer model, both alpha and beta funds
+    - alpha is skill/volatility, beta is directional with benchmark index
+    - timeless and universal approach
+    - 2 key factors:
+      1. growth
+      2. inflation
+    - 2 states:
+      1. increasing
+      2. decreasing
+    - 4 market conditions:
+      1. growth increasing
+      2. growth decreasing
+      3. inflation increasing
+      4. inflation decreasing
+    - split world into 2 types of countries:
+      1. creditors
+      2. debtors
+    - 2 characteristics:
+      1. countries that can exercise independent monetary policies
+      2. those that can't
+    - 4 classifications of countries:
+      1. debtors countries with independent monetary policies - e.g. US, UK
+      2. debtors without independent policies - e.g. Greece, Portugal
+      3. creditor countries with independent monetary policies - e.g. Brazil
+      4. creditors without independent policies - e.g. China (Yuan is pegged to USD)
+    - from Principles book:
+      - recognize that mistake if it results in learning
+      - create a culture where is OK to fail but unacceptable to not analyze and learn from mistake
+      - bring mistake in the open and analyze objectively
+      - treat mistakes as learning opportunities
+      - radical transparency, openness and honesty
+      - never say anything to a person that can't say it directly
+    - diversification is the holy grail of investing
+    - correlation can be misleading statistics - highly variable and prevailing circumstances
+    - gold and bonds are inverse correlated but in deleveraging cycle they are correlated because of monetary easing that decreases interest rates
+    - focus on underlying drivers that are expected to effect the positions; drivers are the cause, correlation is the effect
+    - forward looking approach, based on drivers: anticipate when gold and bonds are likely to move in the same direction
+    - backward looking: based on correlation
+    - different positions have different drivers
+    - markets behave differently in deleveraging and recession environments
+    - government actions that might lead to sustained rebound in recession have little effect in deleveraging
+    - U.S. out of gold standard and Mexico default followed by a huge market rally
+    - /*mistake provide the path to improvement and ultimate success*/
+    - write down mistake and learn from it
+    - template for understanding economy as 3 acting forces:
+      1. productivity growth
+      2. long term credit expansion/deleveraging cycle
+         - debt payments become larger that amount we can borrow and spending must decline
+         - when it can't raise more credit then process reverses and we have deleveraging
+         - money coming into debtors hands is not enough to meet obligations then assets need to be sold and spending cut to raise cash
+         - this leads to assets value fall, which reduces the value of collateral and in turn reduces incomes
+         - because both lower collateral and lower income reduces credit worthiness is reduced and they can't get enough credit
+         - and it continues in self reinforcing manner
+         - deleveraging is different from recession
+         - unlike in recession when cutting rates to raise money can fix the problems, in deleveraging monetary policy is ineffective
+         - in recession interest rates can be cut to:
+           1. ease debts
+           2. stimulate economic activity
+           3. produce a positive wealth effect
+         - in deleveraging interest rates are already 0% and cant be lowered and
+         - credit growth is difficult because borrowers remain indebted
+         - in inflationary deleveraging monetary policy is ineffective because increased money goes into other currencies and inflation-hedge assets are inflated
+      3. business cycle - fluctuations in economic activities
+    - really big pictures (centuries time frame):
+      1. countries are poor and they think they are poor
+      2. countries getting rich quickly but they still think they are poor
+      3. countries are are rich and think of themselves as rich
+      4. countries become poorer and still think of themselves as rich - leveraging up phase, the debt rises relative to income until they cant;
+         - spending is still strong and they appear rich while balance sheet deteriorate
+         - twin deficits: both balance of payments and government deficits
+         - accumulation of debt that cant be paid back in non-depreciating money which leads to next stage
+      5. countries goes thru deleveraging and relative decline which are slow to accept
+         - after bubbles burst, deleveraging occur, private debt growth and private sector spending, asset value and net-worth declines in self reinforcing manner
+         - to compensate gov debt growth, gov deficits and central banks printing of money increase
+         - these countries have to compete with less expensive countries that are in earlier stages
+         - currencies depreciating and power in the world declines
+
+*** C3 - Larry Benedict: beyond tree strikes *
+    - the road to success is often paved with mistakes
+    - mean reversion trader: seller in the short-term up swings and buyer in short term declines
+    - entry level determined by the volatility and bias
+    - long / short in different markets
+    - very good Sharpe and gain to pain ratio
+    - cuts the trading size in half after 2% loss, liquidate portfolio and start clean
+    - 3 type of trading styles:
+      1. fundamental traders say that will buy this stock for the next 6 months
+      2. technical traders say that if stock goes to this level will sell or buy if goes to different level
+      3. Larry lets the market speak to him to buy or sell
+    - technical discretionary trader that does not use charts
+    - he looks at market in contrast with other markets: correlation come and go
+    - discretionary process starting with inter-market correlation
+    - 2 keys points:
+      1. limits portfolio risk to 2.5%
+      2. when the draw-down is reached he reduces the size until he is profitable again
+    - you are not a trader, you are a risk manager
+    - never stay in loosing trades, don't freeze, you need to know how to respond in each situation
+*** C4 - Scott Ramsey: low-risk futures trader
+    - discretionary trader in highly liquid futures in FX markets
+    - broad fundamental macro view and direction bias in each market and goes short the weakest market if bearish and long the strongest market if bullish
+    - in futures the only meaning full metric is return/risk
+    - identify big picture fundamental factors to derive the market and use technical to trade in that direction
+    - fundamentals as contrarian indicator - bearish fundamental has bullish price action because it was not effective
+    - buy the strongest, sell the weakest, novice traders do the opposite
+    - price movement in related markets can reveal one strength of weakness
+    - 0.1% on each trade from the point of entry and allows for more risk if ahead on the trade
+*** C5 - Jaffray Woodriff: the third way *
+    - he wanted 3 things:
+      1. to be a trader
+      2. to use computerize approach
+      3. to do it differently than anyone else
+    - 3 types of systems:
+      1. trend following
+      2. counter trend (mean reversion)
+      3. patterns of higher/lower prices
+    - 4 rules:
+      1. is possible to find systems (that are neither trend-following nor mean-reversal) and work better than the standard systems
+      2. it possible to data mine and search for patters without falling victim to curve fitting
+      3. all price data (30 years old) can be as meaningful as recent data
+      4. systems that work in multiple markets are better than systems that work in specific markets
+    - change position size according to volatility
+    - as all successful traders he found a method that suits him
+    - was very good recognizing systems that do not match his personality even after 3 days of testing
+
+
+** Part 2 - Multi-strategy players
+*** C6 - Edward Thorpe: the innovator *
+    - can the market be beat?
+    - if you have enough monkeys that hit keys they will ultimately write Shakespeare
+    - the problem is that you need a lot of monkey that can't fit into visible universe
+    - track record (227 winning months out of 230) or 227 heads in 230 coin tosses with a probability of 1 in 10^63
+    - 2 ways of looking at his record:
+      1. he was unbelievably lucky
+      2. efficient market hypothesis is wrong
+    - a lot of first-time achievements:
+      1. wearable computer to win at roulette
+      2. blackjack winning strategy
+      3. systematic approach to trade warrants (long-term options) and convertible securities (options, convertible bonds, preferred stocks)
+      4. formulate options pricing model equivalent of Black-Scholes model
+      5. founder of the first market neutral fund
+      6. quant hedge fund
+      7. convertible arbitrage
+      8. statistical arbitrage
+      9. likely the first to uncover that Bernie Maddoff was a fraud
+    - his sister said that "do what you love and money will follow"
+    - 44% edge in roulette by predicting the ending zone
+    - vary the bet size to improve the odds in classic blackjack strategy
+    - trade smaller (or not at all) for lower probability trades and larger for high probability ones
+    - quantitative traders: statistical analysis of past results
+    - discretionary traders: confidence levels in different trades acts as probability
+    - exposure reduction on draw-downs in directional trades in contrast to arbitrage trades where edge can be easily calculated
+    - don't bet more than you are comfortable with, betting $1 on bad hands and $10 on good hands in Blackjack
+    - emotions are deadly when trading beyond comfort level
+    - there is no single winning solution and existing edges are continuously changing
+    - starting with hedging long positions in stocks that got down the most with short positions in stocks that got up the most - delta neutral
+    - then added market/ sector neutrality
+    - Kelly criterion for calculation the optimal size for each trade
+    - Kelly criterion assume the probability of winning and win/loss ratio are precisely known in advance (like in gambling but not in trading)
+*** C7 - Jamie Mai: seeking asymmetry *
+    - profiled in the book The Big Short by Michael Lewis
+    - profit of 80x the premium paid on betting on sub-prime mortgages in 2008 crisis
+    - implementing structured highly asymmetric positive skew trades, long shots where profit is far larger than loss
+    - Sharpe ratio is a volatility (standard deviation) measure (calculated as /(return - free rate risk) / volatility/) which will penalty win spikes
+    - gain to pain ratio (/return/risk/) is a measure of loss (rather than volatility)
+    - 5 main pillars:
+      1. find mis-priced options in theoretical priced world
+      2. select trades with a positively skewed outcome, probability weighed gain must be upside of probability weighed loss
+      3. implement trades asymmetrically - buy mis-priced options
+      4. wait for high conviction trades
+      5. use cash to target portfolio risk - 50% to 80% in cash
+    - options are priced by using certain assumptions that sometimes are not aligned with prevailing fundamentals
+    - 5 generally accepted assumptions that sometimes might be invalid:
+      1. prices are normally distributed
+      2. the forward price is perfect predictor of the future mean
+      3. volatility scales with the square root of time - this might understate potential volatility because:
+         1. the longer the time period the more likely volatility will revert to the mean from current levels
+         2. longer periods allow for more opportunity for trends to result in larger price moves that the one implied by the volatility
+      4. the trend can be ignored in the volatility calculation
+      5. current correlations are good prediction for future correlations
+    - risk != volatility
+    - good traders get out of positions when they realize the assumption was wrong
+    - great traders take the opposite trade
+*** C8 - Michael Platt: the art and science of risk control
+    - two biggest mistakes in trading:
+      1. not enough homework
+      2. they are bit too casual about risk
+    - he is a master of risk control
+    - risk management begins with trade implementation: long options or spread structures instead of outright long/short positions
+    - close a trade if it does not work within a reasonable amount of time
+    - extremely tight range of what a rookie trader can loose: 3% loss triggers a 50% reduction in allocation
+    - large percentage loses require increasingly percentage gains to get back to even
+    - losing trades makes you feel like an idiot and you are not in the mood to put anything on
+    - 80/20 rule: 80% of the profit comes from 20% of the trades
+    - attention to how market react to news as confirmation of his trading ideas
+    - uses a systematic trend-following strategy:
+      1. system will liquidate positions when trend is over-extended while waiting for reversal signals
+      2. continuous improvements, system trading is a dynamic process, "a research war"
+
+
+** Part 3 - Equity traders
+*** C9 - Steve Clark: do more of what works and less of what doesn't
+    - poor guy living in outskirts of London
+    - a lots of traders deviate from what they do best
+      1. good long term traders take short term positions with no edge
+      2. other traders have effective systems but get bored and overwrite it with discretionary decisions
+    - find what you are best in and focus on that - analyze past trades
+    - entry size is more important than entry price - you wake up thinking about it
+    - trade within your emotional capacity
+    - in 2007 he reduces the trading size by 75% in response to increased volatility
+    - good traders can change their mind in a minute if price action is inconsistent with their hypothesis
+    - when trading badly, get out of everything and go in vacation, regain objectivity
+    - you can't be objective if you are in the market, taking physical break will stop downward spiral
+    - be aware of trades born of euphoria
+    - staring at the screen all day is counter-productive
+    - the job of a trader is to protect the equity line
+
+*** C10 - Martin Taylor: the tzar has no clothes
+    - decreased AUM to 1/4 of original amount
+    - 3 characteristics:
+      1. favorable macro outlook, 2 keys ways:
+         1. concentrate longs in countries with positive fundamentals
+         2. global macro outlook can influence net portfolio exposure
+      2. supportive very long-term trend
+      3. good company - growth, value priced at its future prospects
+    - sometimes is better to be in the market with modest exposure than be outside of the market and chase the whipsaw moves to get in
+    - need to know your modest net exposure
+    - obsession for monthly returns can adversely influence long term investments
+    - during the bubble the most profitable are imprudent traders, not the skilled ones
+*** C11 - Tom Claugus: a change of plans
+    - vary net exposure based on opportunity within the 95% price band of all the price observations
+    - when price is near the lower band, he will hold max long and the opposite when touching upper band
+    - looking for company that benefit from future plans that are not being priced-in: new tech, new sources of prod, increase assets
+    - if revenue source is more than 2 years in the future the market will fail to assign significant value to it
+    - fundamental screens fail to identify these because the source of bullish potential is not reflected in current statistics
+    - shorting stocks at the end of 1999
+    - as long as a profitable strategy is implemented, a loss is not a trading mistake
+    - also a winning trade might be a poor trading decision
+    - trading is a matter of probabilities and any strategy will be wrong a certain % of the trades
+    - a good trade can loose money, a bad trade can make money
+    - a good trade follows a process that will be profitable if repeated multiple times even if it can loose money in individual trades
+    - a bad trade follows a process that loose money if repeated multiple times but might make money on individual trades
+    - an analogy: a slot machine is a bad bet because has a higher probability of loosing money if repeated multiple times
+*** C12 - Joe Vidich: harvesting losses
+    - the author found Joe in a hedge fund database, not recommented like the most of the market wizards
+    - don't try to be 100% right: taking partial loss instead of all or nothing
+    - limit your position size in such a way that fear does not become the prevailing instinct guiding your judgment
+    - long time bull but also took short side once in a while
+    - don't make trading decision based on where you bought or sold
+    - get used to frustrating experiences when market turns around after you closed the position
+*** C13 - Kevin Daly: who is Warren Buffet?
+    - he looked up who is Warren Buffet during his job interview and follows Warren's investment philosophy
+    - mostly long only fund and cash from time to time
+    - superior stocks selection was main strategy, not participating in the bear market
+    - importance of patience when environment is adverse to your approach, or opportunities are lacking
+    - largely in cash during 2000 - 2002 bear market
+    - investment rules:
+      1. find companies you understand
+      2. take profits when they reach valuation levels
+      3. sail into a cash harbor when market is stormy
+      4. stick to the basic process
+      5. treat investment as a business, not as a gamble
+      6. stick to business you understand
+    - small assets size ($50M) investing in small cap stocks, move in and out of positions
+*** C14 - Jimmy Balodimas: stepping in front of freight trains *
+    - he breaks all the rules, adds to looses and cuts the profits short
+    - mostly short in a up-trend market
+    - no emotions regardless he is up or down for the day or month
+    - /*don't try this at home*/
+    - 3 lessons with general applicability:
+      1. the need to adapt to continuously changing market conditions
+      2. trading around the positions
+         - if he is short will reduce the position on price breaks and rebuild the positions on rally
+      3. avoid euphoria - parabolic move
+    - if you are long in a market that you are afraid to sell, it might not be a bad idea to reduce your position
+    - very skilled in identifying turning points before they happen
+    - even the best traders might not execute their strategies the best way
+    - proficiency is achievable with hard work but performing at an elite level requires some degree of innate talent
+    - he found an approach that fits his personality: independent, competitive, contrarian, comfortable with risk
+    - the same approach might be disastrous for most other traders
+    - you cannot succeed in the market by copying someone else approach
+*** C15 - Joel Greenblatt: the magic formula
+    - investing strategy inspired from Warren Buffet
+    - he believes in efficient market theory that stocks will ultimately trade at fair value
+    - but price can deviate substantially from their fair value for long periods, even years
+    - you don't have to trade all the time, wait for right strike
+    - past performance to select managers
+    - stock indexes are better investments than hedge funds because of less fees
+    - options are based on mathematical formulas and might provide great risk/reward trades
+
+
+** Conclusion
+*** 40 Market Wizard lessons
+    1. there is no holy grail
+    2. find a trading method that fits your personality - /*O'Shea*/
+    3. trade within your comfort zone - /*Clark, Vidich, Taylor*/
+    4. flexibility is an essential quality for trading success - /*O'Shea, Mai, Clarke*/
+    5. the need to adapt - /*Thorpe, Platt, Balodimas*/
+    6. don't confuse the concept of winning/losing trades with good/bad trades - /*Claugus*/
+    7. do more of what works and less of what doesn't - /*Clark*/
+    8. if you are out of sync with the market, trying harder won't help - /*Clark*/
+    9. the road to success is paved with mistakes - /*Dalio*/
+    10. wait for high conviction trades - /*Mai*/, /*Greenblatt*/
+    11. trade because of perceived opportunity not out of the desire to make money - /*Benedict*/
+    12. the importance of doing nothing - /*Daly*/
+    13. how a trade is implemented is more important that the trade idea itself - /*O'Shea*/
+    14. trading around the position can be beneficial - /*Balodimas*/
+    15. position size can be more important than the entry price - /*Thorpe*/
+    16. determining the trade size - /*Thorpe*/
+    17. vary market exposure based on opportunity - /*Claugus*/
+    18. seek an asymmetric return/risk profile - /*O'Shea*/
+    19. beware of trades born of euphoria - /*Balodimas, Clark*/
+    20. if you are on the right side of euphoria or panic; lighten up
+    21. staring at the screen all day can be expensive - /*Clark*/
+    22. risk control is critical - /*Ramsey, Platt, Benedict, Woodriff, Clark, Thorpe*/
+    23. don't try to be 100% right - /*Vidich*/
+    24. protective stops need to be consistent with the trade analysis - /*O'Shea*/
+    25. monthly loses is good idea if consistent with the strategy - /*Taylor*/, /*Greenblatt*/
+    26. the power of diversification - /*Dalio*/
+    27. correlation can be misleading - /*Mai, Dalio*/
+    28. price action in related markets provides trading clues - /*Benedict*/, /*Ramsey*/
+    29. markets behave differently in different environments - /*Dalio*/
+    30. pay attention to market response to news - /*Platt*/
+    31. fundamental events might be followed by counter-intuitive price movements - /*Dalio*/
+    32. situation characterized by potential for a widely divergent binary outcome might provide buying opportunity for options  - /*Greenblatt*/, /*Mai*/
+    33. a stock can be well-priced even if it has already gone up a lot - /*Taylor*/
+    34. don't make trading decisions based when you bought/sold a stock - /*Vidich*/
+    35. potential new revenue sources might not be reflected in stock price - /*Claugus*/
+    36. value investing works - /*Greenblatt*/
+    37. the efficient market hypothesis provides an inaccurate value of how the market really works - /*Greenblatt*/
+    38. it is a mistake for a manager to alter investment decisions to please investors - /*Greenblatt*/, /*Taylor*/
+    39. volatility and risk are not synonymous - /*Mai*/
+    40. it is a mistake to select managers based on solely past performance - /*Greenblatt*/
+
+
+** References
+   - [[https://www.linkedin.com/in/colm-o-shea-28340015a/]]
+   - [[https://en.wikipedia.org/wiki/Ray_Dalio]]
+   - [[https://www.linkedin.com/in/larry-benedict-023446165/]]
+   - [[https://www.linkedin.com/in/scott-t-ramsey-b3755914/]]
+   - [[https://en.wikipedia.org/wiki/Jaffray_Woodriff]]
+   - [[https://en.wikipedia.org/wiki/Edward_O._Thorp]]
+   - [[https://en.wikipedia.org/wiki/Cornwall_Capital]]
+   - [[https://en.wikipedia.org/wiki/Michael_Platt_(financier)]]
+   - [[https://www.linkedin.com/in/steven-clark-0a780155/]]
+   - [[https://moneyweek.com/469315/the-worlds-greatest-investors-4]]
+   - [[https://toptradersreview.com/tom-claugus/]]
+   - [[https://www.linkedin.com/in/joseph-vidich-9b39a944/]]
+   - [[https://www.linkedin.com/in/jimmy-balodimas-7844776/]]
+   - [[https://en.wikipedia.org/wiki/Joel_Greenblatt]]
