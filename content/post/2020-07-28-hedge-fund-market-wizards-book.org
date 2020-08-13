@@ -3,7 +3,7 @@
 #+date: 2020-07-28
 #+tags[]: trading book review summary market wizards
 
-An actionable bullet points summary for one of my favorite, all time best-seller and trading bible: [[https://www.goodreads.com/book/show/13664829-hedge-fund-market-wizards][*Hedge Fund Market Wizards*]] book, released in 2012.
+An actionable, bullet points summary for one of my favorite, all time best-seller and trading bible: [[https://www.goodreads.com/book/show/13664829-hedge-fund-market-wizards][*Hedge Fund Market Wizards*]] book, released in 2012.
 
 ** Part 1 - Macro Men
 *** C1 - Colm O'Shea: knowing when it's raining
