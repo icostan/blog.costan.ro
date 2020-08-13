@@ -1,0 +1,71 @@
+#+title: Organizing work/life projects
+#+subtitle: Productivity
+#+date: 2020-08-11
+#+tags[]: productivity agenda journal pomodoro emacs
+
+Here is my simple yet powerful organization style, it might not work for every person but it works for me and this is the most imporant after all, to find your own productivity style.
+
+*** 1. Projects
+    *No orphan tasks*, every tasks has to be part of a project:
+       - this blog - [[https://gitlab.com/icostan/icostan.gitlab.io]] project
+       - transaction logs, trading notes/reviews - /*trading.d*/ (private, sorry :))
+       - emacs/linux related stuff in [[https://gitlab.com/icostan/emacs.d][emacs.d]] and [[https://gitlab.com/icostan/arch.d][arch.d]]
+       - calisthenics/running/etc - part of [[https://gitlab.com/icostan/sports.d][sports.d]] project
+       - personal finance, plain text accounting - in /*ledger.d*/
+       - open source projects like [[https://github.com/icostan/bitmex-api-ruby][Bitmex-API-ruby]] or [[https://github.com/icostan/huveragy][huveragy]]
+       - unrelated tasks like gardening or haircut in generic /*org.d*/ project
+    Then every project must have the following files:
+       1. README.md - project description, examples, installation and usage if any
+       2. TODO.org - list of tasks, bugs, etc
+       3. LICENSE - licensing text
+
+*** 2. Agenda
+    All tasks from all projects are collected and nicely displayed by day/week/month:
+    - Weekly agenda with all tasks for the entire week (LHP, see the picture below)
+    - Daily agenda with tasks for the day (RHP)
+
+[[/img/organizing-agenda.png]]
+
+*** 3. Tasks
+    A task is a unit of productivity and most of the tasks are planned, scheduled in advance as follows:
+
+    Recurring tasks:
+       - daily:
+          - mostly trading related stuff - I am a full-time trader after all
+       - weekly:
+          - arch linux/emacs/ePhone updates and improvements
+          - running/walking/yoga/etc
+          - Crypto playground, research and development
+       - monthly:
+          - write a blog post, maintenance of open source projects
+          - productivity review
+          - haircut, etc
+    One time tasks:
+       - scheduled per each project - like small enhancements here and there
+       - ad hoc tasks - anything else
+
+*** 4. Journal
+    Every morning, I put together a plan for the day and write down all tasks, it can be 3 tasks or 7 tasks, it depends, the idea is to complete all of them by the end of the day. If one task is not finished today then it will be pushed for tomorrow.
+
+    Journaling itself takes 5-10 minutes to plan and write everything down but is important to be the very first thing in the morning, it is the fire starter, see the picture below.
+
+[[/img/organizing-journal.png]]
+
+*** 5. Pomodoro technique
+    Once the plan with all tasks are written down I start pomodoro timer (a home-made project called /*roshia*/, I will open source it one day) and get my hands dirty.
+    My work beat is 25 minutes with breaks in between (at least 5 minutes) but I do not use longer breaks as in original technique.
+
+    I love pomodoro, I've been using it for couple of years and I think it is my biggest productivity improvement. Some people might say that it is an overkill but for me is a huge success because of two main reasons:
+    1. I get up, move around, stretch and relax my eyes every 30 minutes
+    2. it forces me to focus a lot better, get into the zone faster and time box every task
+*** 6. Debriefing
+    At the end of each month I do a productivity debrief to:
+    - figure out the what/the why for each task that was not completed
+    - tasks maintenance - add/update/remove tasks based on seasonality, needs, ...
+
+
+Have a productive week!
+
+** References
+   - [[https://gitlab.com/icostan]]
+   - [[https://github.com/icostan]]
