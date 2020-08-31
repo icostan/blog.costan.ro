@@ -1,7 +1,7 @@
 #+title:  Write Linux kernel module
 #+subtitle: Linux
 #+date:   2020-03-24
-#+tags[]: Linux kernel module c kbuild makefile symbol
+#+tags[]: linux kernel module c kbuild makefile symbol
 
 I am thinking to start a Linux Kernel series and write about modules, device drivers, proc and sysfs, unit test with kunit and so on; here is the first one, a simple Hello World module.
 

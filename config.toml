@@ -183,9 +183,14 @@ googleAnalytics = "UA-354095-4"
     weight = 3
 [[menu.main]]
     parent = "linux"
-    name = "Linux kernel module"
+    name = "Write Linux kernel module"
     url = "post/2020-03-24-write-linux-kernel-module"
     weight = 4
+[[menu.main]]
+    parent = "linux"
+    name = "Config Linux kernel module"
+    url = "post/2020-08-25-configure-linux-kernel-module"
+    weight = 5
 
 [[menu.main]]
     identifier = "opensource"

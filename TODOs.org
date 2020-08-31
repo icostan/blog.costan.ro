@@ -134,10 +134,11 @@
     - Handbook of applied cryptography
     - Serious cryptography
     - An overview of cryptography
-*** linux kernel module
+*** TODO linux kernel module
     - [X] communication between Hello and World modules
-    - [ ] kernel function via ioctl
-    - [ ] kernel function via syscall
+    - [X] configure module via ioctl
+    - [ ] calling via kernel space from another module (split #1 post)
+    - [ ] calling via user space space via syscall
 *** demo the demo-it in Emacs                                         :emacs:
 *** DONE COVID-19 indicators
 *** CTFs and cryptography attacks                              :cryptography:
@@ -240,10 +241,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-08-23 Sun +2w>
+    SCHEDULED: <2020-09-06 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-08-13 Thu 14:01]
+    :LAST_REPEAT: [2020-08-31 Mon 23:09]
     :END:
+    - State "DONE"       from "TODO"       [2020-08-31 Mon 23:09]
     - State "DONE"       from "TODO"       [2020-08-13 Thu 14:01]
     - State "DONE"       from "TODO"       [2020-07-30 Thu 18:30]
     - State "DONE"       from "TODO"       [2020-07-19 Sun 12:46]
