@@ -1,0 +1,340 @@
+#+title:  Configure Linux kernel module
+#+subtitle: Linux
+#+date:   2020-08-25
+#+tags[]: linux kernel module c ioctl kbuild makefile
+
+In [[https://blog.iuliancostan.com/post/2020-03-24-write-linux-kernel-module/]["Write Linux kernel module"]] blog post I created a simple Hello World module, now it's time to configure it and there are 3 main ways to do it:
+1. at build time
+2. at load time
+3. at run time
+
+** 1. Build time
+
+Here is the simple /world.c/ module that we used in previous post.
+
+#+begin_src c -n :tangle world-build.c
+#include <linux/init.h>
+#include <linux/module.h>
+
+static char *whom = "World";
+module_param(whom, charp, S_IRUGO|S_IWUSR);
+
+void world_print(char* greet)
+{
+	printk(KERN_INFO "%s, %s\n", greet, whom);
+}
+EXPORT_SYMBOL(world_print);
+
+static int __init world_init(void)
+{
+	printk(KERN_INFO "Init, %s\n", whom);
+	return 0;
+}
+module_init(world_init);
+
+static void __exit world_exit(void)
+{
+	printk(KERN_INFO "Exit, %s\n", whom);
+}
+module_exit(world_exit);
+
+MODULE_AUTHOR("Iulian Costan <blog@iuliancostan.com>");
+MODULE_DESCRIPTION("World module that exports a symbol");
+MODULE_LICENSE("Dual BSD/GPL");
+#+end_src
+
+Nothing fancy here, we just build our little module.
+
+#+begin_src sh :results output
+echo 'Building modules...'
+make
+#+end_src
+
+#+RESULTS:
+: Building modules...
+: make -C /lib/modules/`uname -r`/build M=$PWD
+: make[1]: Entering directory '/usr/lib/modules/5.8.2-arch1-1/build'
+:   LARD [M]  /home/icostan/Projects/blog/content/post/world.ko
+: make[1]: Leaving directory '/usr/lib/modules/5.8.2-arch1-1/build'
+
+We can easily see the compiled param value by inspecting with /*strings*/
+
+#+begin_src sh :results output
+strings world.ko | grep World
+#+end_src
+
+#+RESULTS:
+: World
+: description=World module that exports a symbol
+
+** 2. Load time
+
+Load time configuration can be split in 3 categories as well:
+1. *kernel command line* at system boot - where kernel module parameters are passed with the following syntax /*module_name.parameter_name=parameter_value*/ and it can done either:
+   - temporarily/interactively - in boot loader's boot selection menu, you just need to press a key to access the menu: /*e*/ - for /Grub/, /systemd-boot/, /*Tab*/ - /Syslinux/, /*+*/ - rEFInd
+   - permanently - by modifying boot loader's configuration file
+     #+begin_example
+     initrd=\initramfs-linux.img root=/dev/sda1 world.whom=Mondo
+     #+end_example
+2. *configuration file* - /etc/modprobe.d/world.conf
+   #+begin_example
+   options world whom=Mondo
+   #+end_example
+3. *command line* - when module is installed using either /insmod/ or /modprobe/
+
+  #+begin_src sh
+  echo 'Installing module...'
+  sudo insmod ./world.ko whom=Mondo
+  #+end_src
+
+  And check the kernel log:
+
+  #+begin_src sh :results output
+  journalctl -k | grep Mondo
+  #+end_src
+
+  #+RESULTS:
+  : Aug 25 14:25:38 drakarys kernel: Init, Mondo
+
+** 3. Run time
+
+At runtime we can do it the easy way or the hard way, it depends on one's needs.
+
+1. *sysfs* - manual, in command line but this only works if /*S_IWUSR*/ flag is present
+
+  #+begin_src sh :results output
+  sudo echo Sysfs > /sys/module/world/parameters/whom
+  cat /sys/module/world/parameters/whom
+  #+end_src
+
+  #+RESULTS:
+  : Sysfs
+
+2. *ioctl* - programmatic, using a /syscall/ by the same name
+
+  First of all let's define all constants in /*world.h*/ file:
+
+  #+begin_src c :tangle world.h
+  #define WORLD_MAJOR 6
+  #define WORLD_MINOR 0
+  #define WORLD_NAME "world"
+  #define WORLD_WHOM "World"
+  #define WORLD_SIZE 8
+  #define WORLD_IOC_MAGIC 'w'
+  #define WORLD_IOCRESET _IO(WORLD_IOC_MAGIC, 0)
+  #define WORLD_IOCSWHOM _IOW(WORLD_IOC_MAGIC, 1, char)
+  #define WORLD_IOCGWHOM _IOR(WORLD_IOC_MAGIC, 2, char)
+  #+end_src
+
+  And the new /*world.c*/ with /*ioctl*/ capabilities:
+
+  #+begin_src c :tangle world.c
+  #include <linux/init.h>
+  #include <linux/module.h>
+  #include <linux/fs.h>
+  #include <linux/slab.h>
+  #include "world.h"
+
+  static char *whom = NULL;
+  module_param(whom, charp, S_IRUGO|S_IWUSR);
+
+  long world_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+  {
+      int retval = 0;
+
+      switch (cmd) {
+      case WORLD_IOCRESET:
+          strncpy(whom, WORLD_WHOM, WORLD_SIZE);
+          break;
+      case WORLD_IOCSWHOM:
+          /* TODO: we will try to exploit this possible vulnerability in another post */
+          retval = copy_from_user(whom, (char __user *)arg, WORLD_SIZE);
+          break;
+      case WORLD_IOCGWHOM:
+          retval = copy_to_user((char __user *)arg, whom, WORLD_SIZE);
+          break;
+      default:
+          return -ENOTTY;
+      }
+      return retval;
+  }
+
+  void world_print(char* greet)
+  {
+      printk(KERN_INFO "%s, %s\n", greet, whom);
+  }
+  EXPORT_SYMBOL(world_print);
+
+  struct file_operations world_fops = {
+      .owner = THIS_MODULE,
+      .unlocked_ioctl = world_ioctl,
+  };
+
+  static int __init world_init(void)
+  {
+      int err;
+      err = register_chrdev(WORLD_MAJOR, WORLD_NAME, &world_fops);
+      if(!whom) {
+          whom = kmalloc(WORLD_SIZE, GFP_KERNEL);
+          strncpy(whom, WORLD_WHOM, WORLD_SIZE);
+      }
+      printk(KERN_INFO "Init, %s\n", whom);
+      return err;
+  }
+  module_init(world_init);
+
+  static void __exit world_exit(void)
+  {
+      printk(KERN_INFO "Exit, %s\n", whom);
+      if(whom)
+          kfree(whom);
+      unregister_chrdev(WORLD_MAJOR, WORLD_NAME);
+  }
+  module_exit(world_exit);
+
+  MODULE_AUTHOR("Iulian Costan <blog@iuliancostan.com>");
+  MODULE_DESCRIPTION("World module that exports a symbol");
+  MODULE_LICENSE("Dual BSD/GPL");
+  #+end_src
+
+  Building the new module with /*ioctl*/ capabilities:
+
+  #+begin_src sh :results output
+  make
+  #+end_src
+
+  #+RESULTS:
+  : make -C /lib/modules/`uname -r`/build M=$PWD
+  : make[1]: Entering directory '/usr/lib/modules/5.8.5-arch1-1/build'
+  : make[1]: Leaving directory '/usr/lib/modules/5.8.5-arch1-1/build'
+
+  Install module with /*ioctl*/ capabilities:
+
+  #+begin_src sh
+  sudo insmod ./world.ko
+  #+end_src
+
+  Check module installation:
+
+  #+begin_src sh :results output
+  journalctl -k | grep Init
+  #+end_src
+
+  #+RESULTS:
+  : Aug 31 18:48:46 drakarys kernel: Init, World
+
+  Check device registration:
+
+  #+begin_src sh :results output
+  grep -C 1 world /proc/devices
+  #+end_src
+
+  #+RESULTS:
+  :   5 /dev/ptmx
+  :   6 world
+  :   7 vcs
+
+  Create node in */dev*:
+
+  #+begin_src sh :tangle world.sh
+  #!/usr/bin/env sh
+
+  device=world
+
+  echo 'Creating /dev/${device}0 node...'
+  mknod /dev/${device}0 c 6 0
+
+  echo 'Change node permissions...'
+  chgrp users /dev/${device}*
+  chmod 664 /dev/${device}*
+  #+end_src
+
+  Verify node creation:
+
+  #+begin_src sh :results output
+  ls -l /dev/world*
+  #+end_src
+
+  #+RESULTS:
+  : crw-rw-r-- 1 root users 6, 0 Aug 31 18:49 /dev/world0
+
+  Now, let's create a simple /*ioctl.c*/ tool to configure the module from user-space:
+
+  #+begin_src c :tangle ioctl.c
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+  #include <errno.h>
+  #include <unistd.h>
+  #include <fcntl.h>
+  #include <sys/ioctl.h>
+  #include "world.h"
+
+  int main(int argc, char **argv)
+  {
+      int retval = 0;
+
+      int fd = open("/dev/world0", O_WRONLY);
+      if (argc > 1) {
+          retval = ioctl(fd, WORLD_IOCSWHOM, argv[1]);
+          fprintf(stdout, "IOCTL write: %s\n", argv[1]);
+      } else {
+          char* result = malloc(WORLD_SIZE);
+          retval = ioctl(fd, WORLD_IOCGWHOM, result);
+          fprintf(stdout, "IOCTL read: %s\n", result);
+          free(result);
+      }
+      if (retval < 0) {
+          fprintf(stderr, "IOCTL: %s, %d\n", strerror(errno), retval);
+          exit(1);
+      } else {
+          fprintf(stdout, "IOCTL: %s\n", strerror(errno));
+          exit(0);
+      }
+  }
+  #+end_src
+
+  Build /*ioctl.c*/ tool:
+
+  #+begin_src sh
+  cc ioctl.c
+  #+end_src
+
+  #+RESULTS:
+
+  Read and write parameter via /*ioctl*/:
+
+  #+begin_src sh :results output
+  ./a.out
+  ./a.out IOCTL
+  #+end_src
+
+  #+RESULTS:
+  : IOCTL read: World
+  : IOCTL: Success
+  : IOCTL write: IOCTL
+  : IOCTL: Success
+
+  Check module parameter:
+
+  #+begin_src sh :results output
+  cat /sys/module/world/parameters/whom
+  #+end_src
+
+  #+RESULTS:
+  : IOCTL
+
+  Remove module:
+
+  #+begin_src sh
+  sudo rmmod world
+  #+end_src
+
+  Check module removal, it should display the value set via /*ioctl*/ tool:
+
+  #+begin_src sh :results output
+  journalctl -k | grep IOCTL
+  #+end_src
+
+  #+RESULTS:
+  : Aug 31 18:55:01 drakarys kernel: Exit, IOCTL
