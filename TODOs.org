@@ -1,4 +1,4 @@
-#+TODO: TODO | DONE N/A
+#+TODO: TODO | DONE N/A WIP
 * [[elisp:(org-projectile-open-project%20"blog")][blog]] [0/1]
   :PROPERTIES:
   :CATEGORY: blog
@@ -16,7 +16,6 @@
     :END:
 *** DONE bitmex-api-ruby library
     CLOSED: [2019-02-02 Sat] SCHEDULED: <2019-02-02 Sat>
-*** bitmex mobile app
 *** DONE organize projects with org-mode/agenda/journal
     SCHEDULED: <2020-08-11 Tue>
     - TODO file per project
@@ -25,7 +24,7 @@
 *** DONE Homomorphic commitments: Pedersen vs. ElGamal
     SCHEDULED: <2020-02-25 Tue>
 *** Schnorr vs. Threshold signature aggregations               :cryptography:
-*** literate blogging with Orgmode                             :productivity:
+*** literate blogging with Orgmode                       :productivity:emacs:
     - evaluate block inline
     - counting lines
     - pass results between blocks
@@ -127,18 +126,28 @@
 *** DONE diving Philippines
 *** whales hour indicator                                           :trading:
 *** session breaks indicator                                        :trading:
-*** a blog post for each cryptography book/chapter             :cryptography:
-    - Understanding cryptography
-    - Cryptography theory and practice
-    - Practical cryptography for developers
-    - Handbook of applied cryptography
-    - Serious cryptography
-    - An overview of cryptography
-*** TODO linux kernel module
+*** WIP a blog post for each cryptography book/chapter         :cryptography:
+    - An overview of cryptography - 2020
+    - Practical cryptography for developers - 2018
+    - Crypto 101 - 2017
+    - Serious cryptography - 2018
+    - Understanding cryptography - 2010
+    - Handbook of applied cryptography - 2001
+    - Cryptography theory and practice - 1995
+    - A security site
+*** DONE hash functions
+    SCHEDULED: <2020-09-15 Thu>
+    - [X] an overview of cryptography
+    - [X] practical cryptography
+    - [X] understanding cryptography *
+    - [x] handbook of applied cryptography
+    - [ ] cryptography theory and practice
+
+*** WIP linux kernel module
     - [X] communication between Hello and World modules
     - [X] configure module via ioctl
-    - [ ] calling via kernel space from another module (split #1 post)
-    - [ ] calling via user space space via syscall
+    - [ ] calling from kernel space from another module (split #1 post)
+    - [ ] calling from user space space via syscall
 *** demo the demo-it in Emacs                                         :emacs:
 *** DONE COVID-19 indicators
 *** CTFs and cryptography attacks                              :cryptography:
@@ -149,9 +158,10 @@
     - earn BAT by seeing ads with Brave
     - earn BTC by map contribution with OsmAnd
     - earn STEEM for articles with SteemIt
-    - earn DAI by lending via DyDx
+    - earn DAI by lending via DyDx (yield farming)
     - earn FIL by storage via Filecoin?
-    - mining / staking
+    - mining - PoW
+    - staking - PoS
 *** DONE draw math functions
     - 1
     - x
@@ -162,11 +172,13 @@
     - x * log x
 *** DONE high-end Maldives
 *** DONE outpost vs. hanoi coworking vs. el nido
-*** review Market Wizards books                                     :trading:
+*** WIP review Market Wizards books                                 :trading:
     - [X] hedge fund market wizards
     - [ ] new market wizards
     - [ ] market wizards
 *** DONE generate monero address
+*** TODO first US visit in 2000
+    SCHEDULED: <2020-09-25 Fri>
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -241,10 +253,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-09-06 Sun +2w>
+    SCHEDULED: <2020-09-25 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-08-31 Mon 23:09]
+    :LAST_REPEAT: [2020-09-18 Fri 10:46]
     :END:
+    - State "DONE"       from "TODO"       [2020-09-18 Fri 10:46]
     - State "DONE"       from "TODO"       [2020-08-31 Mon 23:09]
     - State "DONE"       from "TODO"       [2020-08-13 Thu 14:01]
     - State "DONE"       from "TODO"       [2020-07-30 Thu 18:30]
@@ -261,22 +274,5 @@
     - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
     - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
     - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
-    - State "DONE"       from "TODO"       [2019-12-22 Sun 18:48]
-    - State "DONE"       from "TODO"       [2019-12-16 Mon 18:34]
-    - State "DONE"       from "TODO"       [2019-11-21 Thu 22:36]
-    - State "DONE"       from "TODO"       [2019-11-08 Fri 23:02]
-    - State "DONE"       from "TODO"       [2019-10-22 Tue 14:55]
-    - State "DONE"       from "TODO"       [2019-10-09 Wed 15:37]
-    - State "DONE"       from "TODO"       [2019-10-01 Tue 17:55]
-    - State "DONE"       from "TODO"       [2019-09-10 Tue 16:59]
-    - State "DONE"       from "TODO"       [2019-08-30 Fri 10:47]
-    - State "DONE"       from "TODO"       [2019-08-13 Tue 10:57]
-    - State "DONE"       from "TODO"       [2019-07-23 Tue 16:43]
-    - State "DONE"       from "TODO"       [2019-07-16 Tue 21:31]
-    - State "DONE"       from "TODO"       [2019-06-27 Thu 10:56]
-    - State "DONE"       from "TODO"       [2019-06-26 Wed 18:10]
-    - State "DONE"       from "TODO"       [2019-05-31 Fri 16:58]
-    - State "DONE"       from "TODO"       [2019-05-03 Fri 20:18]
-    - State "DONE"       from "TODO"       [2019-04-19 Fri 15:36]
-    - State "DONE"       from "TODO"       [2019-04-09 Tue 17:12]
-    - State "DONE"       from "TODO"       [2019-03-27 Wed 15:16]
+    - [X] cryptography
+    - [ ] emacs

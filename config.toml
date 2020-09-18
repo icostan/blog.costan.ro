@@ -146,6 +146,11 @@ googleAnalytics = "UA-354095-4"
     name = "Commitment schemes"
     url = "post/2020-02-25-commitment-schemes"
     weight = 8
+[[menu.main]]
+    parent = "crypto"
+    name = "Hash functions"
+    url = "post/2020-09-15-hash-functions"
+    weight = 8
 
 [[menu.main]]
     identifier = "emacs"

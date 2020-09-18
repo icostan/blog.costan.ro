@@ -1,0 +1,123 @@
+#+title: Hash functions
+#+subtitle: Cryptography
+#+date: 2020-09-15
+#+tags[]: cryptography hash digest mdc mac preimage collision
+
+In simple terms, hash functions transform input data of arbitrary size (e.g. text, binary, etc) to fixed-length output (called hash value, hash code, fingerprint, message digest or simply hash) in a deterministic way. What else?
+
+Types of hash functions:
+  - *dedicated functions* - specially designed for hashing (e.g. MD4 family including MD4, MD5, SHA-1, SHA-2, RIPEMD)
+  - *based on block cipher* - constructed using block-cipher chaining algorithms (e.g. Whirlpool)
+  - *based on modular arithmetic* - as compression function (e.g. MASH-1) but they were proven to be insecure and slow
+
+Security of hash functions:
+  - *ad-hoc basis* - very efficient functions where bits of the message are mixed together (bit-wise/modular operations, compression, etc) to produce the hash but security is very hard to prove or disprove (a conjecture)
+  - *provable secure* - based on hard mathematical problems (discrete log, integer factorization, etc) and finding collision is as hard as breaking the underlying problem but they are less efficient to be used in practice
+
+A more academic functional classification:
+  - *modification detection codes* (MDCs) - unkeyed (only data as input) hash functions used for /message integrity/
+  - *message authentication codes* (MACs) - keyed (two inputs: data and a key) hash functions that are used to guarantee both /message integrity/ and /message authenticity/
+
+Let's have a look at properties/applications of MDCs, leaving MACs for another post.
+
+* General properties
+
+Given the above definition, hash functions have at least the following 4 properties:
+
+** 1. Compression
+   This is simple to see since any hash functions transform an arbitrary size data (e.g. long text file with thousands of words) into fixed length hash value (e.g. 256 bit) by either mixing the input bits or splitting input into fixed-size blocks.
+
+** 2. Deterministic
+   Again, this should be self-evident: given the same input data, the hash function has to return the same hash value.
+
+** 3. Efficient
+   Easy to compute the hash value for any given message. It has to be computationally efficient and executed in polynomial-time, please see [[https://blog.iuliancostan.com/post/2020-06-04-bigo-complexity-with-graphs/][BigO notation, complexity]] post for details about algorithms and complexities.
+
+** 4. Pseudo-randomness
+   Hard to distinguish a hash function from a [[https://en.wikipedia.org/wiki/Random_oracle][Random Oracle]] model.
+
+* Security properties
+
+On the other hand, cryptographic hash functions (or one-way encryption) are required to satisfy the following security requirements:
+
+** 1. Preimage resistance (/one-wayness/)
+   /Definition:/ given only /*h(x)*/, it is infeasible to find /*x*/.
+   This is the /one-way/ property of the hash functions, it is easy to compute one-way and infeasible to invert.
+
+   /Application:/ *password storage* - any computer system stores the hash of the password instead of plain text password. Let's keep it simple and ignore [[https://en.wikipedia.org/wiki/Salt_(cryptography)][/salting/]] and [[https://en.wikipedia.org/wiki/Rainbow_table][/rainbow table/]] for now.
+
+   /Intuition:/ *preimage resistance* is required, otherwise an adversarial will be able to invert the hashing algorithm and figure out the original passwords.
+
+** 2. Collision resistance
+*** 2.1 Weak collision resistance (/second preimage resistance/)
+    /Definition/: given /*x*/ and thus /*h(x)*/, it is infeasible to find another /*x'*/ where /*x' != x*/ and /*h(x') == h(x)*/.
+    On the other hand, due to [[https://en.wikipedia.org/wiki/Pigeonhole_principle][Pigeonhole principle]] (or Dirichlet's drawer principle) collisions always exist, the question is how hard is to find them.
+
+    /Application:/ *file integrity* - to check whether the downloaded file has been tampered with or not
+
+    /Intuition:/
+    - *preimage resistance* is not needed in this case since both file content and hash value are public
+    - *second preimage resistance* is required to prevent an attacker to modify the file in such a way (to basically find /*x'*/) that original hash value is preserved
+
+*** 2.2 Strong collision resistance (/collision resistance/)
+    /Definition:/ infeasible to find any /*x1, x2*/ pair where /*x1 != x2*/ and /*h(x1) == h(x2)*/. See [[https://en.wikipedia.org/wiki/Birthday_problem][Birthday paradox]].
+
+    /Application:/ *dice roll* - players bet (commit) on an output value, one rolls the dice then players reveal their bets.
+
+    /Intuition:/
+    - *preimage resistance* is required, otherwise another player can invert the hash and find the original bet /*x*/
+    - *collision resistance* is required to prevent the player to reveal another bet /*x2*/ that has the same hash value and wins the game
+
+*Note:* sometimes the terms *preimage resistance*, *second preimage resistance* and, *collision resistance* are confusing and it is important to understand that:
+  - /second preimage resistance/ does not guarantee /preimage resistance/ - you might find another /*x'*/ that hashes to same hash value (collision) but you can't find the original /*x*/
+  - /collision resistance/ implies /second preimage resistance/ - if you can find a pair /*x1, x2*/ you can also find /*x'*/. Strong resistance implies weak resistance.
+
+** 3. Non-malleability
+   /Definition:/ given only /*h(x)*/, it is infeasible to find /*h(y)*/ where and /*x*/, /*y*/ are related in some way (e.g. /*y=x+1*/).
+
+   /Application:/ *auctions* - where each participant commits to a value and the highest bidder wins.
+
+   /Intuition:/
+   - *preimage resistance* and *collision resistance* are required for the same reasons as above: to prevent finding /*x*/ and /*x2*/
+   - *non-malleability* is required to prevent another player to bet more (find and reveal /*h(y)*/) even if the original bet /*x*/ is not known yet
+
+* Additional properties
+
+** 1. Non-correlation
+   Inputs bits and output bits should not be correlated in any way.
+
+** 2. Near-collision resistance
+   Infeasible to find any /*x1, x2*/ pair such that /*h(x1)*/ and /*h(x2)*/ differ in only small number of bits.
+
+** 3. Partial preimage resistance
+   It should be difficult to recover any subset (aka substring) of input data.
+
+* A bit of history
+  - Message Digest (MD) - developed by Ronald Rivest (except the MD2)
+    - MD2 - old, designed for systems with limited memory - BROKEN
+    - MD4 - similar to MD2 but adapted for software - BROKEN
+    - MD5 - still in use today but it has many weaknesses firstly demonstrated by Hans Dobbertin - BROKEN
+    - MD6 - the latest message digest algorithm
+  - Secure Hash Algorithm (SHA) - developed by NIST
+    - SHA 1 - deprecated but still widely used - BROKEN
+    - SHA 2 - based on the cryptographic concept called "Merkle–Damgard construction"
+    - SHA 3 - Keccak hashes family, which are based on the cryptographic concept "sponge construction". NIST held a SHA3 competition and the winner was Keccak
+  - BLAKE - one of the finalists of NIST SHA3 competition, less used in practice
+  - RACE Integrity Primitives Evaluation Message Digest (RIPEMD) - with variants RIPEMD-160, RIPEMD-256
+  - Tiger - designed to run on 6-bit processors and replace MD4, MD5 and SHA1, weaknesses found
+  - Whirlpool - designed by V. Rijmen (co-inventor of AES) recommended by New European Schemes for Signatures, Integrity, and Encryption (NESSIE)
+  - SM3 - Chinese Standard is 256-bit cryptographic hash derived from SHA-2
+  - GOST - the Russian national standard
+
+
+* References
+ - [[https://en.wikipedia.org/wiki/Cryptographic_hash_function]]
+ - [[https://en.wikipedia.org/wiki/Security_of_cryptographic_hash_functions]]
+ - [[https://en.wikipedia.org/wiki/Collision_resistance]]
+ - [[https://link.springer.com/chapter/10.1007/978-3-642-10366-7_31]]
+ - [[https://www.youtube.com/watch?v=KqqOXndnvic&t=3520s]]
+ - [[https://www.garykessler.net/library/crypto.html#hash]]
+ - [[https://cryptobook.nakov.com/cryptographic-hash-functions]]
+ - [[https://www.springer.com/gp/book/9783642041006]]
+ - [[http://cacr.uwaterloo.ca/hac/]]
+ - [[https://cs.uwaterloo.ca/~dstinson/CTAP2/CTAP2.html]]
