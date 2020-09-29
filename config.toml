@@ -228,34 +228,39 @@ googleAnalytics = "UA-354095-4"
     weight = 3
 
 [[menu.main]]
-    identifier = "nomad"
-    name = "Nomad"
+    identifier = "travel"
+    name = "Travel"
     weight = 5
 [[menu.main]]
-    parent = "nomad"
+    parent = "travel"
     name = "High-end Maldives"
     url = "post/2020-05-23-high-end-maldives"
     weight = 1
 [[menu.main]]
-    parent = "nomad"
+    parent = "travel"
     name = "Surviving Bali"
     url = "post/2019-11-19-surviving-bali"
     weight = 2
 [[menu.main]]
-    parent = "nomad"
+    parent = "travel"
     name = "Backpacking Viet Nam"
     url = "post/2019-12-21-backpacking-vietnam"
     weight = 3
 [[menu.main]]
-    parent = "nomad"
+    parent = "travel"
     name = "Diving Palawan"
     url = "post/2020-01-21-diving-palawan"
     weight = 4
 [[menu.main]]
-    parent = "nomad"
+    parent = "travel"
     name = "Coworking spaces"
     url = "post/2020-06-24-outpost-toong-clockin-coworking"
     weight = 5
+[[menu.main]]
+    parent = "travel"
+    name = "First USA visit"
+    url = "post/2020-09-25-first-usa-visit"
+    weight = 6
 
 
 [[menu.main]]

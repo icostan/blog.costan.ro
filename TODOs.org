@@ -177,8 +177,9 @@
     - [ ] new market wizards
     - [ ] market wizards
 *** DONE generate monero address
-*** TODO first US visit in 2000
+*** DONE first US visit in 2000
     SCHEDULED: <2020-09-25 Fri>
+*** generate ethereum address                                          :coin:
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -253,10 +254,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-09-25 Sun +2w>
+    SCHEDULED: <2020-10-09 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-09-18 Fri 10:46]
+    :LAST_REPEAT: [2020-09-29 Tue 16:00]
     :END:
+    - State "DONE"       from "TODO"       [2020-09-29 Tue 16:00]
     - State "DONE"       from "TODO"       [2020-09-18 Fri 10:46]
     - State "DONE"       from "TODO"       [2020-08-31 Mon 23:09]
     - State "DONE"       from "TODO"       [2020-08-13 Thu 14:01]

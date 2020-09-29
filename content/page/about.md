@@ -4,7 +4,7 @@ subtitle: The hard way, the easy way
 comments: false
 ---
 
-"I work for no one, I trust no one, I am just a soldier of fortune" - Julius C.
+"I work for no one, I trust no one, I am a free man." - Julius C.
 
 An old fashion "Jack of all trades" kind of a guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto land.
 
