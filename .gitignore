@@ -5,7 +5,11 @@ public/
 *.a
 *.o
 *.c
+*.h
+*.asm
 *.sh
+*.py
+a.out
 modules.order
 Module.symvers
 Kbuild

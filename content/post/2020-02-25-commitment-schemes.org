@@ -13,12 +13,12 @@ In general a commitment scheme is executed in 3 phases:
 1. *setup* - the prover, the verifier (and sometimes a trusted third-party for secret parameters) agree on common system's parameters
 2. *commit* - the prover generates some random value /*r*/, commits to message /*m*/ and calculates and sends the commitment /*c*/ to the verifier
 3. *verify* - also called decommit or open
-  - the prover reaveals the message /*m*/ and opening value /*r*/
+  - the prover reveals the message /*m*/ and opening value /*r*/
   - the verifier takes /*c*/, /*m*/ and  /*r*/ and returns true/false whether the verification succeeds or not
 
 Also, commitment schemes have two main properties that we need to consider:
 1. *hiding* or *confidentiality* - verifier's capability to learn any information, given only the commitment /*c*/:
-   - /perfectly hiding/ (or information teoretically hiding) - even an unbounded (with infinite computation power) adversary cannot reveal the *committed* message /*m*/
+   - /perfectly hiding/ (or information theoretically hiding) - even an unbounded (with infinite computation power) adversary cannot reveal the *committed* message /*m*/
    - /computationally hiding/ - with infinite computation power an adversary can solve a hard problem (aka trapdoor function: prime factorization, discrete logarithm, etc) and find the *committed* message /*m*/
 2. *binding* - prover's capability to find *another* message /*m'*/ and open the commitment /*c*/ without revealing the *committed* message /*m*/:
    - /perfectly binding/ - there is absolutely no way for an unbounded adversary to find *another* message /*m'*/
