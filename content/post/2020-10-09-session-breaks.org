@@ -1,0 +1,14 @@
+#+title: Session breaks
+#+subtitle: Trading
+#+date: 2020-10-09
+#+tags[]: trading indicator tradingview pivotpoints USDJPY
+
+The most successful indicator so far is /*"Session breaks"*/ that renders vertical lines for open hour of each trading session.
+
+Usually the open hour is quite volatile in all regions, it acts as pivot point and price chances direction. You can easily see it in the chart below (/Open image in new TAB/ for details)
+
+[[file:../../img/session-breaks.png]]
+
+Add it to your chart and use as day by day trading tool or check out the [[https://www.tradingview.com/script/f7NaHBPa-Session-breaks/][source code]].
+
+Trade long and prosper!

@@ -33,7 +33,9 @@
 *** DONE Week/Day close tradingview indicator
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** cryptographic trap-doors                                   :cryptography:
-*** homomorphic/functional encryption                          :cryptography:
+*** MPC, FHE, FE                                            :cryptography:
+    - multi party computation, homomorphic/functional encryption
+    - https://www.esat.kuleuven.be/cosic/blog/the-three-musketeers-of-secure-computation-mpc-fhe-and-fe/
 *** DONE zero-knowledge proofs
     CLOSED: [2019-08-29 Thu 17:16]
 *** DONE RSA encryption scheme
@@ -112,6 +114,7 @@
 *** DONE elliptic curves
     CLOSED: [2019-10-01 Tue 17:38]
 *** finite fields with graphs                                  :cryptography:
+    - https://medium.com/loopring-protocol/learning-cryptography-finite-fields-ced3574a53fe
 *** DONE leaving Apple/Googlle and /e/
     CLOSED: [2019-10-09 Wed 14:40]
 *** disk encryption/block ciphers                                     :linux:

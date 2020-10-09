@@ -292,6 +292,11 @@ googleAnalytics = "UA-354095-4"
     name = "Hedge Fund Market Wizards book"
     url = "post/2020-07-28-hedge-fund-market-wizards-book"
     weight = 5
+[[menu.main]]
+    parent = "trading"
+    name = "Session breaks"
+    url = "post/2020-10-09-session-breaks"
+    weight = 6
 
 [[menu.main]]
     name = "Tags"
