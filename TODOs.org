@@ -175,14 +175,17 @@
     - x * log x
 *** DONE high-end Maldives
 *** DONE outpost vs. hanoi coworking vs. el nido
-*** WIP review Market Wizards books                                 :trading:
+*** WIP review Market Wizards books
     - [X] hedge fund market wizards
     - [ ] new market wizards
     - [ ] market wizards
 *** DONE generate monero address
 *** DONE first US visit in 2000
     SCHEDULED: <2020-09-25 Fri>
-*** generate ethereum address                                          :coin:
+*** DONE generate ethereum address                                     :coin:
+*** synthetics options                                              :trading:
+    - https://www.theoptionsguide.com/synthetic-position.aspx
+*** TODO harvest arbitrage
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -257,10 +260,12 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-10-09 Fri +2w>
+    SCHEDULED: <2020-11-06 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-09-29 Tue 16:00]
+    :LAST_REPEAT: [2020-10-30 Fri 08:45]
     :END:
+    - State "DONE"       from "TODO"       [2020-10-30 Fri 08:45]
+    - State "DONE"       from "TODO"       [2020-10-10 Sat 07:10]
     - State "DONE"       from "TODO"       [2020-09-29 Tue 16:00]
     - State "DONE"       from "TODO"       [2020-09-18 Fri 10:46]
     - State "DONE"       from "TODO"       [2020-08-31 Mon 23:09]
