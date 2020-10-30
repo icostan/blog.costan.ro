@@ -33,6 +33,11 @@
 *** DONE Week/Day close tradingview indicator
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** cryptographic trap-doors                                   :cryptography:
+    - prime factorization
+    - discrete log
+    - EC discrete log
+    - lattice
+    - isogeny
 *** MPC, FHE, FE                                            :cryptography:
     - multi party computation, homomorphic/functional encryption
     - https://www.esat.kuleuven.be/cosic/blog/the-three-musketeers-of-secure-computation-mpc-fhe-and-fe/
@@ -128,8 +133,8 @@
 *** DONE backpacking Vietnam
 *** DONE diving Philippines
 *** whales hour indicator                                           :trading:
-*** session breaks indicator                                        :trading:
-*** WIP a blog post for each cryptography book/chapter         :cryptography:
+*** DONE session breaks indicator
+*** WIP a blog post for each cryptography book/chapter
     - An overview of cryptography - 2020
     - Practical cryptography for developers - 2018
     - Crypto 101 - 2017
@@ -160,11 +165,13 @@
 *** earn decentralized income                              :decentralization:
     - earn BAT by seeing ads with Brave
     - earn BTC by map contribution with OsmAnd
-    - earn STEEM for articles with SteemIt
-    - earn DAI by lending via DyDx (yield farming)
+    - earn STEEM/ETH for articles with SteemIt, Publish0x
+    - eacn stable coins by lending on Compound/Aave/DyDx
+    - earn crypto by lending via yield farming
     - earn FIL by storage via Filecoin?
-    - mining - PoW
-    - staking - PoS
+    - earn NMR by training machine learning models
+    - mining - PoW - Monero, Ethereum
+    - staking - PoS - ???
 *** DONE draw math functions
     - 1
     - x
@@ -185,7 +192,8 @@
 *** DONE generate ethereum address                                     :coin:
 *** synthetics options                                              :trading:
     - https://www.theoptionsguide.com/synthetic-position.aspx
-*** TODO harvest arbitrage
+*** harvest arbitrage attack
+*** iota address
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
