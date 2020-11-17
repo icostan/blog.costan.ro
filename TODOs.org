@@ -6,7 +6,10 @@
 ** Posts
 *** DONE write 2018 review
     CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
-*** signature aggregation schemas (Threshold, Ring)            :cryptography:
+*** signature aggregation schemes                              :cryptography:
+    - Threshold
+    - Ring
+
 *** DONE open source Actihunt
     CLOSED: [2019-02-14 Thu] SCHEDULED: <2019-02-14 Thu>
 *** DONE deribit-api-ruby library
@@ -35,11 +38,11 @@
 *** cryptographic trap-doors                                   :cryptography:
     - prime factorization
     - discrete log
-    - EC discrete log
+    -- EC discrete log
     - lattice
     - isogeny
 *** MPC, FHE, FE                                            :cryptography:
-    - multi party computation, homomorphic/functional encryption
+    - multi party computation, homomorphic and, functional encryption
     - https://www.esat.kuleuven.be/cosic/blog/the-three-musketeers-of-secure-computation-mpc-fhe-and-fe/
 *** DONE zero-knowledge proofs
     CLOSED: [2019-08-29 Thu 17:16]
@@ -54,10 +57,6 @@
 *** NTRU lattice-based encryption scheme                       :cryptography:
     :PROPERTIES:
     :ID:       750DD774-7C04-45F2-90BF-5FE3FFB4E26E
-    :END:
-    :LOGBOOK:
-    CLOCK: [2019-05-03 Fri 11:49]--[2019-05-03 Fri 15:09] =>  3:20
-    CLOCK: [2019-05-02 Thu 10:12]--[2019-05-02 Thu 18:04] =>  7:52
     :END:
 *** DONE from Jekyll to Hugo
     CLOSED: [2019-04-19 Fri 14:50]
@@ -140,9 +139,9 @@
     - Crypto 101 - 2017
     - Serious cryptography - 2018
     - Understanding cryptography - 2010
+    - Cryptography and Network Security - 2005
     - Handbook of applied cryptography - 2001
     - Cryptography theory and practice - 1995
-    - A security site
 *** DONE hash functions
     SCHEDULED: <2020-09-15 Thu>
     - [X] an overview of cryptography
@@ -194,6 +193,13 @@
     - https://www.theoptionsguide.com/synthetic-position.aspx
 *** harvest arbitrage attack
 *** iota address
+*** DONE algebraic structures
+*** individual algebraic structures
+    - http://mathonline.wikidot.com/abstract-algebra
+    - groups / group actions
+    - rings / fields
+    - lattice?
+
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -222,6 +228,7 @@
 *** code snippets, line numbers
 *** zero-knowledge proofs tag
 *** replace old md with org files
+*** use org symbols e.g. \phi
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -268,10 +275,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-11-06 Fri +2w>
+    SCHEDULED: <2020-11-20 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-10-30 Fri 08:45]
+    :LAST_REPEAT: [2020-11-17 Tue 17:20]
     :END:
+    - State "DONE"       from "TODO"       [2020-11-17 Tue 17:20]
     - State "DONE"       from "TODO"       [2020-10-30 Fri 08:45]
     - State "DONE"       from "TODO"       [2020-10-10 Sat 07:10]
     - State "DONE"       from "TODO"       [2020-09-29 Tue 16:00]
