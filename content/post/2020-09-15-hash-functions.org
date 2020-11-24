@@ -5,6 +5,23 @@
 
 In simple terms, hash functions transform input data of arbitrary size (e.g. text, binary, etc) to fixed-length output (called hash value, hash code, fingerprint, message digest or simply hash) in a deterministic way. What else?
 
+  #+begin_src ditaa :file hashfunctions.png :cmdline -r :exports none
+    +--------+   +--------+    +-------+
+    | ...    |   |        |    |       |
+    |        |-->+  hash  |--> | hash  |
+    | text   |   |function|    | code  |
+    | image  |   |        |    |       |
+    | binary |   |        |    |       |
+    | ...    |   |        |    |       |
+    |     {d}|   |        |    |       |
+    +---+----+   +--------+    +-------+
+        :                         ^
+        |       lots of work      |
+        +-------------------------+
+  #+end_src
+
+  [[file:/img/hashfunctions.png]]
+
 Types of hash functions:
   - *dedicated functions* - specially designed for hashing (e.g. MD4 family including MD4, MD5, SHA-1, SHA-2, RIPEMD)
   - *based on block cipher* - constructed using block-cipher chaining algorithms (e.g. Whirlpool)
@@ -19,6 +36,7 @@ A more academic functional classification:
   - *message authentication codes* (MACs) - keyed (two inputs: data and a key) hash functions that are used to guarantee both /message integrity/ and /message authenticity/
 
 Let's have a look at properties/applications of MDCs, leaving MACs for another post.
+
 
 * General properties
 
