@@ -204,9 +204,24 @@ googleAnalytics = "UA-354095-4"
     weight = 5
 
 [[menu.main]]
+    identifier = "math"
+    name = "Math"
+    weight = 5
+[[menu.main]]
+    parent = "math"
+    name = "Complexities with graphs"
+    url = "post/2020-06-04-bigo-complexity-with-graphs/"
+    weight = 1
+[[menu.main]]
+    parent = "math"
+    name = "Algebraic structures"
+    url = "post/2020-11-11-algebraic-structures-set-group-ring/"
+    weight = 2
+
+[[menu.main]]
     identifier = "opensource"
     name = "Open Source"
-    weight = 5
+    weight = 6
 [[menu.main]]
     parent = "opensource"
     name = "Bitmex-API"
@@ -233,46 +248,11 @@ googleAnalytics = "UA-354095-4"
     url = "post/2020-04-27-huveragy"
     weight = 3
 
-[[menu.main]]
-    identifier = "travel"
-    name = "Travel"
-    weight = 6
-[[menu.main]]
-    parent = "travel"
-    name = "High-end Maldives"
-    url = "post/2020-05-23-high-end-maldives"
-    weight = 1
-[[menu.main]]
-    parent = "travel"
-    name = "Surviving Bali"
-    url = "post/2019-11-19-surviving-bali"
-    weight = 2
-[[menu.main]]
-    parent = "travel"
-    name = "Backpacking Viet Nam"
-    url = "post/2019-12-21-backpacking-vietnam"
-    weight = 3
-[[menu.main]]
-    parent = "travel"
-    name = "Diving Palawan"
-    url = "post/2020-01-21-diving-palawan"
-    weight = 4
-[[menu.main]]
-    parent = "travel"
-    name = "Coworking spaces"
-    url = "post/2020-06-24-outpost-toong-clockin-coworking"
-    weight = 5
-[[menu.main]]
-    parent = "travel"
-    name = "First USA visit"
-    url = "post/2020-09-25-first-usa-visit"
-    weight = 6
-
 
 [[menu.main]]
     identifier = "trading"
     name = "Trading"
-    weight = 6
+    weight = 7
 [[menu.main]]
     parent = "trading"
     name = "Weekly Monthly Close"
@@ -307,9 +287,9 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 7
+    weight = 8
 
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 8
+    weight = 9
