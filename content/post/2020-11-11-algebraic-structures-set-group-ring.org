@@ -6,7 +6,7 @@
 The easiest way to understand algebraic structures, starting with basic structure called /Set/ and incrementally add properties on top of it to build more complex structures.
 
 ** TL;DR;
-    A group /*(G, +)*/ - a set /*G*/ and one binary operation (e.g. addition) and has the following properties:
+    A group /*(G, +)*/ - a set /*G*/ and one binary operation (e.g. addition) that has the following properties:
     1. operation is closed - magma
     2. operation is associative - semigroup
     3. has identity element - monoid
@@ -20,7 +20,7 @@ The easiest way to understand algebraic structures, starting with basic structur
     A ring /*(R, +, *)*/ - a set /*R*/ and two binary operations (addition, multiplication):
     - abelian group under addition
     - monoid under multiplication
-    - addition is distributed over multiplication
+    - multiplication is distributed over addition
 
     A field /*(F, +, *)*/ is a ring with:
     - abelian group under both addition and multiplication
@@ -181,7 +181,7 @@ The easiest way to understand algebraic structures, starting with basic structur
 
     /Properties/:
     - /*closure*/: under both addition and multiplication
-    - /*distributive*/: addition distributes over multiplication /a * (b + c) = (a * b) + (b * c)/
+    - /*distributive*/: multiplication distributes over addition /a * (b + c) = (a * b) + (b * c)/
 
 *** 3.2 Semiring - a ringoid whose set is monoid under both operations
 
@@ -211,7 +211,7 @@ The easiest way to understand algebraic structures, starting with basic structur
     - /*inverse*/: all non-zero elements have inverses under multiplication
 
 *** 3.7 Field - a commutative division ring
-    A field defined as /*(F, +, *)*/ that can be finite or infinite as well.
+    A field defined as /*(F, +, *)*/, whose set /*F*/ (which can be finite or infinite) is an abelian group under both addition and multiplication.
 
     #+begin_src sage :session structures
       F = FiniteField(5)

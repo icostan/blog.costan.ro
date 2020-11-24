@@ -194,11 +194,28 @@
 *** harvest arbitrage attack
 *** iota address
 *** DONE algebraic structures
-*** individual algebraic structures
+*** individual algebraic structures                                    :math:
     - http://mathonline.wikidot.com/abstract-algebra
     - groups / group actions
     - rings / fields
     - lattice?
+*** derivatives                                                     :trading:
+    - spot: forex, stocks, commods, crypto
+    - cfd
+    - forward
+    - futures
+    - options
+    - warrants
+*** famous formulas                                                    :math:
+    - https://en.wikipedia.org/wiki/Euler%27s_identity, https://en.wikipedia.org/wiki/Mathematical_beauty
+    - exponentiation, log, square: b^x=r
+*** TODO interest rate                                              :finance:
+    - fixed/simple vs compounding
+    - periods: annually, monthly, daily
+    - rule of 72 - doubling
+    - continuous compounding with e
+    - https://www.cnbc.com/id/48220824
+    - https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial
 
 ** Fixes
 *** DONE add Euler's method to RSA
