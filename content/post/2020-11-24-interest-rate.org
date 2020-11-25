@@ -1,0 +1,293 @@
+#+title: Interest rate
+#+subtitle: Finance
+#+date: 2020-11-24
+#+tags[]: finance math interestrate compound 72
+
+Albert Einstein: "Compound interest is the eighth wonder of the world. He who understands it, earns it ... he who doesn't ... pays it."
+
+   #+begin_src ditaa :file interestrate.png :cmdline -r :exports none
+    +-----------+        +---------+
+    |    PLC    |        |         |
+    |  E = m*c  +<------>+   PLC   +
+    |    cRED   |        |  c707   |
+    +-----------+        +----+----+
+   #+end_src
+
+   #+RESULTS:
+   [[file:interestrate.png]]
+
+
+** Terminology
+   A bit of terminology first:
+
+   \[
+   \color{blue}
+   P - Principal
+   \\
+   Px - Principal + interest\ after\ 'x'\ years
+   \\
+   \color{red}
+   r - Annual\ interest\ rate
+   \\
+   \color{green}
+   t - Years
+   \]
+
+
+** Simple interest rate
+
+   Let /*P*/ be the principal that is borrowed, after first year the balance that needs to be paid back is the principal /*P*/ plus the interest:
+
+   \[
+   \\
+   P1 = P + r*P
+   \]
+
+   after two years we have the principal plus the interest for 2 years:
+   \[
+   \\
+   P2 = P + r*P + r*P
+   \\
+   \]
+
+   then after 3 years ...
+   \[
+   \\
+   P3 = P + r*P + r*P + r*P
+   \\
+   \]
+
+   we can see that /*r*P*/ term repeats for each year, generalize for /*t*/ years:
+   \[
+   \\
+   Pt = P + t*r*P
+   \\
+   \]
+
+   and finally extract /*P*/ and remember the formula for later use:
+   \[
+   \color{blue}
+   S = P*(1 + r*t)
+   \]
+
+   Let's see a simple example, borrow $100 at 12% annual rate for 20 years:
+
+   #+begin_src python :results output :session interest
+     p, r, t = 100, 0.12, 20
+     s = p * (1 + t*r)
+     print('$%.2f' % s)
+   #+end_src
+
+   #+RESULTS:
+   : $340.00
+
+   Looks right, $100 at 12% interest rate makes $12/year for 20 years is $240 plus $100.
+
+** Compounding interest rate
+*** Yearly compounding
+
+   When compounding, we use previous year's balance /*Px*/ (intermediate principal) instead of initial principal /*P*/.
+
+   after 1 year:
+   \[
+   P1 = P + r*P
+   \\
+   P1 = P*(1 + r)
+   \]
+
+   2nd year:
+   \[
+   P2 = P1 + r*P1
+   \\
+   P2 = P*(1 + r) + r*P*(1 + r)
+   \\
+   P2 = P(1 + r)(1 + r)
+   \\
+   P2 = P(1 + r)^2
+   \]
+
+   3rd year
+   \[
+   P3 = P2 + r*P2
+   \\
+   P3 = P*(1 + r)^3
+   \]
+
+   and so on, you've got the idea, by the same technique after /*t*/ years we end up with:
+   \[
+   \color{blue}
+   C = P*(1 + r)^t
+   \]
+
+   Same example as above with annual compound:
+
+   #+begin_src python :results output :session interest
+     c = p * (1 + r)**t
+     print('$%.2f' % c)
+   #+end_src
+
+   #+RESULTS:
+   : $964.63
+
+   Wow, look at that, /*$964*/ vs /*$340*/, the final balance when compounding is a lot bigger, which makes sense, after first year we receive interest on interest and balance adds up quickly.
+
+*** Monthly compounding
+   Let's introduce a new variable /*n*/ which is the number of periods in a year:
+   - monthly interest rate: /*r/n*/
+   - total compounded periods: /*t*n*/
+
+   The new compounding formula is:
+
+   \[
+   \color{blue}
+   C = P*(1 + \frac{r}{n})^{t*n}
+   \]
+
+   When compounding monthly we have 12 months in a year and /*n = 12*/
+   #+begin_src python :results output :session interest
+     n = 12
+     c = p * (1 + r/n)**(t*n)
+     print('$%.2f' % c)
+   #+end_src
+
+   #+RESULTS:
+   : $1089.26
+
+
+*** Daily compounding
+
+   365 days in a year and /*n=365*/
+
+   #+begin_src python :results output :session interest
+     n = 365
+     c = p * (1 + r/n)**(t*n)
+     print('$%.2f' % c)
+   #+end_src
+
+   #+RESULTS:
+   : $1101.88
+
+   Again, /*$1101 vs. $1089 vs $964*/, the more often the compounding, the bigger the final balance.
+
+*** Continuously compounding
+
+    What about hourly compounding or even per minute or per millisecond? we can increase /*n*/ and get the results but I want to find a formula that fits them all starting with:
+    \[
+    \color{blue}
+    C = P*(1 + \frac{r}{n})^{t*n}
+    \]
+
+    Since we compound more and more often then /*n*/ gets bigger and bigger and approaches infinity and we can rewrite the formula as a /limit/:
+    \[
+    C = \lim_{n \to +\infty} P*(1 + \frac{r}{n})^{t*n}
+    \]
+
+    Define /*x*/ variable as:
+    \[
+    x = \frac{n}{r}
+    \\
+    n = x * r
+    \]
+
+    then /*x*/ is direct proportional with /*n*/, as /*n*/ approaches infinity, then /*x*/ approaches infinity as well, /limit/ formula holds and we can substitute /*n*/ with /*x*/:
+    \[
+    C = \lim_{x \to +\infty} P*(1 + \frac{r}{x*r})^{t*x*r}
+    \]
+    extract constant /*P*/ outside the limit, cancel out /*r*/ and commute the exponents:
+    \[
+    C = P * (\lim_{x \to +\infty} (1 + \frac{1}{x})^x)^{r*t}
+    \]
+
+    What does the above formula looks like? Calculus anyone? Looks like the [[https://en.wikipedia.org/wiki/E_(mathematical_constant)][Euler's number]]
+    \[
+    e = \lim_{x \to +\infty} (1 + \frac{1}{x})^x
+    \]
+
+    that gets substituted and we end up with the magic continuous compounding formula:
+    \[
+    \color{red}
+    C = P * e^{r*t}
+    \]
+
+   #+begin_src python :results output :session interest
+     from math import e
+     c = p * e**(r*t)
+     print('$%.2f' % c)
+   #+end_src
+
+   #+RESULTS:
+   : $1102.32
+
+   /Takeaway/: Before moving further it is important to understand the difference between /*APY*/ (annual percentace yield) and /*APR*/ (annual percentance rate), the former include compounding interest, the latter does not. In other words /*APR*/ is simple interest and /*APY*/ is compounding interest.
+
+** 100% profit
+   OK, now, let's assume that I want to invest $1000 at 6% annual interest rate and I want to know how many years do I need to double my investment?
+
+*** Analytical
+    Let's do a bit of high school math using the annual compounding formula above.
+
+    \[
+    \textcolor{blue} {C = P*(1 + r)^t}
+    \\
+    \frac{C}{P} = (1 + r)^t
+    \\
+    t = \log_{1+r} \frac{C}{P}
+    \\
+    t = \frac{\ln {\frac{C}{P}}}{\ln 1+r}
+    \]
+
+    After putting in the numbers we end up with:
+
+    \[
+    t = \frac{\ln {\frac{2000}{1000}}}{\ln 1+0.06}
+    \\
+    \textcolor{green} {t = 11.9\ years}
+    \]
+
+    Double check in Python:
+
+    #+begin_src python :results output :session interest
+      from math import log
+      t = log(2)/ log(1.06)
+      print('%.1f years' % t)
+    #+end_src
+
+    #+RESULTS:
+    : 11.9 years
+
+    Unfortunately most of the people cannot do logarithms in their heads but rest assured there is a lot easier solution.
+
+*** Rule of 72
+
+    As [[https://www.investopedia.com/][Investopedia]] nicely explains it: [[https://www.investopedia.com/terms/r/ruleof72.asp][Rule of 72]] is a formula to estimate the number of years required to double the invested money at a given annual interest rate.
+    Just divide /*72*/ by the annual interest rate /*6*/ and there you have it: /*~12*/ years.
+
+    #+begin_src python :results output :session interest
+      t = 72 / 6
+      print('%.1f years' % t)
+    #+end_src
+
+    #+RESULTS:
+    : 12.0 years
+
+
+    Why 72?
+
+    Detailed explanations [[https://en.wikipedia.org/wiki/Rule_of_72][here]] but ultimately it is as simple /*ln 2*/,
+
+    \[
+    \ln 2 = 0.693
+    \]
+
+    while /*2*/ comes from doubling ($2000 / $1000), if you need to find the tripling time just use /*3*/ or /*1.5*/ for halving time.
+
+** References
+   - [[https://www.investopedia.com/terms/c/compoundinterest.asp]]
+   - [[https://www.investopedia.com/terms/f/fixedinterestrate.asp]]
+   - https://en.wikipedia.org/wiki/E_(mathematical_constant)
+   - [[https://www.investopedia.com/personal-finance/apr-apy-bank-hopes-cant-tell-difference/]]
+   - [[https://www.investopedia.com/terms/r/ruleof72.asp]]
+   - [[https://en.wikipedia.org/wiki/Rule_of_72]]
+   - [[https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial]]
+   - [[https://tex.stackexchange.com/questions/21598/how-to-color-math-symbols]]
+   - [[https://texblog.org/2015/05/20/using-colors-in-a-latex-document/]]

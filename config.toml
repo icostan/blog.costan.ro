@@ -210,13 +210,17 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     parent = "math"
     name = "Complexities with graphs"
-    url = "post/2020-06-04-bigo-complexity-with-graphs/"
+    url = "post/2020-06-04-bigo-complexity-with-graphs"
     weight = 1
 [[menu.main]]
     parent = "math"
     name = "Algebraic structures"
-    url = "post/2020-11-11-algebraic-structures-set-group-ring/"
+    url = "post/2020-11-11-algebraic-structures-set-group-ring"
     weight = 2
+[[menu.main]]
+    parent = "math"
+    name = "Interest Rate"
+    url = "post/2020-11-24-interest-rate"
 
 [[menu.main]]
     identifier = "opensource"

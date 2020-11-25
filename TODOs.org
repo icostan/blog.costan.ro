@@ -191,6 +191,7 @@
 *** DONE generate ethereum address                                     :coin:
 *** synthetics options                                              :trading:
     - https://www.theoptionsguide.com/synthetic-position.aspx
+    - synthetics image
 *** harvest arbitrage attack
 *** iota address
 *** DONE algebraic structures
@@ -209,7 +210,7 @@
 *** famous formulas                                                    :math:
     - https://en.wikipedia.org/wiki/Euler%27s_identity, https://en.wikipedia.org/wiki/Mathematical_beauty
     - exponentiation, log, square: b^x=r
-*** TODO interest rate                                              :finance:
+*** DONE interest rate                                              :finance:
     - fixed/simple vs compounding
     - periods: annually, monthly, daily
     - rule of 72 - doubling
