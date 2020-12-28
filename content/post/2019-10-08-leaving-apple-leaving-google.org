@@ -5,7 +5,7 @@
 
 I've finally broken the corporation cage and I am Apple and Google-free.
 
-From MacOS to Linux was an easy jump, [[https://www.lenovo.com/au/en/laptops/legion-laptops/lenovo-legion-y-series/Lenovo-Legion-Y7000-2019/p/88GMY501215][bought new laptop]], [[https://blog.iuliancostan.com/post/2019-07-05-back-to-my-first-love/][installed Arch Linux]] and done but phone is a different story and moving from Apple to Google is like going from bad to worst, it does not feel right.
+From MacOS to Linux was an easy jump, [[https://www.lenovo.com/au/en/laptops/legion-laptops/lenovo-legion-y-series/Lenovo-Legion-Y7000-2019/p/88GMY501215][bought new laptop]], [[/post/2019-07-05-back-to-my-first-love/][installed Arch Linux]] and done but phone is a different story and moving from Apple to Google is like going from bad to worst, it does not feel right.
 
 Unfortunately Linux based phones (like [[http://plasma-phone.org/][Plasma Mobile]]) are not there yet, and is not because they are more difficult to install/use, it's because they miss the apps ecosystem.
 

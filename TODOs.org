@@ -292,7 +292,7 @@
     - [ ] tags
     - [ ] categories
     - [ ] social links
-*** use relative URLs to other posts
+*** DONE use relative URLs to other posts
 *** DONE Renew Lets Encrypt SSL certificate
     :PROPERTIES:
     :LAST_REPEAT: [2020-01-06 Mon 16:28]

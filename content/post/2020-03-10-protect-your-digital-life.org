@@ -3,7 +3,7 @@
 #+date:   2020-03-10
 #+tags[]: productivity syncthing nextcloud icloud authy bitwarden linux
 
-This is how I keep all my data secure, encrypted and in sync between 2 phones (/ePhone/, [[https://blog.iuliancostan.com/post/2019-10-08-leaving-apple-leaving-google/][my Google-free phone]] and one /iPhone/), 2 laptops (/Lenovo/, [[https://blog.iuliancostan.com/post/2019-07-05-back-to-my-first-love/][my Linux machine]]  and a /Macbook/) and one desktop (an older iMac).
+This is how I keep all my data secure, encrypted and in sync between 2 phones (/ePhone/, [[/post/2019-10-08-leaving-apple-leaving-google/][my Google-free phone]] and one /iPhone/), 2 laptops (/Lenovo/, [[/post/2019-07-05-back-to-my-first-love/][my Linux machine]]  and a /Macbook/) and one desktop (an older iMac).
 
 ** A. Device Syncronization
    The very first step is to keep data in sync across all devices and I do this in two stages: from mobile device to laptop and from laptop to laptop/desktop:
@@ -38,7 +38,7 @@ This is how I keep all my data secure, encrypted and in sync between 2 phones (/
      Since /ePhone/ is based on /LineageOS/ which is in turn is based on /Android/ it takes advantage of all Android's security/encryption without Google tracking everything.
 
 ** C. Password manager
-   I do [[https://blog.iuliancostan.com/post/2019-08-12-password-management-with-bitwarden/][password management with Bitwarden]] and this is critical piece since an attacker gets access to all your passwords so its absolutely required to have at least 2, 3 levels of protection:
+   I do [[/post/2019-08-12-password-management-with-bitwarden/][password management with Bitwarden]] and this is critical piece since an attacker gets access to all your passwords so its absolutely required to have at least 2, 3 levels of protection:
    1. master password
    2. 2FA with [[https://authy.com/][Authy]]
    3. OTP with phone/email

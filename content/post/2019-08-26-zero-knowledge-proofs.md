@@ -31,7 +31,7 @@ Let's say that Peggy (the prover) wants to prove to Victor (the verifier) that s
 
 This is the simplest zero-knowledge implementation based on [the discrete logarithm](https://en.wikipedia.org/wiki/Discrete_logarithm), let's see how it works.
 
-First of all please see [ElGamal](https://blog.iuliancostan.com/post/2019-03-26-elgamal/) post to understand discrete logarithm's parameters: prime number \`\`p\`\` and generator \`\`g\`\`.
+First of all please see [ElGamal](/post/2019-03-26-elgamal/) post to understand discrete logarithm's parameters: prime number \`\`p\`\` and generator \`\`g\`\`.
 
 ```python
     1  from random import randint
@@ -93,7 +93,7 @@ But what about not sending the password at all, and instead provide a cryptograp
 
 This is called Schnorr identification scheme and as you will see below, it is an interactive identification scheme.
 
-Please see [Schnorr](https://blog.iuliancostan.com/post/2019-06-19-schnorr/) post to understand where these \`\`q\`\` and \`\`g\`\` parameters come from.
+Please see [Schnorr](/post/2019-06-19-schnorr/) post to understand where these \`\`q\`\` and \`\`g\`\` parameters come from.
 
 ```python
     1  from random import randint

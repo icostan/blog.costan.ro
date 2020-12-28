@@ -104,7 +104,7 @@ Let's take a simple example of rolling a dice where Peggy (the prover) commits t
 
 ** 1. ElGamal commitment
 
-   During /setup phase/ we agree on ElGamal's parameters. The /*p*/ and /*g*/ parameters are explained in [[https://blog.iuliancostan.com/post/2019-03-26-elgamal/][ElGamal blog]] while /*h*/ is another randomly chosen generator of prime order /*q*/.
+   During /setup phase/ we agree on ElGamal's parameters. The /*p*/ and /*g*/ parameters are explained in [[/post/2019-03-26-elgamal/][ElGamal blog]] while /*h*/ is another randomly chosen generator of prime order /*q*/.
 
   #+begin_src python -n :session elgamal :results output
   from random import randint
@@ -193,7 +193,7 @@ So far, we can see that Pedersen commitment provides better security (*perfectly
 
 Encryption-based commitments are *additively homomorphic* which means that we can *add* the commitments together (while preserving the security and underlying properties), without actually opening the commitments.
 
-Also, Pedersen commitment can be implemented with Elliptic curve where /*p*/, /*F*/ and /*E*/ parameters are explained in [[https://blog.iuliancostan.com/post/2019-09-25-elliptic-curves/][Elliptic curve blog post]].
+Also, Pedersen commitment can be implemented with Elliptic curve where /*p*/, /*F*/ and /*E*/ parameters are explained in [[/post/2019-09-25-elliptic-curves/][Elliptic curve blog post]].
 
 During the setup phase a random secret parameter /*s*/ is used to create another elliptic curve generator /*H*/, the same as parameter /*h*/ in exponential implementation, the difference is that /*H*/ is a point on elliptic curve, not a scalar.
 

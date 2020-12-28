@@ -71,7 +71,7 @@ openssl ec -pubout -in secret.pem -outform DER -conv_form compressed \
 #+RESULTS:
 : 02423943785c556abe3527fd5d989d32aa8a630523d6df36fa2698fb0263e26966
 
-If you want to manually generate private / public keys then have a look at [[https://blog.iuliancostan.com/post/2018-10-09-bitcoin-address/][Bitcoin: private key, public key, address]] and [[https://blog.iuliancostan.com/post/2019-09-25-elliptic-curves/][Elliptic Curves]] blog posts for the nitty-gritty details.
+If you want to manually generate private / public keys then have a look at [[/post/2018-10-09-bitcoin-address/][Bitcoin: private key, public key, address]] and [[/post/2019-09-25-elliptic-curves/][Elliptic Curves]] blog posts for the nitty-gritty details.
 
 * 2. SHA256
 

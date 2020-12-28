@@ -49,7 +49,7 @@ Given the above definition, hash functions have at least the following 4 propert
    Again, this should be self-evident: given the same input data, the hash function has to return the same hash value.
 
 ** 3. Efficient
-   Easy to compute the hash value for any given message. It has to be computationally efficient and executed in polynomial-time, please see [[https://blog.iuliancostan.com/post/2020-06-04-bigo-complexity-with-graphs/][BigO notation, complexity]] post for details about algorithms and complexities.
+   Easy to compute the hash value for any given message. It has to be computationally efficient and executed in polynomial-time, please see [[/post/2020-06-04-bigo-complexity-with-graphs/][BigO notation, complexity]] post for details about algorithms and complexities.
 
 ** 4. Pseudo-randomness
    Hard to distinguish a hash function from a [[https://en.wikipedia.org/wiki/Random_oracle][Random Oracle]] model.

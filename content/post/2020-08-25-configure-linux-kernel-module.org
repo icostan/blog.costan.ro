@@ -3,7 +3,7 @@
 #+date:   2020-08-25
 #+tags[]: linux kernel module c ioctl kbuild makefile
 
-In [[https://blog.iuliancostan.com/post/2020-03-24-write-linux-kernel-module/]["Write Linux kernel module"]] blog post I created a simple Hello World module, now it's time to configure it and there are 3 main ways to do it:
+In [[/post/2020-03-24-write-linux-kernel-module/]["Write Linux kernel module"]] blog post I created a simple Hello World module, now it's time to configure it and there are 3 main ways to do it:
 1. at build time
 2. at load time
 3. at run time

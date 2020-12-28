@@ -45,7 +45,7 @@
    #+end_src
 
 ** 2. Elliptic Curve
-   Then we have standard  [[https://en.bitcoin.it/wiki/Secp256k1][Secp256k1]] Elliptic Curve's parameters, see [[https://blog.iuliancostan.com/post/2018-10-09-bitcoin-address/][generate Bitcoin address]] blog post for low-level implementation details.
+   Then we have standard  [[https://en.bitcoin.it/wiki/Secp256k1][Secp256k1]] Elliptic Curve's parameters, see [[/post/2018-10-09-bitcoin-address/][generate Bitcoin address]] blog post for low-level implementation details.
 
    #+begin_src sage :session eth
      p = 2**256 - 2**32 - 2**9 - 2**8 - 2**7 - 2**6 - 2**4 - 1

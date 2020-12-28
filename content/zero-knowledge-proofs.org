@@ -43,7 +43,7 @@ Let's have a look at a few examples and implementations of zero-knowledge proof 
 
     This is the simplest zero-knowledge implementation based on [[https://en.wikipedia.org/wiki/Discrete_logarithm][the discrete logarithm]], let's see how it works.
 
-    First of all please see [[https://blog.iuliancostan.com/post/2019-03-26-elgamal/][ElGamal]] post to understand discrete logarithm's parameters: prime number ``p`` and generator ``g``.
+    First of all please see [[/post/2019-03-26-elgamal/][ElGamal]] post to understand discrete logarithm's parameters: prime number ``p`` and generator ``g``.
 
     #+begin_src python -n :results output :exports both
       from random import randint
@@ -104,7 +104,7 @@ Let's have a look at a few examples and implementations of zero-knowledge proof 
 
     This is called Schnorr identification scheme and as you will see below, it is an interactive identification scheme.
 
-    Please see [[https://blog.iuliancostan.com/post/2019-06-19-schnorr/][Schnorr]] post to understand where these ``q`` and ``g`` parameters come from.
+    Please see [[/post/2019-06-19-schnorr/][Schnorr]] post to understand where these ``q`` and ``g`` parameters come from.
 
     #+begin_src python -n :results output :exports both
       from random import randint

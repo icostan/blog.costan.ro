@@ -129,7 +129,7 @@ Public key is a point on [[https://monerodocs.org/cryptography/asymmetric/edward
 What our little /publickey/ method does is as simple as:
 - transform private key hex to binary string
 - decode binary string into integer
-- execute [[https://blog.iuliancostan.com/post/2019-09-25-elliptic-curves/][elliptic curve multiplication]] *P = a*B*
+- execute [[/post/2019-09-25-elliptic-curves/][elliptic curve multiplication]] *P = a*B*
 - encode result elliptic curve point into binary string
 
 #+begin_src python :python python2 :results output :session monero
