@@ -1,0 +1,351 @@
+#+title: Generate IOTA address
+#+subtitle: IOTA
+#+date: 2020-12-28
+#+tags[]: iota address generation crypto python
+
+Generate IOTA address using plain old Python, starting with random seed, derive private key, and finally the checksum and address.
+
+  #+begin_src ditaa :file iota.png :cmdline -r :exports none
+    +-----+
+    |     |
+    | seed|-+
+    |     | |  +--------+                              +-------+
+    +-----+ |  |        |                              |       |
+            +->+subseed |-+                          +-+segment|---26x-->+
+            |  |        | |  +--------+  +--------+  | |   {d} |         |
+    +-----+ |  +--------+ |  |        |  |        |  | +-------+         | +------+  +-------+
+    |     | |             +->+private |--+fragment|--+                   +-|digest|->|address|
+    |index|-+  +--------+ |  |  key   |  |        |  | +-------+         | +------+  +-------+
+    |     |    |        | |  |        |  +--------+  | |       |         |
+    +-----+    |security|-+  +--------+              +-+segment|---26x-->+
+               |level   |                              |   {d} |
+               |        |                              +-------+
+               +--------+
+    Legend:
+    +-----+
+    |     | --- logic
+    +-----+
+
+    ------> --- sponge function (keccak-384)
+
+       +---
+    ---|    --- split/union
+       +---
+  #+end_src
+
+  #+RESULTS:
+  [[file:iota.png]]
+
+  [[file:/img/iota.png]]
+
+** Overview
+
+   #+begin_src python :results output :session iota
+     # 1. seed
+     seed = "WAJUKTNZYVICHWIYWPZILAQYNEGZVHIJZNVWQAFYJPIJHBRAXWHIJZ9MUGV9PGRAIYRVOLK9HNJNDZOZF"
+     print('seed: ' + str(seed))
+     index = 2
+     print('index: ' + str(index))
+
+     # 2. subseed
+     subseed_trits = add(seed, index)
+     subseed_trits = sponge(subseed_trits)
+     subseed = trits_to_chars(subseed_trits)
+     print('subseed: ' + str(subseed))
+     security_level = 2
+     print('security level: ' + str(security_level))
+
+     # 3. private key
+     h = absorb(subseed_trits)
+     key_trits = squeeze(h, security_level * ROUNDS * HASH_LENGTH)
+     key = trits_to_chars(key_trits)
+     print('key: ' + str(key))
+
+     # 4. key digests
+     digests_trits = [0] * HASH_LENGTH * security_level
+     for s in range(security_level):
+       fragment_start = s * KEY_LENGTH
+       fragment_end = fragment_start + KEY_LENGTH
+       fragment_trits = key_trits[fragment_start:fragment_end]
+       digest_trits = [0] * HASH_LENGTH
+       for r in range(ROUNDS):
+         segment_start = r * HASH_LENGTH
+         segment_end = segment_start + HASH_LENGTH
+         segment_trits = fragment_trits[segment_start:segment_end]
+         for _ in range(26):
+           segment_trits = sponge(segment_trits)
+         digest_trits[segment_start:segment_end] = segment_trits
+       digest_start = s * HASH_LENGTH
+       digest_end = digest_start + HASH_LENGTH
+       digests_trits[digest_start:digest_end] = sponge(digest_trits)
+
+     # 5. address
+     address_trits = sponge(digests_trits)
+     address = trits_to_chars(address_trits)
+     print('address: ' + str(address))
+
+     # 6. checksum
+     checksum_trits = sponge(address_trits)
+     checksum = trits_to_chars(checksum_trits)[-9:]
+     print('checksum: ' + str(checksum))
+     print('address w/ checksum: ' + str(address) + str(checksum))
+   #+end_src
+
+   #+RESULTS:
+   : seed: WAJUKTNZYVICHWIYWPZILAQYNEGZVHIJZNVWQAFYJPIJHBRAXWHIJZ9MUGV9PGRAIYRVOLK9HNJNDZOZF
+   : index: 2
+   : subseed: FMUBHQYMQXAHHKCFIYAYJ9PANABKIF99KVBLXPOF9LISRDRUPUHCVXPN9IUTIDOOFDLLXMQIUEC9QQRPD
+   : security level: 2
+   : key: NJSZAS9OVYDH9TENVHYH9UAXIO9LONDKCKMRORRCZR9ASOZEZ9CBJWHQTHOTGTFIGOHYABNLAJBKNFILZMNZNDUYZRZYXKMNBAQQLCXNNDNQPB9KMJSAJVODBFUMGOIYYMOYAQKUGT9BVJYRXDHLRSSVSTSD9LQYOYTJACRFFATOYYWAPYXRHIZSPPGYZRPVZYESEFCJJ9XZF9GRTRBJYPNSEIFUHHCJPYUWMZSOEHKRFDRUVO9IOXOZYCQVMSKWYSHUIFGKKDUSUEMBNJM9JFENONUOMSOLFDSKETFFG9YCGYXNBGHDMBB9TAMINN9BKDWZJKSLJVAQBWBWBVZXRGKAQ9IUNBUBWJOTLSEIGBREHADBDKUSNWEWOYJCSSNSAIYHSYEMVHMPIQOUZWVKWHCIQORKEYZJPKHGRSUBNHYSLTRMFJQIEOJNPWKSLNMYPWVUYYGXCKUSDRYFHXPXFUNTFBTCZTUYLHZBHAQVOGXFHDLUSIZAECPYIAYKKKAPYKJDCGTMCPUUUSPQE9YAQQIVWJ9C9DKKDC9SIPVSZUVXWXAVVQDLWB9RZSK9VTDZN9L9XNQJGX9RQQTNUIYXSBMUOG9CLKVRMQUCNQPZENY9FETBWHYGYJVCFFG9KGBPWPBOATVWX9HCPSXITXRRXKCTTOFIJTUZO9VNFXMHYZGZWQNTSWUSVNTMBFDBWQXX9RXGJ9UGTJFWNKURVMLUBML9XULULMCRHFCEIPFTSJRINKEWX9IPRRYCULQBUCAQGKWYHGFCEQDCDUURIXKLEQQPYUEFNQANAAPLGRVINXCWTPZCNPEZHKAPN9IMBZVNDRXGFWSZDNQKWOKVKEVATIRQDJHRGSKQJLECLOPEBYTURJXJ9PCQRZONPLWPUXEQIMDLP9XR9ZDVMVJGVMKJLNJQAGYTDEW9HINPCTUIHXN9UWHBYVXTMBHBAUMXYYQIJYYGXYRAAGMYBKRKKQZGDYYINTZJ9ICQOKHO9QWQUQGJFVZTGPE9ULMJEDPNDOCCWGUBRVXMMFZOSAHJWBIL9PTCQGAWBXYODYLQGNWUCCJMCEAWS9VKDGXUCTHNIEN9FQOXOYGWZJCHAHV9DOAFDHUSZLEHRIVTGBHQAYTJMYFKICZZVWLCBNVTZNZCHESKAULZBSLAYOGITGCQUQWN9XVQ9EOQQFPTJGCKYZPCRTQSOGQRVSTMRUSASGNULXXOSECWAVFPTCTKIIZBTVDSBZFQWCJZUZWNNIVVIGJCIKLEUYJHYFEIWISLGOTVRWZZUAHHRXYZEJHRHKT9ZQHOZYOWUWAXT9FSKCFZXMLVFTDKPTOYRWJRNBUPMXBIPELIHGWD9SPNPWHHVQFJMQZEJUKFNZAPLTHLWEOAHKVWQFPFEUBTEZDTXUZCABJNL9WPMVZWVAESOQXSOLHDNSIPHRFWBFCKHVMAFPGKRFPMDZP9EAYSHWBPOZSDL9SNZAATWFGFRVBGP9YLCTUOWFLISVWMBMWZBXKHARPSYUWB9CXLC9IVKJCILKH9VIVKFIVURPDFEVXUAYMFOGUFJGVCCHYUYWPQAAFZQBFEEX9QUZJV9UNHZKGWKDNQXMVRPMLXTKO9KRJWWBLBSEJCMOQCE9S9CKHUHAPPYLCORZHUVSWSKRPENVMUQUXFWVOYYXXJTRLLRGJBNWHOCOIKOUXKKRS9DQUHWZLWRPHJWZIBJADBHESLPO9AIZGN9YHXWALXSONKJCPIHKPOO9MRXKSSDFPTWUTJCCMUQJXAUFMQMNJKSRSU9V9RWDSDETDDTQHPXHKUMBVWGFMYOKOSHYSTGIHRPYIGSCSCYONKZQYEYPQC9KKQSOETGQPAQYBUGYCVKTUXULBI9YHZKKBM9PFMDRMVWWAVOQPFQNJFMSZDKEOIWIQVZCNFYMZRJXMSYRBRZWYOQSNJKAACMNOU9DWRACECPGGNTCNEVXYSXKYSGQPUXLQFXBZEAVX9EQZYE9TULQIZTABLNTD9MYREQQJUI9IKTIIDIKJMDTFGKFVQBIEW9YNRBNZNHRF9AHTVDQQKYFTUFIPQMHWDASMOFOGLSBKZH9TSQPUVTVX9XHEFNFWQXXUUKGJGRRIKXDJLKXPTHQZ9NVYNFSYMWGQLDWTEH9BUSZAINWXAFLFERPAKSACTXBCOARFBWXDTWNX9LLHUKUVARCXZYEDSPCXSLDZCD9TBMQTTUMYDWPRLWX9FGELJIUPSQCFJYSIBWMNUJVBRNYXQFUGSVQOIBRGHUXXA9UTWOUI9RPRKTQDV9DDVLGZRRTIETNHJGBDKARSAHJIEDUJTNSLQPBZFZXJLDROMAXNUKUDDCS9ZLEAHDRGSCYCNANSHKEITQS9RPVTHAGHMIJUKSZWIU9QUODGPAVAVZJXGYRUTUJAYRSWVALHBGF9MENPAEYCJYMQCW9PNSARLYMRQ9V9LXMZELTXLYJJESUCSDY9TXACONQSSLWDHAKLWQQPZS9AKF9EXFDOKDBROWHKIDQCWGSYTCZBG9FYYGAQUBCVPTANNGMTXBZOTHXHVTLQZWE9JQQDDYQGPCQHSTIZDLKKTAHABTJDBHFIYZCRU9TCCWCZAREDVJJBZZPPQAHA9ROOMKGYCKLIXLRTIWXDQELJABGCYBIDJDCGLCHLRUEFUXVUPXPYUF9V9UFZGEITEDEAEGPWHQENDWGPANUH9TOQZZVKRNMBGUOUSHGMZGDUVSPE9XSUNUSNZLTERHHJSXJQPMDFVQCRZHCDDRZ9PXZNOUZUTK9ZHHGTLRGTHWWBDYHWYSIDL9CVWRFMS9OOGJPHK9JFRXIJSOXAZKXSBOSXGXQFEPSZKLKDO9ZDJGORNWRUTRN9IGUMHDDNSUXKDU9VDOAFAHEQXQFAYKFDGBQGTFHBSAZIVXVATTHBFK9NYQOGMTXLBNEXXEXARXAIOG9GLKLQEADWLJ9EXMJWAIBNYQQBRSBTSLJWJRIW9ZOPAOWA9OJXCK9GRKFXIJAYBH9GJDFBOYZMIAKVSYTOLYEOY9HIEYSGPSJTMLEMWYSJEMPLCBMUSKXBEVAKMFUXIYRMYCFMOBFO9CFBGBEIVNX9EDOZPPOTKXDUJUJIRPJSUGKZDRLWHGLM9TVVBNKKMWO9HPPXXUFCXUYPGFSVRMVXAHE9KWCECPBQZTQA9AIBFMPDTKUKSINQFCEFWPHQYWJWMIGISCN9EXFHGHLIKYOWOMSIQLVWYGBJTTYPIUYPKYKPPHPNPUFAWAVMXHERYSESFODIEBYYDCDYWCRVJESX9PYHCFHIPHMDETKVFZUTFIDQHRFOTUANQO9SXOSSTVBQSUD9LAKVOQYEJJJGSWM9EOISXWWQPGP9JIWVQSKSFFFZMLSFSOWZWVNQVMW9CBJDRRLISA9FNVSVZXXXAPGQQZY9AIBWJXIPKATTMRBZFXHJBRSMGKSEWTPZQYOTNFCKHFVENVR9MMYIVP9PELVAMHLOPVPFIPJSIVNKXODBWEYRQORPEKVNQFP9MGIOFGIKRNPYEGTHTFASZDBKOPFYGP9ZTCBJNLG9FGPTWZXRZSFL9GHNQZ9NGNDYCZHANBXPGATEUNTTPTPDZWVUWKEOHJZNHYWGUFTQSKTOHXUJINNDUMFLBZRJQKQOVR9UTGSXE9CSYYZSFAYUW9YNMREMKFKMISTSWLDY9XNPJLGUFFTDJLOMGNZWXGNHGECMDUNCOGPBGRO9GKTWHIMQUMGQTIRT9LCAPIARMFKCGOFI9HBWRNHURHOTULHAMBMWRJDWWQ9FWWIVDZLRGCTVTRTNLPKGVKTPJDL9WTZDHPRICZTX9RBCHZOQCBZFVRXIPGPYPSLHYQLDXOSPCMMVXQMDZSVDNWZAMTFBNQDGPKOBLEAQSEDLQWQYHX9JZTQNCDZODHVYNDNAPRZUQHKRPEDJP9RAIGRCQTXFT9KRBLAGNEPFVWEJNRHK9PLII9CFSMNYHSHXEHMTXPJYGDNRTQDTYK9BBPQZPVXRZO9UDMJQCVDOADJCUQ9JSZAWRTXMOZYBSHBHUEUPWPYXWUCJR9YTUZVZQYBGLNWIADH9UKOXKULKAFWHLPJFKCMKHVDTOVDUFNCQPLLKC9FSATDZYZDDRKGRUTSNXSABNXDFN9BTGPWGQXUBCKLAH9SHOHECKQMODTEK9PUVIQJYTMDXVIRLRUDXETHDCDBWVK9WJCGYVDSBKVGTQYYMFNWLZIEJYTFZBIKI9KHTAWXXTIF9PCEKVXTCOSMAPUBIQOTUERGRZBZTFGLOLXFL9PKXJOGHQXAVRDC9MLMNDJVMMZDYIB9HIGCQGWRRN9TERYUMYEKOBVGI9BWOZEVNQZCBXULSZZPHZYRQNJUDFOIMRFQRKBLDHWSNDJWQNUAIRNX
+   : address: WW9LNIITMTMNFTASZANAKAYUFBYGY9QQAGBHZSJNCFCOHIPJZ9OTTTYMCSCMODITOIZRSRKDGWYUSLADB
+   : checksum: IQF9BMGED
+   : address w/ checksum: WW9LNIITMTMNFTASZANAKAYUFBYGY9QQAGBHZSJNCFCOHIPJZ9OTTTYMCSCMODITOIZRSRKDGWYUSLADBIQF9BMGED
+
+** Step-by-step implementation
+*** 1. Seed generation
+    Generate seed using Linux kernel's pseudo random implementation:
+
+    #+begin_src sh
+      cat /dev/urandom | tr -dc A-Z9 | head -c${1:-81}
+    #+end_src
+
+    #+RESULTS:
+    : WAJUKTNZYVICHWIYWPZILAQYNEGZVHIJZNVWQAFYJPIJHBRAXWHIJZ9MUGV9PGRAIYRVOLK9HNJNDZOZF
+
+    #+begin_src python :results output :session iota
+      # 1. seed
+      seed = "WAJUKTNZYVICHWIYWPZILAQYNEGZVHIJZNVWQAFYJPIJHBRAXWHIJZ9MUGV9PGRAIYRVOLK9HNJNDZOZF"
+      print('seed: ' + str(seed))
+      index = 2
+      print('index: ' + str(index))
+    #+end_src
+
+    #+RESULTS:
+    : seed: WAJUKTNZYVICHWIYWPZILAQYNEGZVHIJZNVWQAFYJPIJHBRAXWHIJZ9MUGV9PGRAIYRVOLK9HNJNDZOZF
+    : index: 2
+
+*** 2. Sub-seeds
+    Add /index/ (integer between 0 and 3^36, maximum 12 trytes) to /seed/, hash it once and generate the /*sub-seed*/.
+
+    #+begin_src python :results output :session iota
+      subseed_trits = add(seed, index)
+      subseed_trits = sponge(subseed_trits)
+      subseed = trits_to_chars(subseed_trits)
+      print('subseed: ' + str(subseed))
+      security_level = 2
+      print('security level: ' + str(security_level))
+    #+end_src
+
+    #+RESULTS:
+    : subseed: FMUBHQYMQXAHHKCFIYAYJ9PANABKIF99KVBLXPOF9LISRDRUPUHCVXPN9IUTIDOOFDLLXMQIUEC9QQRPD
+    : security level: 2
+
+*** 3. Private key
+    Absort /subseed's trits/ into the sponge function then spit out the /*private key*/ of length proportional with the /security level/.
+
+    #+begin_src python :results output :session iota
+      h = absorb(subseed_trits)
+      key_trits = squeeze(h, security_level * ROUNDS * HASH_LENGTH)
+      key = trits_to_chars(key_trits)
+      print('key: ' + str(key))
+      print('key size: ' + str(len(key)))
+    #+end_src
+
+    #+RESULTS:
+    : key: NJSZAS9OVYDH9TENVHYH9UAXIO9LONDKCKMRORRCZR9ASOZEZ9CBJWHQTHOTGTFIGOHYABNLAJBKNFILZMNZNDUYZRZYXKMNBAQQLCXNNDNQPB9KMJSAJVODBFUMGOIYYMOYAQKUGT9BVJYRXDHLRSSVSTSD9LQYOYTJACRFFATOYYWAPYXRHIZSPPGYZRPVZYESEFCJJ9XZF9GRTRBJYPNSEIFUHHCJPYUWMZSOEHKRFDRUVO9IOXOZYCQVMSKWYSHUIFGKKDUSUEMBNJM9JFENONUOMSOLFDSKETFFG9YCGYXNBGHDMBB9TAMINN9BKDWZJKSLJVAQBWBWBVZXRGKAQ9IUNBUBWJOTLSEIGBREHADBDKUSNWEWOYJCSSNSAIYHSYEMVHMPIQOUZWVKWHCIQORKEYZJPKHGRSUBNHYSLTRMFJQIEOJNPWKSLNMYPWVUYYGXCKUSDRYFHXPXFUNTFBTCZTUYLHZBHAQVOGXFHDLUSIZAECPYIAYKKKAPYKJDCGTMCPUUUSPQE9YAQQIVWJ9C9DKKDC9SIPVSZUVXWXAVVQDLWB9RZSK9VTDZN9L9XNQJGX9RQQTNUIYXSBMUOG9CLKVRMQUCNQPZENY9FETBWHYGYJVCFFG9KGBPWPBOATVWX9HCPSXITXRRXKCTTOFIJTUZO9VNFXMHYZGZWQNTSWUSVNTMBFDBWQXX9RXGJ9UGTJFWNKURVMLUBML9XULULMCRHFCEIPFTSJRINKEWX9IPRRYCULQBUCAQGKWYHGFCEQDCDUURIXKLEQQPYUEFNQANAAPLGRVINXCWTPZCNPEZHKAPN9IMBZVNDRXGFWSZDNQKWOKVKEVATIRQDJHRGSKQJLECLOPEBYTURJXJ9PCQRZONPLWPUXEQIMDLP9XR9ZDVMVJGVMKJLNJQAGYTDEW9HINPCTUIHXN9UWHBYVXTMBHBAUMXYYQIJYYGXYRAAGMYBKRKKQZGDYYINTZJ9ICQOKHO9QWQUQGJFVZTGPE9ULMJEDPNDOCCWGUBRVXMMFZOSAHJWBIL9PTCQGAWBXYODYLQGNWUCCJMCEAWS9VKDGXUCTHNIEN9FQOXOYGWZJCHAHV9DOAFDHUSZLEHRIVTGBHQAYTJMYFKICZZVWLCBNVTZNZCHESKAULZBSLAYOGITGCQUQWN9XVQ9EOQQFPTJGCKYZPCRTQSOGQRVSTMRUSASGNULXXOSECWAVFPTCTKIIZBTVDSBZFQWCJZUZWNNIVVIGJCIKLEUYJHYFEIWISLGOTVRWZZUAHHRXYZEJHRHKT9ZQHOZYOWUWAXT9FSKCFZXMLVFTDKPTOYRWJRNBUPMXBIPELIHGWD9SPNPWHHVQFJMQZEJUKFNZAPLTHLWEOAHKVWQFPFEUBTEZDTXUZCABJNL9WPMVZWVAESOQXSOLHDNSIPHRFWBFCKHVMAFPGKRFPMDZP9EAYSHWBPOZSDL9SNZAATWFGFRVBGP9YLCTUOWFLISVWMBMWZBXKHARPSYUWB9CXLC9IVKJCILKH9VIVKFIVURPDFEVXUAYMFOGUFJGVCCHYUYWPQAAFZQBFEEX9QUZJV9UNHZKGWKDNQXMVRPMLXTKO9KRJWWBLBSEJCMOQCE9S9CKHUHAPPYLCORZHUVSWSKRPENVMUQUXFWVOYYXXJTRLLRGJBNWHOCOIKOUXKKRS9DQUHWZLWRPHJWZIBJADBHESLPO9AIZGN9YHXWALXSONKJCPIHKPOO9MRXKSSDFPTWUTJCCMUQJXAUFMQMNJKSRSU9V9RWDSDETDDTQHPXHKUMBVWGFMYOKOSHYSTGIHRPYIGSCSCYONKZQYEYPQC9KKQSOETGQPAQYBUGYCVKTUXULBI9YHZKKBM9PFMDRMVWWAVOQPFQNJFMSZDKEOIWIQVZCNFYMZRJXMSYRBRZWYOQSNJKAACMNOU9DWRACECPGGNTCNEVXYSXKYSGQPUXLQFXBZEAVX9EQZYE9TULQIZTABLNTD9MYREQQJUI9IKTIIDIKJMDTFGKFVQBIEW9YNRBNZNHRF9AHTVDQQKYFTUFIPQMHWDASMOFOGLSBKZH9TSQPUVTVX9XHEFNFWQXXUUKGJGRRIKXDJLKXPTHQZ9NVYNFSYMWGQLDWTEH9BUSZAINWXAFLFERPAKSACTXBCOARFBWXDTWNX9LLHUKUVARCXZYEDSPCXSLDZCD9TBMQTTUMYDWPRLWX9FGELJIUPSQCFJYSIBWMNUJVBRNYXQFUGSVQOIBRGHUXXA9UTWOUI9RPRKTQDV9DDVLGZRRTIETNHJGBDKARSAHJIEDUJTNSLQPBZFZXJLDROMAXNUKUDDCS9ZLEAHDRGSCYCNANSHKEITQS9RPVTHAGHMIJUKSZWIU9QUODGPAVAVZJXGYRUTUJAYRSWVALHBGF9MENPAEYCJYMQCW9PNSARLYMRQ9V9LXMZELTXLYJJESUCSDY9TXACONQSSLWDHAKLWQQPZS9AKF9EXFDOKDBROWHKIDQCWGSYTCZBG9FYYGAQUBCVPTANNGMTXBZOTHXHVTLQZWE9JQQDDYQGPCQHSTIZDLKKTAHABTJDBHFIYZCRU9TCCWCZAREDVJJBZZPPQAHA9ROOMKGYCKLIXLRTIWXDQELJABGCYBIDJDCGLCHLRUEFUXVUPXPYUF9V9UFZGEITEDEAEGPWHQENDWGPANUH9TOQZZVKRNMBGUOUSHGMZGDUVSPE9XSUNUSNZLTERHHJSXJQPMDFVQCRZHCDDRZ9PXZNOUZUTK9ZHHGTLRGTHWWBDYHWYSIDL9CVWRFMS9OOGJPHK9JFRXIJSOXAZKXSBOSXGXQFEPSZKLKDO9ZDJGORNWRUTRN9IGUMHDDNSUXKDU9VDOAFAHEQXQFAYKFDGBQGTFHBSAZIVXVATTHBFK9NYQOGMTXLBNEXXEXARXAIOG9GLKLQEADWLJ9EXMJWAIBNYQQBRSBTSLJWJRIW9ZOPAOWA9OJXCK9GRKFXIJAYBH9GJDFBOYZMIAKVSYTOLYEOY9HIEYSGPSJTMLEMWYSJEMPLCBMUSKXBEVAKMFUXIYRMYCFMOBFO9CFBGBEIVNX9EDOZPPOTKXDUJUJIRPJSUGKZDRLWHGLM9TVVBNKKMWO9HPPXXUFCXUYPGFSVRMVXAHE9KWCECPBQZTQA9AIBFMPDTKUKSINQFCEFWPHQYWJWMIGISCN9EXFHGHLIKYOWOMSIQLVWYGBJTTYPIUYPKYKPPHPNPUFAWAVMXHERYSESFODIEBYYDCDYWCRVJESX9PYHCFHIPHMDETKVFZUTFIDQHRFOTUANQO9SXOSSTVBQSUD9LAKVOQYEJJJGSWM9EOISXWWQPGP9JIWVQSKSFFFZMLSFSOWZWVNQVMW9CBJDRRLISA9FNVSVZXXXAPGQQZY9AIBWJXIPKATTMRBZFXHJBRSMGKSEWTPZQYOTNFCKHFVENVR9MMYIVP9PELVAMHLOPVPFIPJSIVNKXODBWEYRQORPEKVNQFP9MGIOFGIKRNPYEGTHTFASZDBKOPFYGP9ZTCBJNLG9FGPTWZXRZSFL9GHNQZ9NGNDYCZHANBXPGATEUNTTPTPDZWVUWKEOHJZNHYWGUFTQSKTOHXUJINNDUMFLBZRJQKQOVR9UTGSXE9CSYYZSFAYUW9YNMREMKFKMISTSWLDY9XNPJLGUFFTDJLOMGNZWXGNHGECMDUNCOGPBGRO9GKTWHIMQUMGQTIRT9LCAPIARMFKCGOFI9HBWRNHURHOTULHAMBMWRJDWWQ9FWWIVDZLRGCTVTRTNLPKGVKTPJDL9WTZDHPRICZTX9RBCHZOQCBZFVRXIPGPYPSLHYQLDXOSPCMMVXQMDZSVDNWZAMTFBNQDGPKOBLEAQSEDLQWQYHX9JZTQNCDZODHVYNDNAPRZUQHKRPEDJP9RAIGRCQTXFT9KRBLAGNEPFVWEJNRHK9PLII9CFSMNYHSHXEHMTXPJYGDNRTQDTYK9BBPQZPVXRZO9UDMJQCVDOADJCUQ9JSZAWRTXMOZYBSHBHUEUPWPYXWUCJR9YTUZVZQYBGLNWIADH9UKOXKULKAFWHLPJFKCMKHVDTOVDUFNCQPLLKC9FSATDZYZDDRKGRUTSNXSABNXDFN9BTGPWGQXUBCKLAH9SHOHECKQMODTEK9PUVIQJYTMDXVIRLRUDXETHDCDBWVK9WJCGYVDSBKVGTQYYMFNWLZIEJYTFZBIKI9KHTAWXXTIF9PCEKVXTCOSMAPUBIQOTUERGRZBZTFGLOLXFL9PKXJOGHQXAVRDC9MLMNDJVMMZDYIB9HIGCQGWRRN9TERYUMYEKOBVGI9BWOZEVNQZCBXULSZZPHZYRQNJUDFOIMRFQRKBLDHWSNDJWQNUAIRNX
+    : key size: 4374
+
+*** 4. Key digests
+    Maybe this looks a bit daunting at first but the logic is not that complicated:
+    - for each security level we have a fragment (input trits)
+    - each fragment is split into 27 (ROUNDS) segments
+    - each segment gets hashed 26 times
+    - all pieces (output hashes) are collected into final digest array
+
+   #+begin_src python :results output :session iota
+     digests_trits = [0] * HASH_LENGTH * security_level
+     for s in range(security_level):
+       fragment_start = s * KEY_LENGTH
+       fragment_end = fragment_start + KEY_LENGTH
+       fragment_trits = key_trits[fragment_start:fragment_end]
+       digest_trits = [0] * HASH_LENGTH
+       for r in range(ROUNDS):
+         segment_start = r * HASH_LENGTH
+         segment_end = segment_start + HASH_LENGTH
+         segment_trits = fragment_trits[segment_start:segment_end]
+         for _ in range(26):
+           segment_trits = sponge(segment_trits)
+         digest_trits[segment_start:segment_end] = segment_trits
+       digest_start = s * HASH_LENGTH
+       digest_end = digest_start + HASH_LENGTH
+       digests_trits[digest_start:digest_end] = sponge(digest_trits)
+     print('digest size: ' + str(len(digest_trits)))
+   #+end_src
+
+   #+RESULTS:
+   : digest size: 6561
+
+*** 5. Address
+
+    And finally, hash the digest one more time to get the naked /*address*/.
+
+    #+begin_src python :results output :session iota
+      address_trits = sponge(digests_trits)
+      address = trits_to_chars(address_trits)
+      print('address: ' + str(address))
+    #+end_src
+
+    #+RESULTS:
+    : address: WW9LNIITMTMNFTASZANAKAYUFBYGY9QQAGBHZSJNCFCOHIPJZ9OTTTYMCSCMODITOIZRSRKDGWYUSLADB
+
+*** 6. Checksum
+    Calculate the checksum (hash the address and take last 9 chars) and append it to address to get the IOTA address.
+
+    #+begin_src python :results output :session iota
+      checksum_trits = sponge(address_trits)
+      checksum = trits_to_chars(checksum_trits)[-9:]
+      print('checksum: ' + str(checksum))
+      print('address w/ checksum: ' + str(address) + str(checksum))
+    #+end_src
+
+    #+RESULTS:
+    : checksum: IQF9BMGED
+    : address w/ checksum: WW9LNIITMTMNFTASZANAKAYUFBYGY9QQAGBHZSJNCFCOHIPJZ9OTTTYMCSCMODITOIZRSRKDGWYUSLADBIQF9BMGED
+
+    And this is all folks, you can double check the address with [[https://www.mobilefish.com/services/cryptocurrency/iota_wallet.html][Iota Wallet]].
+
+*** Constants
+    Couple of constants to keep the code DRY:
+
+    #+begin_src python :session iota :results none
+      alphabet = '9ABCDEFGHIJKLMNOPQRSTUVWXYZ' # defined in spec
+      ROUNDS = 27
+      HASH_LENGTH_IN_BITS = 384 # keccak hash - 384 bits
+      HASH_LENGTH = ceil(HASH_LENGTH_IN_BITS * log(2) / log(3)) # 243 trits
+      SEED_SIZE = ceil(HASH_LENGTH / 3) # 81 trytes
+      KEY_SIZE = SEED_SIZE * ROUNDS # 2187 trytes
+      KEY_LENGTH = KEY_SIZE * 3 # 6561 trits
+    #+end_src
+
+*** Functions
+**** Sponge function
+     Recursive implementation of a [[https://en.wikipedia.org/wiki/Sponge_function][Sponge function]], a cryptographic primitive that takes a variable-length input and returns a variable-length output.
+
+     #+begin_src python :session iota :results none
+       def swap_sign(byte: int):
+         if byte < 0:
+           return byte + 256
+         elif byte > 127:
+           return byte - 256
+         return byte
+       def absorb(trits, offset=0):
+          h = keccak_384()
+          length = len(trits)
+          while offset < length:
+            stop = min(offset + HASH_LENGTH, length)
+            if stop - offset == HASH_LENGTH:
+              trits[stop - 1] = 0
+            signed_bytes = trits_to_bytes(trits[offset:stop])
+            unsigned_bytes = [swap_sign(b) for b in signed_bytes]
+            h.update(bytearray(unsigned_bytes))
+            offset += HASH_LENGTH
+          return h
+       def squeeze(h, size=HASH_LENGTH):
+          unsigned_hash = h.digest()
+          signed_hash = [swap_sign(b) for b in unsigned_hash]
+          trits = bytes_to_trits(signed_hash)
+          trits[HASH_LENGTH - 1] = 0
+          if size > HASH_LENGTH:
+            flipped_bytes = [swap_sign(~b) for b in unsigned_hash]
+            k = keccak_384()
+            k.update(bytearray(flipped_bytes))
+            return trits + squeeze(k, size - HASH_LENGTH)
+          else:
+            return trits
+       def sponge(trits):
+          h = absorb(trits)
+          return squeeze(h)
+     #+end_src
+
+**** Util functions
+
+   Simple functions to convert back and forth between trits, trytes and, chars.
+
+   #+begin_src python :results none :session iota
+     from math import log, ceil
+     from sha3 import keccak_384
+
+     # to/from bytes
+     from iota.crypto.kerl import conv
+     def trits_to_bytes(ts):
+         return conv.convertToBytes(ts)
+     def bytes_to_trits(bs):
+         return conv.convertToTrits(bs)
+
+     # to/from decimal
+     def trits_to_dec(trits):
+       return sum([3**i * t for i, t in enumerate(trits)])
+     def dec_to_trits(q, pad=True):
+       if q == 0:
+         trits = []
+       else:
+         q, r = divmod(q, 3)
+         if r == 2:
+           q += 1
+           r = -1
+         trits = [r] + dec_to_trits(q, pad=False)
+       if pad:
+         trits += [0] * (3 - len(trits))
+       return trits
+
+     # to/from trytes
+     def trits_to_trytes(trits):
+       return [trits[i:i+3] for i in range(0, len(trits), 3)]
+     def trytes_to_trits(trytes):
+       return [trit for tryte in trytes for trit in tryte]
+
+     # to/from ascii
+     def tryte_to_char(tryte):
+       return alphabet[tryte_to_dec(*tryte)]
+     def chars_to_trits(seed):
+       ts = [dec_to_trits(alphabet.index(t) if alphabet.index(t) <= 13 else alphabet.index(t)-27) for t in seed]
+       return trytes_to_trits(ts)
+     def trits_to_chars(trits):
+       return ''.join([ tryte_to_char(t) for t in trits_to_trytes(trits)])
+     def chars_to_dec(seed):
+       return trits_to_dec(chars_to_trits(seed))
+     def dec_to_chars(n):
+       return trits_to_chars(dec_to_trits(n))
+
+     # add index to seed
+     def add(seed, index):
+         t = chars_to_dec(seed) + index
+         # return dec_to_chars(t)
+         return dec_to_trits(t)
+   #+end_src
+
+*** Note
+
+   If you are getting /AttributeError: module 'sha3' has no attribute 'keccak_384/ error message, it is because you already have standard /*sha3*/ installed which has to be uninstalled and install /*pysha3*/ lib instead. You know the drill:
+
+   #+begin_src sh
+     pip install pysha3
+   #+end_src
+
+   You also need /*conv*/ package from /pyota/ library, implementation to convert trits to/from bytes is a bit more complex due to endianess / signed bytes encoding and will make the blog post too long and hey, it's holiday time.
+
+   #+begin_src sh
+     pip install pyota
+   #+end_src
+
+** References
+   - https://blog.iota.org/one-seed-to-sow-your-key-s-f074f1bb6714
+   - https://github.com/iotaledger/iota.py/blob/master/docs/addresses.rst
+   - https://iota-news.com/iota-tutorial-address-and-checksum/
+   - https://www.youtube.com/playlist?list=PLmL13yqb6OxdIf6CQMHf7hUcDZBbxHyza
+   - https://iota.stackexchange.com/questions/249/why-arent-seeds-longer-than-81-trytes-more-secure
+   - https://en.wikipedia.org/wiki/Sponge_function
+   - https://keccak.team/sponge_duplex.html
+   - https://iota101.info/
+   - https://en.wikipedia.org/wiki/PBKDF2
+   - https://laurencetennant.com/iota-tools/

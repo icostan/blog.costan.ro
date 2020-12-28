@@ -28,11 +28,14 @@
     SCHEDULED: <2020-02-25 Tue>
 *** Schnorr vs. Threshold signature aggregations               :cryptography:
 *** literate blogging with Orgmode                       :productivity:emacs:
+    - multiple languages
     - evaluate block inline
     - counting lines
     - pass results between blocks
     - edit block's content in native buffer
     - exporting to multiple formats
+    - charts with mindmap, ditta, dot
+    - orgmode is first-class citize in Hugo
 *** DONE Week/Day close tradingview indicator
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** cryptographic trap-doors                                   :cryptography:
@@ -188,12 +191,13 @@
 *** DONE generate monero address
 *** DONE first US visit in 2000
     SCHEDULED: <2020-09-25 Fri>
-*** DONE generate ethereum address                                     :coin:
+*** DONE generate ethereum address
 *** synthetics options                                              :trading:
     - https://www.theoptionsguide.com/synthetic-position.aspx
     - synthetics image
 *** harvest arbitrage attack
-*** iota address
+*** DONE iota address                                                  :coin:
+    SCHEDULED: <2020-12-08 Tue>
 *** DONE algebraic structures
 *** individual algebraic structures                                    :math:
     - http://mathonline.wikidot.com/abstract-algebra
@@ -206,17 +210,22 @@
     - forward
     - futures
     - options
-    - warrants
+    -- warrants
 *** famous formulas                                                    :math:
     - https://en.wikipedia.org/wiki/Euler%27s_identity, https://en.wikipedia.org/wiki/Mathematical_beauty
     - exponentiation, log, square: b^x=r
-*** DONE interest rate                                              :finance:
+*** DONE interest rate
     - fixed/simple vs compounding
     - periods: annually, monthly, daily
     - rule of 72 - doubling
     - continuous compounding with e
     - https://www.cnbc.com/id/48220824
     - https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial
+*** ternary vs binary systems
+    - https://en.wikipedia.org/wiki/Balanced_ternary
+    - https://en.wikipedia.org/wiki/Ternary_numeral_system
+    - byte vs tryte, bit vs trit
+    - add/mul operations
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -293,10 +302,12 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-11-20 Fri +2w>
+    SCHEDULED: <2020-12-18 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-11-17 Tue 17:20]
+    :LAST_REPEAT: [2020-12-28 Mon 17:00]
     :END:
+    - State "DONE"       from "TODO"       [2020-12-28 Mon 17:00]
+    - State "DONE"       from "TODO"       [2020-11-26 Thu 07:56]
     - State "DONE"       from "TODO"       [2020-11-17 Tue 17:20]
     - State "DONE"       from "TODO"       [2020-10-30 Fri 08:45]
     - State "DONE"       from "TODO"       [2020-10-10 Sat 07:10]
@@ -320,3 +331,4 @@
     - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
     - [X] cryptography
     - [ ] emacs
+    - [ ] market wizards review

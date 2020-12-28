@@ -1,4 +1,4 @@
-baseurl = "https://blog.iuliancostan.com"
+baseurl = "https://blog.costan.ro"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
@@ -57,7 +57,7 @@ googleAnalytics = "UA-354095-4"
 
 [Author]
   name = "Iulian Costan"
-  email = "blog@iuliancostan.com"
+  email = "blog@costan.ro"
   facebook = "iuliancostan"
   # googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
   gitlab = "icostan"
@@ -157,6 +157,11 @@ googleAnalytics = "UA-354095-4"
     name = "Ethereum address"
     url = "post/2020-10-27-generate-ethereum-address"
     weight = 5
+[[menu.main]]
+    parent = "coins"
+    name = "Iota address"
+    url = "post/2020-12-28-generate-iota-address"
+    weight = 6
 
 [[menu.main]]
     identifier = "emacs"
