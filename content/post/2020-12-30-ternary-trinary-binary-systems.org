@@ -1,0 +1,194 @@
+#+title: Ternary (trinary) vs. binary
+#+subtitle: Computers
+#+date: 2020-12-30
+#+tags[]: ternary trinary binary bit trit byte tryte
+
+We all know the binary system but a few heard about ternary (trinary) system; one of the first computer in Soviet Russia was using ternary system but it went out of fashion and binary system took over.
+
+** Binary system
+
+   In binary system or /*base 2*/, the unit of information is the /*bit*/ (BInary digiT) and everything is represented as /*0*/ and /*1*/, /low voltage/, /high voltage/, then one level up we have /*byte*/ which has /*8 bits*/.
+
+   In Python, we have /*bin*/ function to transform an integer into binary representation and /*int*/ function to parse a bit string into integer.
+
+   #+begin_src python :results output
+     print(int('1011', 2))
+     print(bin(11))
+   #+end_src
+
+   #+RESULTS:
+   : 11
+   : 0b1011
+
+   Using binary system is very easy to represent natural numbers (positive integers) while for negative integers we need to use /*one bit*/ to store the /*sign*/ as either 1's or 2's complement.
+
+** Ternary (trinary) system
+
+   As the name suggests, ternary (or trinary) system is a numeral system with 3 possible states and along the same lines we have the /*trit*/ (TRInary digiT) and /*tryte*/ (TRinary bYTE) which has /*3 trits*/.
+
+   On the other hand, in ternary system we have two representations:
+   1. unbalanced ternary
+   2. balanced ternary
+
+   Here are the advantages / disadvantages of each system:
+
+*** 1. Unbalanced ternary
+
+    First thing first, let's convert between ternary and decimal representations. Parsing ternary into decimal is easy, just use Python built-in function.
+
+    #+begin_src python :results output :session ternary
+      print(int('1021', 3))
+    #+end_src
+
+    #+RESULTS:
+    : 34
+
+    Or we can write our own function /*ter_to_dec*/ - ternary to decimal conversion. Note that it is /*MST*/ (Most Significant Trit) first representation so we need to reverse the input trits.
+
+    #+begin_src python :results output :session ternary
+     def ter_to_dec(trits):
+         return sum([3**i * int(t) for i, t in enumerate(reversed(trits))])
+
+     print(ter_to_dec('1021'))
+    #+end_src
+
+    #+RESULTS:
+    : 34
+
+    And the inverse function, /*dec_to_ter*/ - decimal to unbalanced ternary, a recursive modulo operation collecting the reminder /*r*/ at each step.
+
+    #+begin_src python :results output
+      def dec_to_ter(d):
+        q, r = divmod(d, 3)
+        if q == 0:
+          return '0t' + str(r)
+        else:
+          return dec_to_ter(q) + str(r)
+
+      print(dec_to_ter(34))
+    #+end_src
+
+    #+RESULTS:
+    : 0t1021
+
+    So far, so good, nothing fancy under the sun, instead of /*base 2*/ we use /*base 3*/, everything else stays the same.
+
+*** 2. Balanced ternary
+
+    In balanced ternary the 3 states are balanced around /*0*/ and instead of /*2*/ we use /*-1*/ so the states are /*0*/, /*1*/ and /*-1*/ or even simpler: /*0*/, /*+*/ and /*-*/.
+
+    Two helper functions to transform between trit and char: /*chr*/ - balanced trit to char, /*bal*/ - the inverse, char to trit.
+
+    #+begin_src python :results output :session ternary
+      alphabet = '0+-'
+      def chr(n):
+         return alphabet[n]
+
+      print('to char:')
+      print(chr(0))
+      print(chr(1))
+      print(chr(-1))
+
+      def bal(c):
+         return alphabet[:-1].find(c) # remove - char so find returns -1 on not found
+
+      print('\nto trit:')
+      print(bal('0'))
+      print(bal('+'))
+      print(bal('-'))
+    #+end_src
+
+    #+RESULTS:
+    : to char:
+    : 0
+    : +
+    : -
+    :
+    : to trit:
+    : 0
+    : 1
+    : -1
+
+    Now, the same ternary to decimal conversion, this time is important to remember that balanced ternary uses LST (Least Significant Trit) first, no need to reverse the trits anymore.
+
+    #+begin_src python :results none :session ternary
+      def bal_to_dec(trits):
+          return sum([3**i * bal(t) for i, t in enumerate(trits)])
+    #+end_src
+
+    Let's try some trits to decimal conversion:
+
+    #+begin_src python :results output :session ternary
+      print(bal_to_dec('000'))
+      print(bal_to_dec('+++'))
+      print(bal_to_dec('0-+'))
+    #+end_src
+
+    #+RESULTS:
+    : 0
+    : 13
+    : 6
+
+    But what happens if we flip the trits? /*+*/ becomes /*-*/ and vice-versa, while /*0*/ stays the same.
+
+    #+begin_src python :results output :session ternary
+      print(bal_to_dec('---'))
+      print(bal_to_dec('0+-'))
+    #+end_src
+
+    #+RESULTS:
+    : -13
+    : -6
+
+    MAGIC huh? This is the power of balanced ternary system on steroids, negative numbers are first-class citizens, we don't need to waste an extra /bit/ for sign as we do in binary system.
+
+    #+begin_src python :results output :session ternary
+      print(bal_to_dec('0+-0+++0-'))
+      print(bal_to_dec('0-+0---0+'))
+    #+end_src
+
+    #+RESULTS:
+    : -5514
+    : 5514
+
+    And last, decimal to balanced ternary conversion, the implementation is the same as for unbalanced ternary with the exception that we need to convert /*2*/ to /*-1*/ and increment (carry) the quotient.
+
+    #+begin_src python :results output :session ternary
+      def dec_to_bal(d):
+        q, r = divmod(d, 3)
+        if r == 2:
+           q += 1
+           r = -1
+        if q == 0:
+          return chr(r)
+        else:
+          return chr(r) + dec_to_bal(q)
+
+      print(dec_to_bal(6))
+      print(bal_to_dec('0-+'))
+      print(dec_to_bal(-9223))
+      print(bal_to_dec('-++00+---'))
+    #+end_src
+
+    #+RESULTS:
+    : 0-+
+    : 6
+    : -++00+---
+    : -9223
+
+
+    This is it, ternary system, as you might guess the addition/multiplication and all other arithmetic operations work as expected, trit by trit,
+    also as an exercise for the reader, /floating points/ representation and ...
+
+    /*Happy New Year!!!*/
+
+** References
+   - https://en.wikipedia.org/wiki/Bit
+   - https://en.wikipedia.org/wiki/Ternary_numeral_system
+   - https://en.wikipedia.org/wiki/Balanced_ternary
+   - https://dev.to/buntine/the-balanced-ternary-machines-of-soviet-russia
+   - https://cp-algorithms.com/algebra/balanced-ternary.html
+   - https://rosettacode.org/wiki/Balanced_ternary
+   - https://www.tutorialspoint.com/two-s-complement
+   - https://onlinetoolz.net/unsigned-signed
+   - https://rosettacode.org/wiki/Ternary_logic
