@@ -44,6 +44,7 @@
     -- EC discrete log
     - lattice
     - isogeny
+    - hash function
 *** MPC, FHE, FE                                            :cryptography:
     - multi party computation, homomorphic and, functional encryption
     - https://www.esat.kuleuven.be/cosic/blog/the-three-musketeers-of-secure-computation-mpc-fhe-and-fe/
@@ -221,11 +222,15 @@
     - continuous compounding with e
     - https://www.cnbc.com/id/48220824
     - https://www.khanacademy.org/economics-finance-domain/core-finance/interest-tutorial
-*** ternary vs binary systems
+*** DONE ternary vs binary systems
+    SCHEDULED: <2020-12-29 Tue>
     - https://en.wikipedia.org/wiki/Balanced_ternary
     - https://en.wikipedia.org/wiki/Ternary_numeral_system
     - byte vs tryte, bit vs trit
     - add/mul operations
+*** one time signatures
+    - lamport, merkle, winternitz
+    - https://www.youtube.com/watch?v=EohFxzWLh1U&list=PLmL13yqb6OxdIf6CQMHf7hUcDZBbxHyza&index=8&t=7s
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -302,10 +307,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2020-12-18 Fri +2w>
+    SCHEDULED: <2021-01-01 Fri +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-12-28 Mon 17:00]
+    :LAST_REPEAT: [2020-12-31 Thu 14:18]
     :END:
+    - State "DONE"       from "TODO"       [2020-12-31 Thu 14:18]
     - State "DONE"       from "TODO"       [2020-12-28 Mon 17:00]
     - State "DONE"       from "TODO"       [2020-11-26 Thu 07:56]
     - State "DONE"       from "TODO"       [2020-11-17 Tue 17:20]

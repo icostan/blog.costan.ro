@@ -31,7 +31,7 @@ It is also one of my favorite digital signature scheme because of its simplicity
 
 # Elliptic curve multiplication trapdoor
 
-Nothing new under the sun so far, the same elliptic curve \`EC\` defined over finite field \`p\` with generator \`G\` of order \`n\`. See [ECDSA](file:///post/2019-04-09-ecdsa) post for more elliptic curve information.
+Nothing new under the sun so far, the same elliptic curve \`EC\` defined over finite field \`p\` with generator \`G\` of order \`n\`. See [ECDSA](/post/2019-04-09-ecdsa) post for more elliptic curve information.
 We start the show by generating a random private key \`k\` and calculate the public key point \`P\`.
 
     1  import hashlib

@@ -125,7 +125,9 @@ Generate IOTA address using plain old Python, starting with random seed, derive 
     : index: 2
 
 *** 2. Sub-seeds
-    Add /index/ (integer between 0 and 3^36, maximum 12 trytes) to /seed/, hash it once and generate the /*sub-seed*/.
+    Before going further I have to mention that IOTA uses [[https://en.wikipedia.org/wiki/Ternary_numeral_system][ternary (trinary) system]], please see the [[/post/2020-12-30-ternary-trinary-binary-systems/][blog post]] for detailed explanations.
+
+    Now, back to business at hand, add /index/ (integer between 0 and 3^36, maximum 12 trytes) to /seed/, hash it once and generate the /*sub-seed*/.
 
     #+begin_src python :results output :session iota
       subseed_trits = add(seed, index)
@@ -141,7 +143,7 @@ Generate IOTA address using plain old Python, starting with random seed, derive 
     : security level: 2
 
 *** 3. Private key
-    Absort /subseed's trits/ into the sponge function then spit out the /*private key*/ of length proportional with the /security level/.
+    Absorb /subseed's trits/ into the sponge function then spit out the /*private key*/ of length proportional with the /security level/.
 
     #+begin_src python :results output :session iota
       h = absorb(subseed_trits)
@@ -332,7 +334,7 @@ Generate IOTA address using plain old Python, starting with random seed, derive 
      pip install pysha3
    #+end_src
 
-   You also need /*conv*/ package from /pyota/ library, implementation to convert trits to/from bytes is a bit more complex due to endianess / signed bytes encoding and will make the blog post too long and hey, it's holiday time.
+   You also need /*conv*/ package from /pyota/ library, implementation to convert trits to/from bytes is a bit more complex due to endianness / signed bytes encoding and will make the blog post too long and hey, it's holiday time.
 
    #+begin_src sh
      pip install pyota
