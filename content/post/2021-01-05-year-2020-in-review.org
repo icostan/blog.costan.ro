@@ -1,0 +1,55 @@
+#+title:  Year 2020
+#+subtitle: Review
+#+date:   2021-01-05
+#+tags[]: 2020 review trading crypto blog options futures cfd defi hodl tech
+
+Pam, pam, pam !!!
+
+Bloody fucking year, /*2020*/, one of a kind, already in history books.
+
+** 1. Trading
+   /RPnL/ - Realized Profit and Loss denominated in base currency (except Forex)
+*** 1.1 Crypto options - paid the heavy learning price
+    - Bitcoin account: /*-51%*/ /RPnL/
+    - Ethereum account: /*-53%*/ /RPnL/
+*** 1.2 Crypto futures - got greedy and lost :)
+    - Bitcoin account: /*-5%*/ /RPnL/
+    - Ethereum account: N/A
+*** 1.3 CFD - FLTASC strategy no longer works :(
+    - Commodities & Forex account: /*-30%*/ /RPnL/ (denominated in USD)
+** 2. Crypto
+*** 2.1 DeFi - finance revolution
+    UPnL - Unrealized Profit and Loss (net - w/o exchange/network fees)
+**** Liquidity provider
+     - Uniswap: /*+13.7%*/ /UPnL/ (including impermanent profit/loss)
+     - Curve: /*+2.73%*/ /UPnL/
+**** Lending
+     - Maker: /*+1.41%*/ /RPnL/
+     - DyDx: /*+1.72%*/ /RPnL/
+**** Yield farming
+     - Harvest: /*+2.9%*/ /UPnL/
+     - Uniswap: /*+0.5%*/ /RPnL/
+     - Curve: /*+1.23%*/
+**** Yield optimization
+     - Yearn: /*+0.38%*/ /RPnL/
+     - Harvest: /*-13%*/ /UPnL/ (due to hack)
+*** 2.2 Hodl - unloading altcoins
+    - Litecoin: /*+120%*/ /RPnL/
+    - Monero: /*+106%*/ /RPnL/
+    - Stellar: /*+33%*/ /RPnL/
+    - Iota: /*+89%*/ /RPnL/
+*** 2.3 Tech - hands on
+    - mining: monero
+    - full nodes: bitcoin, ethereum, monero
+    - playground: filecoin, dfinity, iota
+    - education: mostly low-level cryptographic primitives
+** 3. Blog
+*** 3.1 Recurring series
+    - Linux kernel/modules series
+    - cryptographic primitives
+    - review Market Wizards books
+*** 3.2 One-time posts
+    - about linux/emacs/math/crypto
+    - new/interesting ad-hoc subjects
+
+C U in 2022 !!!

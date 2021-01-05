@@ -307,10 +307,12 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-01-01 Fri +2w>
+    SCHEDULED: <2021-01-19 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2020-12-31 Thu 14:18]
+    :LAST_REPEAT: [2021-01-05 Tue 16:16]
     :END:
+    - State "DONE"       from "TODO"       [2021-01-05 Tue 16:16]
+    - State "DONE"       from "TODO"       [2021-01-04 Mon 23:52]
     - State "DONE"       from "TODO"       [2020-12-31 Thu 14:18]
     - State "DONE"       from "TODO"       [2020-12-28 Mon 17:00]
     - State "DONE"       from "TODO"       [2020-11-26 Thu 07:56]
