@@ -1,0 +1,200 @@
+#+title:  Black-Scholes formula
+#+subtitle: Math
+#+date:   2021-01-28
+#+tags[]: trading options put call black-scholes volatility python
+
+Black-Scholes formula... maybe not as important and well-known as [[/post/2020-11-24-interest-rate/][compounding interest-rate]] but still the most famous formula among options traders. Here are the formulas that you will find in financial books.
+
+** Intuition
+
+   \[
+   d1 = \frac{\ln{\frac{\textcolor{blue}{S}}{\textcolor{cyan}{K}}} + (r + \frac{\textcolor{lime}{\sigma}^2}{2}) * \textcolor{magenta}{t}}{\textcolor{lime}{\sigma}*\sqrt{\textcolor{magenta}{t}}}
+   \\
+   d2 = \frac{\ln{\frac{\textcolor{blue}{S}}{\textcolor{cyan}{K}}} + (r - \frac{\textcolor{lime}{\sigma}^2}{2}) * \textcolor{magenta}{t}}{\textcolor{lime}{\sigma}*\sqrt{\textcolor{magenta}{t}}}
+   \]
+
+   \[
+   \textcolor{green} {C} =  N(d1) * \textcolor{blue}{S} - N(d2) * \textcolor{cyan}{K} * e^{-r*\textcolor{magenta}{t}}
+   \]
+
+   \[
+   \textcolor{red} {P} = N(-d2) * \textcolor{cyan}{K} * e^{-r*\textcolor{magenta}{t}} - N(-d1) * \textcolor{blue}{S}
+   \]
+
+where:
+- C - price of an European Call options
+- P - price of an European Put options
+- N - cumulative distribution function (CDF)
+- S - Spot price of the underlying asset
+- K - striKe price of option
+- t - time to expiraTion (in years)
+- σ - /sigma/ - standard deviation of log returns (volatility)
+- σ\sup2 - squared deviation (variance)
+
+
+Scary? not really... let's put /*d1*/ and /*d2*/ terms aside for now and try to understand the call/put price formulas.
+
+We know the discounted interest-rate formula, details and proof in this [[/post/2020-11-24-interest-rate/][blog post]].
+
+  \[
+  \color{blue}
+  D = C * e^{-r*t}
+  \]
+
+where /*C*/ is the compounding value (forward/future price) after /*t*/ time and /*D*/ is present value (current price); or put the it other way around, /*D*/ is the discounted value of /*C*/.
+
+
+With this new knowledge, let's change the call/put price formulas to:
+
+   \[
+   \textcolor{green} {C} =  N(d1) * \textcolor{blue}{S} - N(d2) * \textcolor{cyan}{D}
+   \]
+
+   \[
+   \textcolor{red} {P} = N(-d2) * \textcolor{cyan}{D} - N(-d1) * \textcolor{blue}{S}
+   \]
+
+where:
+- D - present value (discounted value) of the strike price /*K*/
+
+Looks better but what about /*N( )*/ thing?
+First thing first, let's have a look at Gaussian distribution (also called normal distribution) with 1 standard deviation (σ = 1) and 0 mean (μ = 0)
+
+#+begin_src sage :session bs :file ../img/blackscholes/gaussian.png :results none
+  G = RealDistribution('gaussian', 1)
+#+end_src
+
+#+begin_src sage :session bs :file ../img/blackscholes/pdf.png :results none
+  PDF = lambda x: G.distribution_function(x)
+  plot(PDF, (x, -3, 3), legend_label='PDF: Probability Density Function', axes_labels=['$std$', '$gradient$'])
+#+end_src
+
+[[file:/img/blackscholes/pdf.png]]
+
+Since /*PDF*/ is [[https://en.wikipedia.org/wiki/Probability_density_function][probability density function]] we are dealing with areas of probabilities, in simple terms, the area to the left of the mean has 50% probability.
+
+#+begin_src sage :session bs :file ../img/blackscholes/cdf.png :results none
+CDF = lambda x: G.cum_distribution_function(x)
+plot(CDF, (x, -3, 3), legend_label='CDF: Cumulative Distribution Function', axes_labels=['$std$', '$probability$'])
+#+end_src
+
+[[file:/img/blackscholes/cdf.png]]
+
+/*CDF*/ is called [[https://en.wikipedia.org/wiki/Cumulative_distribution_function][cumulative distribution function]] which is the probability of a random variable /*X*/ to be less than a given point /*x*/.
+
+Without going into details, the relation between the two is that, we can integrate the density function and find the cumulative function
+
+\[
+\int_{-\infty}^x PDF(x) \, \mathrm{d}x = CDF(x)
+\]
+
+and vice-versa, we differentiate the cumulative function and find the density function.
+
+\[
+\frac{\mathrm{d} \, CDF(x)}{\mathrm{d}x} = PDF(x)
+\]
+
+And finally, since our /*N( )*/ function is a /*CDF*/ it means that it is /*0 < N( ) < 1*/, in other words it is a /*weight*/ (a scaling factor).
+
+** Implementation
+
+In Python/Sagemath it looks like this:
+
+#+begin_src sage :session bs :results none
+  from math import log, sqrt, pi, exp
+
+  def d1(s, k, t, r, iv):
+      return(log(s/k) + (r+iv**2/2)*t) / iv*sqrt(t)
+  def d2(s, k, t, r, iv):
+      return d1(s,k,t,r,iv) - iv*sqrt(t)
+
+  def D(k, r, t):
+      return k * exp(-r*t)
+
+  def call_price(s, k, t, r, iv):
+      return N(d1(s,k,t,r,iv)) * s - N(d2(s,k,t,r,iv)) * D(k,r,t)
+  def put_price(s, k, t, r, iv):
+      return N(-d2(s,k,t,r,iv)) * D(k,r,t) - N(-d1(s,k,t,r,iv)) * s
+#+end_src
+
+Call price:
+
+#+begin_src sage :session bs :results output
+  s = 1330
+  k = 1280
+  t = (10 + 17/24) / 365
+  r = 0.01
+  iv = 1.34
+  print(call_price(s, k, t, r, iv))
+#+end_src
+
+#+RESULTS:
+: 141.6089647684081
+
+Put price:
+
+#+begin_src sage :session bs :results output
+  s = 33760
+  k = 34000
+  t = (10 + 17/24) / 365
+  r = 0.01
+  iv = 1.10
+  print(put_price(s, k, t, r, iv))
+#+end_src
+
+#+RESULTS:
+: 2655.0941969718187
+
+** Implied volatility
+
+We can do it the other way around as well and recursively find the implied volatility for a given price.
+
+Call IV:
+
+#+begin_src sage :session bs :results output
+  def call_iv(p, iv=1.30, step=0.01):
+      ip = call_price(s, k, t, r, iv)
+      if ip > p:
+          return iv;
+      else:
+          return call_iv(p, iv + step)
+
+  print(call_iv(141))
+#+end_src
+
+#+RESULTS:
+: 1.34000000000000
+
+Put IV:
+
+#+begin_src sage :session bs :results output
+  def put_iv(p, iv=1.00, step=0.01):
+      ip = put_price(s, k, t, r, iv)
+      if ip > p:
+          return iv;
+      else:
+          return put_iv(p, iv + step)
+
+  print(put_iv(2660))
+#+end_src
+
+#+RESULTS:
+: 1.11000000000000
+
+** References
+   - https://www.investopedia.com/terms/b/blackscholes.asp
+   - https://en.wikipedia.org/wiki/Black-Scholes_model
+   - https://en.wikipedia.org/wiki/Black-Scholes_equation
+   - https://en.wikipedia.org/wiki/Probability_distribution
+   - https://en.wikipedia.org/wiki/Normal_distribution
+   - https://en.wikipedia.org/wiki/Standard_deviation
+   - https://en.wikipedia.org/wiki/Variance
+   - https://en.wikipedia.org/wiki/Probability_density_function
+   - https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp
+   - https://en.wikipedia.org/wiki/Cumulative_distribution_function
+   - https://www.appliedaicourse.com/lecture/11/applied-machine-learning-online-course/2843/cdfcumulative-distribution-function-of-gaussiannormal-distribution/2/module-2-data-science-exploratory-data-analysis-and-data-visualization
+   - https://aaronschlegel.me/black-scholes-formula-python.html
+   - https://www.youtube.com/watch?v=YXLVjCKVP7U
+   - https://medium.com/cantors-paradise/the-black-scholes-formula-explained-9e05b7865d8a
+   - https://medium.com/swlh/calculating-option-premiums-using-the-black-scholes-model-in-python-e9ed227afbee
+   - https://en.wikipedia.org/wiki/Partial_differential_equation

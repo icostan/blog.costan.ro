@@ -22,7 +22,7 @@ Albert Einstein: "Compound interest is the eighth wonder of the world. He who un
 
    \[
    \color{blue}
-   P - Principal
+   P - Principal / Price / Present\ value
    \\
    Px - Principal + interest\ after\ 'x'\ years
    \\
@@ -203,7 +203,7 @@ Albert Einstein: "Compound interest is the eighth wonder of the world. He who un
     e = \lim_{x \to +\infty} (1 + \frac{1}{x})^x
     \]
 
-    that gets substituted and we end up with the magic continuous compounding formula:
+    that gets substituted and we end up with the magic /*continuous compounding formula*/:
     \[
     \color{red}
     C = P * e^{r*t}
@@ -220,66 +220,83 @@ Albert Einstein: "Compound interest is the eighth wonder of the world. He who un
 
    /Takeaway/: Before moving further it is important to understand the difference between /*APY*/ (annual percentace yield) and /*APR*/ (annual percentance rate), the former include compounding interest, the latter does not. In other words /*APR*/ is simple interest and /*APY*/ is compounding interest.
 
-** 100% profit
-   OK, now, let's assume that I want to invest $1000 at 6% annual interest rate and I want to know how many years do I need to double my investment?
+** Discounted interest-rate
 
-*** Analytical
-    Let's do a bit of high school math using the annual compounding formula above.
+   What about the other way around, we are given the final (compounding value) and need to calculate the present value?
 
-    \[
-    \textcolor{blue} {C = P*(1 + r)^t}
-    \\
-    \frac{C}{P} = (1 + r)^t
-    \\
-    t = \log_{1+r} \frac{C}{P}
-    \\
-    t = \frac{\ln {\frac{C}{P}}}{\ln 1+r}
-    \]
+   Simple, re-arranging the compounding formula above we have:
 
-    After putting in the numbers we end up with:
+   \[
+   P = \frac{C}{e^{r*t}}
+   \]
+   \[
+   \color{red}
+   P = C * e^{-r*t}
+   \]
 
-    \[
-    t = \frac{\ln {\frac{2000}{1000}}}{\ln 1+0.06}
-    \\
-    \textcolor{green} {t = 11.9\ years}
-    \]
+   where /*P*/ is called the present value or discounted value and is very useful in financial valuation.
 
-    Double check in Python:
+** A few tricks
+*** Double your investment aka 100% profit
+    OK, now, let's assume that I want to invest $1000 at 6% annual interest rate and I want to know how many years do I need to double my investment?
 
-    #+begin_src python :results output :session interest
-      from math import log
-      t = log(2)/ log(1.06)
-      print('%.1f years' % t)
-    #+end_src
+**** Analytical
+     Let's do a bit of high school math using the annual compounding formula above.
 
-    #+RESULTS:
-    : 11.9 years
+     \[
+     \textcolor{blue} {C = P*(1 + r)^t}
+     \\
+     \frac{C}{P} = (1 + r)^t
+     \\
+     t = \log_{1+r} \frac{C}{P}
+     \\
+     t = \frac{\ln {\frac{C}{P}}}{\ln 1+r}
+     \]
 
-    Unfortunately most of the people cannot do logarithms in their heads but rest assured there is a lot easier solution.
+     After putting in the numbers we end up with:
 
-*** Rule of 72
+     \[
+     t = \frac{\ln {\frac{2000}{1000}}}{\ln 1+0.06}
+     \\
+     \textcolor{green} {t = 11.9\ years}
+     \]
 
-    As [[https://www.investopedia.com/][Investopedia]] nicely explains it: [[https://www.investopedia.com/terms/r/ruleof72.asp][Rule of 72]] is a formula to estimate the number of years required to double the invested money at a given annual interest rate.
-    Just divide /*72*/ by the annual interest rate /*6*/ and there you have it: /*~12*/ years.
+     Double check in Python:
 
-    #+begin_src python :results output :session interest
-      t = 72 / 6
-      print('%.1f years' % t)
-    #+end_src
+     #+begin_src python :results output :session interest
+       from math import log
+       t = log(2)/ log(1.06)
+       print('%.1f years' % t)
+     #+end_src
 
-    #+RESULTS:
-    : 12.0 years
+     #+RESULTS:
+     : 11.9 years
+
+     Unfortunately most of the people cannot do logarithms in their heads but rest assured there is a lot easier solution.
+
+**** Rule of 72
+
+     As [[https://www.investopedia.com/][Investopedia]] nicely explains it: [[https://www.investopedia.com/terms/r/ruleof72.asp][Rule of 72]] is a formula to estimate the number of years required to double the invested money at a given annual interest rate.
+     Just divide /*72*/ by the annual interest rate /*6*/ and there you have it: /*~12*/ years.
+
+     #+begin_src python :results output :session interest
+       t = 72 / 6
+       print('%.1f years' % t)
+     #+end_src
+
+     #+RESULTS:
+     : 12.0 years
 
 
-    Why 72?
+     Why 72?
 
-    Detailed explanations [[https://en.wikipedia.org/wiki/Rule_of_72][here]] but ultimately it is as simple /*ln 2*/,
+     Detailed explanations [[https://en.wikipedia.org/wiki/Rule_of_72][here]] but ultimately it is as simple /*ln 2*/,
 
-    \[
-    \ln 2 = 0.693
-    \]
+     \[
+     \ln 2 = 0.693
+     \]
 
-    while /*2*/ comes from doubling ($2000 / $1000), if you need to find the tripling time just use /*3*/ or /*1.5*/ for halving time.
+     while /*2*/ comes from doubling ($2000 / $1000), if you need to find the tripling time just use /*3*/ or /*1.5*/ for halving time.
 
 ** References
    - [[https://www.investopedia.com/terms/c/compoundinterest.asp]]

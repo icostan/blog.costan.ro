@@ -9,7 +9,7 @@ Bloody fucking year, /*2020*/, one of a kind, already in history books.
 
 ** 1. Trading
    /RPnL/ - Realized Profit and Loss denominated in base currency (except Forex)
-*** 1.1 Crypto options - paid the heavy learning price
+*** 1.1 Crypto options - the learning price for options writing
     - Bitcoin account: /*-51%*/ /RPnL/
     - Ethereum account: /*-53%*/ /RPnL/
 *** 1.2 Crypto futures - got greedy and lost :)

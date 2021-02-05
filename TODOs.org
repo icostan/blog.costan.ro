@@ -48,6 +48,8 @@
 *** MPC, FHE, FE                                            :cryptography:
     - multi party computation, homomorphic and, functional encryption
     - https://www.esat.kuleuven.be/cosic/blog/the-three-musketeers-of-secure-computation-mpc-fhe-and-fe/
+    - https://insights.deribit.com/industry/decentralisation-of-custody-solutions/
+    - https://www.qredo.com/blog/mpc-over-ecdsa-signatures
 *** DONE zero-knowledge proofs
     CLOSED: [2019-08-29 Thu 17:16]
 *** DONE RSA encryption scheme
@@ -118,7 +120,7 @@
     - keep very critical stuff online (albums, important papers) as well for redundancy
     - passwords manager with 3 layer protection: pass, 2FA, ?
     - 2FA in sync on a few devices only
-*** FLASC trading strategy                                          :trading:
+*** FLTASC trading strategy                                         :trading:
 *** DONE elliptic curves
     CLOSED: [2019-10-01 Tue 17:38]
 *** finite fields with graphs                                  :cryptography:
@@ -155,17 +157,21 @@
     - [ ] cryptography theory and practice
 
 *** WIP linux kernel module
-    - [X] communication between Hello and World modules
+    - [X] World module (split #1 post)
+    - [ ] calling from kernel space from Hello module (split #1 post)
     - [X] configure module via ioctl
-    - [ ] calling from kernel space from another module (split #1 post)
     - [ ] calling from user space space via syscall
+    - [ ] unit test the module with kunit
+    - [ ] kernel development
+      - https://andrealmeid.com/post/2020-03-10-bootstrap-arch/
+      - https://www.youtube.com/watch?v=Sk9TatW9ino&list=PL-qYwRJzsFMIKjGYhQx-M6WB7o0VT7taL&index=1&t=102s
 *** demo the demo-it in Emacs                                         :emacs:
 *** DONE COVID-19 indicators
 *** CTFs and cryptography attacks                              :cryptography:
     - https://github.com/JohnHammond/ctf-katana/blob/master/README.md
     - https://asecuritysite.com/challenges/
 *** DONE travel map coverage
-*** earn decentralized income                              :decentralization:
+*** earn passive income                                    :decentralization:
     - earn BAT by seeing ads with Brave
     - earn BTC by map contribution with OsmAnd
     - earn STEEM/ETH for articles with SteemIt, Publish0x
@@ -193,7 +199,7 @@
 *** DONE first US visit in 2000
     SCHEDULED: <2020-09-25 Fri>
 *** DONE generate ethereum address
-*** synthetics options                                              :trading:
+*** synthetics                                                      :trading:
     - https://www.theoptionsguide.com/synthetic-position.aspx
     - synthetics image
 *** harvest arbitrage attack
@@ -231,6 +237,56 @@
 *** one time signatures
     - lamport, merkle, winternitz
     - https://www.youtube.com/watch?v=EohFxzWLh1U&list=PLmL13yqb6OxdIf6CQMHf7hUcDZBbxHyza&index=8&t=7s
+*** key exchange
+    - 2 parties: DH
+    - 3 parties: french guy?
+    - many - bilinear maps
+*** Paillier cryptosystem
+    - https://en.wikipedia.org/wiki/Paillier_cryptosystem
+*** consensus algorithms
+    - pow
+    - pos
+    - post
+    - threshold relay
+*** volatility
+    - https://www.macrodesiac.com/your-volatility-handbook/amp/?__twitter_impression=true
+    - https://mathbabe.org/2011/08/30/why-log-returns/
+    - https://investmentcache.com/magic-of-log-returns-concept-part-1/
+    - https://quant.stackexchange.com/questions/3000/how-to-annualize-log-returns
+    - https://money.stackexchange.com/questions/24382/what-does-the-average-log-return-value-of-a-stock-mean
+    - https://en.wikipedia.org/wiki/Pythagorean_means
+*** understanding greeks
+    https://www.macroption.com/option-greeks-excel/
+    https://docs.fincad.com/support/developerfunc/mathref/greeks.htm
+    - delta
+    - theta
+    - vega or kappa
+    - rho
+    - gamma
+    - volga
+    - zomma - https://www.investopedia.com/terms/z/zomma.asp
+    - vanna
+    - other minor greeks
+*** TODO understanding black-scholes
+    - https://www.macroption.com/black-scholes-formula/
+    - https://aaronschlegel.me/black-scholes-formula-python.html
+*** algorithmic stablecoins
+    - https://messari.io/screener/everything-stablecoins-87061DFA
+*** decentralization
+    - store of value: bitcoin
+    - storage: sia
+    - cloud: akash
+    - internet: dfinity
+    - vpn: orchid
+    - dns: handshake
+    - exchange: uniswap
+    - lending: aave
+    - identity: pai
+    - trading
+      -- options: hegic
+      -- futures: perpetual
+      -- assets: synthetix
+    - interest-rate swap: ?
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -307,10 +363,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-01-19 Tue +2w>
+    SCHEDULED: <2021-02-07 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-01-05 Tue 16:16]
+    :LAST_REPEAT: [2021-02-05 Fri 12:31]
     :END:
+    - State "DONE"       from "TODO"       [2021-02-05 Fri 12:31]
     - State "DONE"       from "TODO"       [2021-01-05 Tue 16:16]
     - State "DONE"       from "TODO"       [2021-01-04 Mon 23:52]
     - State "DONE"       from "TODO"       [2020-12-31 Thu 14:18]
@@ -340,3 +397,4 @@
     - [X] cryptography
     - [ ] emacs
     - [ ] market wizards review
+    - [ ] linux kernel
