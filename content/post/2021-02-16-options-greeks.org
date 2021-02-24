@@ -1,0 +1,247 @@
+#+title:  Incomplete guide to Options Greeks
+#+subtitle: Finance
+#+date:   2021-02-16
+#+tags[]: trading options delta vega theta gamma vanna vomma greeks
+
+Greeks or Options Greeks are tools/statistics which measure sensitivity (responsiveness, calculus anyone?) of option price to changes in various parameters: underlying price, volatility, time, etc...
+
+** Terminology
+
+   Before digging into math/derivatives/formulas, let's remember the terminology once again, you can see mode details in [[/post/2021-01-28-black-scholes-formula/][Black-Scholes formula]] blog post.
+
+- O - option price of an Call/Put options
+- N - Cumulative Distribution Function (CDF)
+- P - Probability Density Function (PDF)
+- S - Spot price of the underlying asset
+- K - striKe price of option
+- t - time to expiraTion (in years)
+- σ - volatility - standard deviation of log returns (/sigma/)
+- σ\sup2 - variance - squared standard deviation of log returns
+
+** Intuition
+
+   What the heck are these Greeks?
+
+   Greeks are first/second/third/etc-order derivatives of Black-Scholes closed formula with respect to other greek(s) or different variable(s).
+
+   And here is an incomplete list of most important greeks used in options trading.
+** First-order Geeks
+
+   Given /*O*/, the option's value (price, premium, etc) the generic term for both C and P option prices. Formula for /CALL/ options will be in green, for /PUT/ in red and blue color when formula is same.
+
+*** Delta - Δ
+    Option's sensitivity with respect to (w.r.t.) change in underlying price.
+
+    \[
+    \Delta = \frac{ΔO}{ΔS}
+    \]
+
+    Formulas:
+    \[
+    \textcolor{green}{ \Delta = N(d1) }
+    \\
+    \textcolor{red}{ \Delta = -N(-d1) }
+    \]
+
+*** Vega / Kappa - V / Κ
+    Change in option's price w.r.t. change in volatility.
+
+    \[
+    V = \frac{ΔO}{Δσ}
+    \]
+
+    Note. Vega is not a greek letter, so we will just use /*V*/.
+
+    Formula:
+    \[
+    \textcolor{blue}{ V = S * P(d1) * \sqrt{t} }
+    \]
+
+*** Theta - Θ
+    Change in option's price w.r.t time to expiry.
+
+    \[
+    \Theta = \frac{ΔO}{Δt}
+    \]
+
+    Formulas:
+    \[
+    \textcolor{green}{ \Theta = -\frac{S*P(d1)*\sigma}{2\sqrt{t}}-r*K*e^{-rt} * N(d2) }
+    \\
+    \textcolor{red}{ \Theta = -\frac{S*P(d1)*\sigma}{2\sqrt{t}}-r*K*e^{-rt} * N(-d2) }
+    \]
+
+*** Rho - Ρ
+    Changes in option's price w.r.t. risk-free interest rate.
+
+    \[
+    \rho = \frac{\Delta{O}}{\Delta{r}}
+    \]
+
+    Formulas:
+    \[
+    \textcolor{green}{ \rho = t*K*e^{-rt} * N(d2) }
+    \\
+    \textcolor{red}{ \rho = -t*K*e^{-rt} * N(-d2) }
+    \]
+
+** Second-order greeks
+   Second-order derivative of option's value with respect to some other variable(s).
+
+*** Gamma - Γ
+    Change in delta w.r.t. the price of the underlying asset.
+
+    - first-order derivative of /delta/ w.r.t. underlying asset
+    \[
+    \Gamma = \frac{\partial{Δ}}{\partial{S}}
+    \]
+    - second-order derivative of /option value/ w.r.t. underlying asset
+    \[
+    \Gamma = \frac{\partial^2{O}}{\partial{S^2}}
+    \]
+
+    Formula:
+    \[
+    \textcolor{blue}{ \Gamma = \frac{P(d1)}{S * \sigma * \sqrt{t}} }
+    \]
+
+*** Vomma / Volga
+    Sensitivity of vega to a change in the volatility.
+
+    - first-order derivative of /vega/ w.r.t. volatility
+    \[
+    volga = \frac{\partial{V}}{\partial{σ}}
+    \]
+    - second-order derivative of /option's value/ w.r.t volatility
+    \[
+    volga = \frac{\partial^2{O}}{\partial{σ^2}}
+    \]
+
+    Formula:
+    \[
+    \textcolor{blue}{ volga = P(d1) * \sqrt{t} * \frac{d1 * d2}{\sigma} }
+    \]
+
+
+*** Vanna
+    This is volatility's cross Greek and is the sensitivity of delta/vega w.r.t. volatility/spot.
+
+    - first-order derivative of /delta/ w.r.t. volatility
+    \[
+    vanna = \frac{\partial{Δ}}{\partial{σ}}
+    \]
+    - first-order derivative of /vega/ w.r.t. underlying spot
+    \[
+    vanna = \frac{\partial{V}}{\partial{S}}
+    \]
+    - second-order derivative of /option value/ w.r.t. both underlying spot and volatility
+    \[
+    vanna = \frac{\partial^2{O}}{\partial{\sigma} \partial{S}}
+    \]
+
+    Formula:
+    \[
+    \textcolor{blue}{ vanna = P(d1) * \sqrt{t} * (1 - d1) }
+    \]
+
+*** Charm / Delta decay
+    Change in delta w.r.t. time to expiry.
+
+    - first-order derivative of /delta/ w.r.t time
+    \[
+    charm = \frac{\partial{Δ}}{\partial{t}}
+    \]
+    - first-order derivative of /theta/ w.r.t. underlying spot
+    \[
+    charm = \frac{\partial{\theta}}{\partial{S}}
+    \]
+    - second-order derivative of /option value/ w.r.t. both underlying spot and time
+    \[
+    charm = \frac{\partial^2{O}}{\partial{S} \partial{t}}
+    \]
+
+*** Vera / Rhova
+    Change in rho w.r.t. volatility.
+
+    - first-order derivative of /rho/ w.r.t. volatility
+    \[
+    vera = \frac{\partial{\rho}}{\partial{σ}}
+    \]
+    - first-order derivative of /vega/ w.r.t. interest rate
+    \[
+    vera = \frac{\partial{V}}{\partial{r}}
+    \]
+    - second-order derivative of option price w.r.t. interest rate and volatility
+    \[
+    vera = \frac{\partial^2{O}}{\partial{r} \partial{\sigma}}
+    \]
+
+*** Veta / Vega decay
+    Change in vega w.r.t. time.
+
+    - first-order derivative of /vega/ w.r.t. time to expiry
+    \[
+    veta = \frac{\partial{V}}{\partial{t}}
+    \]
+    - first-order derivative of /theta/ w.r.t. volatility
+    \[
+    veta = \frac{\partial{\theta}}{\partial{\sigma}}
+    \]
+    - second-order derivative of /option's value/ w.r.t. volatility and time
+    \[
+    veta = \frac{\partial^2{O}}{\partial{\sigma} \partial{t}}
+    \]
+
+** Third-order Greeks
+   Third-order derivative of option's price with respect to some other variable(s).
+
+*** Color / Gamma decay
+    /Gamma/ w.r.t. time.
+
+    \[
+    color = \frac{\partial{Γ}}{\partial{t}}
+    \]
+
+*** Speed
+    /Gamma/ w.r.t. underlying spot.
+
+    \[
+    speed = \frac{\partial{Γ}}{\partial{S}}
+    \]
+
+*** Ultima
+    /Vomma/ w.r.t. volatility.
+
+    \[
+    ultima = \frac{\partial{vomma}}{\partial{σ}}
+    \]
+
+*** Zomma
+    /Gamma/ w.r.t. volatility.
+
+    \[
+    zomma = \frac{\partial{Γ}}{\partial{σ}}
+    \]
+
+/*TO BE CONTINUED*/...
+
+** References
+   - https://www.macroption.com/option-greeks/
+   - https://www.macroption.com/higher-order-greeks/
+   - https://www.iotafinance.com/en/Financial-Formulas-6-19.html
+   - https://www.macroption.com/second-order-greeks/
+   - https://brilliant.org/wiki/option-greeks-vega/
+   - https://fincyclopedia.net/derivatives/g/gamma
+   - https://www.investopedia.com/terms/v/vomma.asp
+   - https://quant.stackexchange.com/questions/7025/how-to-calculate-vomma-of-black-scholes-model
+   - http://www.ericbenhamou.net/documents/Encyclo/Vanna.pdf
+   - https://fincyclopedia.net/derivatives/d/delta-decay
+   - https://www.optiontradingtips.com/greeks/charm.html
+   - https://www.macroption.com/option-vera/
+   - https://financetrainingcourse.com/education/2014/06/vega-volga-and-vanna-the-volatility-greeks/
+   - https://www.macroption.com/third-order-greeks/
+   - https://www.investopedia.com/terms/z/zomma.asp
+   - http://www.ericbenhamou.net/documents/Encyclo/
+   - https://brilliant.org/wiki/put-call-parity/
+   - https://twitter.com/macrocephalopod/status/1359154681679917061
+   - https://www.youtube.com/watch?v=VfV8bY2LN4Q

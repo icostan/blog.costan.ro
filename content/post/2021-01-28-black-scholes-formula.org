@@ -1,5 +1,5 @@
 #+title:  Black-Scholes formula
-#+subtitle: Math
+#+subtitle: Finance
 #+date:   2021-01-28
 #+tags[]: trading options put call black-scholes volatility python
 
@@ -41,24 +41,11 @@ We know the discounted interest-rate formula, details and proof in this [[/post/
   D = C * e^{-r*t}
   \]
 
-where /*C*/ is the compounding value (forward/future price) after /*t*/ time and /*D*/ is present value (current price); or put the it other way around, /*D*/ is the discounted value of /*C*/.
+where
+- /*C*/ - the compounding value (forward/future price) after /*t*/ time and /*D*/ is present value (current price); or put the it other way around, /*D*/ is the discounted value of /*C*/.
+- /*D*/ - present value (discounted value) of the strike price /*K*/
 
-
-With this new knowledge, let's change the call/put price formulas to:
-
-   \[
-   \textcolor{green} {C} =  N(d1) * \textcolor{blue}{S} - N(d2) * \textcolor{cyan}{D}
-   \]
-
-   \[
-   \textcolor{red} {P} = N(-d2) * \textcolor{cyan}{D} - N(-d1) * \textcolor{blue}{S}
-   \]
-
-where:
-- D - present value (discounted value) of the strike price /*K*/
-
-Looks better but what about /*N( )*/ thing?
-First thing first, let's have a look at Gaussian distribution (also called normal distribution) with 1 standard deviation (σ = 1) and 0 mean (μ = 0)
+What about /*N( )*/ thing? First thing first, let's have a look at Gaussian distribution (also called normal distribution) with 1 standard deviation (σ = 1) and 0 mean (μ = 0)
 
 #+begin_src sage :session bs :file ../img/blackscholes/gaussian.png :results none
   G = RealDistribution('gaussian', 1)
@@ -74,8 +61,8 @@ First thing first, let's have a look at Gaussian distribution (also called norma
 Since /*PDF*/ is [[https://en.wikipedia.org/wiki/Probability_density_function][probability density function]] we are dealing with areas of probabilities, in simple terms, the area to the left of the mean has 50% probability.
 
 #+begin_src sage :session bs :file ../img/blackscholes/cdf.png :results none
-CDF = lambda x: G.cum_distribution_function(x)
-plot(CDF, (x, -3, 3), legend_label='CDF: Cumulative Distribution Function', axes_labels=['$std$', '$probability$'])
+  CDF = lambda x: G.cum_distribution_function(x)
+  plot(CDF, (x, -3, 3), legend_label='CDF: Cumulative Distribution Function', axes_labels=['$std$', '$probability$'])
 #+end_src
 
 [[file:/img/blackscholes/cdf.png]]
@@ -94,7 +81,31 @@ and vice-versa, we differentiate the cumulative function and find the density fu
 \frac{\mathrm{d} \, CDF(x)}{\mathrm{d}x} = PDF(x)
 \]
 
-And finally, since our /*N( )*/ function is a /*CDF*/ it means that it is /*0 < N( ) < 1*/, in other words it is a /*weight*/ (a scaling factor).
+Finally, since our /*N( )*/ function is a /*CDF*/ it means that it is /*0 < N( ) < 1*/, in other words it is a /*weight*/ (a scaling factor).
+
+With this new knowledge, let's change the call/put price formulas to:
+
+   \[
+   \textcolor{green} {C} =  N(d1) * \textcolor{blue}{S} - N(d2) * \textcolor{cyan}{D}
+   \]
+
+   \[
+   \textcolor{red} {P} = N(-d2) * \textcolor{cyan}{D} - N(-d1) * \textcolor{blue}{S}
+   \]
+
+/*In conclusion*/:
+
+the price for a CALL option can be viewed as:
+
+- profit/loss amount: a scaling factor times the underlying price at expiry
+- minus
+- amount that we pay: scaling factor times discounted value of the strike price now
+
+and a PUT options as:
+
+- amount that we pay - scaling factor times discounted value of the strike price now
+- minus
+- profit/loss amount - scaling factor times the underlying spot price at expiration
 
 ** Implementation
 
@@ -110,6 +121,8 @@ In Python/Sagemath it looks like this:
 
   def D(k, r, t):
       return k * exp(-r*t)
+  def N(d):
+      return CDF(d)
 
   def call_price(s, k, t, r, iv):
       return N(d1(s,k,t,r,iv)) * s - N(d2(s,k,t,r,iv)) * D(k,r,t)
@@ -198,3 +211,4 @@ Put IV:
    - https://medium.com/cantors-paradise/the-black-scholes-formula-explained-9e05b7865d8a
    - https://medium.com/swlh/calculating-option-premiums-using-the-black-scholes-model-in-python-e9ed227afbee
    - https://en.wikipedia.org/wiki/Partial_differential_equation
+   - https://math.stackexchange.com/questions/273120/notation-for-probability-density#273141

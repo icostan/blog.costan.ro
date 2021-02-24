@@ -255,9 +255,12 @@
     - https://quant.stackexchange.com/questions/3000/how-to-annualize-log-returns
     - https://money.stackexchange.com/questions/24382/what-does-the-average-log-return-value-of-a-stock-mean
     - https://en.wikipedia.org/wiki/Pythagorean_means
-*** understanding greeks
+*** DONE understanding greeks
+    SCHEDULED: <2021-02-17 Wed>
     https://www.macroption.com/option-greeks-excel/
     https://docs.fincad.com/support/developerfunc/mathref/greeks.htm
+    https://www.optionsplaybook.com/options-introduction/option-greeks/
+    https://www.investment-and-finance.net/derivatives/g/greeks
     - delta
     - theta
     - vega or kappa
@@ -267,13 +270,14 @@
     - zomma - https://www.investopedia.com/terms/z/zomma.asp
     - vanna
     - other minor greeks
-*** TODO understanding black-scholes
+*** DONE understanding black-scholes
     - https://www.macroption.com/black-scholes-formula/
     - https://aaronschlegel.me/black-scholes-formula-python.html
 *** algorithmic stablecoins
     - https://messari.io/screener/everything-stablecoins-87061DFA
 *** decentralization
     - store of value: bitcoin
+    - smart contracts: ethereum
     - storage: sia
     - cloud: akash
     - internet: dfinity
@@ -282,11 +286,25 @@
     - exchange: uniswap
     - lending: aave
     - identity: pai
+    - indexing: thegraph
     - trading
       -- options: hegic
       -- futures: perpetual
       -- assets: synthetix
-    - interest-rate swap: ?
+    - interest-rate swap: ???
+    - payments: ???
+*** annualization
+    - https://www.wikihow.com/Annualize
+    - https://www.investopedia.com/terms/a/annualize.asp
+*** zk and optimistic rollups
+    - https://vitalik.ca/general/2021/01/05/rollup.html
+*** zk-SNARK, zk-STARK and PLONK
+    - https://vitalik.ca/general/2021/01/26/snarks.html
+    - https://vitalik.ca/general/2017/11/09/starks_part_1.html
+    - https://vitalik.ca/general/2019/09/22/plonk.html
+    - https://research.metastate.dev/plonk-by-hand-part-1/
+*** elliptic curve pairings
+    - https://vitalik.ca/general/2017/01/14/exploring_ecp.html
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -363,10 +381,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-02-07 Sun +2w>
+    SCHEDULED: <2021-02-21 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-02-05 Fri 12:31]
+    :LAST_REPEAT: [2021-02-24 Wed 16:32]
     :END:
+    - State "DONE"       from "TODO"       [2021-02-24 Wed 16:32]
     - State "DONE"       from "TODO"       [2021-02-05 Fri 12:31]
     - State "DONE"       from "TODO"       [2021-01-05 Tue 16:16]
     - State "DONE"       from "TODO"       [2021-01-04 Mon 23:52]
@@ -398,3 +417,4 @@
     - [ ] emacs
     - [ ] market wizards review
     - [ ] linux kernel
+    - [ ] cryptography

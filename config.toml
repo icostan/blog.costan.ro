@@ -179,9 +179,29 @@ googleAnalytics = "UA-354095-4"
     weight = 2
 
 [[menu.main]]
+    identifier = "finance"
+    name = "Finance"
+    weight = 4
+[[menu.main]]
+    parent = "finance"
+    name = "Interest Rate"
+    url = "post/2020-11-24-interest-rate"
+    weight = 1
+[[menu.main]]
+    parent = "finance"
+    name = "Black-Scholes formula"
+    url = "post/2021-01-28-black-scholes-formula"
+    weight = 2
+[[menu.main]]
+    parent = "finance"
+    name = "Options Greeks"
+    url = "post/2021-02-16-options-greeks"
+    weight = 3
+
+[[menu.main]]
     identifier = "linux"
     name = "Linux"
-    weight = 4
+    weight = 5
 [[menu.main]]
     parent = "linux"
     name = "Back to my first love"
@@ -211,7 +231,7 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     identifier = "math"
     name = "Math"
-    weight = 5
+    weight = 6
 [[menu.main]]
     parent = "math"
     name = "Complexities with graphs"
@@ -224,17 +244,13 @@ googleAnalytics = "UA-354095-4"
     weight = 2
 [[menu.main]]
     parent = "math"
-    name = "Interest Rate"
-    url = "post/2020-11-24-interest-rate"
-[[menu.main]]
-    parent = "math"
     name = "Ternary (Trinary) system"
     url = "post/2020-12-30-ternary-trinary-binary-systems"
 
 [[menu.main]]
     identifier = "opensource"
     name = "Open Source"
-    weight = 6
+    weight = 7
 [[menu.main]]
     parent = "opensource"
     name = "Bitmex-API"
@@ -261,11 +277,10 @@ googleAnalytics = "UA-354095-4"
     url = "post/2020-04-27-huveragy"
     weight = 3
 
-
 [[menu.main]]
     identifier = "trading"
     name = "Trading"
-    weight = 7
+    weight = 8
 [[menu.main]]
     parent = "trading"
     name = "Weekly Monthly Close"
@@ -300,9 +315,9 @@ googleAnalytics = "UA-354095-4"
 [[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 8
+    weight = 9
 
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 9
+    weight = 10
