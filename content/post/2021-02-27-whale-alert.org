@@ -1,0 +1,16 @@
+#+title:  Whale alert
+#+subtitle: Trading
+#+date:   2021-02-27
+#+tags[]: trading tradingview indicator pivotpoints whale ethusd volume
+
+Very simple pivot-point [[https://www.tradingview.com/script/knuuzA4d-Whale-alert/][indicator]] that tries to detect whales' presence by checking the spikes in volume at the same UTC hour for the last 3 days.
+
+You can see the vertical blue lines in the chart below (right click and open in new tab).
+
+[[file:../../img/whale-alert.png]]
+
+Notice the huge red dildo candle at 13:00 UTC on 02/24 and the spike in volume, then again on 02/25 at the same 13:00 UTC hour, most probably the same whale(s) hit the beast again and price went further down.
+
+It's an opinionated indicator, but still, it might help getting a little edge here and there.
+
+Trade long and prosper!

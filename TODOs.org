@@ -137,7 +137,8 @@
 *** DONE SegWit address derivation
 *** DONE backpacking Vietnam
 *** DONE diving Philippines
-*** whales hour indicator                                           :trading:
+*** DONE whales hour indicator                                      :trading:
+    SCHEDULED: <2021-02-27 Sat>
 *** DONE session breaks indicator
 *** WIP a blog post for each cryptography book/chapter
     - An overview of cryptography - 2020
@@ -381,10 +382,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-02-21 Sun +2w>
+    SCHEDULED: <2021-03-07 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-02-24 Wed 16:32]
+    :LAST_REPEAT: [2021-02-27 Sat 08:45]
     :END:
+    - State "DONE"       from "TODO"       [2021-02-27 Sat 08:45]
     - State "DONE"       from "TODO"       [2021-02-24 Wed 16:32]
     - State "DONE"       from "TODO"       [2021-02-05 Fri 12:31]
     - State "DONE"       from "TODO"       [2021-01-05 Tue 16:16]
@@ -418,3 +420,4 @@
     - [ ] market wizards review
     - [ ] linux kernel
     - [ ] cryptography
+    - [ ] travel
