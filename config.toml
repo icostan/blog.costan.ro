@@ -311,6 +311,11 @@ googleAnalytics = "UA-354095-4"
     name = "Session breaks"
     url = "post/2020-10-09-session-breaks"
     weight = 6
+[[menu.main]]
+    parent = "trading"
+    name = "Whale alert"
+    url = "post/2021-02-27-whale-alert"
+    weight = 7
 
 [[menu.main]]
     name = "Tags"

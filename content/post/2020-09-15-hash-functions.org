@@ -15,9 +15,6 @@ In simple terms, hash functions transform input data of arbitrary size (e.g. tex
     | ...    |   |        |    |       |
     |     {d}|   |        |    |       |
     +---+----+   +--------+    +-------+
-        :                         ^
-        |       lots of work      |
-        +-------------------------+
   #+end_src
 
   [[file:/img/hashfunctions.png]]

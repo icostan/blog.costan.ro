@@ -3,8 +3,26 @@
 #+date: 2020-10-27
 #+tags[]: ethereum address generation python crypto
 
-** Overview:
-   Generate Ethereum address from private key using plain old Python3, Elliptic Curve multiplication from [[https://www.sagemath.org/][SageMath]] and of course /Keccak/ hash function.
+  Generate Ethereum address from private key using plain old Python3, Elliptic Curve multiplication from [[https://www.sagemath.org/][SageMath]] and of course /Keccak/ hash function.
+
+  #+begin_src ditaa :file ethereumaddress.png :cmdline -r :exports none
+    +---------+   +----------+   +--------+   +----------+
+    | private |-->| elliptic |-->| Keccak |-->| standard |
+    |   key   |   |   curve  |   |  hash  |   |  address |--+
+    |         |   |      {d} |   |        |   |          |  |
+    +---------+   +----------+   +--------+   +----------+  |
+                                                   |        |
+                                              +----------+  |   +----------+
+                                              |  Keccak  |  |-->| checksum |
+                                              |   hash   |  |   |  address |
+                                              +----------+  |   +----------+
+                                                   |        |
+                                              +----------+  |
+                                              | checksum |--+
+                                              +----------+
+  #+end_src
+
+  [[file:/img/ethereumaddress.png]]
 
    #+begin_src sage :session eth -n
      import sha3
