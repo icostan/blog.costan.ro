@@ -249,13 +249,18 @@
     - pos
     - post
     - threshold relay
-*** volatility
-    - https://www.macrodesiac.com/your-volatility-handbook/amp/?__twitter_impression=true
-    - https://mathbabe.org/2011/08/30/why-log-returns/
-    - https://investmentcache.com/magic-of-log-returns-concept-part-1/
+*** TODO realized volatility
+    SCHEDULED: <2021-03-17 Wed>
     - https://quant.stackexchange.com/questions/3000/how-to-annualize-log-returns
     - https://money.stackexchange.com/questions/24382/what-does-the-average-log-return-value-of-a-stock-mean
-    - https://en.wikipedia.org/wiki/Pythagorean_means
+    - https://dynamiproject.files.wordpress.com/2016/01/measuring_historic_volatility.pdf
+    - https://www.tradingview.com/script/nT8O2E5i-Historical-Volatility-Estimators-pig/
+    - https://medium.com/swlh/the-realized-volatility-puzzle-588a74ab3896
+*** returns: simple vs. log
+    - https://investmentcache.com/magic-of-log-returns-concept-part-1/
+    - https://mathbabe.org/2011/08/30/why-log-returns/
+    - https://quantivity.wordpress.com/2011/02/21/why-log-returns/
+    - https://assylias.wordpress.com/2011/10/27/linear-vs-logarithmic-returns/
 *** DONE understanding greeks
     SCHEDULED: <2021-02-17 Wed>
     https://www.macroption.com/option-greeks-excel/

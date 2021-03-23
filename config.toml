@@ -197,6 +197,11 @@ googleAnalytics = "UA-354095-4"
     name = "Options Greeks"
     url = "post/2021-02-16-options-greeks"
     weight = 3
+[[menu.main]]
+    parent = "finance"
+    name = "Historical Volatility"
+    url = "post/2021-03-17-historical-volatility"
+    weight = 4
 
 [[menu.main]]
     identifier = "linux"
