@@ -3,7 +3,9 @@
 #+date:   2021-03-17
 #+tags[]: historical volatility options trading
 
-Historical volatility (also called realized volatility) measures how far asset's prices swing around its mean over a given period of time.
+Historical volatility (also called realized volatility) measures how far the normal standard deviation is from expected mean, over a given period of time.
+
+OK, OK, it ain't explain shit ... what is it?
 
 ** Get data
    We are going to use CryptoCompare's FREE API and fetch daily OHLC prices for BTCUSD.

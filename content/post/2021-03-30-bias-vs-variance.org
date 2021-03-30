@@ -1,0 +1,90 @@
+#+title:  Bias vs. Variance
+#+subtitle: Statistics
+#+date:   2021-03-30
+#+tags[]: statistics bias variance machinelearning
+
+I don't know about others but when I started digging into machine-learning I had some problems understanding bias-variance until I found a nice target shooting analogy.
+
+** Target
+
+   Out little target chart :) with some params.
+
+   #+begin_src sage :session bvsv :results none
+     import numpy as np
+     color = hue(1)
+     size = 50
+     p = plot([], figsize=7)
+     p += plot(circle((0,0), 1))
+     p += plot(circle((0,0), 3))
+     p += plot(circle((0,0), 6))
+     p
+   #+end_src
+
+** High bias and high variance
+
+   Worst-case scenario where hits are all over the places (high variance) and far away from the center of target, top-right skewed (high bias).
+
+   #+begin_src sage :session bvsv :results file :file bvsv-hbhv.png
+     variance = 5
+     bias = 3
+     samples = variance * np.random.random_sample((15, 2)) + bias
+     hbhv = p + plot(point(samples, rgbcolor=color, size=size))
+     hbhv
+   #+end_src
+
+   #+RESULTS:
+   [[file:bvsv-hbhv.png]]
+
+** High bias and low variance
+
+   This time the shots are focused (low variance) within a small area that is still far away (high bias) from the target.
+
+   #+begin_src sage :session bvsv :results file :file bvsv-hblv.png
+     variance = 2
+     bias = 3
+     samples = variance * np.random.random_sample((15, 2)) + bias
+     hblv = p + plot(point(samples, rgbcolor=color, size=size))
+     hblv
+   #+end_src
+
+   #+RESULTS:
+   [[file:bvsv-hblv.png]]
+
+** Low bias and high variance
+
+   This time hits are very close to center (low bias) but hits are spread all over the places (high variance) again.
+
+   #+begin_src sage :session bvsv :results file :file bvsv-lbhv.png
+     variance = 4
+     bias = 0.5
+     samples = variance * np.random.random_sample((15, 2)) + bias
+     lbhv = p + plot(point(samples, rgbcolor=color, size=size))
+     lbhv
+   #+end_src
+
+   #+RESULTS:
+   [[file:bvsv-lbhv.png]]
+
+** Low bias and low variance
+
+   The best case scenario, focused (low variance) and close to center (low bias).
+
+   #+begin_src sage :session bvsv :results file :file bvsv-lblv.png
+     variance = 1.5
+     bias = 0.5
+     samples = variance * np.random.random_sample((15, 2)) + bias
+     lblv = p + plot(point(samples, rgbcolor=color, size=size))
+     lblv
+   #+end_src
+
+   #+RESULTS:
+   [[file:bvsv-lblv.png]]
+
+   Happy shooting!!!
+
+** References
+   - https://en.wikipedia.org/wiki/Bias-variance_tradeoff
+   - https://www.wallstreetmojo.com/population-variance-formula/
+   - https://programming.guide/random-point-within-circle.html
+   - https://programming.guide/generate-random-value-with-distribution.html
+   - https://en.wikipedia.org/wiki/Inverse_transform_sampling

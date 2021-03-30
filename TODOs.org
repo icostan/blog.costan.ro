@@ -249,7 +249,7 @@
     - pos
     - post
     - threshold relay
-*** TODO realized volatility
+*** DONE realized volatility
     SCHEDULED: <2021-03-17 Wed>
     - https://quant.stackexchange.com/questions/3000/how-to-annualize-log-returns
     - https://money.stackexchange.com/questions/24382/what-does-the-average-log-return-value-of-a-stock-mean
@@ -283,15 +283,15 @@
     - https://messari.io/screener/everything-stablecoins-87061DFA
 *** decentralization
     - store of value: bitcoin
-    - smart contracts: ethereum
-    - storage: sia
+    - smart contracts: ethereum/?
+    - storage: sia/filecoin
     - cloud: akash
     - internet: dfinity
-    - vpn: orchid
+    - vpn: sentinel/orchid
     - dns: handshake
     - exchange: uniswap
     - lending: aave
-    - identity: pai
+    - identity: sovrin/pai
     - indexing: thegraph
     - trading
       -- options: hegic
@@ -311,6 +311,8 @@
     - https://research.metastate.dev/plonk-by-hand-part-1/
 *** elliptic curve pairings
     - https://vitalik.ca/general/2017/01/14/exploring_ecp.html
+*** DONE bias vs. variance
+    SCHEDULED: <2021-03-30 Tue>
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -387,10 +389,12 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-03-07 Sun +2w>
+    SCHEDULED: <2021-04-04 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-02-27 Sat 08:45]
+    :LAST_REPEAT: [2021-03-30 Tue 16:37]
     :END:
+    - State "DONE"       from "TODO"       [2021-03-30 Tue 16:37]
+    - State "DONE"       from "TODO"       [2021-03-25 Thu 17:36]
     - State "DONE"       from "TODO"       [2021-02-27 Sat 08:45]
     - State "DONE"       from "TODO"       [2021-02-24 Wed 16:32]
     - State "DONE"       from "TODO"       [2021-02-05 Fri 12:31]
@@ -426,3 +430,4 @@
     - [ ] linux kernel
     - [ ] cryptography
     - [ ] travel
+    - [ ] generate address???
