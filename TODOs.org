@@ -434,7 +434,7 @@
     - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
     - [X] cryptography
     - [ ] emacs
-    - [ ] market wizards review
+    - [X] market wizards review
     - [ ] linux kernel
     - [ ] cryptography
     - [ ] travel

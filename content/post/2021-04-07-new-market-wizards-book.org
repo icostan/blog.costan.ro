@@ -1,0 +1,251 @@
+#+title: New Market Wizards
+#+subtitle: Review
+#+date: 2021-04-07
+#+tags[]: trading book review summary market wizards
+
+The second market wizards book, named simply /*New Market Wizards*/ was actually published before the [[/post/2020-07-28-hedge-fund-market-wizards-book/][Hedge Fund Market Wizards]] book, a bit older but as the saying goes... oldies but goldies.
+
+** Part 1 - Trading perspectives
+*** Misadventures in trading
+    - making few thousands $ in one thousands $ a few times
+    - never break through and make a killing
+    - the only way to stop trading is loosing all
+    - started with confidence but not with the desire
+*** Hussein makes a bad trade
+    - author trading coincide with Hussein invading Kuwait
+    - a good trade for Hussein until market change and USA step in
+    - he was like a trader who held on loosing position
+    - moral: if you can't take a small loss, sooner or later you will take the mother of all loses
+
+** Part 2 - The world's biggest market
+*** Bill Lipschutz: The sultan of currencies
+    - he views trading as an engaging game that will do it for free
+    - always scale in to avoid missing the move
+    - always scale out to bank some profits and hold of opportunity
+    - avoid the conception that you should be right 100% of the time
+    - bite the bullet on strong conviction: buy/sell on extreme strength/weakness
+    - stay with position is market does not sustain the move against you
+    - he lost the entire amount invested in stocks in a a few days
+
+
+** Part 3 - Futures - The variety-pack market
+*** Futures - understanding basics
+    - futures market has the origin in agricultural market
+    - 60% - currencies/interest rates/stock indexes
+    - 20% - energy/metal
+    - in 1991 total futures volume in USA: ~263M contracts
+*** Randy McKay: Veteran trader
+    - find the trading style that suits trader's personality
+    - scale up when winning/scale down when losing - McKay's trend
+    - immediately get out of loosing position
+    - unconventional fundamentals: does not think in bullish/bearish, focus on market response to fundamentals
+    - price moves based on psychology of the traders
+    - buy on breaks and sell on rally's, wait for reaction with the risk of missing the move
+    - review winner/losing trades
+*** William Eckhardt: The mathematician *
+    - what feels good is usually the wrong thing to do
+    - lock in profits instead of accept the gamble with a higher expected payoff
+    - gamble with a loss even when that has worst expected outcome than a sure loss alternative
+    - the call of the counter trend: sell on strength and buy on weakness
+    - excessive concerns about current positions: take profits before target, hold positions beyond loss level or cut positions before stop-loss is reached because fear of loosing
+    - great results are consequences of error or naive methodology
+    - system designers should believe their results after they did everything possible to disprove them
+    - doing what is comfortable lead to even worst than random results
+    - human nature tries to find patterns and forget bad results
+    - never think where market goes, think what you should do if market gets there
+    - reprogramming behaved to do what is correct rather than what is comfortable
+*** The silence of the turtles
+*** Monroe Trout: The best return that low risk can buy
+    - technical systematic style with discretionary execution
+    - major factor is timing the entry/exit
+    1. you have to have an edge, everything else is second
+    2. you must stress test the system
+    3. risk control is essential
+    - magnet effect around round numbers, critical points
+*** Al Weiss: The human chart encyclopedia
+    - market are based on human psychology, not fundamentals
+    - find classical patterns in higher level structures
+    - highly technical trader
+    - research further back in history, as far as 150 years ago
+
+
+** Part 4 - Fund managers and timers
+*** Stanley Druckenmiller: The art of top-down investing
+    - two key elements to success:
+    1. preservation of capital - avoid losing years, score a few high, double/triple digits
+    2. home runs - take full advantage when you have a hot hand - apply leverage - "it takes courage to be a pig"
+    - if you make a mistake, respond right away - from long to short before the 1987 stock crash
+    - valuation analysis for price
+    - liquidity analysis and technical analysis for timing
+    - counter to classic fund management - not always invested in stocks, move to cash, even net short
+    - flexibility of going long/short, diversification in bonds/currencies (queen in chess that moves in all direction is more powerful than the pawn)
+    - you can't win if you have to win
+*** Richard Driehaus: The art of bottom-up investing
+    - price follows growth and the key is to pick companies with growth potential
+    - trade fundamentally, confirm technically
+    - naturally, humans want to buy low or low P/E and perform poorly
+    - act right away on strong moves, never wait, buy stocks on extreme strength following bullish news
+    - small percentage of huge winners
+    - take large position (home runs), holding longer to realize all potential
+    - developer your own philosophy, research/verify cycle
+*** Gil Blake: The master of consistency
+    - do your own thing (independence), do the right thing (discipline)
+    - mind changing personality - dogmatic or rigid personality fails in the market
+    - adaptability - change strategies as markets evolve
+    - amazing consistent track record, markets can be beat
+    - no shortcuts: find non-random market patterns then devise your trading rules then follow
+*** Victor Sperandeo: Markets grow old too
+    - trading is the game of odds
+    - market can be like a 20 or 80 years old
+    - pyramid trade sizes
+    - when trading large it is essential that market go in your favor to ensure financial survival
+    - training 38 people to trade - intelligence was not important, ability to admit mistakes is key
+
+
+** Part 5 - Multiple-market players
+*** Tom Basso: Mr. Serenity
+    - psychology is critical for success in trading
+    - fear, depression, anxiety in trading/life is wrong even, if you are successful, especially when you are not
+    - enjoy trading, if it is the source of negative emotion, you lost the game, even if you make money
+    - combine enthusiasm, energy, focus, discipline to become the best trader you can be
+    - once you don't that, don't worry about small details, news, etc
+    - learn for your loses
+    - don't take you problems to personally
+*** Linda Bradford-Raschke: Reading the music of the markets
+    - understanding and learning the market takes years, find a niche
+    - pick one market only: be tune with the patterns everyday, where are s/r levels, never fear
+    - high confidence
+    - she believes that short term prediction can be quite accurate, but long term forecasting is not possible
+    - see patterns that other don't, trade short term price swings, few days
+    - if you need a second opinion on a trade is a sign that trade has to be liquidated
+    - characteristics:
+    1. passion
+    2. self-reliance
+    3. willing to take risk
+    4. ability to correct mistakes
+    5. patience
+
+
+** Part 6 - Money machines
+*** CRT: The trading machine
+*** Mark Ritchie - God in the pits
+    - best trade: long soybean meal/oil and roll over for 5 years
+    - 5 principles:
+    1. do your own research
+    2. keep position size small that it looks like wasting your time
+    3. have the patience to stay with winning position as long as it is working
+    4. allow larger drawdown in open profits than in equity for #3
+    5. recognize and control your greed
+*** Joe Ritchie - The intuitive theoretician
+    - intuitively vs. analytically
+    - humility - admin when they are wrong
+    - give people responsibility and pay what they are worth
+    - good teams/management makes CRT successful
+    - policy: shared responsibility, shared profit
+*** Blair Hull - Getting the edge *
+    - good money management with poor strategy will make you loose money slowly
+    - the longer you play with negative edge, the greater the probability of ruin
+    - a good system is a system with an edge, leak
+    - money management are good for good models
+    - even a good system with bad money management can loose money
+    - trading vs. betting - trading without a method is gambling
+    - can't listen to the news, go with the facts
+    - small profit instead of home run
+    - chess - blackjack players are good traders
+    - listening to rumors is a weakness
+    - option price related to each other
+    - arbitrage trader
+    - directional trades:
+    1. strong when you have a strong idea
+    2. trade the opposite side of news stories
+    3. time your trade with an event that has a climax potential
+*** Jeff Yass - The mathematics of strategy
+    - prices are skewed OTM puts >> OTM calls because of higher prob of huge downside
+    - conditional probabilities - Monty Hall problem
+    - proper betting strategy
+    - maximizing gains not the number of wins
+    - obvious impressions are wrong
+    - professional options arbitrage trading
+
+
+** Part 7 - The Psychology of trading
+*** Zen and the art of trading
+*** Charles Faulkner - The mind of an achiever
+    - 5 principles of NLP:
+    1. the map (thoughts, feelings) is not the territory (reality)
+    2. experience has a structure - change the structure of thoughts and experiences will change automatically
+    3. if one person can do it, anyone else can learn to do it - model successful people
+    4. the mind and body are part of the same system - change your mind/change your body and change your body/change your mind
+    5. people have all resources they need
+    - 5 conditions for a goal to be achievable:
+    1. the goal must be stated in positive terms - I want to protect my assets instead I don't want to loose money
+    2. the goal must be yours
+    3. the goal must be specific - the more details, the better
+    4. the when, where, whom
+    5. anticipating the effects of the goal
+    - 6 key steps:
+    1. use toward and away from motivation
+    2. have a goal of full capability+
+    3. break down overwhelming goals into chunks
+    4. focus on the task at hand then the long term goal
+    5. personal involvement rather than relying on others
+    6. self to self comparison to measure progress
+    - towards the motivation - achievers
+    - away from motivation - problem solvers
+    - successful traders have learned to avoid risk, not seek it
+    - calm, detached emotional from trading, get the excitement from life
+*** Robert Krausz: The role of subconscious *
+    - major factors: lack of confidence, fear of loosing and poor execution
+    - not having a trading plan
+    - backtest the method
+    - subconscious believes will dictate actions
+    - once a trading plan is developed is is critical to convince the subconscious
+    - "We become what we believe" - R. Krausz
+
+
+** Part 8 - Closing bell
+*** Market Wiz(ar)dom
+    1. make sure you want to trade
+    2. examine your motives
+    3. match trading to your personality
+    4. always have an edge
+    5. derive a method
+    6. take no shortcuts - developing a method is hard work
+    7. skill vs. hard work
+    8. good trading should be effortless
+    9. money management and risk control
+   10. trading plan
+   11. discipline
+   12. you are the only responsible
+   13. the need for independence
+   14. confidence
+   15. loosing is part of the game
+   16. timeouts
+   17. the urge to seek advice
+   18. the virtue of patience
+   19. the importance of sitting
+   20. developing an low risk idea
+   21. the importance of varying bet size
+   22. scaling in and out of trades
+   23. being right is more important than being genius
+   24. don't worry about looking stupid
+   25. action is more important than prudence
+   26. catching parts of the move is just fine
+   27. maximize gains not the number of wins
+   28. learn to be disloyal
+   29. pull out partial profits
+   30. hope is a dirty word
+   31. don't do the comfortable thing
+   32. you can't win if you have to win
+   33. think twice when the market let you the hook easily
+   34. a mind is very terrifying to close
+   35. markets are an expensive place to look for excitement
+   36. the calm state of a trader
+   37. identify and eliminate stress
+   38. pay attention to intuition
+   39. life mission
+   40. the elements of achievement
+   41. prices are not random, market can be beat
+   42. keep trading in perspective
+
+Trade long and prosper!!!

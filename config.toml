@@ -327,6 +327,11 @@ googleAnalytics = "UA-354095-4"
     name = "Whale alert"
     url = "post/2021-02-27-whale-alert"
     weight = 7
+[[menu.main]]
+    parent = "trading"
+    name = "New Market Wizards book"
+    url = "post/2021-04-07-new-market-wizards-book"
+    weight = 8
 
 [[menu.main]]
     name = "Tags"
