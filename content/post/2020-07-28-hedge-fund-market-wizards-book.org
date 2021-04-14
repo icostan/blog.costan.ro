@@ -1,5 +1,5 @@
 #+title: Hedge Fund Market Wizards
-#+subtitle: Trading
+#+subtitle: Review
 #+date: 2020-07-28
 #+tags[]: trading book review summary market wizards
 

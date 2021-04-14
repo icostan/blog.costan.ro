@@ -52,7 +52,7 @@ I don't know about others but when I started digging into machine-learning I had
 
 ** Low bias and high variance
 
-   This time hits are very close to center (low bias) but hits are spread all over the places (high variance) again.
+   This time all hots are closer to center (low bias) but still spread all over the places (high variance).
 
    #+begin_src sage :session bvsv :results file :file bvsv-lbhv.png
      variance = 4
@@ -67,7 +67,7 @@ I don't know about others but when I started digging into machine-learning I had
 
 ** Low bias and low variance
 
-   The best case scenario, focused (low variance) and close to center (low bias).
+   The best case scenario, focused (low variance) and very close to center (low bias).
 
    #+begin_src sage :session bvsv :results file :file bvsv-lblv.png
      variance = 1.5

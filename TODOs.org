@@ -299,10 +299,13 @@
       -- assets: synthetix
     - interest-rate swap: ???
     - payments: ???
+    - yield
+      -- alchemix: backed by future yield
+      -- ??
 *** annualization
     - https://www.wikihow.com/Annualize
     - https://www.investopedia.com/terms/a/annualize.asp
-*** zk and optimistic rollups
+*** zk (validity proofs) and optimistic (fraud proofs) rollups
     - https://vitalik.ca/general/2021/01/05/rollup.html
 *** zk-SNARK, zk-STARK and PLONK
     - https://vitalik.ca/general/2021/01/26/snarks.html
@@ -313,6 +316,10 @@
     - https://vitalik.ca/general/2017/01/14/exploring_ecp.html
 *** DONE bias vs. variance
     SCHEDULED: <2021-03-30 Tue>
+*** polynomials proofs/commitments
+    - https://twitter.com/VitalikButerin/status/1371844878968176647
+    - https://alinush.github.io/2020/03/16/polynomials-for-crypto.html
+    - https://decentralizedthoughts.github.io/2020-07-17-the-marvels-of-polynomials-over-a-field/
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -389,10 +396,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-04-04 Sun +2w>
+    SCHEDULED: <2021-04-18 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-03-30 Tue 16:37]
+    :LAST_REPEAT: [2021-04-14 Wed 16:38]
     :END:
+    - State "DONE"       from "TODO"       [2021-04-14 Wed 16:38]
     - State "DONE"       from "TODO"       [2021-03-30 Tue 16:37]
     - State "DONE"       from "TODO"       [2021-03-25 Thu 17:36]
     - State "DONE"       from "TODO"       [2021-02-27 Sat 08:45]
@@ -430,4 +438,4 @@
     - [ ] linux kernel
     - [ ] cryptography
     - [ ] travel
-    - [ ] generate address???
+    - [ ] generate address
