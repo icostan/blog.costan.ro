@@ -1,0 +1,103 @@
+#+title: Gasherbrum2 - training plan
+#+subtitle: Mountaineering
+#+date: 2021-04-15
+#+tags[]: mountaineering gasherbrum2 training plan schedule
+
+With only two months remaining until the Gasherbrum2 expedition I put together a training plan, kind of writting in stone, let's see how it goes.
+
+** 1. The plan - S.M.A.R.T.
+   I first read about this training plan in /*Mountaineering - Freedom of the hills*/ book and it made sense to me back then, now it's time to try it.
+*** Specific
+    The best training for high altitude mountaineering is of course high altitude mountaineering... smart huh? unfortunately I do not have neither high altitude nor mountains around, that's why I needed find different sport-specific exercises:
+    - cardio: hill climbing / stairs stepper with pack
+    - strength: dead lift/reverse step-up/calf rises + squats/lunges variations
+    - high altitude mask
+*** Measurable
+    - measure and adjust along the way
+*** Action-oriented
+    - the plan has to be individualized, to find a balance between work, life and training
+*** Realistic
+    - setting very high goals with little chance of success are useless, a step by step, incremental approach is better
+*** Time-based
+    - plan details per each day/week
+
+** 2. The goals
+
+With all the above in mind, lets set the goals:
+
+*** The training goal
+    To climb 3000m elevation with a 10kg pack in 10 hours by Jun 14th.
+
+*** The ultimate goal
+    To climb Gasherbrum2 peak (8035m) w/o bottled oxygen, survive and, tell the story.
+
+** 3. The schedule
+
+*** Week 0 - Apr 12th: The research
+    Mostly researching high altitude training techniques, try things out, create this plan.
+
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                           | training mask   |
+    |-----+---------------+---------------------------------------------------------------------+-----------------|
+    | Mon | cross         | walking - 2h, elliptical - 30min, cycling - 1h                      | level1: 2x25min |
+    | Tue | strength      | dead lift: 3x5(+2kg), reverse step-up(+2kg): 3x15, calf-rises: 3x15 | level4: 2x25min |
+    | Wed | rest day      | walking: 40min, yoga: hatha + laya - 3h                             | level6: 2x25min |
+    | Thu | strength      | squats - 5x15, lunges - 5x15, reverse lunges - 5x15 (all +2kg)      | level8: 1x1h    |
+    | Fri | cardio        | stairs - elevation: 750m/1h, swimming - 1h                          | level9: 2x25min |
+    | Sat | rest day      | yoga: hatha + laya                                                  | level9: 1x1h    |
+    | Sun | endurance     | hill climbing - elevation: 500m, 3h                                 | level10: 1x1h   |
+
+*** Week 1 & 2 - Apr 19th: The Kick-off
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                                     | training mask |
+    |-----+---------------+-------------------------------------------------------------------------------+---------------|
+    | Mon | functional    | calisthenics: 30min                                                           |               |
+    | Tue | cardio base   | stairs-stepper: 600m (+2kg), swim: 1h                                         |               |
+    | Wed | rest day      | walking: 40m, hatha/laya yoga: 3h                                             |               |
+    | Thu | strength base | dead lift: 3x10 (+2kg), reverse step-up: 5x25 (+4kg), calf-rises: 3x15 (+1kg) |               |
+    | Fri | endurance     | walking w/ pack: 2h (+3kg), cycling: 1h                                       |               |
+    | Sat | rest day      | hatha yoga: 2h                                                                |               |
+    | Sun | specific      | hill climbing - 1000m (+2kg)                                                   | level16: 3h   |
+
+*** Week 3 & 4 - May 3rd: Build strength
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                                    | training mask |
+    |-----+---------------+------------------------------------------------------------------------------+---------------|
+    | Mon | functional    | calisthenics: 1h                                                             |               |
+    | Tue | cardio base   | stairs-stepper: 1200m (+6kg), swim: 4000m                                    |               |
+    | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                                          |               |
+    | Thu | strength base | dead lift: 3x10 (+4kg), reverse step-up: 3x25(+8kg), calf-rises: 3x15 (+2kg) |               |
+    | Fri | endurance     | walking w/ pack: 2h (+5kg), cycling: 1h                                      |               |
+    | Sat | rest day      | hatha yoga - 2h                                                              |               |
+    | Sun | specific      | hill climbing - 2000m (+4kg)                                                 | level24: 6h   |
+
+*** Week 5 & 6 - May 17th: Build endurance
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                                     | training mask |
+    |-----+---------------+-------------------------------------------------------------------------------+---------------|
+    | Mon | functional    | calisthenics: 2h                                                              |               |
+    | Tue | cardio base   | stairs-stepper: 1800m (+6kg), swim: 2h                                        |               |
+    | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                                           |               |
+    | Thu | strength base | dead lift: 5x10 (+2kg), reverse step-up: 5x50 (+4kg), calf-rises: 5x20 (+1kg) |               |
+    | Fri | endurance     | walking w/ pack: 4h (+5kg), cycling: 1h                                       |               |
+    | Sat | rest day      | hatha yoga - 2h                                                               |               |
+    | Sun | specific      | hill climbing: 2500m (+6kg)                                                   | level24: 12h  |
+
+*** Week 7 & 8 - May 31st: The final
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                      | training mask |
+    |-----+---------------+----------------------------------------------------------------+---------------|
+    | Mon | functional    | calisthenics - 1h                                              |               |
+    | Tue | cardio base   | stairs-stepper: 2400m (+8kg), swim: 1h                         |               |
+    | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                            |               |
+    | Thu | strength base | dead lift: 3x10, reverse step-up(+4kg): 3x20, calf-rises: 3x20 |               |
+    | Fri | endurance     | walking w/ pack: 6h (+8kg), cycling: 1h                        |               |
+    | Sat | rest day      | hatha yoga - 2h                                                |               |
+    | Sun | specific      | hill climbing: 3000m (+10kg)                                   | level24: 24h  |
+
+
+** References
+   - https://www.goodreads.com/book/show/118565.Mountaineering
+   - https://missadventurepants.com/blog/advanced-mountaineering-training-plan
+   - http://www.bodyresults.com/s2mountaineering-strength.asp
+   - https://en.wikipedia.org/wiki/Altitude_training

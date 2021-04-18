@@ -17,7 +17,7 @@ pygmentsCodeFences = true
 # pygmentsOptions = "linenos=inline"
 
 disqusShortname = "icostan"
-googleAnalytics = "UA-354095-4"
+# googleAnalytics = "UA-354095-4"
 
 [Params]
   subtitle = "The hard way, the easy way"
