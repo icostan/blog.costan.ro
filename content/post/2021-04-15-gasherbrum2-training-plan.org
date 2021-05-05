@@ -51,38 +51,51 @@ With all the above in mind, lets set the goals:
     #+ATTR_HTML: :border 2 :rules none
     | day | training type | exercises                                                                                                    | training mask |
     |-----+---------------+--------------------------------------------------------------------------------------------------------------+---------------|
-    | Mon | cardio        | stairs-stepper: 600m (50min), swim: 2600m (1h)                                                               |               |
+    | Mon | cardio        | stairs-stepper: 600m (50min), swim: 2600m (1h)                                                               | -             |
     | Tue | functional    | calisthenics: freeletics conditioning (50min)                                                                | level12: 1x1h |
     | Wed | rest day      | hatha/laya yoga: 2.5h                                                                                        | level13: 2x1h |
     | Thu | strength      | dead lift: 3x15 (+2kg), r-step-up: 3x50 (+4kg), calf-rises: 3x15 (+1kg), squats/r-lunges/lunges: 3x25 (+2kg) | level14: 1x2h |
     | Fri | endurance     | walking w/ pack: 2h (+2kg), cycling: 1h                                                                      | level15: 1x1h |
-    | Sat | specific      | hill climbing: 600m (+2kg)                                                                                   | level16: 1x2h |
+    | Sat | specific      | hill climbing: 700m (+1kg)                                                                                   | level16: 1x2h |
     | Sun | rest day      | walking: 2x40min, yoga: 2.5h                                                                                 | level16: 1x2h |
 
-*** Week 2 - Apr 26th: The Kick-off [WIP]
+
+*** Week 2 - Apr 26th: The Kick-off [DONE]
     #+ATTR_HTML: :border 2 :rules none
-    | day | training type | exercises                                                                                                    | training mask |
-    |-----+---------------+--------------------------------------------------------------------------------------------------------------+---------------|
-    | Mon | endurance     | walking w/ pack: 3h (+3kg), cycling: 1h                                                                      |               |
-    | Tue | functional    | calisthenics: freeletics conditioning                                                                        |               |
-    | Wed | rest day      | hatha/laya yoga: 3h                                                                                          |               |
-    | Thu | strength      | dead lift: 4x15 (+2kg), r-step-up: 4x50 (+4kg), calf-rises: 4x15 (+1kg), squats/r-lunges/lunges: 4x25 (+2kg) |               |
-    | Fri | cardio        | stairs-stepper: 750m, swim: 2600m                                                                            |               |
-    | Sat | specific      | hill climbing: 1000m (+2kg)                                                                                  |               |
-    | Sun | rest day      | hatha yoga: 2h                                                                                               | level16: 3h   |
+    | day | training type | exercises                                                                                                    | training mask    |
+    |-----+---------------+--------------------------------------------------------------------------------------------------------------+------------------|
+    | Mon | endurance     | walking w/ pack: 3h (+3kg), cycling: 1h                                                                      | level18: 1x25min |
+    | Tue | functional    | freeletics: beat PB, strength: 15x dead-lift, 50x r-step-up, 15x calf rises                                  | level18: 1x25min |
+    | Wed | rest day      | hatha/laya yoga: 3h                                                                                          | level16: 1x2h    |
+    | Thu | cardio        | stairs-stepper: 750m, swim: 2100m (1h)                                                                       | -                |
+    | Fri | strength      | dead lift: 4x15 (+2kg), r-step-up: 4x50 (+4kg), calf-rises: 4x15 (+1kg), squats/r-lunges/lunges: 4x25 (+2kg) | level16: 2x1h    |
+    | Sat | specific      | hill climbing: 1000m (+2kg)                                                                                  | level18: 1x25min |
+    | Sun | rest day      | Easter break                                                                                                 | level18: 1x25min |
 
 
-*** Week 3 & 4 - May 3rd: Build strength
+*** Week 3 - May 3rd: Build strength [WIP]
     #+ATTR_HTML: :border 2 :rules none
-    | day | training type | exercises                                                                    | training mask |
-    |-----+---------------+------------------------------------------------------------------------------+---------------|
-    | Mon | functional    | calisthenics: 1h                                                             |               |
-    | Tue | cardio base   | stairs-stepper: 1200m (+6kg), swim: 5000m                                    |               |
-    | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                                          |               |
-    | Thu | strength base | dead lift: 3x10 (+4kg), reverse step-up: 3x25(+8kg), calf-rises: 3x15 (+2kg) |               |
-    | Fri | endurance     | walking w/ pack: 2h (+5kg), cycling: 1h                                      |               |
-    | Sat | rest day      | hatha yoga - 2h                                                              |               |
-    | Sun | specific      | hill climbing - 2000m (+4kg)                                                 | level24: 6h   |
+    | day | training type | exercises                                                                                                                                      | training mask |
+    |-----+---------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+    | Mon | rest day      | Easter break                                                                                                                                   |               |
+    | Tue | rest day      | Easter break                                                                                                                                   |               |
+    | Wed | functional    | freeletics - conditioning ; s-leg dead lift: 3x10 (+4kg), r-step-up: 3x50 (+8kg), calf-rises: 3x15 (+2kg), squats/r-lunges/lunges: 3x25 (+4kg) |               |
+    | Thu | cardio        | stairs-stepper: 1000m (+3kg), swim: 3000m                                                                                                      |               |
+    | Fri | endurance     | walking w/ pack: 4h (+5kg), cycling: 1h                                                                                                        |               |
+    | Sat | specific      | hill climbing - 1500m (+3kg)                                                                                                                   |               |
+    | Sun | rest day      | hatha yoga - 2h                                                                                                                                |               |
+
+*** Week 4 - May 10th: Build strength
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                                                                         | training mask |
+    |-----+---------------+-------------------------------------------------------------------------------------------------------------------+---------------|
+    | Mon | functional    | calisthenics: 1h                                                                                                  |               |
+    | Tue | cardio        | stairs-stepper: 1200m (+4kg), swim: 4000m                                                                         |               |
+    | Wed | rest day      | walking: 2x40min, hatha/laya yoga: 3h                                                                             |               |
+    | Thu | strength      | dead lift: 3x10 (+4kg), reverse step-up: 4x25(+8kg), calf-rises: 4x15 (+2kg), squats/r-lunges/lunges: 4x25 (+4kg) |               |
+    | Fri | endurance     | walking w/ pack: 2h (+3kg), cycling: 1h                                                                           |               |
+    | Sat | specific      | hill climbing - 2000m (+4kg)                                                                                      |               |
+    | Sun | rest day      | hatha yoga - 2h                                                                                                   | level24: 6h   |
 
 *** Week 5 & 6 - May 17th: Build endurance
     #+ATTR_HTML: :border 2 :rules none
@@ -92,9 +105,9 @@ With all the above in mind, lets set the goals:
     | Tue | cardio base   | stairs-stepper: 1800m (+6kg), swim: 2h                                        |               |
     | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                                           |               |
     | Thu | strength base | dead lift: 5x10 (+2kg), reverse step-up: 5x50 (+4kg), calf-rises: 5x20 (+1kg) |               |
-    | Fri | endurance     | walking w/ pack: 4h (+5kg), cycling: 1h                                       |               |
-    | Sat | rest day      | hatha yoga - 2h                                                               |               |
-    | Sun | specific      | hill climbing: 2500m (+6kg)                                                   | level24: 12h  |
+    | Fri | endurance     | walking w/ pack: 4h (+6kg), cycling: 1h                                       |               |
+    | Sat | specific      | hill climbing: 2500m (+6kg)                                                   |               |
+    | Sun | rest day      | hatha yoga - 2h                                                               | level24: 12h  |
 
 *** Week 7 & 8 - May 31st: The final
     #+ATTR_HTML: :border 2 :rules none
@@ -105,8 +118,8 @@ With all the above in mind, lets set the goals:
     | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                            |               |
     | Thu | strength base | dead lift: 3x10, reverse step-up(+4kg): 3x20, calf-rises: 3x20 |               |
     | Fri | endurance     | walking w/ pack: 6h (+8kg), cycling: 1h                        |               |
-    | Sat | rest day      | hatha yoga - 2h                                                |               |
-    | Sun | specific      | hill climbing: 3000m (+10kg)                                   | level24: 24h  |
+    | Sat | specific      | hill climbing: 3000m (+10kg)                                   |               |
+    | Sun | rest day      | hatha yoga - 2h                                                | level24: 24h  |
 
 
 ** References
