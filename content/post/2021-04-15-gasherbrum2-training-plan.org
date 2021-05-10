@@ -13,13 +13,16 @@ With only two months remaining until the Gasherbrum2 expedition I put together a
     - strength: dead lift/reverse step-up/calf rises + squats/lunges variations
     - high altitude mask
 *** Measurable
-    - measure, compare, adjust along the way
+    - measure, compare and adjust along the way
 *** Action-oriented
-    - the plan has to be individualized, to find a balance between work, life and training
+    - write down a structured trainig plan that
+    - find a balance between training and work/life/other commitments
+    - individualized
 *** Realistic
     - setting very high goals with little chance of success are useless, a step by step, incremental approach is better
+    - dont do the "too much, too soon" mistake
 *** Time-based
-    - plan details per each day/week
+    - training details per each day/week
 
 ** 2. The goals
 
@@ -59,7 +62,6 @@ With all the above in mind, lets set the goals:
     | Sat | specific      | hill climbing: 700m (+1kg)                                                                                   | level16: 1x2h |
     | Sun | rest day      | walking: 2x40min, yoga: 2.5h                                                                                 | level16: 1x2h |
 
-
 *** Week 2 - Apr 26th: The Kick-off [DONE]
     #+ATTR_HTML: :border 2 :rules none
     | day | training type | exercises                                                                                                    | training mask    |
@@ -72,30 +74,29 @@ With all the above in mind, lets set the goals:
     | Sat | specific      | hill climbing: 1000m (+2kg)                                                                                  | level18: 1x25min |
     | Sun | rest day      | Easter break                                                                                                 | level18: 1x25min |
 
-
-*** Week 3 - May 3rd: Build strength [WIP]
+*** Week 3 - May 3rd: Build strength [DONE]
     #+ATTR_HTML: :border 2 :rules none
-    | day | training type | exercises                                                                                                                                      | training mask |
-    |-----+---------------+------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
-    | Mon | rest day      | Easter break                                                                                                                                   |               |
-    | Tue | rest day      | Easter break                                                                                                                                   |               |
-    | Wed | functional    | freeletics - conditioning ; s-leg dead lift: 3x10 (+4kg), r-step-up: 3x50 (+8kg), calf-rises: 3x15 (+2kg), squats/r-lunges/lunges: 3x25 (+4kg) |               |
-    | Thu | cardio        | stairs-stepper: 1000m (+3kg), swim: 3000m                                                                                                      |               |
-    | Fri | endurance     | walking w/ pack: 4h (+5kg), cycling: 1h                                                                                                        |               |
-    | Sat | specific      | hill climbing - 1500m (+3kg)                                                                                                                   |               |
-    | Sun | rest day      | hatha yoga - 2h                                                                                                                                |               |
+    | day | training type | exercises                                                                                                                                    | training mask    |
+    |-----+---------------+----------------------------------------------------------------------------------------------------------------------------------------------+------------------|
+    | Mon | rest day      | Easter break                                                                                                                                 |                  |
+    | Tue | rest day      | Easter break                                                                                                                                 |                  |
+    | Wed | functional    | freeletics: conditioning; s-leg dead lift: 3x15 (+2kg), r-step-up: 3x50 (+5kg), calf-rises: 3x15 (+2kg), squats/r-lunges/lunges: 3x25 (+5kg) | level18: 1x25min |
+    | Thu | cardio        | stairs-stepper: 1000m (+3kg), swim: 2500m                                                                                                    | level16: 1x1h    |
+    | Fri | endurance     | walking w/ pack: 4h (+3kg), cycling: 1h                                                                                                      | level16: 1x2h    |
+    | Sat | rest day      | walking: 1x40min, hatha/pranayama yoga - 3h                                                                                                  | -                |
+    | Sun | specific      | hill climbing - 1250m (+3kg)                                                                                                                 | -                |
 
-*** Week 4 - May 10th: Build strength
+*** Week 4 - May 10th: Build strength [WIP]
     #+ATTR_HTML: :border 2 :rules none
     | day | training type | exercises                                                                                                         | training mask |
     |-----+---------------+-------------------------------------------------------------------------------------------------------------------+---------------|
-    | Mon | functional    | calisthenics: 1h                                                                                                  |               |
+    | Mon | functional    | calisthenics: freeletics - 1h                                                                                     |               |
     | Tue | cardio        | stairs-stepper: 1200m (+4kg), swim: 4000m                                                                         |               |
-    | Wed | rest day      | walking: 2x40min, hatha/laya yoga: 3h                                                                             |               |
-    | Thu | strength      | dead lift: 3x10 (+4kg), reverse step-up: 4x25(+8kg), calf-rises: 4x15 (+2kg), squats/r-lunges/lunges: 4x25 (+4kg) |               |
-    | Fri | endurance     | walking w/ pack: 2h (+3kg), cycling: 1h                                                                           |               |
+    | Wed | rest day      | walking: 2x40min, hatha/pranayama yoga: 3h                                                                        |               |
+    | Thu | strength      | s-leg dead lift: 3x10 (+4kg), r-step-up: 4x25(+8kg), calf-rises: 4x15 (+2kg), squats/r-lunges/lunges: 4x25 (+4kg) |               |
+    | Fri | endurance     | walking w/ pack: 2h (+4kg), cycling: 1h                                                                           |               |
     | Sat | specific      | hill climbing - 2000m (+4kg)                                                                                      |               |
-    | Sun | rest day      | hatha yoga - 2h                                                                                                   | level24: 6h   |
+    | Sun | rest day      | hatha/pranayama yoga - 3h                                                                                         | level24: 6h   |
 
 *** Week 5 & 6 - May 17th: Build endurance
     #+ATTR_HTML: :border 2 :rules none
@@ -127,3 +128,4 @@ With all the above in mind, lets set the goals:
    - https://missadventurepants.com/blog/advanced-mountaineering-training-plan
    - http://www.bodyresults.com/s2mountaineering-strength.asp
    - https://en.wikipedia.org/wiki/Altitude_training
+   - https://theprehabguys.com/single-leg-romanian-deadlift/

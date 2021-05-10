@@ -320,6 +320,9 @@
     - https://twitter.com/VitalikButerin/status/1371844878968176647
     - https://alinush.github.io/2020/03/16/polynomials-for-crypto.html
     - https://decentralizedthoughts.github.io/2020-07-17-the-marvels-of-polynomials-over-a-field/
+*** understanding edge
+   - https://moontowermeta.com/understanding-edge/
+   - https://www.geeksforgeeks.org/binomial-mean-and-standard-deviation-probability-class-12-maths/
 
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -350,6 +353,7 @@
 *** zero-knowledge proofs tag
 *** replace old md with org files
 *** use org symbols e.g. \phi
+*** fix charts in historical volatility post
 ** Tasks
 *** DONE Wakatime reports=B$9
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
