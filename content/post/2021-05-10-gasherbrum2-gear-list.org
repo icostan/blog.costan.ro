@@ -1,0 +1,199 @@
+#+title: Gasherbrum2 - gear list
+#+subtitle: Mountaineering
+#+date: 2021-05-10
+#+tags[]: gear mountaineering alpinism gasherbrum2
+
+Always changing gear list, updated for high altitude mountaineering Gasherbrum2 expedition.
+
+Naming conventions:
+ - brand:
+   - the maker's name (eg Mammut)
+   - "-" when unknown or no name
+ - model:
+   - product name (eg Extreme)
+   - "-" when not known
+ - type - product category, REQUIRED (eg sleeping bag)
+ - weight - in grams
+ - usage - intended use, location
+   - approach - trekking to base camp
+   - BC - base camp
+   - low/high/all camps - C1/C2, C3/C4, all
+   - 7000m/summit - altitude
+   - cold/hot/rain/wind - weather
+ - comments:
+   - blank - if I already own the product
+   - BUY/REPLACE - buy/replace the item (trailing question mark if undecided)
+   - ??? - undecided, more research needed
+
+** Shoes
+   |------------+-----------------+---------+--------------+------------+----------|
+   | brand      | model           | type    | weight       | usage      | comments |
+   |------------+-----------------+---------+--------------+------------+----------|
+   | Scarpa     | Phantom 8000 HD | boots   | 1350g / boot | >7000m     |          |
+   | Scarpa     | Mont Blanc      | boots   |              | ~6000m     |          |
+   | Garmont    | Rambler 2       | boots   |              | trekking   |          |
+   | LaSportiva | -               | shoes   |              | hiking     |          |
+   | Teva       | Universal       | sandals |              | travel, BC |          |
+
+
+** Clothing
+*** Base layer - moisture wicking
+   |------------+----------+--------------------+--------+--------------+----------|
+   | brand      | model    | type               | weight | usage        | comments |
+   |------------+----------+--------------------+--------+--------------+----------|
+   | Merinito   | -        | lightweight top    |        | BC, ~6000m   |          |
+   | Merinito   | -        | lightweight bottom |        | BC, ~6000m   |          |
+   | Icebreaker | 260 Tech | midweight top      |        | >7000m       |          |
+   | Icebreaker | 260 Tech | midweight bottom   |        | >7000m       |          |
+   | Mund       | -        | socks              |        | BC, ~6000m   |          |
+   | Mund       | Everest  | double socks       |        | >7000m       |          |
+   |            |          | briefs             |        | all mountain | BUY      |
+*** Insulation layer - warmth
+   |---------+-------+-----------------------+--------+-------+----------|
+   | brand   | model | type                  | weight | usage | comments |
+   |---------+-------+-----------------------+--------+-------+----------|
+   | Forclaz | -     | down/synthetic jacket |        |       | REPLACE  |
+   |         |       | fleece/down pants     |        |       | BUY      |
+   |         |       | fleece top            |        |       | REPLACE  |
+*** Outer layer - wind and rain
+   |---------+-------+-------------------+--------+---------------+----------|
+   | brand   | model | type              | weight | usage         | comments |
+   |---------+-------+-------------------+--------+---------------+----------|
+   | Salomon | -     | convertible pants |        | approach, BC  |          |
+   | Mammut  | -     | wind-stopper      |        | approach, BC  |          |
+   | Burton  | -     | soft-shell jacket |        | BC, low camps | REPLACE? |
+   |         |       | hard-shell jacket |        | ~6000m        | ???      |
+   | Simond  | -     | soft-shell pants  |        | BC, low camps | REPLACE  |
+   |         |       | hard-shell pants  |        | ~6000m        | ???      |
+*** Down layer - extreme wind and cold
+   |---------+---------+-------+--------+--------------+----------|
+   | brand   | model   | type  | weight | usage        | comments |
+   |---------+---------+-------+--------+--------------+----------|
+   | Nahanny | Extreme | parka |        | >7000m, cold |          |
+   | Nahanny | Extreme | bibs  |        | >7000m, cold |          |
+
+
+** Camping
+*** Sleeping
+   |------------+--------------+----------------------+--------+---------------------+----------|
+   | brand      | model        | type                 | weight | usage               | comments |
+   |------------+--------------+----------------------+--------+---------------------+----------|
+   | Yate       | Wave Alu     | closed-cell foam mat |        | approach, tent/snow |          |
+   | Thermarest | Prolite Apex | self-inflated pad    |        | tent                |          |
+   | Nahanny    | Extreme      | down sleeping bag    |        | all camps           |          |
+   | Husky      | Flame 1      | 4-season tent        |        | low/high camps      | REPLACE? |
+   |            |              | pee bottle           |        | camps               | BUY?     |
+*** Cooking
+   |---------+-------+-------------------+--------+-----------+----------|
+   | brand   | model | type              | weight | usage     | comments |
+   |---------+-------+-------------------+--------+-----------+----------|
+   | Pinguin | -     | stove             |        | all camps | CHANGE   |
+   | Nalgene | -     | water bottle      |        | all camps |          |
+   |         |       | bottle insulation |        |           | ???      |
+   | Primus  | 1L    | thermos           |        | all camps |          |
+   | -       | -     | knife/spoon/fork  |        | all camps |          |
+   |         |       | stove fuel        |        |           | BUY      |
+*** Food & Drinks
+   |-------------+-------+------+--------+-------+----------|
+   | brand       | model | type | weight | usage | comments |
+   |-------------+-------+------+--------+-------+----------|
+   | Travellunch |       | food |        |       | BUY      |
+   | Lyo         |       | food |        |       | BUY      |
+
+
+** Accessories
+*** Head - wind and cold
+   |-------+-------+----------------+--------+--------------+----------|
+   | brand | model | type           | weight | usage        | comments |
+   |-------+-------+----------------+--------+--------------+----------|
+   | -     | -     | fleece beanie  |        | all mountain |          |
+   |       |       | hat with cover |        | approach     | BUY      |
+   | -     | -     | buff           |        | all mountain | REPLACE? |
+*** Eyes - sun and snow
+   |-------+-------+--------------------+--------+--------------+----------|
+   | brand | model | type               | weight | usage        | comments |
+   |-------+-------+--------------------+--------+--------------+----------|
+   | Anon  | -     | ski goggles        |        | all mountain |          |
+   | -     | -     | sport glasses      |        | low camps    |          |
+   |       |       | glacier sunglasses |        | low camps    | ???      |
+*** Hands - wind and cold
+   |---------+---------+--------------+--------+----------------+----------|
+   | brand   | model   | type         | weight | usage          | comments |
+   |---------+---------+--------------+--------+----------------+----------|
+   | Nahanny | Extreme | mittens      |        | >7000m, summit |          |
+   | -       | -       | ski gloves   |        | high camps     | REPLACE? |
+   | -       | -       | liner gloves |        | BC, low camps  |          |
+   | -       | -       | hand warmers |        | extreme cold   |          |
+*** Face - wind and sun
+   |-------+---------+-----------+--------+--------------+----------|
+   | brand | model   | type      | weight | usage        | comments |
+   |-------+---------+-----------+--------+--------------+----------|
+   |       | SPV 50+ | sunscreen |        | all mountain |          |
+   |       |         | lip balm  |        | all mountain |          |
+   |       |         | balaclava |        | cold/wind    | REPLACE? |
+
+
+** Climbing
+   |---------------------+--------------+----------------------+--------+-------+----------|
+   | brand               | model        | type                 | weight | usage | comments |
+   |---------------------+--------------+----------------------+--------+-------+----------|
+   | -                   | 70L?         | climbing pack        |        |       | BUY?     |
+   | Simond              | 32L          | trekking/summit pack |        |       |          |
+   | Black Diamond       | -            | harness              |        |       |          |
+   | Black Diamond       | -            | slings/runners       |        |       |          |
+   | Black Diamond       | -            | carabiners           |        |       |          |
+   | Black Diamond       | -            | helmet               |        |       |          |
+   | Petzl               | Snowalker 75 | ice axe              |        |       |          |
+   | Climbing Technology | -            | crampons             |        |       |          |
+   | Simond              | Figure8      | descender            |        |       |          |
+   |                     |              | ascender             |        |       | BUY?     |
+   | Masters             | Primitive    | trekking poles       |        |       | REPLACE? |
+   |                     |              | rope                 |        |       | BUY?     |
+   |                     |              | ice screw            |        |       | BUY?     |
+   |                     |              | shovel               |        |       | BUY?     |
+   | Black Diamond       |              | headlamps            |        |       | REPLACE  |
+
+
+** Toiletries
+   |-------+-------+-------------------+--------+------------+----------|
+   | brand | model | type              | weight | usage      | comments |
+   |-------+-------+-------------------+--------+------------+----------|
+   |       |       | soap              |        |            |          |
+   |       |       | towel             |        |            |          |
+   |       |       | razor             |        | single use | buy?     |
+   |       |       | tooth paste/brush |        |            |          |
+   |       |       | toilet paper      |        |            |          |
+
+
+** Technology
+   |---------+------------+----------------+--------+-------------+----------|
+   | brand   | model      | type           | weight | usage       | comments |
+   |---------+------------+----------------+--------+-------------+----------|
+   | Garmin  | Forerunner | watch          |        | broken band | REPLACE  |
+   | Thuraya |            | sat phone      |        |             |          |
+   | One+    | T5         | phone          |        |             |          |
+   |         |            | solar panel    |        |             | BUY?     |
+   | Cannon  | S110       | digital camera |        |             |          |
+   |         |            | radio          |        |             |          |
+   |         |            | power bank     |        |             | REPLACE? |
+   | -       | -          | cables         |        |             |          |
+   |         |            | earbuds        |        |             |          |
+
+
+** Other
+   |---------------+-------+------------+--------+--------------+----------|
+   | brand         | model | type       | weight | usage        | comments |
+   |---------------+-------+------------+--------+--------------+----------|
+   |               |       | duffle bag |        | travel       | BUY      |
+   |               |       | binocular  |        | ???          |          |
+   | -             | -     | compass    |        |              |          |
+   | -             | -     | multitool  |        |              |          |
+
+
+** References
+   - http://www.alanarnette.com/climbing/gearlist.php
+   - https://www.himalaya-alpine.com/information/himalaya-travel-gear/himalaya-mountaineering-gear-list-8000m/
+   - [[https://sevensummittreks.com/assets/upload/files/8000m%20GEAR.pdf]]
+   - https://climbingthesevensummits.com/wp-content/uploads/2021/01/Everest-Gear-List.pdf
+   - http://feedingtheratexpeditions.com/k2-north-side-gear-list
+   - https://everestexpedition.co.uk/everest/everest-kit-list/
