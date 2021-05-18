@@ -6,13 +6,13 @@
 Always changing gear list, updated for high altitude mountaineering Gasherbrum2 expedition.
 
 Naming conventions:
+ - type - product category, REQUIRED (e.g. sleeping bag)
  - brand:
    - the maker's name (eg Mammut)
    - "-" when unknown or no name
  - model:
    - product name (eg Extreme)
    - "-" when not known
- - type - product category, REQUIRED (eg sleeping bag)
  - weight - in grams
  - usage - intended use, location
    - approach - trekking to base camp
@@ -26,15 +26,15 @@ Naming conventions:
    - ??? - undecided, more research needed
 
 ** Shoes
-   |------------+-----------------+---------+--------------+------------+----------|
-   | brand      | model           | type    | weight       | usage      | comments |
-   |------------+-----------------+---------+--------------+------------+----------|
-   | Scarpa     | Phantom 8000 HD | boots   | 1350g / boot | >7000m     |          |
-   | Scarpa     | Mont Blanc      | boots   |              | ~6000m     |          |
-   | Garmont    | Rambler 2       | boots   |              | trekking   |          |
-   | LaSportiva | -               | shoes   |              | hiking     |          |
-   | Teva       | Universal       | sandals |              | travel, BC |          |
-
+   |----------------+------------+-----------------+--------+----------+-------|
+   | Type           | Brand      | Model           | Weight | Usage    | Notes |
+   |----------------+------------+-----------------+--------+----------+-------|
+   | Shoes          |            |                 |   7060 |          |       |
+   | 8000m boots    | Scarpa     | Phantom 8000 HD |   2680 | >7000m   |       |
+   | 6000m boots    | Scarpa     | Mont Blanc      |   2070 | >6000m   |       |
+   | trekking boots | Garmont    | Rambler GTX     |   1270 | trekking |       |
+   | sport shoes    | LaSportiva | -               |    690 | hiking   |       |
+   | sandals        | Teva       | Universal       |    350 | BC       |       |
 
 ** Clothing
 *** Base layer - moisture wicking
