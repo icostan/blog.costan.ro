@@ -14,130 +14,158 @@ Naming conventions:
    - product name (eg Extreme)
    - "-" when not known
  - weight - in grams
- - usage - intended use, location
+ - usage - intended use: activity, location, weather
    - approach - trekking to base camp
    - BC - base camp
    - low/high/all camps - C1/C2, C3/C4, all
    - 7000m/summit - altitude
-   - cold/hot/rain/wind - weather
+   - cold/warm/rain/wind/snow - weather
  - comments:
    - blank - if I already own the product
    - BUY/REPLACE - buy/replace the item (trailing question mark if undecided)
    - ??? - undecided, more research needed
 
-** Shoes
-   |----------------+------------+-----------------+--------+----------+-------|
-   | Type           | Brand      | Model           | Weight | Usage    | Notes |
-   |----------------+------------+-----------------+--------+----------+-------|
-   | Shoes          |            |                 |   7060 |          |       |
-   | 8000m boots    | Scarpa     | Phantom 8000 HD |   2680 | >7000m   |       |
-   | 6000m boots    | Scarpa     | Mont Blanc      |   2070 | >6000m   |       |
-   | trekking boots | Garmont    | Rambler GTX     |   1270 | trekking |       |
-   | sport shoes    | LaSportiva | -               |    690 | hiking   |       |
-   | sandals        | Teva       | Universal       |    350 | BC       |       |
+** Gear overview
+   | Type                 | Brand | Model | Weight | Usage | Notes |
+   |----------------------+-------+-------+--------+-------+-------|
+   | 0. Gear              |       |       |  20033 |       |       |
+   | 1. Shoes             |       |       |   7060 |       |       |
+   | 2. Clothing          |       |       |   4253 |       |       |
+   | 2.1 Base layer       |       |       |   1004 |       |       |
+   | 2.2 Insulation layer |       |       |    300 |       |       |
+   | 2.3 Outer layer      |       |       |    779 |       |       |
+   | 2.4 Down layer       |       |       |   2170 |       |       |
+   | 3. Accesories        |       |       |    387 |       |       |
+   | 3.1 Head             |       |       |     36 |       |       |
+   | 3.2 Eyes             |       |       |        |       |       |
+   | 3.3 Face             |       |       |        |       |       |
+   | 3.4 Hands            |       |       |    351 |       |       |
+   | 4. Camping           |       |       |   8333 |       |       |
+   | 4.1 Sleeping         |       |       |   6005 |       |       |
+   | 4.2 Cooking          |       |       |   2328 |       |       |
 
-** Clothing
-*** Base layer - moisture wicking
-   |------------+----------+--------------------+--------+--------------+----------|
-   | brand      | model    | type               | weight | usage        | comments |
-   |------------+----------+--------------------+--------+--------------+----------|
-   | Merinito   | -        | lightweight top    |        | BC, ~6000m   |          |
-   | Merinito   | -        | lightweight bottom |        | BC, ~6000m   |          |
-   | Icebreaker | 260 Tech | midweight top      |        | >7000m       |          |
-   | Icebreaker | 260 Tech | midweight bottom   |        | >7000m       |          |
-   | Mund       | -        | socks              |        | BC, ~6000m   |          |
-   | Mund       | Everest  | double socks       |        | >7000m       |          |
-   |            |          | briefs             |        | all mountain | BUY      |
-*** Insulation layer - warmth
-   |---------+-------+-----------------------+--------+-------+----------|
-   | brand   | model | type                  | weight | usage | comments |
-   |---------+-------+-----------------------+--------+-------+----------|
-   | Forclaz | -     | down/synthetic jacket |        |       | REPLACE  |
-   |         |       | fleece/down pants     |        |       | BUY      |
-   |         |       | fleece top            |        |       | REPLACE  |
-*** Outer layer - wind and rain
-   |---------+-------+-------------------+--------+---------------+----------|
-   | brand   | model | type              | weight | usage         | comments |
-   |---------+-------+-------------------+--------+---------------+----------|
-   | Salomon | -     | convertible pants |        | approach, BC  |          |
-   | Mammut  | -     | wind-stopper      |        | approach, BC  |          |
-   | Burton  | -     | soft-shell jacket |        | BC, low camps | REPLACE? |
-   |         |       | hard-shell jacket |        | ~6000m        | ???      |
-   | Simond  | -     | soft-shell pants  |        | BC, low camps | REPLACE  |
-   |         |       | hard-shell pants  |        | ~6000m        | ???      |
-*** Down layer - extreme wind and cold
-   |---------+---------+-------+--------+--------------+----------|
-   | brand   | model   | type  | weight | usage        | comments |
-   |---------+---------+-------+--------+--------------+----------|
-   | Nahanny | Extreme | parka |        | >7000m, cold |          |
-   | Nahanny | Extreme | bibs  |        | >7000m, cold |          |
+** 1. Shoes
+   | Type           | Brand      | Model           | Weight | Usage      | Notes |
+   |----------------+------------+-----------------+--------+------------+-------|
+   | 1. Shoes       |            |                 |   7060 |            |       |
+   | 8000m boots    | Scarpa     | Phantom 8000 HD |   2680 | 7000m+     |       |
+   | 6000m boots    | Scarpa     | Mont Blanc      |   2070 | ~6000m     |       |
+   | trekking boots | Garmont    | Rambler GTX     |   1270 | approach   |       |
+   | sport shoes    | LaSportiva |                 |    690 | travel, BC |       |
+   | sandals        | Teva       | Universal       |    350 | travel, BC |       |
 
 
-** Camping
-*** Sleeping
-   |------------+--------------+----------------------+--------+---------------------+----------|
-   | brand      | model        | type                 | weight | usage               | comments |
-   |------------+--------------+----------------------+--------+---------------------+----------|
-   | Yate       | Wave Alu     | closed-cell foam mat |        | approach, tent/snow |          |
-   | Thermarest | Prolite Apex | self-inflated pad    |        | tent                |          |
-   | Nahanny    | Extreme      | down sleeping bag    |        | all camps           |          |
-   | Husky      | Flame 1      | 4-season tent        |        | low/high camps      | REPLACE? |
-   |            |              | pee bottle           |        | camps               | BUY?     |
-*** Cooking
-   |---------+-------+-------------------+--------+-----------+----------|
-   | brand   | model | type              | weight | usage     | comments |
-   |---------+-------+-------------------+--------+-----------+----------|
-   | Pinguin | -     | stove             |        | all camps | CHANGE   |
-   | Nalgene | -     | water bottle      |        | all camps |          |
-   |         |       | bottle insulation |        |           | ???      |
-   | Primus  | 1L    | thermos           |        | all camps |          |
-   | -       | -     | knife/spoon/fork  |        | all camps |          |
-   |         |       | stove fuel        |        |           | BUY      |
+** 2. Clothing
+*** 2.1 Base layer - moisture wicking
+    | Type               | Brand      | Model      | Weight | Usage      | Notes |
+    |--------------------+------------+------------+--------+------------+-------|
+    | 2.1 Base layer     |            |            |   1004 |            |       |
+    | lightweight top    | Merinito   |            |    163 | BC, ~6000m |       |
+    | lightweight bottom | Merinito   |            |    133 | BC, ~6000m |       |
+    | mid-weight top     | Icebreaker | 260 Tech   |    278 | 7000m+     |       |
+    | mid-weight bottom  | Icebreaker | 260 Tech   |    226 | 7000m+     |       |
+    | briefs             |            |            |        |            | BUY   |
+    | mid-weight boxers  | Icebreaker |            |        |            | BUY   |
+    | socks              |            |            |        | approach   | ???   |
+    | single socks       | Mund       |            |    100 | BC, ~6000m |       |
+    | double socks       | Mund       | Everest    |    104 | ~7000m     |       |
+    | summit socks       | Icebreaker | Expedition |        | 7000m+     | BUY   |
+*** 2.2 Insulation layer - warmth
+    | Type                  | Brand   | Model | Weight | Usage         | Notes   |
+    |-----------------------+---------+-------+--------+---------------+---------|
+    | 2.2 Insulation layer  |         |       |    300 |               |         |
+    | down/synthetic jacket | Forclaz | -     |    300 | BC, low camps | REPLACE |
+    | fleece/down pants     |         |       |        | BC, low camps | BUY     |
+    | fleece jacket         |         |       |        | BC, low camps | BUY     |
+*** 2.3 Outer layer - wind and rain
+    | Type              | Brand   | Model | Weight | Usage         | Notes   |
+    |-------------------+---------+-------+--------+---------------+---------|
+    | Outer layer       |         |       |    779 |               |         |
+    | convertible pants | Salomon | -     |    293 | BC, approach  |         |
+    | wind-stopper      | Mammut  | -     |    486 | BC, approach  |         |
+    | softshell jacket  | Burton  | -     |        | BC, low camps | REPLACE |
+    | softshell pants   | Simond  | -     |        | BC, low camps | REPLACE |
+    | hardshell jacket  |         |       |        | ~6000m        | BUY     |
+    | hardshell pants   |         |       |        | ~6000m        | BUY     |
+*** 2.4 Down layer - extreme wind and cold
+    | Type           | Brand   | Model   | Weight | Usage  | Notes |
+    |----------------+---------+---------+--------+--------+-------|
+    | 2.4 Down layer |         |         |   2170 |        |       |
+    | parka          | Nahanny | Extreme |   1110 | >7000m |       |
+    | bibs           | Nahanny | Extreme |   1060 | >7000m |       |
+
+
+** 3. Accessories
+*** 3.1 Head - wind and cold
+    | Type           | Brand | Model | Weight | Usage        | Notes |
+    |----------------+-------+-------+--------+--------------+-------|
+    | 3.1 Head       |       |       |     36 |              |       |
+    | fleece beanie  |       |       |     36 | all mountain |       |
+    | hat with cover |       |       |        | all mountain |       |
+    | buff           |       |       |        | all mountain |       |
+*** 3.2 Eyes - sun and snow
+    | Type                | Brand | Model | Weight | Usage      | Notes |
+    |---------------------+-------+-------+--------+------------+-------|
+    | 3.2 Eyes            |       |       |        |            |       |
+    | sport glasses       |       |       |        |            | ???   |
+    | glacier sun glasses |       |       |        | low camps  |       |
+    | ski goggles         |       |       |        | high camps |       |
+*** 3.3 Face - wind and sun
+    | Type      | Brand | Model | Weight | Usage  | Notes |
+    |-----------+-------+-------+--------+--------+-------|
+    | 3.3 Face  |       |       |        |        |       |
+    | sunscreen |       |       |        |        |       |
+    | lip balm  |       |       |        |        |       |
+    | balaclava |       |       |        | 7000m+ |       |
+*** 3.4 Hands - cold
+    | Type            | Brand     | Model   | Weight | Usage        | Notes    |
+    |-----------------+-----------+---------+--------+--------------+----------|
+    | 3.4 Hands       |           |         |    351 |              |          |
+    | down mittens    | Nahanny   | Extreme |    240 | 7000m+, cold |          |
+    | climbing gloves |           |         |        | all mountain | BUY      |
+    | ski gloves      |           |         |        | backup       | REPLACE? |
+    | fleece gloves   | Lowe      | Alpine  |     72 | warm         |          |
+    | hand warmers    | ClickHeat |         |     39 | cold         | REPLACE? |
+
+
+** 4. Camping
+*** 4.1 Sleeping
+   | Type               | Brand      | Model        | Weight | Usage            | Notes    |
+   |--------------------+------------+--------------+--------+------------------+----------|
+   | 4.1 Sleeping       |            |              |   6005 |                  |          |
+   | foam pad           | Yate       | Wave Alu     |    388 | tent, snow, rock |          |
+   | self-inflating mat | Thermarest | Prolite Apex |    707 | tent             |          |
+   | sleeping bag       | Nahanny    | Extreme      |   1940 | all camps        |          |
+   | tent 4-season      | Husky      | Flame 1      |   2970 | camps            | REPLACE? |
+*** 4.2 Cooking
+   | Type              | Brand      | Model      | Weight | Usage      | Notes    |
+   |-------------------+------------+------------+--------+------------+----------|
+   | 4.2 Cooking       |            |            |   2328 |            |          |
+   | stove + pot       | MSR        | Reactor 1L |    487 |            |          |
+   | fuel              | Primus     | Winter Gas |    780 |            | 2x BUY   |
+   | fire striker      |            |            |     28 |            |          |
+   | water bottle      | Nalgene    | 1L         |    177 | low camps  |          |
+   | bottle insulation |            |            |        | high camps | BUY?     |
+   | thermos           | Primus     | 1L         |    524 |            |          |
+   | multitool         |            |            |    160 |            | REPLACE? |
+   | cup               | Pinguin    | 500ml      |    172 |            | REPLACE? |
+   | camp set          | Sea2Summit | Delta      |        |            | BUY?     |
 *** Food & Drinks
-   |-------------+-------+------+--------+-------+----------|
-   | brand       | model | type | weight | usage | comments |
-   |-------------+-------+------+--------+-------+----------|
-   | Travellunch |       | food |        |       | BUY      |
-   | Lyo         |       | food |        |       | BUY      |
+   |----------------+-------+------+--------+-------+----------|
+   | brand          | model | type | weight | usage | comments |
+   |----------------+-------+------+--------+-------+----------|
+   | Travellunch    |       | food |        |       | BUY      |
+   | Lyo            |       | food |        |       | BUY      |
+   | Adventure menu |       |      |        |       | BUY      |
+   | Summit to eat  |       |      |        |       | BUY      |
+   | Adventure food |       |      |        |       | BUY      |
 
 
-** Accessories
-*** Head - wind and cold
-   |-------+-------+----------------+--------+--------------+----------|
-   | brand | model | type           | weight | usage        | comments |
-   |-------+-------+----------------+--------+--------------+----------|
-   | -     | -     | fleece beanie  |        | all mountain |          |
-   |       |       | hat with cover |        | approach     | BUY      |
-   | -     | -     | buff           |        | all mountain | REPLACE? |
-*** Eyes - sun and snow
-   |-------+-------+--------------------+--------+--------------+----------|
-   | brand | model | type               | weight | usage        | comments |
-   |-------+-------+--------------------+--------+--------------+----------|
-   | Anon  | -     | ski goggles        |        | all mountain |          |
-   | -     | -     | sport glasses      |        | low camps    |          |
-   |       |       | glacier sunglasses |        | low camps    | ???      |
-*** Hands - wind and cold
-   |---------+---------+--------------+--------+----------------+----------|
-   | brand   | model   | type         | weight | usage          | comments |
-   |---------+---------+--------------+--------+----------------+----------|
-   | Nahanny | Extreme | mittens      |        | >7000m, summit |          |
-   | -       | -       | ski gloves   |        | high camps     | REPLACE? |
-   | -       | -       | liner gloves |        | BC, low camps  |          |
-   | -       | -       | hand warmers |        | extreme cold   |          |
-*** Face - wind and sun
-   |-------+---------+-----------+--------+--------------+----------|
-   | brand | model   | type      | weight | usage        | comments |
-   |-------+---------+-----------+--------+--------------+----------|
-   |       | SPV 50+ | sunscreen |        | all mountain |          |
-   |       |         | lip balm  |        | all mountain |          |
-   |       |         | balaclava |        | cold/wind    | REPLACE? |
-
-
-** Climbing
+** 5. Climbing
    |---------------------+--------------+----------------------+--------+-------+----------|
    | brand               | model        | type                 | weight | usage | comments |
    |---------------------+--------------+----------------------+--------+-------+----------|
-   | -                   | 70L?         | climbing pack        |        |       | BUY?     |
+   | -                   | 80L          | climbing pack        |        |       | BUY      |
    | Simond              | 32L          | trekking/summit pack |        |       |          |
    | Black Diamond       | -            | harness              |        |       |          |
    | Black Diamond       | -            | slings/runners       |        |       |          |
@@ -154,7 +182,7 @@ Naming conventions:
    | Black Diamond       |              | headlamps            |        |       | REPLACE  |
 
 
-** Toiletries
+** 6. Toiletries
    |-------+-------+-------------------+--------+------------+----------|
    | brand | model | type              | weight | usage      | comments |
    |-------+-------+-------------------+--------+------------+----------|
@@ -165,7 +193,7 @@ Naming conventions:
    |       |       | toilet paper      |        |            |          |
 
 
-** Technology
+** 7. Technology
    |---------+------------+----------------+--------+-------------+----------|
    | brand   | model      | type           | weight | usage       | comments |
    |---------+------------+----------------+--------+-------------+----------|
@@ -180,7 +208,7 @@ Naming conventions:
    |         |            | earbuds        |        |             |          |
 
 
-** Other
+** 9. Other
    |---------------+-------+------------+--------+--------------+----------|
    | brand         | model | type       | weight | usage        | comments |
    |---------------+-------+------------+--------+--------------+----------|
