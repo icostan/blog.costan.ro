@@ -15,11 +15,11 @@ With only two months remaining until the Gasherbrum2 expedition I put together a
 *** Measurable
     - measure, compare and adjust along the way
 *** Action-oriented
-    - write down a structured trainig plan that
+    - write down a structured training plan
     - find a balance between training and work/life/other commitments
     - individualized
 *** Realistic
-    - setting very high goals with little chance of success are useless, a step by step, incremental approach is better
+    - setting very high goals with little chance of success is useless, a step by step, incremental approach is better
     - dont do the "too much, too soon" mistake
 *** Time-based
     - training details per each day/week
@@ -32,7 +32,7 @@ With all the above in mind, lets set the goals:
     To climb 3000m elevation with a 10kg pack in 10 hours by Jun 14th.
 
 *** The ultimate goal
-    To climb Gasherbrum2 peak (8035m) w/o bottled oxygen, survive and, tell the story.
+    To climb Gasherbrum2 peak (8035m) without bottled oxygen, survive and tell the story.
 
 ** 3. The schedule
 
@@ -107,7 +107,7 @@ With all the above in mind, lets set the goals:
     | Wed | rest day      | weekly yoga: 2h                                                                                                    |               |
     | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+5kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+5kg) |               |
     | Fri | endurance     | walking w/ pack: 4h, cycling: 1h                                                                                   |               |
-    | Sat | specific      | hill climbing: 1550 (+5kg)                                                                                         |               |
+    | Sat | specific      | hill climbing: 1550m (+5kg)                                                                                        |               |
     | Sun | rest day      | rest                                                                                                               |               |
 
 *** Week 6 - May 24: Build endurance [WIP]
