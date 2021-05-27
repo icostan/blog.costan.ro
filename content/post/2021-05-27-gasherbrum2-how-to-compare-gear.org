@@ -1,0 +1,71 @@
+#+title: Gasherbrum2 - how to compare gear
+#+subtitle: Mountaineering
+#+date: 2021-05-27
+#+tags[]: gear mountaineering alpinism gasherbrum2
+
+I need to choose between a 300 EUR down hoody that weights 300g and one that is 400 EUR and 330g... which one will you go for?
+
+Now, what if I tell you that the first option is 600 CUIN and second one is 800 CUIN? Wait...wait... what? What the heck is CUIN?
+
+** Filters
+   Enter triangulation shopping where you simplify everything and only play around with 3 main filters:
+
+*** 1. Price
+    I would say that price is the first and the most important filter for most of the people unless you are a crypto double-digit millionaire, only buy Arc'teryx products and don't care about the price at all.
+
+*** 2. Weight
+    Weight is the second, especially in high-altitude mountaineering where every 100grams matters a lot. You want to enjoy the mountain right? be a wild goat, not a Sherpa.
+
+*** 3. Characteristic
+ CUIN is what I call the /*main characteristic*/ of a product or product type (down suits, rain jackets, etc) and is needed to be able to compare *apples to apples* across multiple brands.
+
+ A few examples of characteristics:
+ - CUbic INches (CUIN) - *global* - a ratio between weight and volume and is used to measure down products (down jackets, sleeping bags), the bigger the better
+ - Resistance Value (R-value) - *global* -  used to measure ground insulation products (air mattress, foam pads), same, the bigger the better
+ - Hydro-static Head (HH) - *global* - waterproof rating to measure water-proof and water-repellent products (tents, jackets, pants)
+ - base layer fabric - *local* (Icebreaker) - the measure of lightweight vs. mid-weight fabric type is different between Icebreaker and Ortovox
+ - backpacks - *none* - that comes in a lot of shapes (aka capacity) for different activities (hiking, alpinism) you need to do the dirty work and find out what works best for your needs
+ - etc
+
+ Unfortunately not all products/types have a main characteristic that is used by all gear makers, that's why I came up with 3 categories:
+ - *global*: globally available and implemented by most brands (e.g. CUIN for down products) and you can compare apples to apples
+ - *local*: specific to each brand, you can't compare products across different makers but you can compare within same brand (e.g. Icebreaker)
+ - *none*: there is no common characteristic to compare two different products of the same maker (e.g. backpacks), you need to look at multiple features to figure out what is what.
+
+** Triangulation
+   With the above in mind we first need to identify the main characteristic (if any) for the products that we want to compare and mentally do:
+   - calculate /the bang for the buck/ - how much value you get for each buck spent (*characteristic / price*), /the bigger the better/ which means you get more value for the same money
+   - calculate /weighted bang/ - multiply the ratio above by the weight (*weight * ratio*), /the smaller the better/ - which means you get less weight for the same ratio
+
+ Let's apply the triangulation to the above example and find out what to we buy:
+
+#+begin_src python :results output
+  c1 = 600
+  p1 = 300
+  w1 = 300
+  h1 = c1 / p1 * w1
+  print(h1)
+
+  c2 = 800
+  p2 = 400
+  w2 = 320
+  h2 = c2 / p2 * w2
+  print(h2)
+
+  if h1 > h2:
+    print("WINNER: #1")
+  else:
+    print("WINNER: #2")
+#+end_src
+
+#+RESULTS:
+: 600.0
+: 640.0
+: WINNER: #2
+
+Happy shopping!
+
+** References
+   - [[https://en.wikipedia.org/wiki/Fill_power][CUIN]]
+   - [[https://en.wikipedia.org/wiki/R-value_(insulation)][R-value insulation]]
+   - [[https://www.gearassistant.com/what-is-hydrostatic-head/][Hydrostatic Head]]

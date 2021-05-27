@@ -101,22 +101,22 @@ Naming conventions:
     |----------------+-------+-------+--------+--------------+-------|
     | 3.1 Head       |       |       |     36 |              |       |
     | fleece beanie  |       |       |     36 | all mountain |       |
-    | hat with cover |       |       |        | all mountain |       |
+    | hat with cover |       |       |        | all mountain | BUY   |
     | buff           |       |       |        | all mountain |       |
 *** 3.2 Eyes - sun and snow
-    | Type                | Brand | Model | Weight | Usage      | Notes |
-    |---------------------+-------+-------+--------+------------+-------|
-    | 3.2 Eyes            |       |       |        |            |       |
-    | sport glasses       |       |       |        |            | ???   |
-    | glacier sun glasses |       |       |        | low camps  |       |
-    | ski goggles         |       |       |        | high camps |       |
+    | Type                | Brand | Model | Weight | Usage      | Notes    |
+    |---------------------+-------+-------+--------+------------+----------|
+    | 3.2 Eyes            |       |       |        |            |          |
+    | sport glasses       |       |       |        |            | ???      |
+    | glacier sun glasses |       |       |        | low camps  | BUY?     |
+    | ski goggles         |       |       |        | high camps | REPLACE? |
 *** 3.3 Face - wind and sun
-    | Type      | Brand | Model | Weight | Usage  | Notes |
-    |-----------+-------+-------+--------+--------+-------|
-    | 3.3 Face  |       |       |        |        |       |
-    | sunscreen |       |       |        |        |       |
-    | lip balm  |       |       |        |        |       |
-    | balaclava |       |       |        | 7000m+ |       |
+    | Type      | Brand | Model                | Weight | Usage  | Notes |
+    |-----------+-------+----------------------+--------+--------+-------|
+    | 3.3 Face  |       |                      |        |        |       |
+    | sunscreen |       |                      |        |        |       |
+    | lip balm  |       |                      |        |        |       |
+    | balaclava | Kama  | Merino Tecnowool D23 |        | 7000m+ |       |
 *** 3.4 Hands - cold
     | Type            | Brand     | Model   | Weight | Usage        | Notes    |
     |-----------------+-----------+---------+--------+--------------+----------|
@@ -165,8 +165,7 @@ Naming conventions:
    |---------------------+--------------+----------------------+--------+-------+----------|
    | brand               | model        | type                 | weight | usage | comments |
    |---------------------+--------------+----------------------+--------+-------+----------|
-   | -                   | 80L          | climbing pack        |        |       | BUY      |
-   | Simond              | 32L          | trekking/summit pack |        |       |          |
+   | Gregory             | Baltoro 75L  | climbing pack        |        |       |          |
    | Black Diamond       | -            | harness              |        |       |          |
    | Black Diamond       | -            | slings/runners       |        |       |          |
    | Black Diamond       | -            | carabiners           |        |       |          |
