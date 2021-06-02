@@ -110,29 +110,41 @@ With all the above in mind, lets set the goals:
     | Sat | specific      | hill climbing: 1550m (+5kg)                                                                                        |               |
     | Sun | rest day      | rest                                                                                                               |               |
 
-*** Week 6 - May 24: Build endurance [WIP]
+*** Week 6 - May 24: Build endurance [DONE]
     #+ATTR_HTML: :border 2 :rules none
     | day | training type | exercises                                                                                                          | training mask |
     |-----+---------------+--------------------------------------------------------------------------------------------------------------------+---------------|
     | Mon | functional    | calisthenics: freeletics full body (2h)                                                                            |               |
-    | Tue | cardio        | stairs-stepper: 1800m (+6kg), swim: 1h                                                                             |               |
+    | Tue | cardio        | stairs-stepper: 1800m (+6kg), swim: 30min                                                                          |               |
     | Wed | rest day      | walking: 2x40min, weekly yoga: 3h                                                                                  |               |
     | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+6kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+6kg) |               |
-    | Fri | endurance     | walking w/ pack: 4h (+6kg), cycling: 1h                                                                            |               |
-    | Sat | specific      | hill climbing: 2000m (+6kg)                                                                                        |               |
-    | Sun | rest day      | hatha/pranayama yoga: 2h                                                                                           |               |
+    | Fri | endurance     | walking w/ pack: 3h, cycling: 1h                                                                                   |               |
+    | Sat | specific      | hill climbing: 1600m +11kg (7h)                                                                                    |               |
+    | Sun | specific      | hill climbing: 1200m +11kg (8h)                                                                                    |               |
 
-*** Week 7 & 8 - May 31st: The final
+*** Week 7 - May 31st: The final
     #+ATTR_HTML: :border 2 :rules none
-    | day | training type | exercises                                                | training mask |
-    |-----+---------------+----------------------------------------------------------+---------------|
-    | Mon | functional    | calisthenics: 2h                                         |               |
-    | Tue | cardio base   | stairs-stepper: 2400m (+8kg), swim: 1h                   |               |
-    | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                      |               |
-    | Thu | strength base | dead lift: 3x15, reverse step-up: 5x20, calf-rises: 5x20 |               |
-    | Fri | endurance     | walking w/ pack: 6h (+8kg), cycling: 1h                  |               |
-    | Sat | specific      | hill climbing: 3000m (+10kg)                             |               |
-    | Sun | rest day      | hatha yoga: 2h                                           | level24: 24h  |
+    | day | training type | exercises                                                                                                          | training mask |
+    |-----+---------------+--------------------------------------------------------------------------------------------------------------------+---------------|
+    | Mon | specific      | hill climbing: 3x300m (5h)                                                                                         |               |
+    | Tue | specific      | hill climbing: 2100m (6h)                                                                                          |               |
+    | Wed | rest day      | hatha/laya yoga: 2h                                                                                                |               |
+    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+7kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+7kg) |               |
+    | Fri | endurance     | walking w/ pack: 6h (+7kg), cycling: 1h                                                                            |               |
+    | Sat | specific      | hill climbing: 2500m (+7kg)                                                                                        |               |
+    | Sun | rest day      | hatha yoga: 2h                                                                                                     |               |
+
+*** Week 8 - June 7th: The final
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                                                                                                          | training mask |
+    |-----+---------------+--------------------------------------------------------------------------------------------------------------------+---------------|
+    | Mon | functional    | calisthenics: 2h                                                                                                   |               |
+    | Tue | cardio base   | stairs-stepper: 2400m (+8kg), swim: 1h                                                                             |               |
+    | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                                                                                |               |
+    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+8kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+8kg) |               |
+    | Fri | endurance     | walking w/ pack: 6h (+8kg), cycling: 1h                                                                            |               |
+    | Sat | specific      | hill climbing: 3000m (+8kg)                                                                                        |               |
+    | Sun | rest day      | hatha yoga: 2h                                                                                                     |               |
 
 
 ** References

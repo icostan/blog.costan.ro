@@ -11,7 +11,7 @@ Now, what if I tell you that the first option is 700 CUIN and second one is 800 
    Enter triangulation shopping where you simplify everything and only play around with 3 main filters:
 
 *** 1. Price
-    I would say that price is the first and the most important filter for most of the people unless you are a crypto double-digit millionaire, only buy Arc'teryx products and don't care about the price at all.
+    I would argue that price is the first and the most important filter for most people unless you are a double-digit crypto millionaire, only buy Arc'teryx products and don't care about the price at all.
 
 *** 2. Weight
     Weight is the second, especially in high-altitude mountaineering where every 100grams matters a lot. You want to enjoy the mountain right? be a wild goat, not a Sherpa.
@@ -33,9 +33,9 @@ Now, what if I tell you that the first option is 700 CUIN and second one is 800 
  - *none*: there is no common characteristic to compare two different products of the same maker (e.g. backpacks), you need to look at multiple features to figure out what is what.
 
 ** Triangulation
-   With the above in mind we first need to identify the main characteristic (if any) for the products that we want to compare and mentally do:
-   - calculate /the bang for the buck/ - how much value you get for each buck spent (*characteristic / price*), /the bigger the better/ which means you get more value for the same money
-   - calculate /weighted bang/ - multiply the ratio above by the weight (*weight * ratio*), /the smaller the better/ - which means you get less weight for the same ratio
+   With the above in mind we first need to identify the main characteristic (if any) for the products that we want to compare and mentally do calculate:
+   - /the bang for the buck/ - how much value you get for each buck spent (*characteristic / price*), /the bigger the better/ which means you get more value for the same money
+   - /weighted bang/ - multiply the ratio above by the weight (*weight * ratio*), /the smaller the better/ - which means you get less weight for the same ratio
 
 Let's apply the triangulation to the above example and find out what to buy:
 
