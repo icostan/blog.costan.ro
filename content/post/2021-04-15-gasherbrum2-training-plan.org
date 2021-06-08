@@ -129,10 +129,10 @@ With all the above in mind, lets set the goals:
     | Mon | specific      | hill climbing: 3x300m (5h)                                                                                         |               |
     | Tue | specific      | hill climbing: 2100m (6h)                                                                                          |               |
     | Wed | rest day      | hatha/laya yoga: 2h                                                                                                |               |
-    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+7kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+7kg) |               |
-    | Fri | endurance     | walking w/ pack: 6h (+7kg), cycling: 1h                                                                            |               |
-    | Sat | specific      | hill climbing: 2500m (+7kg)                                                                                        |               |
-    | Sun | rest day      | hatha yoga: 2h                                                                                                     |               |
+    | Thu | strength      | dead lift: 3x15 (+2kg), reverse step-up: 3x50 (+7kg), calf-rises: 3x15 (+1kg), squats/r-lunges/lunges: 3x25 (+7kg) |               |
+    | Fri | endurance     | walking: 5h                                                                                                        |               |
+    | Sat | specific      | -                                                                                                                  |               |
+    | Sun | rest day      | -                                                                                                                  |               |
 
 *** Week 8 - June 7th: The final
     #+ATTR_HTML: :border 2 :rules none
