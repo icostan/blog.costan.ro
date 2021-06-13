@@ -63,7 +63,9 @@ Let's apply the triangulation to the above example and find out what to buy:
 : 1249.0706319702601
 : WINNER: #1
 
-The result is #1 option but keep in mind that we are missing one piece of information, down quality between 700 and 800 CUIN which translates in more warmth through trapped air.
+The result is #1 option but keep in mind that:
+- we are missing one piece of information, down quality between 700 and 800 CUIN which translates in more warmth through trapped air
+- this method is far from perfect but it is a easy way to figure out a better option
 
 Happy shopping!
 
