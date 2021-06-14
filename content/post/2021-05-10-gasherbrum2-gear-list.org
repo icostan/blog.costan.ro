@@ -27,26 +27,26 @@ Naming conventions:
    - ??? - undecided, more research needed
 
 ** Overview
-   | Type                      | Brand          | Model            | Weight | Usage               | Notes     |
-   |---------------------------+----------------+------------------+--------+---------------------+-----------|
-   | 0. Gear                   |                |                  |  43934 |                     |           |
-   | 1. Shoes                  |                |                  |   7060 |                     |           |
-   | 2. Clothing               |                |                  |   8565 |                     |           |
-   | 3. Accesories             |                |                  |   1199 |                     |           |
-   | 4. Camping                |                |                  |  19658 |                     |           |
-   | 5. Climbing               |                |                  |   5477 |                     |           |
-   | 6. Toiletries             |                |                  |        |                     |           |
-   | 7. Technology             |                |                  |   1511 |                     |           |
-   | 8. Misc                   |                |                  |    464 |                     |           |
-   | 9. Documents              |                |                  |        |                     |           |
+   | Type                     | Brand          | Model            | Weight | Usage               | Notes    |
+   |--------------------------+----------------+------------------+--------+---------------------+----------|
+   | 0. Gear                  |                |                  |  44896 |                     |          |
+   | 1. Shoes                 |                |                  |   4990 |                     |          |
+   | 2. Clothing              |                |                  |   8399 |                     |          |
+   | 3. Accesories            |                |                  |   1277 |                     |          |
+   | 4. Camping               |                |                  |  20015 |                     |          |
+   | 5. Climbing              |                |                  |   5477 |                     |          |
+   | 6. Toiletries            |                |                  |    512 |                     |          |
+   | 7. Technology            |                |                  |   1475 |                     |          |
+   | 8. Misc                  |                |                  |   2751 |                     |          |
+   | 9. Documents             |                |                  |        |                     |          |
 
 
 ** 1. Shoes
    | Type           | Brand      | Model           | Weight | Usage      | Notes |
    |----------------+------------+-----------------+--------+------------+-------|
-   | 1. Shoes       |            |                 |   7060 |            |       |
+   | 1. Shoes       |            |                 |   4990 |            |       |
    | 8000m boots    | Scarpa     | Phantom 8000 HD |   2680 | 7000m+     |       |
-   | 6000m boots    | Scarpa     | Mont Blanc      |   2070 | ~6000m     |       |
+   | 6000m boots    | Scarpa     | Mont Blanc      |        | ~6000m     |  2070 |
    | trekking boots | Garmont    | Rambler GTX     |   1270 | approach   |       |
    | sport shoes    | LaSportiva |                 |    690 | travel, BC |       |
    | sandals        | Teva       | Universal       |    350 | travel, BC |       |
@@ -56,33 +56,34 @@ Naming conventions:
 *** 2.1 Base layer - moisture wicking
     | Type               | Brand      | Model        | Weight | Usage       | Notes |
     |--------------------+------------+--------------+--------+-------------+-------|
-    | 2.1 Base layer     |            |              |   1562 |             |       |
+    | 2.1 Base layer     |            |              |   1766 |             |       |
     | lightweight top    | Merinito   |              |    163 | BC, 6000m   |       |
     | lightweight bottom | Merinito   |              |    133 | BC, 6000m   |       |
     | midweight top      | Icebreaker | 260 Tech     |    278 | 7000m+      |       |
     | midweight bottom   | Icebreaker | 260 Tech     |    226 | 7000m+      |       |
-    | briefs             |            |              |        |             | BUY?  |
+    | briefs             | Kalenji    |              |     84 |             | 2 pcs |
+    | boxers             | Kalenji    |              |    120 |             | 2 pcs |
     | midweight boxers   | Icebreaker | Anatomica    |     64 |             |       |
     | socks              |            |              |     90 | approach    | 2 pcs |
     | single socks       | Mund       |              |    100 | BC, 6000m   |       |
-    | ski socks          |            |              |    180 | 6000m, warm | 2 pcs |
     | double socks       | Ortovox    | All Mountain |     78 | 6000m       |       |
+    | ski socks          |            |              |    180 | 6000m, warm | 2 pcs |
     | summit socks       | Mund       | Everest      |    104 | 7000m+      |       |
     | summit socks       | Icebreaker | Expedition   |    146 | 7000m+      |       |
 *** 2.2 Insulation layer - warmth
-    | Type                      | Brand  | Model        | Weight | Usage         | Notes |
-    |---------------------------+--------+--------------+--------+---------------+-------|
-    | 2.2 Insulation layer      |        |              |   1169 |               |       |
-    | lightweight down jacket   | Marmot | Meron Hooded |    436 | BC, low camps |       |
-    | lightweight fleece pants  | Milo   | Anas         |    345 | BC, low camps |       |
-    | lightweight fleece jacket | Milo   | Sella        |    388 | BC, low camps |       |
+    | Type                     | Brand   | Model        | Weight | Usage         | Notes |
+    |--------------------------+---------+--------------+--------+---------------+-------|
+    | 2.2 Insulation layer     |         |              |   1169 |               |       |
+    | lightweight down jacket  | Forclaz |              |        | BC, low camps |       |
+    | midweight down jacket    | Marmot  | Meron Hooded |    436 | BC, low camps |       |
+    | lightweight fleece pants | Milo    | Anas         |    345 | BC, low camps |       |
+    | midweight fleece jacket  | Milo    | Sella        |    388 | BC, low camps |       |
 *** 2.3 Outer layer - wind and rain
     | Type              | Brand   | Model   | Weight | Usage             | Notes |
     |-------------------+---------+---------+--------+-------------------+-------|
-    | 2.3 Outer layer   |         |         |   2954 |                   |       |
+    | 2.3 Outer layer   |         |         |   2584 |                   |       |
     | convertible pants | Salomon | -       |    293 | BC, approach      |       |
     | windstop jacket   | Mammut  | Classic |    486 | BC, approach      |       |
-    | softshell pants   | Mammut  | Pordoi  |    370 | BC, low camps     |       |
     | winter pants      | Simond  |         |    805 | low camps, warm   |       |
     | hardshell jacket  | Marmot  | Huntley |    460 | ~6000m, wind/snow |       |
     | hardshell bib     | Marmot  | Huntley |    540 | ~6000m, wind/snow |       |
@@ -97,7 +98,7 @@ Naming conventions:
     | Type                  | Brand    | Model | Weight | Usage | Notes |
     |-----------------------+----------+-------+--------+-------+-------|
     | 2.5 Extra             |          |       |    710 |       |       |
-    | cotton long sleeve    | Mammut   |       |    148 |       |       |
+    | long sleeve           | Mammut   |       |    148 |       |       |
     | midweight long sleeve | Quechua  |       |    242 |       |       |
     | t-shirt               | Mizuno   |       |    121 |       |       |
     | midweight t-shirt     | Trespass |       |    199 |       |       |
@@ -121,8 +122,8 @@ Naming conventions:
 *** 3.3 Face - wind and sun
     | Type      | Brand | Model            | Weight | Usage  | Notes  |
     |-----------+-------+------------------+--------+--------+--------|
-    | 3.3 Face  |       |                  |     45 |        |        |
-    | sunscreen |       |                  |        |        | SKARDU |
+    | 3.3 Face  |       |                  |    113 |        |        |
+    | sunscreen |       |                  |     68 |        | SKARDU |
     | lip balm  |       |                  |        |        | SKARDU |
     | balaclava | Kama  | Merino Tecnowool |     45 | 7000m+ |        |
 *** 3.4 Hands - cold
@@ -138,47 +139,50 @@ Naming conventions:
 
 ** 4. Camping
 *** 4.1 Sleeping
-   | Type               | Brand      | Model        | Weight | Usage            | Notes   |
-   |--------------------+------------+--------------+--------+------------------+---------|
-   | 4.1 Sleeping       |            |              |   7555 |                  |         |
-   | foam pad           | Yate       | Wave Alu     |    388 | tent, snow, rock |         |
-   | self-inflating mat | Thermarest | Prolite Apex |    707 | tent             |         |
-   | down sleeping bag  | Nahanny    | Extreme      |   1940 | high camps       |         |
-   | light sleeping bag | Pinguin    | Topas        |   1550 | BC, low camps    |         |
-   | tent 4-season      | Husky      | Flame 1      |   2970 | camps            | PENDING |
+   | Type                   | Brand      | Model        | Weight | Usage               | Notes |
+   |------------------------+------------+--------------+--------+---------------------+-------|
+   | 4.1 Sleeping           |            |              |   5630 |                     |       |
+   | foam pad               | Yate       | Wave Alu     |    388 | tent, snow, rock    |       |
+   | self-inflating mat     | Thermarest | Prolite Apex |    707 | tent                |       |
+   | down sleeping bag      | Nahanny    | Extreme      |   1940 | -30°C: high camps   |       |
+   | synthetic sleeping bag | Pinguin    | Topas        |   1550 | -5°C: BC, low camps |       |
+   | tent 4-season          | Husky      | Flame 1      |        | camps               |  2970 |
+   | tent assault           | Simond     | Makalu       |   1045 | camps               |       |
 *** 4.2 Cooking
-   | Type           | Brand         | Model      | Weight | Usage     | Notes     |
-   |----------------+---------------+------------+--------+-----------+-----------|
-   | 4.2 Cooking    |               |            |   1806 |           |           |
-   | stove + pot    | MSR           | Reactor 1L |    487 |           |           |
-   | fire striker   |               |            |     28 |           |           |
-   | water bottle   | Nalgene       | 1L         |    177 | low camps |           |
-   | thermos        | Primus        | 1L         |    524 |           |           |
-   | multi-utentils |               |            |    163 |           | DUPLICATE |
-   | metal cup      | Pinguin       | 500ml      |    172 |           |           |
-   | camp set       | Light My Fire | MessKit    |    255 |           |           |
-   | fuel           |               |            |        | 1L / week | SKARDU    |
+   | Type             | Brand         | Model      | Weight | Usage     | Notes  |
+   |------------------+---------------+------------+--------+-----------+--------|
+   | 4.2 Cooking      |               |            |   1806 |           |        |
+   | stove + pot      | MSR           | Reactor 1L |    487 |           |        |
+   | fire striker     |               |            |     28 |           |        |
+   | water bottle     | Nalgene       | 1L         |    177 | low camps |        |
+   | thermos          | Primus        | 1L         |    524 |           |        |
+   | metal utentils   |               |            |    163 |           |        |
+   | metal cup        | Pinguin       | 500ml      |    172 |           |        |
+   | plastic camp set | Light My Fire | MessKit    |    255 |           |        |
+   | fuel             |               |            |        | 1L / week | SKARDU |
 *** 4.3 Food & Drinks
-   | Type              | Brand          | Model | Weight | Usage       | Notes     |
-   |-------------------+----------------+-------+--------+-------------+-----------|
-   | 4.3 Food & Drinks |                |       |  10297 |             |           |
-   | lyofood           | Travellunch    |       |   1517 |             | 11 pcs    |
-   | lyofood           | Adventure Menu |       |    639 |             | 5 pcs     |
-   | lyofood           | Lyo            |       |    678 |             | 6 pcs     |
-   | lyofood           | Summit to Eat  |       |    801 |             | 4 pcs     |
-   | lyofood           | Adventure Food |       |    782 |             | 5 pcs     |
-   | lyofood           | Trek n Eat     |       |    325 |             | 2 pcs     |
-   | lyofood           | Voyager        |       |    960 |             | 8 pcs     |
-   | lyofood           | Jerky          |       |    245 |             | 4 pcs     |
-   | slanina           | homemade       |       |   1350 |             |           |
-   | tuica             | homemade       |       |   1500 |             |           |
-   | miere             | homemade       |       |   1500 |             |           |
-   | tea               | Fares          |       |        | 2 pcs / day | BUY       |
-   | food cans         |                |       |        | rewards     | BUY 4 pcs |
-   | dry meet          |                |       |        |             | SKARDU    |
-   | dry cheese        |                |       |        |             | SKARDU    |
-   | soups             |                |       |        |             | SKARDU    |
-   | sweets            |                |       |        |             | SKARDU    |
+   | Type              | Brand          | Model | Weight | Usage       | Notes   |
+   |-------------------+----------------+-------+--------+-------------+---------|
+   | 4.3 Food & Drinks |                |       |  12329 |             |         |
+   | lyofood           | Travellunch    |       |   1517 |             | 11 pcs  |
+   | lyofood           | Adventure Menu |       |    639 |             | 5 pcs   |
+   | lyofood           | Lyo            |       |    678 |             | 6 pcs   |
+   | lyofood           | Summit to Eat  |       |    801 |             | 4 pcs   |
+   | lyofood           | Adventure Food |       |    782 |             | 5 pcs   |
+   | lyofood           | Trek n Eat     |       |    325 |             | 2 pcs   |
+   | lyofood           | Voyager        |       |    960 |             | 8 pcs   |
+   | lyofood           | Jerky          |       |    245 |             | 4 pcs   |
+   | slanina           | homemade       |       |   1350 |             |         |
+   | tuica             | homemade       |       |   1500 |             |         |
+   | miere             | homemade       |       |   1500 |             |         |
+   | tea               | Fares          |       |    281 | 2 pcs / day | 120 pcs |
+   | pollen            |                |       |    300 |             |         |
+   | food cans         |                |       |   1451 | rewards     | 4 pcs   |
+   | dry meet          |                |       |        |             | SKARDU  |
+   | dry cheese        |                |       |        |             | SKARDU  |
+   | soups             |                |       |        |             | SKARDU  |
+   | sweets            |                |       |        |             | SKARDU  |
+   | others            |                |       |        |             | SKARDU  |
 
 
 ** 5. Climbing
@@ -205,50 +209,54 @@ Naming conventions:
 
 
 ** 6. Toiletries
-   | Type          | Brand  | Model | Weight | Usage | Notes  |
-   |---------------+--------+-------+--------+-------+--------|
-   | 6. Toiletries |        |       |        |       |        |
-   | small towel   |        |       |        |       |        |
-   | small soap    |        |       |        |       | SKARDU |
-   | toilet paper  |        |       |        |       | SKARDU |
-   | drywipes      |        |       |        |       | SKARDU |
-   | pee bottle    |        |       |        |       | SKARDU |
-   | tooth brush   |        |       |        |       |        |
-   | tooth paste   |        |       |        |       |        |
-   | razor         |        |       |        |       | ???    |
-   | nailclipper   |        |       |        |       |        |
-   | ear plugs     |        |       |        |       | ???    |
-   | toilet bag    | Deuter |       |        |       |        |
+   | Type            | Brand  | Model | Weight | Usage | Notes  |
+   |-----------------+--------+-------+--------+-------+--------|
+   | 6. Toiletries   |        |       |    485 |       |        |
+   | toilet bag      | Deuter |       |    190 |       |        |
+   | small towel     |        |       |        |       |        |
+   | nail clipper    |        |       |     15 |       |        |
+   | small soap      |        |       |        |       | SKARDU |
+   | deodorant stick |        |       |        |       | SKARDU |
+   | toilet paper    |        |       |        |       | SKARDU |
+   | drywipes        |        |       |        |       | SKARDU |
+   | tooth brush     | Braun  |       |    225 |       |        |
+   | tooth paste     |        |       |     55 |       | SKARDU |
+   | listerine       |        |       |        |       | SKARDU |
+   | dental floss    |        |       |        |       | SKARDU |
+   | razor           |        |       |        |       | SKARDU |
+   | ear plugs       |        |       |        |       | SKARDU |
+   | pee bottle      |        |       |        |       | SKARDU |
+   | trash bags      |        |       |        |       | SKARDU |
 
 
 ** 7. Technology
    | Type            | Brand    | Model            | Weight | Usage              | Notes    |
    |-----------------+----------+------------------+--------+--------------------+----------|
-   | 7. Technology   |          |                  |   1511 |                    |          |
+   | 7. Technology   |          |                  |   1726 |                    |          |
    | watch           | Garmin   | Forerunner 920XT |    186 | +usb cable         |          |
    | satellite phone | Thuraya  | XT Pro           |    426 | +usb/socket cables |          |
    | cell phone      | One+     | T5               |    257 | +usb cable         |          |
    | digital camera  | Cannon   | S110             |    288 | +usb charger       | CHARGER? |
-   | power bank      |          |                  |        | 2k mAh             | REPLACE? |
+   | power bank      | Asus     |                  |    215 | 10k mAh            |          |
    | adapter         | Skross   | World            |    202 |                    |          |
    | batteries       | Duracell | AAA              |    152 | backup             | 5 pcs    |
 
 
 ** 8. Misc
-   | Type          | Brand | Model | Weight | Usage             | Notes   |
-   |---------------+-------+-------+--------+-------------------+---------|
-   | 8. Misc       |       |       |    464 |                   |         |
-   | duffle bag    |       |       |        | travel            | PENDING |
-   | stuff sacks   |       |       |        |                   | BUY     |
-   | trash bags    |       |       |        |                   | SKARDU  |
-   | space blanket |       |       |        | 2 pcs             | BUY     |
-   | medication    |       |       |        | ibu, aspirin      | BUY     |
-   | first-aid kit |       |       |        | band-aids, iodine | BUY     |
-   | multitools    |       |       |    303 |                   |         |
-   | binocular     | Konus |       |    161 |                   |         |
-   | map           |       |       |        |                   |         |
-   | compass       |       |       |        |                   |         |
-   | paperbook     |       |       |        | Mountaineering    | ???     |
+   | Type                | Brand     | Model    | Weight | Usage              | Notes |
+   |---------------------+-----------+----------+--------+--------------------+-------|
+   | 8. Misc             |           |          |   2751 |                    |       |
+   | expedition duffle   | Forclaz   | Extend   |   1750 | travel             |       |
+   | travel bag          |           |          |        | travel             | 878   |
+   | stuff sacks         |           |          |     84 |                    | 2 pcs |
+   | space blanket       | Forclaz   |          |    124 |                    | 2 pcs |
+   | sitting pad         |           |          |     65 |                    |       |
+   | first-aid kit+drugs |           |          |    186 | ibu, bands, iodine |       |
+   | multitools          |           |          |        |                    | 303   |
+   | binocular           | Konus     |          |    161 |                    |       |
+   | map                 |           |          |        |                    |       |
+   | compass             | Trekmates | Explorer |     43 |                    |       |
+   | paperbook           |           |          |    338 | Mountaineering     | ???   |
 
 
 ** 9. Documents
@@ -260,7 +268,7 @@ Naming conventions:
    | cash & card  |       |       |        |       |       |
    | insurance    |       |       |        |       |       |
    | vaccination  |       |       |        |       |       |
-   | PCR          |       |       |        |       | TODO  |
+   | PCR          |       |       |        |       |       |
 
 
 ** References
