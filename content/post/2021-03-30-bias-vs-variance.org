@@ -33,7 +33,7 @@ I don't know about others but when I started digging into machine-learning I had
    #+end_src
 
    #+RESULTS:
-   [[file:bvsv-hbhv.png]]
+   [[file:/img/bvsv/bvsv-hbhv.png]]
 
 ** High bias and low variance
 
@@ -48,7 +48,7 @@ I don't know about others but when I started digging into machine-learning I had
    #+end_src
 
    #+RESULTS:
-   [[file:bvsv-hblv.png]]
+   [[file:/img/bvsv/bvsv-hblv.png]]
 
 ** Low bias and high variance
 
@@ -63,7 +63,7 @@ I don't know about others but when I started digging into machine-learning I had
    #+end_src
 
    #+RESULTS:
-   [[file:bvsv-lbhv.png]]
+   [[file:/img/bvsv/bvsv-lbhv.png]]
 
 ** Low bias and low variance
 
@@ -78,7 +78,7 @@ I don't know about others but when I started digging into machine-learning I had
    #+end_src
 
    #+RESULTS:
-   [[file:bvsv-lblv.png]]
+   [[file:/img/bvsv/bvsv-lblv.png]]
 
    Happy shooting!!!
 

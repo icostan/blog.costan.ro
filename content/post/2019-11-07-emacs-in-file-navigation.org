@@ -17,33 +17,33 @@ Here are my Emacs in-file navigation goodies that I use on daily basis, splitted
     - single char left/right: h, l
     - multiple chars: 4h, 3l
     - any char on the line: fc, Fc
-   [[file:/img/out-5.gif]]
+   [[file:/img/emacs-bn/out-5.gif]]
 *** 1.2 horizontally by token/word
     - beginning/end of next token: w, b
     - beginning/end of next word: W, B
     - multiple token: 3w, 3b
     - multiple words: 3W, 3B
     - end of current/next token/word: e, E
-   [[file:/img/out-6.gif]]
+   [[file:/img/emacs-bn/out-6.gif]]
 *** 1.3 horizontally at beginning/end of line
     - beginning of line: 0
     - end of line: $
     - first non-blank char: ^
     - last non-blank char: g_
-   [[file:/img/out-7.gif]]
+   [[file:/img/emacs-bn/out-7.gif]]
 *** 1.4 vertically by line
     - single line: "j", "k"
     - multiple lines: "6j", "6k"
-   [[file:/img/out-8.gif]]
+   [[file:/img/emacs-bn/out-8.gif]]
 *** 1.5 vertically by paragraph
     - up: "}"
     - down: "{"
-   [[file:/img/out-9.gif]]
+   [[file:/img/emacs-bn/out-9.gif]]
 *** 1.6 on visible screen
     - open/close brace: "%"
     - top/middle/bottom: "H", "M", "L"
     - char/word/line: "C-c m c", "C-c m w", "C-c m l"
-   [[file:/img/out-10.gif]]
+   [[file:/img/emacs-bn/out-10.gif]]
 
 ** 2. Scrolling
    Screen moves but cursor's position remains the same
@@ -52,19 +52,19 @@ Here are my Emacs in-file navigation goodies that I use on daily basis, splitted
     - top of the screen: "zt"
     - middle of the screen: "zz"
     - bottom of the screen: "zb"
-   [[file:/img/out-11.gif]]
+   [[file:/img/emacs-bn/out-11.gif]]
 *** 2.2 vertically by one line
     - down: "C-y"
     - up: "C-e"
-   [[file:/img/out-12.gif]]
+   [[file:/img/emacs-bn/out-12.gif]]
 *** 2.3 horizontally by one column
     - right: "zl"
     - left: "zh"
-   [[file:/img/out-20.gif]]
+   [[file:/img/emacs-bn/out-20.gif]]
 *** 2.4 horizontally by screen
     - right: "zL"
     - left: "zH"
-   [[file:/img/out-13.gif]]
+   [[file:/img/emacs-bn/out-13.gif]]
 
 
 ** 3. Jumping
@@ -73,27 +73,27 @@ Here are my Emacs in-file navigation goodies that I use on daily basis, splitted
 *** 3.1 at beginning/end of file
     - top: "gg"
     - bottom: "G"
-   [[file:/img/out-14.gif]]
+   [[file:/img/emacs-bn/out-14.gif]]
 *** 3.2 by full screen
     - down: "C-f"
     - up: "C-b"
-   [[file:/img/out-15.gif]]
+   [[file:/img/emacs-bn/out-15.gif]]
 *** 3.3 by half page
     - down: "C-d"
     - up: "C-u"
-   [[file:/img/out-16.gif]]
+   [[file:/img/emacs-bn/out-16.gif]]
 *** 3.4 to line
     - absolute: "34G", "70%"
-   [[file:/img/out-17.gif]]
+   [[file:/img/emacs-bn/out-17.gif]]
 *** 3.5 mark/jump
     - mark: "mm"
     - beginning of marked line: "'m"
     - marked cursor position: "`m"
     - undo the jump: "''"
-   [[file:/img/out-18.gif]]
+   [[file:/img/emacs-bn/out-18.gif]]
 *** 3.6 method/function
     - semantic: "C-c j f"
-   [[file:/img/out-19.gif]]
+   [[file:/img/emacs-bn/out-19.gif]]
 
 
 Happy navigation!!!

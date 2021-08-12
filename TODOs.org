@@ -402,45 +402,10 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-06-04 Fri +2w>
+    SCHEDULED: <2021-08-10 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-05-27 Thu 21:50]
+    :LAST_REPEAT: [2021-08-06 Fri 18:40]
     :END:
-    - State "DONE"       from "TODO"       [2021-05-27 Thu 21:50]
-    - State "DONE"       from "TODO"       [2021-05-15 Sat 21:56]
-    - State "DONE"       from "TODO"       [2021-04-19 Mon 08:54]
-    - State "DONE"       from "TODO"       [2021-04-14 Wed 16:38]
-    - State "DONE"       from "TODO"       [2021-03-30 Tue 16:37]
-    - State "DONE"       from "TODO"       [2021-03-25 Thu 17:36]
-    - State "DONE"       from "TODO"       [2021-02-27 Sat 08:45]
-    - State "DONE"       from "TODO"       [2021-02-24 Wed 16:32]
-    - State "DONE"       from "TODO"       [2021-02-05 Fri 12:31]
-    - State "DONE"       from "TODO"       [2021-01-05 Tue 16:16]
-    - State "DONE"       from "TODO"       [2021-01-04 Mon 23:52]
-    - State "DONE"       from "TODO"       [2020-12-31 Thu 14:18]
-    - State "DONE"       from "TODO"       [2020-12-28 Mon 17:00]
-    - State "DONE"       from "TODO"       [2020-11-26 Thu 07:56]
-    - State "DONE"       from "TODO"       [2020-11-17 Tue 17:20]
-    - State "DONE"       from "TODO"       [2020-10-30 Fri 08:45]
-    - State "DONE"       from "TODO"       [2020-10-10 Sat 07:10]
-    - State "DONE"       from "TODO"       [2020-09-29 Tue 16:00]
-    - State "DONE"       from "TODO"       [2020-09-18 Fri 10:46]
-    - State "DONE"       from "TODO"       [2020-08-31 Mon 23:09]
-    - State "DONE"       from "TODO"       [2020-08-13 Thu 14:01]
-    - State "DONE"       from "TODO"       [2020-07-30 Thu 18:30]
-    - State "DONE"       from "TODO"       [2020-07-19 Sun 12:46]
-    - State "DONE"       from "TODO"       [2020-06-24 Wed 13:51]
-    - State "DONE"       from "TODO"       [2020-06-09 Tue 11:27]
-    - State "DONE"       from "TODO"       [2020-05-25 Mon 20:03]
-    - State "DONE"       from "TODO"       [2020-05-07 Thu 12:47]
-    - State "DONE"       from "TODO"       [2020-04-30 Thu 17:52]
-    - State "DONE"       from "TODO"       [2020-04-09 Thu 15:41]
-    - State "DONE"       from "TODO"       [2020-03-26 Thu 17:52]
-    - State "DONE"       from "TODO"       [2020-03-10 Tue 16:23]
-    - State "DONE"       from "TODO"       [2020-02-27 Thu 17:34]
-    - State "DONE"       from "TODO"       [2020-02-12 Wed 15:32]
-    - State "DONE"       from "TODO"       [2020-01-21 Tue 17:46]
-    - State "DONE"       from "TODO"       [2020-01-07 Tue 15:41]
     - [X] cryptography
     - [ ] emacs
     - [X] market wizards review
