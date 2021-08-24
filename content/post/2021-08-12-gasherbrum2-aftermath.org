@@ -1,22 +1,31 @@
 #+title: Gasherbrum2 - the aftermath
 #+subtitle: Mountaineering
 #+date: 2021-08-12
-#+tags[]: mountaineering alpinism gasherbrum2
+#+tags[]: mountaineering alpinism gasherbrum2 expedition summit
 
 To make a long story short I am going to lay down only a few DOs/DON'Ts (as a reminder for myself), the raw and uncut journal, and the expenses for the curious minds.
 
-** the goods
+** the good (the achievements)
    - hydration - I stayed hydrated day and night, on average I drank more than 5l water/tea a day
    - acclimatization - no high altitude sickness except a single headache at ~3500m (11500ft) in Urdukas camp
-   - healthy - no stomach problems, no diarrhea, no vomiting
+   - healthy - no stomach problems, no diarrhea, no vomiting, 20 years of "what doesn't kill you, makes you stronger" lifestyle pays off
    - no pills policy  - I did not take a single pill the entire expedition, my personal 'summit'... YAAAYYY!!!
+   - breathe in throuh nose, breathe out throuh mouth - I did it for some time then I stopped and started to cough :(
+   - never rest (or sleep) after climbing - keep moving so heart rate goes down slowly from ~150bpm to 100/80bpm
 
-** the bads
+** the bad (the mistakes)
    - left Scarpa Montblanc boots for 6000m and LaSportiva sport shoes at home
+   - never tried assault (light single layer) tent before
    - heavy backpack for high altitude mountaineering ~2.2kg (7lbs)
-   - never tried assault (light single layer tent) tent before
-   - carry too much for my fitness level ~10kg (30lbs)
-   - coughing is normal, part of the game as long is does not gets worst
+   - carry too much for my fitness level ~10kg (30lbs), the less the  better
+   - I should have trained longer/harder to increase stamina/VO2 max
+   - climbing pace is important, don't rush to keep up with others, the slower the better
+   - coughing is normal, part of the game, as long is does not gets worst
+
+** the ugly (the lows)
+   - 06/21 - after I left Jhula camp when I realized that I have to walk in sandals and I might not even make it to BC
+   - 07/17,18,19 - after the coughing night then solo-ing down the Banana ridge from C2 to C1 and to BC
+   - 07/30 - on Karakoram highway when 3 days road block due to landslides was not a bad joke, was the reality, Ohhhh FUCK moment!!!
 
 ** the journal
 - 06/15 - depart from Bucharest, trouble at the airport with overweight baggage, a bit of small talk and I managed to send it as sport gear
@@ -44,17 +53,17 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
 - 07/10 - rest day, sunca+afinata cu Laura/Iustin, dinner @ Laila peak
 - 07/11 - climbing to C1 with Paul, both tired, me 10kg pack again, sleeping in Simond assault tent for the very first time
 - 07/12 - back to BC, climbing against the trend, everyone was coming down, bad weather forecast, fiesta @ French camp, French skiers summited, moved tent in BC
-- 07/13 - in BC, snowing, packing
-- 07/14 - bad night with wet socks in my bag, almost no go, then went last minute, slow 8h to C1, no energy, strange feeling of crying/laughing at the same time, thinking to throw the towel, mixed feelings about the expedition
-- 07/15 - BC to C1
+- 07/13 - in BC, snowing
+- 07/14 - in BC, packing
+- 07/15 - bad night with wet socks in my bag, almost no go, then went last minute, slow 8h to C1, no energy, strange feeling of crying/laughing at the same time, thinking to throw the towel, mixed feelings about the expedition
 - 07/16 - C1 to C2, banana ridge again, turned back due too many people above me, all on the same fixed rope section, warm as fuck, soft snow, back in C1, Maria/Johan getting ready to go up, went back up again,  hard climb, reached the C2 last, coughing
-- 07/17 - bad night in C2, coughing all night, no air, no sleep, wanted to go down in the morning but went up to 6645m and back, probably the 'top' for me if the team reaches the summit, finally the ticket home!!!
-- 07/18 - bad sleep in C2 again, in husky tent this time, really hard time solo down climbing Banana ridge:
+- 07/17 - bad night in C2, coughing all night, no air, no sleep, pain in chest, wanted to go down in the morning but went up to 6645m and back, probably the 'top' for me if the team reaches the summit, finally the ticket home!!!
+- 07/18 - bad sleep in C2 again, in Husky tent this time, really hard time solo down climbing Banana ridge:
   - first, lost Nalgene bottle, it went down to oblivion, scary... scary...
   - second, small avalanches 2m away from me on top steep section
   - and last, fall into crevasse, hanging in prusik knot on fixed rope, could not pull out the left leg, had to dig snow with ice axe.... not fun at all
 - 07/19 - in C1, could not fell asleep, listen to Salsa&Bachata mix until late, cold morning, could not melt water, ice-falls was horrible, no track, fallen bamboo sticks, fog, hard time finding route to BC
-- 07/20 - in BC, Paul and others arrived, summit stories, met with Iustin/Laura, drink afinata, had cake for dinner
+- 07/20 - in BC, Paul and others arrived, summit stories, met with Iustin/Laura, drink "afinata", had cake for dinner
 - 07/21 - killing time in mess tent with Johan then went to 3h piano concert in Laila
 - 07/22 - thinking about going up and try again, eat very good sunca Justin/Laura
 - 07/23 - trek to internet location, Maria/Vlad arrived, drama with Marie and G1, dinner @ Laila wedding tent
