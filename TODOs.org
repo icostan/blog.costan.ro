@@ -355,9 +355,9 @@
 *** zero-knowledge proofs tag
 *** replace old md with org files
 *** use org symbols e.g. \phi
-*** fix charts in historical volatility post
+*** DONE fix charts in historical volatility post
 ** Tasks
-*** DONE Wakatime reports=B$9
+*** DONE Wakatime reports
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
 *** Runkeeper reports
 *** DONE add comments
@@ -412,5 +412,5 @@
     - [X] market wizards review
     - [ ] linux kernel
     - [ ] cryptography
-    - [ ] travel
+    - [X] travel
     - [ ] generate address
