@@ -1,0 +1,22 @@
+#+title: Gasherbrum2 - the web app
+#+subtitle: Mountaineering
+#+date: 2021-08-27
+#+tags[]: mountaineering alpinism gasherbrum2 expedition weather forecast ruby rails heroku
+
+One of the most important things in mountaineering is the weather, so ladies and gentlemen, I present you /*Gasherbrum2*/ web app (not very inspired name, but it is what it is).
+
+From a business perspective the app provides two main features:
+1. fetches weather forecast from [[https://www.mountain-forecast.com/]], crafts a special TEXT format that is sent to satellite phone on daily basis
+2. receives SMS messages from satellite phone and post it to Gasherbrum2 page on Facebook
+
+Unfortunately, feature #2 was not used because of some messed up access tokens in production environment that I did not have time to fix but the feature itself is 99% implemented and ready to use if ever needed
+
+From a technical perspective there are 5 pieces that work together:
+1. weather providers - where we define and configure the supported weather providers (e.g. Mountain Forecast)
+2. forecast engine - background job that fetches (configurable intervals, default daily) the forecast in different formats (HTML, JSON, etc), parse it and save raw data into database
+3. notification engine - another background job that takes the forecast data above, transform it, and sends an email notification that gets translated into SMS to satellite phone
+3. messaging service - I use [[https://www.twilio.com/]] to send and receive text messages
+4. messages engine - receives a SMS from satellite phone (or any phone) and post it to Facebook Page.
+
+
+Without further due, here is the code [[https://github.com/icostan/gasherbrum2]] written in Ruby/Rails and deployed to Heroku [[http://gasherbrum2.costan.ro/]].

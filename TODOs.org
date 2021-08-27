@@ -402,10 +402,11 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-08-24 Tue +2w>
+    SCHEDULED: <2021-09-07 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-08-16 Mon 09:44]
+    :LAST_REPEAT: [2021-08-27 Fri 12:15]
     :END:
+    - State "DONE"       from "TODO"       [2021-08-27 Fri 12:15]
     - State "DONE"       from "TODO"       [2021-08-16 Mon 09:44]
     - [X] cryptography
     - [ ] emacs
