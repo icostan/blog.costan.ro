@@ -81,7 +81,7 @@ disqusShortname = "icostan"
 [[menu.main]]
     identifier = "crypto"
     name = "Crypto"
-    weight = 1
+    weight = 10
 [[menu.main]]
     parent = "crypto"
     name = "RSA"
@@ -126,12 +126,12 @@ disqusShortname = "icostan"
     parent = "crypto"
     name = "Hash functions"
     url = "post/2020-09-15-hash-functions"
-    weight = 8
+    weight = 9
 
 [[menu.main]]
     identifier = "coins"
     name = "Coins"
-    weight = 2
+    weight = 20
 [[menu.main]]
     parent = "coins"
     name = "Bitcoin Segwit address"
@@ -164,24 +164,9 @@ disqusShortname = "icostan"
     weight = 6
 
 [[menu.main]]
-    identifier = "emacs"
-    name = "Emacs"
-    weight = 3
-[[menu.main]]
-    parent = "emacs"
-    name = "Buffer navigation"
-    url = "post/2019-11-07-emacs-in-file-navigation"
-    weight = 1
-[[menu.main]]
-    parent = "emacs"
-    name = "Windows navigation"
-    url = "post/2020-04-04-emacs-file-window-buffer-navigation"
-    weight = 2
-
-[[menu.main]]
     identifier = "finance"
     name = "Finance"
-    weight = 4
+    weight = 40
 [[menu.main]]
     parent = "finance"
     name = "Interest Rate"
@@ -206,7 +191,7 @@ disqusShortname = "icostan"
 [[menu.main]]
     identifier = "linux"
     name = "Linux"
-    weight = 5
+    weight = 50
 [[menu.main]]
     parent = "linux"
     name = "Back to my first love"
@@ -236,7 +221,7 @@ disqusShortname = "icostan"
 [[menu.main]]
     identifier = "math"
     name = "Math"
-    weight = 6
+    weight = 60
 [[menu.main]]
     parent = "math"
     name = "Complexities with graphs"
@@ -261,7 +246,7 @@ disqusShortname = "icostan"
 [[menu.main]]
     identifier = "opensource"
     name = "Open Source"
-    weight = 7
+    weight = 70
 [[menu.main]]
     parent = "opensource"
     name = "Bitmex-API"
@@ -281,17 +266,22 @@ disqusShortname = "icostan"
     parent = "opensource"
     name = "3DP"
     url = "post/2019-07-18-3dp"
-    weight = 3
+    weight = 4
 [[menu.main]]
     parent = "opensource"
     name = "Huveragy"
     url = "post/2020-04-27-huveragy"
-    weight = 3
+    weight = 5
+[[menu.main]]
+    parent = "opensource"
+    name = "G2: web app"
+    url = "post/2021-08-27-gasherbrum2-webapp/"
+    weight = 6
 
 [[menu.main]]
     identifier = "trading"
     name = "Trading"
-    weight = 8
+    weight = 80
 [[menu.main]]
     parent = "trading"
     name = "Weekly Monthly Close"
@@ -334,11 +324,66 @@ disqusShortname = "icostan"
     weight = 8
 
 [[menu.main]]
+    identifier = "travel"
+    name = "Travel"
+    weight = 85
+[[menu.main]]
+    parent = "travel"
+    name = "Surviging Bali"
+    url = "post/2019-11-19-surviving-bali/"
+    weight = 1
+[[menu.main]]
+    parent = "travel"
+    name = "Backpacking Vietnam"
+    url = "post/2019-12-21-backpacking-vietnam/"
+    weight = 2
+[[menu.main]]
+    parent = "travel"
+    name = "Diving Palawan"
+    url = "post/2020-01-21-diving-palawan/"
+    weight = 3
+[[menu.main]]
+    parent = "travel"
+    name = "High-end Maldives"
+    url = "post/2020-05-23-high-end-maldives/"
+    weight = 4
+[[menu.main]]
+    parent = "travel"
+    name = "Coworking spaces"
+    url = "post/2020-06-24-outpost-toong-clockin-coworking/"
+    weight = 5
+[[menu.main]]
+    parent = "travel"
+    name = "First USA visit"
+    url = "post/2020-09-25-first-usa-visit/"
+    weight = 6
+[[menu.main]]
+    parent = "travel"
+    name = "G2: training plan"
+    url = "post/2021-04-15-gasherbrum2-training-plan/"
+    weight = 7
+[[menu.main]]
+    parent = "travel"
+    name = "G2: gear list"
+    url = "post/2021-05-10-gasherbrum2-gear-list/"
+    weight = 8
+[[menu.main]]
+    parent = "travel"
+    name = "G2: compare gear"
+    url = "post/2021-05-27-gasherbrum2-how-to-compare-gear/"
+    weight = 9
+[[menu.main]]
+    parent = "travel"
+    name = "G2: aftermath"
+    url = "post/2021-08-12-gasherbrum2-aftermath/"
+    weight = 10
+
+[[menu.main]]
     name = "Tags"
     url = "tags"
-    weight = 9
+    weight = 90
 
 [[menu.main]]
     name = "About"
     url = "page/about/"
-    weight = 10
+    weight = 100

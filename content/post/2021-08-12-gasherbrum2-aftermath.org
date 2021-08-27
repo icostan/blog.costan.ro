@@ -3,7 +3,7 @@
 #+date: 2021-08-12
 #+tags[]: mountaineering alpinism gasherbrum2 expedition summit
 
-To make a long story short I am going to lay down only a few DOs/DON'Ts (as a reminder for myself), the raw and uncut journal, and the expenses for the curious minds.
+To make a long story short I am going to lay down only a few DOs/DON'Ts (as a reminder for myself), the raw and uncut (but spellchecked) journal, and the expenses for the curious minds.
 
 ** the good (the achievements)
    - hydration - I stayed hydrated day and night, on average I drank more than 5l water/tea a day
@@ -12,6 +12,7 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
    - no pills policy  - I did not take a single pill the entire expedition, my personal 'summit'... YAAAYYY!!!
    - breathe in through nose, breathe out through mouth - I did it for some time then I stopped and started to cough :(
    - never rest (or sleep) after climbing - keep moving so heart rate goes down slowly from ~150bpm to 100/80bpm
+   - mastering pee bottle - not getting out of tent / not even sleeping bag to pee saves a lot of warmth/energy
 
 ** the bad (the mistakes)
    - left Scarpa Montblanc boots for 6000m and LaSportiva sport shoes at home
@@ -34,10 +35,10 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
 - 06/18 - Islamabad to Skardu, hell minibus ride, 30h, one driver, ankle wound got worst, a bit infected
 - 06/21 - Skardu to Jhula by 4WD on a very bumpy road
 - 06/22 - Jhula to Paju, cruel reality, I had to walk in sandals to protect my wound
-- 06/23 - Paju to Urdukas, steep terrain, one donkey fell and broke legs, altitude headache
-- 06/24 - Urdukas to Goro2, had a headache from the night before that went away during the night
+- 06/23 - Paju to Urdukas, steep terrain, one donkey fell and broke legs, altitude headache, Pawel lost phone
+- 06/24 - Urdukas to Goro2, the headache away during the night
 - 06/25 - Goro2 to Concordia to Shama, got lost on glacier that could not be crossed, lost 3h, bit of snow
-- 06/26 - Shama to BC, snow/wind since morning, put my trekking boots on for first time
+- 06/26 - Shama to BC, snow/wind since morning, put my trekking boots on for first time, Pawel lost down jacket
 - 06/27 - first day in BC, chill, chill
 - 06/28 - first try on ice-fields with Pawel, wound is yellow/red-ish, infection..., Paul/Moritz slept in tent near C1
 - 06/29 - rest day with Pawel/Phillipe, Paul/Moritz return
@@ -86,7 +87,7 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
    #+begin_example
             6317.85 EUR
            26946.00 RON
-              35.00 USD  Expenses
+              75.00 USD  Expenses
               37.00 EUR
              219.62 RON    Bank
               15.00 RON      Commission
@@ -97,10 +98,11 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
              250.00 RON      Can
             1273.53 RON      Lyophilized
               35.00 RON      Pollen
-             520.70 EUR
+             370.70 EUR
              442.95 RON    Food&Drinks
              231.55 EUR
-           23717.12 RON    Gear
+           23717.12 RON
+              40.00 USD    Gear
             1144.40 RON      Backpack
               71.55 EUR
             1201.66 RON      Base
@@ -110,7 +112,8 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
              558.30 RON      Insulation
              503.93 RON      Pants
               60.00 EUR      Rope
-             584.00 RON      Satphone
+             584.00 RON
+              40.00 USD      Satphone
              984.00 RON      Sleeping
             1399.99 RON      Tent
              490.00 RON    Insurance
@@ -119,6 +122,7 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
              112.99 RON    Sports
              112.99 RON      Calisthenics
             4000.00 EUR      Mountaineering
+             150.00 EUR    Tip
             1528.60 EUR
              241.00 RON    Transportation
             1496.00 EUR      Airplane
@@ -130,5 +134,5 @@ To make a long story short I am going to lay down only a few DOs/DON'Ts (as a re
    --------------------
             6317.85 EUR
            26946.00 RON
-              35.00 USD
+              75.00 USD
    #+end_example
