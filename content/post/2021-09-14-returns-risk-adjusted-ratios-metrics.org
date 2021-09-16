@@ -1,0 +1,332 @@
+#+title: Returns, risk-adjusted ratios, metrics
+#+subtitle: Finance
+#+date: 2021-09-14
+#+tags[]: finance trading metrics volatility
+
+You can easily double the investment and also double your return right? Not really, because you are doubling the risk as well... read on to see why.
+
+* Returns
+** Single-period returns
+
+*** Simple return
+    Also called linear or raw return is defined as:
+    \[
+    \color{blue} {
+    r_t = \frac{x_t - x_{t-1}}{x_{t-1}} = \frac{x_t}{x_{t-1}} - 1
+    }
+    \]
+    where:
+    * /*r_{t}*/ - simple return for period /*t*/
+    * /*x_{t}*/ - current value (price)
+    * /*x_{t-1}*/ - previous value (price)
+
+*** Log return
+    Also called compound return is defined as:
+    \[
+    \color{blue} {
+    R_t = \ln({\frac{x_t}{x_{t-1}}}) = \ln({x_t}) - \ln{(x_{t-1})}
+    }
+    \]
+    where:
+    * /*R_{t}*/ - log return for period /*t*/
+    * /*ln*/ - natural logarithm (base /*e*/ - Euler's number)
+
+** Multi-period returns
+*** Simple return
+    /Simple total return/ is defined as sum of individual returns for each period:
+    \[
+    \color{blue} {
+    str_t^n = {\sum_{t=1}^n{r_t}}
+    }
+    \]
+    while /simple average return/ is just the arithmetic mean:
+    \[
+    \color{blue} {
+    sar_t^n = \frac{\sum_{t=1}^n{r_t}}{n}
+    }
+    \]
+    /Example 1/: let's take a stock A that is initially worth $100 and rises to $120 in /t_{1}/ and goes back to $100 in /t_{2}/
+
+    #+begin_src python :results output :session return
+      a0, a1, a2 = 100, 120, 100
+      r1_a = a1/a0 - 1
+      print(r1_a)
+      r2_a = a2/a1 - 1
+      print(r2_a)
+      str_a = r1_a + r2_a
+      print(str_a)
+      sar_a = tr / 2
+      print(sar_a)
+    #+end_src
+
+    #+RESULTS:
+    : 0.19999999999999996
+    : -0.16666666666666663
+    : 0.033333333333333326
+    : 0.016666666666666663
+
+    /*Ooops!*/ Something does not look right, /total return/ is 3.33% even if we did not make any money (price falls back to $100).
+
+    /Example 2/: Let's take another stock B that was trading at $100 then $140 and $145.
+    #+begin_src python :results output :session return
+      b0, b1, b2 = 100, 140, 145
+      r1_b = b1/b0 - 1
+      print(r1_b)
+      r2_b = b2/b1 - 1
+      print(r2_b)
+    #+end_src
+
+    #+RESULTS:
+    : 0.3999999999999999
+    : 0.03571428571428581
+
+    Now, let's suppose that we have a portfolio with stock A (weight: 0.6) and stock B (weight: 0.4) and we want to calculate portfolio return for each period.
+
+    #+begin_src python :results output :session return
+      r1 = 0.6 * r1_a + 0.4 * r1_b
+      print(r1)
+      r2 = 0.6 * r2_a + 0.4 * r2_b
+      print(r2)
+    #+end_src
+
+    #+RESULTS:
+    : 0.2693929340763724
+    : -0.09510721979065809
+
+    /*Good!*/ Return per each period seems correct given the weight of each stock.
+
+    /Conclusions:/ simple returns
+    - *ARE NOT* additive over time
+    - *ARE* additive over assets
+
+*** Log return
+    /Compound total return/ is the sum of all log returns:
+    \[
+    \color{blue} {
+    ctr_t^n = {\sum_{t=1}^n{R_t}}
+    }
+    \]
+    and for /compound average return/ we need to use geometric mean because arithmetic mean does not account for compounding:
+    \[
+    \color{blue} {
+    car_t^n = ({\prod_{t=1}^n{(1 + R_t)}})^{\frac{1}{n}} - 1
+    }
+    \]
+
+    /Example:/ let's use the same example above and calculate the returns:
+
+    #+begin_src python :results output :session return
+      from math import log
+      r1_a = log(a1) - log(a0)
+      print(r1_a)
+      r2_a = log(a2) - log(a1)
+      print(r2_a)
+      ctr = r1_a + r2_a
+      print(ctr)
+      car = ((1+r1_a) * (1+r2_a))**(1/2) - 1
+      print(car)
+    #+end_src
+
+    #+RESULTS:
+    : 0.182321556793954
+    : -0.182321556793954
+    : 0.0
+    : -0.016761041288421596
+
+    /*Good!*/ /compound total return/ is /0%/ which is the correct result and /compound average return/ seems to be correct and equal to /simple average return/ 1.66%.
+
+    /Example 2/: same stock B as above
+    #+begin_src python :results output :session return
+      r1_b = log(b1) - log(b0)
+      print(r1_b)
+      r2_b = log(b2) - log(b1)
+      print(r2_b)
+    #+end_src
+
+    #+RESULTS:
+    : 0.33647223662121206
+    : 0.03509131981127034
+
+    And portfolio return per each period:
+
+    #+begin_src python :results output :session return
+      r1 = 0.6 * r1_a + 0.4 * r1_b
+      print(r1)
+      r2 = 0.6 * r2_a + 0.4 * r2_b
+      print(r2)
+    #+end_src
+
+    #+RESULTS:
+    : 0.24398182872485724
+    : -0.09535640615186428
+
+    /*Ooops!*/ quite a difference between simple (*0.27*) and compound (*0.24*) portfolio return for /t_{1}/ because when we add log returns we compound but in this case there is nothing to compound on, stock A and stock B are two different things which may/may not be correlated.
+
+    /Conclusions:/ log returns
+    - *ARE* additive over time
+    - *ARE NOT* additive over assets
+
+*** Simple vs. log return
+    OK, both returns have pros/cons but which one is better and the answer is both, it depends on what kind of data you have and what you want to calculate.
+
+    A few more properties and intuition:
+    - log return as function of simple return
+    \[
+    \textcolor{black} {
+    R_t = \ln({\frac{x_t}{x_{t-1}}})
+    \\
+    R_t = \ln({\frac{x_t}{x_{t-1}}} - 1 + 1)
+    }
+    \]
+    \[
+    \color{blue} {
+    R_t = \ln(r_t + 1)
+    }
+    \]
+    - easy to calculate one given the other
+    \[
+    \textcolor{black} {
+    e^{R_t} = e^{\ln(r_t + 1)}
+    \\
+    e^{R_t} = r_t + 1
+    }
+    \]
+    \[
+    \color{blue} {
+    r_t = e^{R_t} - 1
+    }
+    \]
+    - aggregation (sum) is very efficient over log returns, a simple /*sub*/ operation in /O(1)/
+     \[
+     \textcolor{black} {
+     R = \ln(\frac{x_f}{x_{f-1}}) + ... + \ln(\frac{x_1}{x_0})
+     \\
+     R = \ln(\frac{x_f}{x_{f-1}}\frac{x_{f-1}}{x_{f-2}}...\frac{x_2}{x_1}\frac{x_1}{x_0})
+     \\
+     R = \ln({\frac{x_f}{x_0}})
+     }
+     \]
+
+     \[
+     \color{blue} {
+     R = ln(x_f) - ln(x_0)
+     }
+     \]
+     where:
+     * /*R*/ - total return
+     * /*x_{f}*/ - final value (price)
+     * /*x_{0}*/ - initial value (price)
+    - log return is faster to calculate because subtraction operation are numerically safe/faster than division
+    - log returns follow normal distribution since underlying prices are log-normal distributed (stock prices cannot be negative)
+    - simple returns are easier to reason about
+    - if you work with raw data (prices) use simple returns and arithmetic mean
+    - when you work with percentage/change in values use log returns
+    - if data series are volatile use log returns and geometric mean
+    - aggregate data over time use log returns
+    - aggregate data over different assets use simple returns
+** Risk-adjusted ratios
+
+   Now, with returns out of the way, let's get back to our problem.
+
+   Why doubling the investment is not a good idea, because you also doubling the risk, that's why we need to use risk-adjusted return (ratio) as the ones presented below.
+
+*** Sharpe ratio
+    Sharpe Ratio is defined as excess return (portfolio return rate - risk-free rate) divided by volatility.
+
+    \[
+    \textcolor{blue} {
+    Sharpe\ ratio = \frac{r_p - r_f}{\sigma}
+    }
+    \]
+    where:
+    * /*r_{p}*/ - average portfolio return
+    * /*r_{f}*/ - risk-free rate
+    * /*\sigma*/ - standard deviation (both upside and downside volatility)
+
+*** Sortino ratio
+    This is very useful to investors and long-only traders/funds to calculate the return for a given bad risk (downside only volatility), because they love upside volatility but hate downside risk.
+
+    \[
+    \textcolor{blue} {
+    Sortino\ ratio = \frac{R_p - r_t}{\sigma_d}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - compound (realized) portfolio return
+    * /*r_{t}*/ - target return
+    * /*\sigma_{d}*/ - downside volatility
+
+*** Information ratio
+    \[
+    \textcolor{blue} {
+    Information\ ratio = \frac{R_p - r_b}{\sigma_a}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - portfolio return
+    * /*r_{b}*/ - benchmark return
+    * /*\sigma_{a}*/ - volatility of active returns
+
+** Other metrics
+   These are not risk-adjusted ratios but are good to keep an eye on them.
+
+*** Gain to Pain ratio
+    It calculates the /bang for the buck/ ratio, the amount of loss (pain) that is needed to play the game and make some profit (gain).
+
+    \[
+    \textcolor{blue} {
+    GtP\ ratio = \frac{\sum_{t=1}^n{r_t}}{abs(\sum_{t=1}^n{r_{t,n}})}
+    }
+    \]
+    where:
+    * /*r_{t}*/ - return for period /*t*/
+    * /*r_{t,n}*/ - period with negative return
+    * /*abs*/ - take the absolute value
+
+*** Profit factor
+    Similar to GtP ratio but it uses profitable periods instead of all periods.
+
+    \[
+    \textcolor{blue} {
+    PF\ ratio = \frac{\sum_{t=1}^n{r_{t,p}}}{abs(\sum_{t=1}^n{r_{t,n}})}
+    }
+    \]
+    where:
+    * /*r_{t,p}*/ - period with positive return
+
+*** Win rate
+    Number of trades in profit vs. total number of trades.
+
+    \[
+    \textcolor{blue} {
+    Win\ rate = \frac{\#\ of\ t_w}{\#\ of\ t_t}
+    }
+    \]
+    where:
+    * /*t_{w}*/ - win trades
+    * /*t_{t}*/ - total trades
+
+*** Avg win vs. loss ratio
+    It compares the average size of win vs. loss trades.
+
+    \[
+    \textcolor{blue} {
+    Win\ /Loss = \frac{avg(\sum_{t=1}^n{r_{t,p}})}{avg(\sum_{t=1}^n{r_{t,n}})}
+    }
+    \]
+    where:
+    * /*avg*/ - take the average
+
+** References
+   - https://quantivity.wordpress.com/2011/02/21/why-log-returns/
+   - https://assylias.wordpress.com/2011/10/27/linear-vs-logarithmic-returns/
+   - https://investmentcache.com/magic-of-log-returns-concept-part-1/
+   - https://www.investopedia.com/articles/stocks/11/5-ways-to-measure-money-managers.asp
+   - https://www.thebalance.com/calculate-compound-annual-growth-rate-357621
+   - https://www.goodreads.com/book/show/54308357-unknown-market-wizards
+   - https://www.investopedia.com/ask/answers/06/geometricmean.asp
+   - https://www.investopedia.com/terms/g/geometricmean.asp
+   - https://money.stackexchange.com/questions/24382/what-does-the-average-log-return-value-of-a-stock-mean
+   - https://www.investopedia.com/terms/s/sharperatio.asp
+   - https://www.investopedia.com/terms/s/sortinoratio.asp
+   - https://www.peterlbrandt.com/trading-performance/
