@@ -218,7 +218,7 @@ Albert Einstein: "Compound interest is the eighth wonder of the world. He who un
    #+RESULTS:
    : $1102.32
 
-   /Takeaway/: Before moving further it is important to understand the difference between /*APY*/ (annual percentace yield) and /*APR*/ (annual percentance rate), the former include compounding interest, the latter does not. In other words /*APR*/ is simple interest and /*APY*/ is compounding interest.
+   /Takeaway/: Before moving further it is important to understand the difference between /*APY*/ (annual percentage yield) and /*APR*/ (annual percentage rate), the former include compounding interest, the latter does not. In other words /*APR*/ is simple interest and /*APY*/ is compounding interest.
 
 ** Discounted interest-rate
 

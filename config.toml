@@ -33,7 +33,7 @@ disqusShortname = "icostan"
 [Params.huveragy]
   home = "RO"
   colors = ['#dc9658', '#d62728']
-  countries = { "AE"=1, "AR"=1, "AU"=1, "BG"=2, "BR"=1, "DK"=1, "ES"=1, "FI"=1, "FR"=2, "GB"=3, "GR"=3, "HU"=3, "ID"=1, "IN"=2, "IT"=3, "JP"=1, "LV"=1, "MD"=3, "MY"=2, "MV"=1, "NO"=1, "PH"=1, "PK"=1, "RO"=5, "RU"=3, "QA"=1, "SE"=1, "SG"=2, "TH"=2, "TN"=1, "TR"=1, "TZ"=1, "UA"=2, "UK"=2, "US"=5, "VN"=1 }
+  countries = { "AE"=1, "AR"=1, "AU"=1, "BG"=2, "BR"=1, "CY"=1, "DK"=1, "ES"=1, "FI"=1, "FR"=2, "GB"=3, "GR"=3, "HU"=3, "ID"=1, "IN"=2, "IT"=3, "JP"=1, "LV"=1, "MD"=3, "MY"=2, "MV"=1, "NO"=1, "PH"=1, "PK"=1, "RO"=5, "RU"=3, "QA"=1, "SE"=1, "SG"=2, "TH"=2, "TN"=1, "TR"=1, "TZ"=1, "UA"=2, "UK"=2, "US"=5, "VN"=1 }
 
   # socialShare = true
   # delayDisqus = true
@@ -187,6 +187,11 @@ disqusShortname = "icostan"
     name = "Historical Volatility"
     url = "post/2021-03-17-historical-volatility"
     weight = 4
+[[menu.main]]
+    parent = "finance"
+    name = "Returns, metrics"
+    url = "post/2021-09-14-returns-risk-adjusted-ratios-metrics/"
+    weight = 5
 
 [[menu.main]]
     identifier = "linux"

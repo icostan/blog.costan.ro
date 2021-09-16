@@ -217,7 +217,7 @@ You can easily double the investment and also double your return right? Not real
      * /*x_{f}*/ - final value (price)
      * /*x_{0}*/ - initial value (price)
     - log return is faster to calculate because subtraction operation are numerically safe/faster than division
-    - log returns follow normal distribution since underlying prices are log-normal distributed (stock prices cannot be negative)
+    - log returns follow normal distribution since underlying prices are log-normal distributed (see Central Limit Theorem)
     - simple returns are easier to reason about
     - if you work with raw data (prices) use simple returns and arithmetic mean
     - when you work with percentage/change in values use log returns
@@ -330,3 +330,4 @@ You can easily double the investment and also double your return right? Not real
    - https://www.investopedia.com/terms/s/sharperatio.asp
    - https://www.investopedia.com/terms/s/sortinoratio.asp
    - https://www.peterlbrandt.com/trading-performance/
+   - https://en.wikipedia.org/wiki/Central_limit_theorem

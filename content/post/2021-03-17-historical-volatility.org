@@ -44,18 +44,11 @@ OK, OK, it ain't explain shit ... what is it?
    : 99  2021-03-22  57374.95  58431.44  53795.78  54095.36
    : 100 2021-03-23  54095.36  55455.64  52984.36  55141.96
 
-** Log returns
+** Return
 
-   Why we use long returns instead of simple returns is a longer story but you can see it as /simple rate/ vs. /continuously compounded rate/, more info [[/post/2020-11-24-interest-rate][interest-rate post]].
+   Why we use log returns instead of simple returns is a longer story but you can see it as /simple rate/ vs. /continuously compounded rate/.
 
-   Log returns ARE:
-   - additive over time periods - a 10% increase followed by 10% decrease will end up at 0 but this is not the case for simple returns!!!
-   - normally distributed - due to [[https://en.wikipedia.org/wiki/Central_limit_theorem][Central limit theorem]]
-   - can be easily converted to simple returns
-
-   Log returns are NOT:
-   - as intuitive as simple returns - simple rate is easy, compounded rate is not
-   - CANNOT be added across multiple securities - since you can't compound over multiple securities
+   Detalied info in [[/post/2021-09-14-returns-risk-adjusted-ratios-metrics/][returns, risk-adjusted ratios, metrics]] and [[/post/2020-11-24-interest-rate][interest-rate]] blog posts.
 
    \[
    \textcolor{blue} {
@@ -323,10 +316,7 @@ OK, OK, it ain't explain shit ... what is it?
 
 ** References
    - https://www.investopedia.com/terms/h/historicalvolatility.asp
-   - https://quantivity.wordpress.com/2011/02/21/why-log-returns/
-   - https://assylias.wordpress.com/2011/10/27/linear-vs-logarithmic-returns/
    - https://www.wallstreetmojo.com/variance-vs-standard-deviation/
-   - https://investmentcache.com/magic-of-log-returns-concept-part-1/
    - https://www.wallstreetmojo.com/realized-volatility/
    - https://www.macrodesiac.com/your-volatility-handbook/
    - https://medium.com/swlh/the-realized-volatility-puzzle-588a74ab3896
