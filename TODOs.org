@@ -370,6 +370,9 @@
     - https://constellix.com/news/http-redirects-with-dns-and-why-https-redirects-are-so-ing-hard
     - https://blog.dnsimple.com/2016/08/https-redirects/
     - https://dev.to/steveblue/setup-a-redirect-on-github-pages-1ok7
+*** DONE update submodule and fix posted on date
+    SCHEDULED: <2021-09-30 Thu>
+    - https://git-scm.com/book/en/v2/Git-Tools-Submodules
 ** Tasks
 *** DONE Wakatime reports
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
