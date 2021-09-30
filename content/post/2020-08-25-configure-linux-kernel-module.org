@@ -1,9 +1,9 @@
-#+title:  Configure Linux kernel module
-#+subtitle: Linux
+#+title:  Config Linux kernel module
+#+subtitle: Kernel
 #+date:   2020-08-25
 #+tags[]: linux kernel module c ioctl kbuild makefile
 
-In [[/post/2020-03-24-write-linux-kernel-module/]["Write Linux kernel module"]] blog post I created a simple Hello World module, now it's time to configure it and there are 3 main ways to do it:
+In [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] I created a simple World module, now it's time to configure it and there are 3 main ways to do it:
 1. at build time
 2. at load time
 3. at run time
@@ -12,7 +12,7 @@ In [[/post/2020-03-24-write-linux-kernel-module/]["Write Linux kernel module"]] 
 
 Here is the simple /world.c/ module that we used in previous post.
 
-#+begin_src c -n :tangle world-build.c
+#+begin_src c :tangle world-build.c
 #include <linux/init.h>
 #include <linux/module.h>
 
@@ -38,7 +38,7 @@ static void __exit world_exit(void)
 }
 module_exit(world_exit);
 
-MODULE_AUTHOR("Iulian Costan <blog@iuliancostan.com>");
+MODULE_AUTHOR("Iulian Costan <blog@costan.ro>");
 MODULE_DESCRIPTION("World module that exports a symbol");
 MODULE_LICENSE("Dual BSD/GPL");
 #+end_src
@@ -192,7 +192,7 @@ At runtime we can do it the easy way or the hard way, it depends on one's needs.
   }
   module_exit(world_exit);
 
-  MODULE_AUTHOR("Iulian Costan <blog@iuliancostan.com>");
+  MODULE_AUTHOR("Iulian Costan <blog@cosan.ro>");
   MODULE_DESCRIPTION("World module that exports a symbol");
   MODULE_LICENSE("Dual BSD/GPL");
   #+end_src

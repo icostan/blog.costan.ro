@@ -199,29 +199,34 @@ disqusShortname = "icostan"
     weight = 50
 [[menu.main]]
     parent = "linux"
+    name = "1. Write Linux kernel module"
+    url = "post/2020-03-24-write-linux-kernel-module"
+    weight = 1
+[[menu.main]]
+    parent = "linux"
+    name = "2. Config Linux kernel module"
+    url = "post/2020-08-25-configure-linux-kernel-module"
+    weight = 2
+[[menu.main]]
+    parent = "linux"
+    name = "3. Use Linux kernel module"
+    url = "post/2021-09-30-use-linux-kernel-module"
+    weight = 3
+[[menu.main]]
+    parent = "linux"
     name = "Back to my first love"
     url = "post/2019-07-05-back-to-my-first-love/"
-    weight = 1
+    weight = 4
 [[menu.main]]
     parent = "linux"
     name = "Package management"
     url = "post/2019-09-10-package-management"
-    weight = 2
+    weight = 5
 [[menu.main]]
     parent = "linux"
     name = "Config management"
     url = "post/2019-10-22-configuration-management"
-    weight = 3
-[[menu.main]]
-    parent = "linux"
-    name = "Write Linux kernel module"
-    url = "post/2020-03-24-write-linux-kernel-module"
-    weight = 4
-[[menu.main]]
-    parent = "linux"
-    name = "Config Linux kernel module"
-    url = "post/2020-08-25-configure-linux-kernel-module"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     identifier = "math"

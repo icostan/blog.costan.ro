@@ -1,0 +1,146 @@
+#+title:  Use Linux kernel module
+#+subtitle: Kernel
+#+date:   2021-09-30
+#+tags[]: linux kernel module c
+
+In [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] I wrote a simple Linux kernel module, called World, in [[http://localhost:1313/post/2020-08-25-configure-linux-kernel-module/][Part 2]] I configured that module, now it's time to use that module from within kernel space (another kernel module).
+
+* 1. World module
+  First of all, let's review /world.c/ module that was used in previous two parts.
+
+#+begin_src c :tangle world.c
+  #include <linux/init.h>
+  #include <linux/module.h>
+
+  static char *whom = "World";
+
+  void world_print(char* greet)
+  {
+      printk(KERN_INFO "%s, %s\n", greet, whom);
+  }
+  EXPORT_SYMBOL(world_print);
+
+  static int __init world_init(void)
+  {
+      printk(KERN_INFO "Init, %s\n", whom);
+      return 0;
+  }
+  module_init(world_init);
+
+  static void __exit world_exit(void)
+  {
+      printk(KERN_INFO "Exit, %s\n", whom);
+  }
+  module_exit(world_exit);
+
+  MODULE_AUTHOR("Iulian Costan <blog@costan.ro>");
+  MODULE_DESCRIPTION("World module that exports a symbol");
+  MODULE_LICENSE("Dual BSD/GPL");
+#+end_src
+
+* 2. Hello module
+  Now, say hello to /hello.c/ module :).
+
+#+begin_src c :tangle hello.c
+  #include <linux/init.h>
+  #include <linux/module.h>
+
+  static int howmany = 1;
+  module_param(howmany, int, S_IRUGO);
+  static char *greet = "Hello";
+  module_param(greet, charp, S_IRUGO);
+
+  extern void world_print(char* greet);
+
+  static int __init hello_init(void)
+  {
+      printk(KERN_INFO "Init, Hello\n");
+      int i;
+      for (i = 0; i < howmany; i++) {
+          world_print(greet);
+      }
+      return 0;
+  }
+
+  static void __exit hello_exit(void)
+  {
+      printk(KERN_INFO "Exit, Hello\n");
+  }
+
+  module_init(hello_init);
+  module_exit(hello_exit);
+
+  MODULE_AUTHOR("Iulian Costan <blog@costan.ro");
+  MODULE_DESCRIPTION("Hello module that depends on World module");
+  MODULE_LICENSE("Dual BSD/GPL");
+#+end_src
+
+This time, *init* function is special because it iterates over module parameter and calls external function (symbol) *world_print* that is implemented in World module.
+
+In addition to *init*, *exit* functions and macro calls we have two module parameters (that can be changed at compile, load or run time) and the external declaration for *world_print* function that will be imported from *World* module.
+
+** 2.1 Build Hello
+
+Execute /make/ using the same Makefile/Kbuild files from [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] to compile and build /hello.ko/ module file.
+Notice the /depends/ line below, *Hello* module depends on *World* module and /parm/ lines with two params: *howmany* and *greet*.
+
+#+begin_src sh :results output
+  modinfo hello.ko
+#+end_src
+
+#+RESULTS:
+#+begin_example
+filename:       /home/icostan/Projects/blog/content/post/hello.ko
+license:        Dual BSD/GPL
+description:    Hello module that depends on World module
+author:         Iulian Costan <blog@costan.ro
+srcversion:     BB1B2CF1CD93B39F4366E4F
+depends:        world
+retpoline:      Y
+name:           hello
+vermagic:       5.14.8-arch1-1 SMP preempt mod_unload
+parm:           howmany:int
+parm:           greet:charp
+#+end_example
+
+** 2.2 Install Hello
+
+As I mentioned before, during module install/load we can change the parameters as follows:
+
+#+begin_src sh
+  echo 'Installing module...'
+  sudo insmod ./hello.ko greet=Bonjour howmany=3
+#+end_src
+
+After successful installation,
+
+#+begin_src sh :results output
+  journalctl -k | grep Hello
+#+end_src
+
+#+RESULTS:
+: Sep 30 08:55:28 drakarys kernel: Init, Hello
+
+parameters are correctly set,
+
+#+begin_src sh :results output
+  cat /sys/module/hello/parameters/greet
+  cat /sys/module/hello/parameters/howmany
+#+end_src
+
+#+RESULTS:
+: Bonjour
+: 3
+
+and *world_print* function from World module was called 3 times, as expected.
+
+#+begin_src sh :results output
+  journalctl -k | grep Bonjour
+#+end_src
+
+#+RESULTS:
+: Sep 30 08:55:28 drakarys kernel: Bonjour, World
+: Sep 30 08:55:28 drakarys kernel: Bonjour, World
+: Sep 30 08:55:28 drakarys kernel: Bonjour, World
+
+And this is it... our useless Hello module calling World module on install but in next part we will talk about mode interesting stuff like /device drivers/ or maybe /ioctl/ and /syscalls/, let's see.

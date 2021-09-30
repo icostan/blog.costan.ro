@@ -141,6 +141,7 @@
     SCHEDULED: <2021-02-27 Sat>
 *** DONE session breaks indicator
 *** WIP a blog post for each cryptography book/chapter
+    - CryptoBook - 2021
     - An overview of cryptography - 2020
     - Practical cryptography for developers - 2018
     - Crypto 101 - 2017
@@ -154,12 +155,12 @@
     - [X] an overview of cryptography
     - [X] practical cryptography
     - [X] understanding cryptography *
-    - [x] handbook of applied cryptography
+    - [X] handbook of applied cryptography
     - [ ] cryptography theory and practice
 
 *** WIP linux kernel module
     - [X] World module (split #1 post)
-    - [ ] calling from kernel space from Hello module (split #1 post)
+    - [X] calling from kernel space from Hello module (split #1 post)
     - [X] configure module via ioctl
     - [ ] calling from user space space via syscall
     - [ ] unit test the module with kunit
@@ -415,17 +416,18 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 ** TODO Write new blog post
-    SCHEDULED: <2021-09-21 Tue +2w>
+    SCHEDULED: <2021-10-07 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-09-16 Thu 14:36]
+    :LAST_REPEAT: [2021-09-30 Thu 09:58]
     :END:
+    - State "DONE"       from "TODO"       [2021-09-30 Thu 09:58]
     - State "DONE"       from "TODO"       [2021-09-16 Thu 14:36]
     - State "DONE"       from "TODO"       [2021-08-27 Fri 12:15]
     - State "DONE"       from "TODO"       [2021-08-16 Mon 09:44]
     - [X] cryptography
     - [ ] emacs
     - [X] market wizards review
-    - [ ] linux kernel
+    - [X] linux kernel
     - [ ] cryptography
     - [X] travel
     - [ ] generate address
