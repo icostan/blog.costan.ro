@@ -5,7 +5,7 @@
 
 This is how to generate a Bech32 native segwit address (also called P2WPKH - Pay To Witness Public Key Hash) in a few lines of ZSH shell code.
 
-#+begin_src sh -n :results output
+#+begin_src sh :results output
 openssl ecparam -genkey -name secp256k1 -out secret.pem
 key=$(openssl ec -pubout -in secret.pem -outform DER | tail -c 65 | xxd -p -c 65)
 sha256=$(echo $key | xxd -r -p | openssl sha256 | cut -f 2 -d ' ')

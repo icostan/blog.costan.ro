@@ -1,0 +1,24 @@
+#+title: Price (HLC) breaks indicator
+#+subtitle: Trading
+#+date: 2021-10-16
+#+tags[]: tradingview trading indicator pivotpoints ethusd supportresistance
+
+Maybe one of the most effective indicator that I use on daily basis, [[https://www.tradingview.com/script/g8tZWz2Q-Price-breaks/][Price breaks]].
+
+Again and again you can see how previous day/week/month's high/low and especially close act as support/resistance and how price bounces off these levels.
+
+The shapes:
+ - month's high/low/close are marked with circles
+ - week's high/low/close marked with crosses
+ - day's high/low/close with lines
+
+The colors:
+- red - the highs
+- green - the lows
+- blue - the closes
+
+
+[[file:../../img/price-breaks.png]]
+
+
+Trade long and prosper!

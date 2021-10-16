@@ -332,6 +332,11 @@ disqusShortname = "icostan"
     name = "New Market Wizards book"
     url = "post/2021-04-07-new-market-wizards-book"
     weight = 8
+[[menu.main]]
+    parent = "trading"
+    name = "Price breaks indicator"
+    url = "/post/2021-10-16-price-hlc-breaks-indicator/"
+    weight = 8
 
 [[menu.main]]
     identifier = "travel"
