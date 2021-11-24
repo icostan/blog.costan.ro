@@ -1,0 +1,136 @@
+#+title: EC-Schnorr
+#+subtitle: Cryptography
+#+date: 2019-06-25
+#+tags[]: cryptography schnorr ellipticcurve math python sagemath
+
+* Overview
+
+EC-Schnorr, as the name suggests, is a Schnorr-type digital signature scheme over elliptic curve, it's [[/post/2019-04-09-ecdsa][ECDSA]]'s little sister and [[/post/2019-06-19-schnorr][Schnorr]]'s big brother with multiple implementations out there: maybe most widely deployed being [[https://en.wikipedia.org/wiki/EdDSA][EdDSA]] (used in [[https://web.getmonero.org][Monero]]) or the upcoming [[https://blockstream.com/2018/01/23/en-musig-key-aggregation-schnorr-signatures/][MuSig]] implementation in Bitcoin.
+
+It is also one of my favorite digital signature scheme because of its simplicity. As you will see later it is just a linear equation that opens the door to multi signatures and signature aggregation.
+
+#+begin_src sage :session schnorr :exports both
+  p = 103                      # EC parameters
+  F = FiniteField(p)
+  E = EllipticCurve(F, [0, 7])
+  G = E([97, 10])
+  n = G.order()
+
+  k = randint(2, n)            # private key
+  P = k * G                    # public key
+
+  import hashlib
+  def H(R, P, m):              # hash function
+    data = bytes(R) + bytes(P) + bytes(m)
+    digest = hashlib.sha256(data).digest()
+    return int.from_bytes(digest, byteorder="little")
+
+  r = randint(2, n)            # signing
+  R = r * G
+  m = 6
+  sh = H(R, P, m)
+  s = (r + sh * k) % n         # signature (R, s)
+
+  vh = H(R, P, m)              # verification
+  print("YOU ARE A CRYPTOSTAR!") if s * G == R + vh * P else "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+* Elliptic curve parameters
+
+Nothing new under the sun so far, the same elliptic curve /*E*/ defined over finite field *p* with generator *G* of order *n*.
+See [[/post/2019-04-09-ecdsa][ECDSA]] post for more elliptic curve information.
+
+#+begin_src sage :session schnorr :exports both
+  p = 103                      # EC parameters
+  F = FiniteField(p)
+  E = EllipticCurve(F, [0, 7])
+  G = E([97, 10])
+  n = G.order()
+#+end_src
+
+* Multiplication trapdoor
+
+We start the show by generating a random private key *k* and calculate the public key point *P* which is public parameter while *k* is kept secret.
+
+#+begin_src sage :session schnorr :exports both
+  k = randint(2, n)            # private key
+  P = k * G                    # public key
+  P
+#+end_src
+
+#+RESULTS:
+: (78 : 48 : 1)
+
+* Signature
+
+  Here is the biggest difference between ECDSA and EC-Schnorr:
+- ECDSA uses division (aka multiplicative inverse, which is more expensive) to calculate the signature (*u, v*) parameters
+- EC-Schnorr uses multiplication of private key and a hash of public key *P*, random point *R* and message *m*
+
+The rest is simple arithmetic, generate random nonce *r* and calculate the random point *R*, compute the signing hash *sh* (using our little *H* function) and last the signature challenge *s*:
+
+#+begin_src sage :session schnorr :exports both
+  import hashlib
+  def H(R, P, m):              # hash function
+    data = bytes(R) + bytes(P) + bytes(m)
+    digest = hashlib.sha256(data).digest()
+    return int.from_bytes(digest, byteorder="little")
+
+  r = randint(2, n)            # signing
+  R = r * G
+  m = 6
+  sh = H(R, P, m)
+  s = (r + sh * k) % n         # signature (R, s)
+#+end_src
+
+The signature is a tuple of a point on elliptic curve and scalar value.
+
+#+begin_src sage :session schnorr :exports both
+  (R, s)
+#+end_src
+
+#+RESULTS:
+: ((78 : 55 : 1), 102)
+
+
+* Verification
+
+A third-party receives the *(R, s)* signature, calculates the verification hash *vh* and checks whether or not the equation *s * G = R + h * P* is valid.
+
+#+begin_src sage :session schnorr :exports both
+  vh = H(R, P, m)              # verification
+  print("YOU ARE A CRYPTOSTAR!") if s * G == R + vh * P else "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+* Intuition
+
+Starting with verification equation and going backwards: replace *s* with corresponding formula, then replace *P* and *G* and after reduction we are left with *G == G*
+
+#+begin_src sage :session schnorr
+  s * G == R + h * P
+  (r + h * k) * G == R + h * P
+  (r + h * k) * G == r * G + h * k * G
+  (r + h * k) * G == (r + h * k) * G
+  G == G
+#+end_src
+
+#+RESULTS:
+: True
+: True
+: True
+: True
+: True
+
+Pretty brilliant huh? but it does not stop here, *s * G = R + h * P* is a linear equation and we can add / multiply each side while the equation stays valid.
+
+What if we add 2 equations together, side by side?
+- *s1 * G1 = R1 + h1 * P1*
+- *s2 * G2 = R2 + h2 * P2*
+
+But this is a subject for another post :)
