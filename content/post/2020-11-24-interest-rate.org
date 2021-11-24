@@ -3,7 +3,10 @@
 #+date: 2020-11-24
 #+tags[]: finance math interestrate compound 72
 
-Albert Einstein: "Compound interest is the eighth wonder of the world. He who understands it, earns it ... he who doesn't ... pays it."
+Compound interest is the eighth wonder of the world
+- He who understands it... earns it!
+- He who doesn't ... pays it!
+-- /Albert Einstein/
 
    #+begin_src ditaa :file interestrate.png :cmdline -r :exports none
     +-----------+        +---------+
@@ -22,15 +25,15 @@ Albert Einstein: "Compound interest is the eighth wonder of the world. He who un
 
    \[
    \color{blue}
-   P - Principal / Price / Present\ value
+   P - principal / price / present\ value
    \\
-   Px - Principal + interest\ after\ 'x'\ years
+   Px - principal + interest\ after\ 'x'\ years
    \\
    \color{red}
-   r - Annual\ interest\ rate
+   r - annual\ interest\ rate
    \\
    \color{green}
-   t - Years
+   t - time\ in\ years
    \]
 
 

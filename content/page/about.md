@@ -8,7 +8,7 @@ comments: false
 
 An old fashion "Jack of all trades" kind of a guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto land.
 
-These days I trade crypto derivatives to feed my belly and do software to feed my soul.
+These days I trade crypto derivatives to feed my belly and build software to feed my soul.
 
 ### Travel activity
 
@@ -17,10 +17,6 @@ These days I trade crypto derivatives to feed my belly and do software to feed m
 ### Coding activity
 
 <figure><embed src="https://wakatime.com/share/@icostan/b8113d2a-134d-4e60-b329-415dce67837b.svg"></embed></figure>
-
-### Sports activity
-
-Coming soon.
 
 ### Why the blog name?
 
@@ -40,3 +36,7 @@ I am a slow-learner who does not understand high level concepts and I like to di
 Why the easy way?
 
 Once I understand things "the hard way" then everything else is just common sense.
+
+### Sports activity
+
+Coming soon.

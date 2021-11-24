@@ -196,7 +196,7 @@ You can easily double the investment and also double your return right? Not real
     r_t = e^{R_t} - 1
     }
     \]
-    - aggregation (sum) is very efficient over log returns, a simple /*sub*/ operation in /O(1)/
+    - aggregation (sum) is very efficient over log returns, a /*sub*/ operation executed in /O(1)/
      \[
      \textcolor{black} {
      R = \ln(\frac{x_f}{x_{f-1}}) + ... + \ln(\frac{x_1}{x_0})
@@ -217,7 +217,7 @@ You can easily double the investment and also double your return right? Not real
      * /*x_{f}*/ - final value (price)
      * /*x_{0}*/ - initial value (price)
     - log return is faster to calculate because subtraction operation are numerically safe/faster than division
-    - log returns follow normal distribution since underlying prices are log-normal distributed (see Central Limit Theorem)
+    - log returns follow normal distribution since underlying prices are (hopefully) log-normal distributed (see Central Limit Theorem)
     - simple returns are easier to reason about
     - if you work with raw data (prices) use simple returns and arithmetic mean
     - when you work with percentage/change in values use log returns
@@ -331,3 +331,4 @@ You can easily double the investment and also double your return right? Not real
    - https://www.investopedia.com/terms/s/sortinoratio.asp
    - https://www.peterlbrandt.com/trading-performance/
    - https://en.wikipedia.org/wiki/Central_limit_theorem
+   - https://moontowermeta.com/path-how-compounding-alters-return-distributions/

@@ -299,7 +299,7 @@
     - storage: sia/filecoin
     - cloud: akash
     - internet: dfinity
-    - vpn: sentinel/orchid
+    - vpn:  orchid/ sentinel
     - dns: handshake
     - exchange: uniswap
     - lending: aave
@@ -314,7 +314,7 @@
     - yield
       -- alchemix: backed by future yield
       -- ??
-*** TODO annualization
+*** annualization
     - https://www.wikihow.com/Annualize
     - https://www.investopedia.com/terms/a/annualize.asp
 *** zk (validity proofs) vs optimistic (fraud proofs) rollups
@@ -335,19 +335,34 @@
 *** understanding edge
     - https://moontowermeta.com/understanding-edge/
     - https://www.geeksforgeeks.org/binomial-mean-and-standard-deviation-probability-class-12-maths/
-*** Math paradoxes in graphs
+*** Paradoxes in graphs
     - https://en.wikipedia.org/wiki/List_of_paradoxes#Mathematics
     - Potato paradox: you need to look at the payoffs of small probabilities to appreciate the differences
     - https://moontowermeta.com/tails-explained/
+    - https://en.wikipedia.org/wiki/Paradox_of_thrift
 *** TODO Taproot by hand
-    SCHEDULED: <2021-10-21 Thu>
+    SCHEDULED: <2021-11-14 Sun>
     - https://bitcointaproot.cc/
     - https://taproot.watch/
     - https://bitcoinops.org/en/topics/taproot/
     - https://bitcoinops.org/en/schorr-taproot-workshop/
+    - https://bitcoinops.org/en/preparing-for-taproot/
+*** TODO Segwit transaction
+    SCHEDULED: <2021-11-05 Fri>
 *** DONE price breaks indicator
     SCHEDULED: <2021-10-16 Sat>
 *** review mind architect season 1
+*** my take on pomodoro technique
+*** bet sizing
+    - https://moontowermeta.com/path-how-compounding-alters-return-distributions/
+    - https://twitter.com/JustinCzy/status/1317178242655203329?s=20
+    - https://www.khanacademy.org/math/statistics-probability/probability-library#conditional-probability-independence
+*** efficient options trading strategies
+*** secret sharing
+    - https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
+    - https://en.wikipedia.org/wiki/Secret_sharing
+*** BLS signature
+    - https://zhuanlan.zhihu.com/p/361628046
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -386,6 +401,9 @@
 *** DONE update submodule and fix posted on date
     SCHEDULED: <2021-09-30 Thu>
     - https://git-scm.com/book/en/v2/Git-Tools-Submodules
+*** fix ESDSA/Schnorr verification equation
+    - s*R = m*G + (R.x)*P
+    - s*G = H(R,P,m)*P
 ** Tasks
 *** DONE Wakatime reports
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -431,11 +449,14 @@
     - State "DONE"       from "TODO"       [2019-10-03 Thu 13:36]
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
+*** publish code snippets as gists
 ** TODO Write new blog post
-    SCHEDULED: <2021-10-07 Tue +2w>
+    SCHEDULED: <2021-11-04 Thu +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-09-30 Thu 09:58]
+    :LAST_REPEAT: [2021-11-18 Thu 16:18]
     :END:
+    - State "DONE"       from "TODO"       [2021-11-18 Thu 16:18]
+    - State "DONE"       from "TODO"       [2021-10-25 Mon 09:25]
     - State "DONE"       from "TODO"       [2021-09-30 Thu 09:58]
     - State "DONE"       from "TODO"       [2021-09-16 Thu 14:36]
     - State "DONE"       from "TODO"       [2021-08-27 Fri 12:15]

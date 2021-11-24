@@ -120,7 +120,7 @@ An actionable, bullet points summary for one of my favorite, all time best-selle
       1. limits portfolio risk to 2.5%
       2. when the draw-down is reached he reduces the size until he is profitable again
     - you are not a trader, you are a risk manager
-    - never stay in loosing trades, don't freeze, you need to know how to respond in each situation
+    - never stay in losing trades, don't freeze, you need to know how to respond in each situation
 *** C4 - Scott Ramsey: low-risk futures trader
     - discretionary trader in highly liquid futures in FX markets
     - broad fundamental macro view and direction bias in each market and goes short the weakest market if bearish and long the strongest market if bullish
@@ -265,7 +265,7 @@ An actionable, bullet points summary for one of my favorite, all time best-selle
     - a good trade can loose money, a bad trade can make money
     - a good trade follows a process that will be profitable if repeated multiple times even if it can loose money in individual trades
     - a bad trade follows a process that loose money if repeated multiple times but might make money on individual trades
-    - an analogy: a slot machine is a bad bet because has a higher probability of loosing money if repeated multiple times
+    - an analogy: a slot machine is a bad bet because has a higher probability of losing money if repeated multiple times
 *** C12 - Joe Vidich: harvesting losses
     - the author found Joe in a hedge fund database, not recommented like the most of the market wizards
     - don't try to be 100% right: taking partial loss instead of all or nothing
