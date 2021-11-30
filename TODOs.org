@@ -77,6 +77,7 @@
 *** DONE slices of Bitcoin indicator
     CLOSED: [2019-05-31 Fri 16:20]
 *** DONE Schnorr signatures
+    - https://medium.com/cryptoadvance/how-schnorr-signatures-may-improve-bitcoin-91655bcb4744
     CLOSED: [2019-06-27 Thu 10:56]
 *** DONE Arch linux
     CLOSED: [2019-07-16 Tue 21:13]
@@ -341,13 +342,13 @@
     - https://moontowermeta.com/tails-explained/
     - https://en.wikipedia.org/wiki/Paradox_of_thrift
 *** TODO Taproot by hand
-    SCHEDULED: <2021-11-14 Sun>
+    SCHEDULED: <2021-12-07 Tue>
     - https://bitcointaproot.cc/
     - https://taproot.watch/
     - https://bitcoinops.org/en/topics/taproot/
     - https://bitcoinops.org/en/schorr-taproot-workshop/
     - https://bitcoinops.org/en/preparing-for-taproot/
-*** TODO Segwit transaction
+*** DONE Segwit transaction
     SCHEDULED: <2021-11-05 Fri>
 *** DONE price breaks indicator
     SCHEDULED: <2021-10-16 Sat>
@@ -362,7 +363,7 @@
     - https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
     - https://en.wikipedia.org/wiki/Secret_sharing
 *** BLS signature
-    - https://zhuanlan.zhihu.com/p/361628046
+    - https://medium.com/cryptoadvance/bls-signatures-better-than-schnorr-5a7fe30ea716
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -450,11 +451,14 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 *** publish code snippets as gists
+*** update *.md posts into *.org
 ** TODO Write new blog post
-    SCHEDULED: <2021-11-04 Thu +2w>
+    SCHEDULED: <2021-12-07 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-11-18 Thu 16:18]
+    :LAST_REPEAT: [2021-11-30 Tue 21:29]
     :END:
+    - State "DONE"       from "TODO"       [2021-11-30 Tue 21:29]
+    - State "DONE"       from "TODO"       [2021-11-30 Tue 21:29]
     - State "DONE"       from "TODO"       [2021-11-18 Thu 16:18]
     - State "DONE"       from "TODO"       [2021-10-25 Mon 09:25]
     - State "DONE"       from "TODO"       [2021-09-30 Thu 09:58]

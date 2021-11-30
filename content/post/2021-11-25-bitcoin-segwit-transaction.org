@@ -1,0 +1,362 @@
+#+title: Segwit transaction
+#+subtitle: Bitcoin
+#+date: 2021-11-25
+#+tags[]: bitcoin segwit transaction
+
+Lets manually craft a SegWit transaction using only [[https://docs.python.org/3/library/functions.html][built-in Python3 functions]] for hex/bytes manipulation and [[https://sagemath.org][Sagemath]] for elliptic curves arithmetic.
+
+** 0. Utils
+   First thing first, a base class /Segwit/ that provides hex representation for all instances
+   and a few utility functions to transform /int/hex/ to /bytes/ and vice-versa.
+
+   Last, /decode/ function decodes a /Bech32/ address into RIPEMD160 representation. See [[/post/2020-02-10-bitcoin-bech32-segwit-address/][Bech32 segwit address]] blog post for more details, it's not alien, it is just ZSH script code.
+
+   #+begin_src python :session segwit-python :results output
+     class Segwit(object):
+       def hex(self) -> str:
+         return bytes(self).hex()
+
+     def int_to_bytes(x: int, length: int) -> bytes:
+       return x.to_bytes(length, byteorder="little")
+     def bytes_to_int(b: bytes) -> int:
+       return int.from_bytes(b, byteorder="big")
+     def hex_to_bytes(s: str) -> bytes:
+       return bytes.fromhex(s)
+     import hashlib
+     def hash256(preimage: bytes) -> bytes:
+       return hashlib.sha256(hashlib.sha256(preimage).digest()).digest()
+
+     CHARSET = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
+     CHARSET_BASE = len(CHARSET)
+     def decode(addr: str) -> str:
+       data = reversed(addr[4:-6])
+       return '%x' % sum([CHARSET.find(c) * CHARSET_BASE**i for i, c in enumerate(data)])
+
+     print(int_to_bytes(1, 4).hex())
+     print(decode("tb1qm0r8qe0lxs8yf9tywxjtskntvdkzywsx2cacr2"))
+   #+end_src
+
+   #+RESULTS:
+   : 01000000
+   : dbc67065ff340e44956471a4b85a6b636c223a06
+
+   mind:
+   - /hex/ method that takes bytes of derived instances and spits out hex
+   - /little endian/ integer representation: /0x01000000/ instead of /0x00000001/
+
+** 1. Create transaction
+*** Txin
+    The input what we want to spend from:
+    - /tx_hash/ and /tx_index/ - of the previous tx that we want to spend.
+    - /tx_address/ - the sender's address
+    - /tx_amount/ - the amount to spend
+
+    #+begin_src python :session segwit-python :results output
+      class Txin(Segwit):
+        def __init__(self, tx_hash, tx_index, tx_address, tx_amount, sequence=0xfffffffe):
+          self.tx_hash = bytes(reversed(hex_to_bytes(tx_hash)))
+          self.tx_index = int_to_bytes(tx_index, 4)
+          self.tx_address = tx_address
+          self.tx_amount = int_to_bytes(tx_amount, 8)
+          self.sequence = int_to_bytes(sequence, 4)
+        def __bytes__(self) -> bytes:
+          scriptSig = int_to_bytes(0, 1)
+          return self.tx_hash + self.tx_index + scriptSig + self.sequence
+
+      txin = Txin(tx_hash="fd2fcee5dd168cf2cbb8c2d64b0fa98956ec892e7ea4526f2e54891814fecd25",
+                  tx_index=0,
+                  tx_address="tb1q7xats2uvpvysdna52c2j3p3zlnrfuhx3c4rj6n",
+                  tx_amount=100_000)
+      print(txin.hex())
+    #+end_src
+
+    #+RESULTS:
+    : 25cdfe141889542e6f52a47e2e89ec5689a90f4bd6c2b8cbf28c16dde5ce2ffd0000000000feffffff
+
+    mind:
+    - the structure of this class (and others that will follow) with two methods:
+      - /\__init__/ - constructor
+      - /\__bytes__/ - bytes representation
+
+*** Script
+    Bitcoin scriptting, we only use one /scriptPubKey/ type called /P2WPKH/ (Pay 2 Witness Public Key Hash), see [[https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#Examples][BIP-141 Examples]] for more examples.
+
+    #+begin_src python :session segwit-python :results output
+      class Script(object):
+        @staticmethod
+        def p2wpkh(address: str) -> bytes:
+          witness_version = int_to_bytes(0, 1)
+          witness_program = hex_to_bytes(decode(address))
+          op_pushbytes_20 = int_to_bytes(len(witness_program), 1)
+          return witness_version + op_pushbytes_20 + witness_program
+
+      print(Script.p2wpkh("tb1qm0r8qe0lxs8yf9tywxjtskntvdkzywsx2cacr2").hex())
+    #+end_src
+
+    #+RESULTS:
+    : 0014dbc67065ff340e44956471a4b85a6b636c223a06
+
+    - hex representation of one /p2wpkh/ output
+
+*** Txout
+    These are the outputs that we want to send the /Satoshis/ to:
+    - /50_000/ satoshi - to "tb1q65kw8v97qm6r753a7cv6hqtddcdwhtu360pjqd"
+    - /49_817/ satoshi - this is the change that comes back to us but to a different address
+    - address - the address to send to
+
+    #+begin_src python :session segwit-python :results output
+      class Txout(Segwit):
+        def __init__(self, amount, address):
+          self.amount = int_to_bytes(amount, 8)
+          self.script = Script.p2wpkh(address)
+        def __bytes__(self) -> bytes:
+          size = int_to_bytes(len(self.script), 1)
+          return self.amount + size + self.script
+
+      txout1 = Txout(amount=49817, address="tb1q65kw8v97qm6r753a7cv6hqtddcdwhtu360pjqd")
+      txout2 = Txout(amount=50000, address="tb1qm0r8qe0lxs8yf9tywxjtskntvdkzywsx2cacr2")
+      print(txout1.hex())
+      print(txout2.hex())
+    #+end_src
+
+    #+RESULTS:
+    : 99c2000000000000160014d52ce3b0be06f43f523df619ab816d6e1aebaf91
+    : 50c3000000000000160014dbc67065ff340e44956471a4b85a6b636c223a06
+
+    - the miner fee is the difference: /100_000/ (input amount) - /50_000/ + /49_817/
+
+*** Tx
+    The migthy TX class, maybe not so mighty yet but a little bit different from previous version, see [[https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#Specification][BIP-141 TX specs]].
+
+    We create the transaction and add the input and the two outputs defined above.
+
+    #+name: tx
+    #+begin_src python :session segwit-python :results output
+      class Tx(Segwit):
+        def __init__(self, version, marker, flag, locktime=63062, sighash_type=1):
+          self.nVersion = int_to_bytes(version, 4)
+          self.marker = int_to_bytes(marker, 1)
+          self.flag = int_to_bytes(flag, 1)
+          self.nLockTime = int_to_bytes(locktime, 4)
+          self.sighash_type = int_to_bytes(sighash_type, 1)
+          self.witness = None
+          self.txins, self.txouts = [], []
+        def __bytes__(self) -> str:
+          result = self.nVersion
+          result += self.marker
+          result += self.flag
+          result += int_to_bytes(len(self.txins), 1)
+          result += bytes(self.txins[0])
+          result += int_to_bytes(len(self.txouts), 1)
+          result += bytes(self.txouts[0])
+          result += bytes(self.txouts[1])
+          if self.witness:
+            result += self.witness
+          result += self.nLockTime
+          return result
+
+      tx = Tx(version=2, marker=0, flag=1)
+      tx.txins.append(txin)
+      tx.txouts.append(txout1)
+      tx.txouts.append(txout2)
+
+      tx_hex = tx.hex()
+      print(tx.hex())
+    #+end_src
+
+    #+RESULTS: tx
+    : 0200000000010125cdfe141889542e6f52a47e2e89ec5689a90f4bd6c2b8cbf28c16dde5ce2ffd0000000000feffffff0299c2000000000000160014d52ce3b0be06f43f523df619ab816d6e1aebaf9150c3000000000000160014dbc67065ff340e44956471a4b85a6b636c223a0656f60000
+
+    - unsigned transaction hex
+
+** 2. Sign transaction
+
+   Lets's get down to signature business but first please take a quick look at few blog posts:
+   - [[https://blog.costan.ro/post/2019-04-09-ecdsa/][ECDSA]] - the digital signature algorithm that is used in Segwit
+   - [[https://blog.costan.ro/post/2018-11-11-bitcoin-transaction/][Bitcoin transaction]] - Bitcoin transaction v0 by hand written in Ruby
+   - [[https://blog.costan.ro/post/2019-09-25-elliptic-curves/][Elliptic curves]] - for a primer on Elliptic curves
+
+*** Sighash
+
+    Heavy stuff, transaction digest algorithm as defined in [[https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki#Specification][BIP-143]]. Basically we take parts of the transaction and double hash it with /sha256/.
+
+    #+name: sighash
+    #+begin_src python :session segwit-python :results output
+      class Sighash(Segwit):
+        def __init__(self, tx, txin, sighash_type=1):
+          self.tx, self.txin = tx, txin
+          self.sighash_type = int_to_bytes(sighash_type, 1)
+        def prevouts(self) -> bytes:
+          tx_hash = self.tx.txins[0].tx_hash
+          tx_index = self.tx.txins[0].tx_index
+          return hash256(tx_hash + tx_index)
+        def sequences(self) -> bytes:
+          return hash256(self.tx.txins[0].sequence)
+        def outpoint(self) -> bytes:
+          return self.txin.tx_hash + self.txin.tx_index
+        def script(self) -> bytes:
+          return hex_to_bytes('1976a914' + decode(txin.tx_address) + '88ac')
+        def outputs(self) -> bytes:
+          result = self.output(self.tx.txouts[0])
+          result += self.output(self.tx.txouts[1])
+          return hash256(result);
+        def output(self, txout) -> bytes:
+          return txout.amount + txout.script
+        def __bytes__(self) -> bytes:
+          result = self.tx.nVersion
+          result += self.prevouts()
+          result += self.sequences()
+          result += self.outpoint()
+          result += self.script()
+          result += self.txin.tx_amount
+          result += self.txin.sequence
+          result += self.outputs()
+          result += self.tx.nLockTime
+          result += self.sighash_type
+          return hash256(result)
+
+      sighash = Sighash(tx=tx, txin=txin)
+      print(sighash.hex())
+    #+end_src
+
+    #+RESULTS: sighash
+    : 657944fb0e113e01e94909b377843889c2311e3a4cfc7dae88d845d3eaee5398
+
+    - transaction digest to be signed in next sections
+
+
+*** Private key
+
+    So good, go good, our primary key that has to be kept secret at all costs, right?
+
+    #+name: private_key
+    #+begin_src python :session segwit-python :results output
+      private_key = 0x8e9d4e802cecb0f703bd2d0136c3527670a79a9dc6d112ba2951ddc60c3da294
+      print('%x' % private_key)
+    #+end_src
+
+    #+RESULTS: private_key
+    : 8e9d4e802cecb0f703bd2d0136c3527670a79a9dc6d112ba2951ddc60c3da294
+
+    - just the private key hex
+
+*** Public key
+
+    Generate public key using the above private key. [[/post/2019-09-25-elliptic-curves/][Elliptic curves]] post might help, also keep in mind that the following code snippet is [[https://sagemath.org][Sagemath]] / Python.
+
+    #+name: public_key
+    #+header: :var private_key=private_key()
+    #+begin_src sage :session segwit-sage :results output
+      p = 2**256 - 2**32 - 2**9 - 2**8 - 2**7 - 2**6 - 2**4 - 1
+      F = FiniteField(p)
+      E = EllipticCurve(F, [0, 7])
+      G_x = 0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798
+      G_y = 0x483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8
+      G = E([G_x, G_y])
+      n = G.order()
+
+      P = int(private_key, 16) * G
+      even = "02" if int(P.xy()[1]) % 2 == 0 else "03"
+      public_key = even + '%x' % P.xy()[0]
+      print(public_key)
+    #+end_src
+
+    #+RESULTS: public_key
+    : 02312e22e2bb3591647b4b97ea6f98dd16b216bb3ad473759282a3de33605106fc
+
+    - compressed public key
+
+*** Signature
+
+    Standard [[/post/2019-04-09-ecdsa/][ECDSA]] signature returned as [[https://bitcoin.stackexchange.com/questions/12554/why-the-signature-is-always-65-13232-bytes-long/12556#12556][DER format]]
+
+    #+name: signature
+    #+header: :var sighash=sighash()
+    #+begin_src sage :session segwit-sage :results output
+      class Der(object):
+        def __init__(self, der=0x30, ri=0x02, r=None, si=0x02, s=None, sighash_type=0x01):
+          self.der = der
+          self.ri, self.r = ri, int_to_bytes(int(r), 32)
+          self.si, self.s = si, int_to_bytes(int(s), 32)
+          self.rl, self.sl = len(self.r), len(self.s)
+          self.sighash_type = sighash_type
+        def __bytes__(self) -> bytes:
+          result = bytearray([self.der])
+          result += int_to_bytes(int(2 + self.rl + 2 + self.sl), 1)
+          result.append(self.ri)
+          result += int_to_bytes(self.rl, 1)
+          result += self.r
+          result.append(self.si)
+          result += int_to_bytes(self.sl, 1)
+          result += self.s
+          result.append(self.sighash_type)
+          return bytes(result)
+        def hex(self) -> str:
+          return bytes(self).hex()
+
+      def ecdsa_sign(pk: int, sighash: str):
+        t = randint(2, n)
+        R = t * G
+        r = mod(R[0], n)
+        m = int(sighash, 16)
+        s = mod((m + r * int(pk, 16)) * inverse_mod(t, n), n)
+        return Der(r=r, s=s)
+
+      signature = ecdsa_sign(private_key, sighash)
+      print(signature.hex())
+    #+end_src
+
+    #+RESULTS: signature
+    : 30440220fc16c3b6475a11f9d1150b9364c5e507e5ae180a89b1d6624e348d0b22f4beee0220a5a870d97bde2931df756e7677045380646ccf163be1f472025ca83d01b1418b01
+
+    - the signature
+
+*** Validate
+
+    And finally, the moment of the truth, with the signature generated above, create the /witness/, set it into tx and validate the final /tx hex/ using /bitcoin-cli/ and /decoderawtransaction/.
+
+    #+header: :var signature=signature()
+    #+header: :var public_key=public_key()
+    #+begin_src python :session segwit-python :results output
+      def witness(signature) -> str:
+        ver = bytearray([0x02])
+        sig = hex_to_bytes(signature)
+        sig_size = int_to_bytes(len(sig), 1)
+        pubkey = hex_to_bytes(public_key)
+        pubkey_size = int_to_bytes(len(pubkey), 1)
+        return ver + sig_size + sig + pubkey_size + pubkey
+
+      tx.witness = witness(signature)
+      tx_hex = tx.hex()
+      print("Signed TX: " + tx_hex)
+
+      import subprocess
+      process = subprocess.run(["bitcoin-cli", "decoderawtransaction", tx_hex], capture_output=True)
+      print(process.stdout)
+      print(process.stderr)
+    #+end_src
+
+    #+RESULTS:
+    : Signed TX: 0200000000010125cdfe141889542e6f52a47e2e89ec5689a90f4bd6c2b8cbf28c16dde5ce2ffd0000000000feffffff0299c2000000000000160014d52ce3b0be06f43f523df619ab816d6e1aebaf9150c3000000000000160014dbc67065ff340e44956471a4b85a6b636c223a0602473044022054b3d785c62432f341bba6e14a818c97ab32e8d24414d0aafa9a8a1a2d86b8f802200e4122267fbe68021295b5764eb651e40fff562758cfbba0675eccdb8265ce49012102312e22e2bb3591647b4b97ea6f98dd16b216bb3ad473759282a3de33605106fc56f60000
+    : b'{\n  "txid": "cf2d115be7eb6f3a7ce98702d01cc4e6bf5a79c45a5796d1a2adb1c988c0511d",\n  "hash": "b2b884e70fdc2fdf8d7062df78a63ffc4549cfe8ee32ebd913631048136d143a",\n  "version": 2,\n  "size": 222,\n  "vsize": 141,\n  "weight": 561,\n  "locktime": 63062,\n  "vin": [\n    {\n      "txid": "fd2fcee5dd168cf2cbb8c2d64b0fa98956ec892e7ea4526f2e54891814fecd25",\n      "vout": 0,\n      "scriptSig": {\n        "asm": "",\n        "hex": ""\n      },\n      "txinwitness": [\n        "3044022054b3d785c62432f341bba6e14a818c97ab32e8d24414d0aafa9a8a1a2d86b8f802200e4122267fbe68021295b5764eb651e40fff562758cfbba0675eccdb8265ce4901",\n        "02312e22e2bb3591647b4b97ea6f98dd16b216bb3ad473759282a3de33605106fc"\n      ],\n      "sequence": 4294967294\n    }\n  ],\n  "vout": [\n    {\n      "value": 0.00049817,\n      "n": 0,\n      "scriptPubKey": {\n        "asm": "0 d52ce3b0be06f43f523df619ab816d6e1aebaf91",\n        "hex": "0014d52ce3b0be06f43f523df619ab816d6e1aebaf91",\n        "address": "tb1q65kw8v97qm6r753a7cv6hqtddcdwhtu360pjqd",\n        "type": "witness_v0_keyhash"\n      }\n    },\n    {\n      "value": 0.00050000,\n      "n": 1,\n      "scriptPubKey": {\n        "asm": "0 dbc67065ff340e44956471a4b85a6b636c223a06",\n        "hex": "0014dbc67065ff340e44956471a4b85a6b636c223a06",\n        "address": "tb1qm0r8qe0lxs8yf9tywxjtskntvdkzywsx2cacr2",\n        "type": "witness_v0_keyhash"\n      }\n    }\n  ]\n}\n'
+    : b''
+
+    Voila! Valid TX!
+
+* BIPs
+  - https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0144.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0145.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
+* References
+  - https://blog.susanka.eu/types-of-bitcoin-transactions-part-ii-segwit/
+  - https://en.bitcoin.it/wiki/Segregated_Witness
+  - https://bitcoincore.org/en/segwit_wallet_dev/
+  - https://github.com/jimmysong/programmingbitcoin/blob/master/ch13.asciidoc
+  - https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch07.asciidoc
+  - https://en.bitcoin.it/wiki/NLockTime
+  - https://developer.bitcoin.org/devguide/transactions.html
+  - https://bitcoin.stackexchange.com/questions/92680/what-are-the-der-signature-and-sec-format
+  - https://mempool.space/signet/tx/fd2fcee5dd168cf2cbb8c2d64b0fa98956ec892e7ea4526f2e54891814fecd25
+  - https://mempool.space/signet/tx/cf2d115be7eb6f3a7ce98702d01cc4e6bf5a79c45a5796d1a2adb1c988c0511d
