@@ -6,20 +6,23 @@ comments: false
 
 "I work for no one, I trust no one, I am a free man" - Julius Cornelius
 
-An old fashion "Jack of all trades" kind of a guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto land.
+An old fashion "Jack of all trades" kind of a guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto realm.
 
 These days I trade crypto derivatives to feed my belly and build software to feed my soul.
-
-### Travel activity
-
-{{< partial "huveragy/huveragy.html" >}}
 
 ### Coding activity
 
 <figure><embed src="https://wakatime.com/share/@icostan/b8113d2a-134d-4e60-b329-415dce67837b.svg"></embed></figure>
 
-### Why the blog name?
+### Travel activity (powered by [Huveragy](https://github.com/icostan/huveragy))
 
+{{< partial "huveragy/huveragy.html" >}}
+
+### Sports activity
+
+Coming soon.
+
+### Why the blog name?
 
 Why decentralized?
 
@@ -36,7 +39,3 @@ I am a slow-learner who does not understand high level concepts and I like to di
 Why the easy way?
 
 Once I understand things "the hard way" then everything else is just common sense.
-
-### Sports activity
-
-Coming soon.

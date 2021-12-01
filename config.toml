@@ -77,53 +77,77 @@ disqusShortname = "icostan"
   keybase = "icostan"
   kaggle = "icostan"
 
+[[menu.main]]
+    identifier = "bitcoin"
+    name = "Bitcoin"
+    weight = 1
+[[menu.main]]
+    parent = "bitcoin"
+    name = "4. Segwit transaction"
+    url = "post/2021-11-25-bitcoin-segwit-transaction/"
+    weight = 1
+[[menu.main]]
+    parent = "bitcoin"
+    name = "3. Segwit address"
+    url = "post/2020-02-10-bitcoin-bech32-segwit-address/"
+    weight = 2
+[[menu.main]]
+    parent = "bitcoin"
+    name = "2. Bitcoin transaction"
+    url = "post/2018-11-11-bitcoin-transaction/"
+    weight = 3
+[[menu.main]]
+    parent = "bitcoin"
+    name = "1. Bitcoin address"
+    url = "post/2018-10-09-bitcoin-address/"
+    weight = 4
 
 [[menu.main]]
-    identifier = "crypto"
-    name = "Crypto"
+    identifier = "cryptography"
+    name = "Cryptography"
     weight = 10
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "RSA"
     url = "post/2019-03-16-rsa"
     weight = 1
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "ElGamal"
     url = "post/2019-03-26-elgamal"
     weight = 2
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "ECDSA"
     url = "post/2019-04-09-ecdsa"
     weight = 3
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "Schnorr"
     url = "post/2019-06-19-schnorr"
     weight = 4
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "EC-Schnorr"
     url = "post/2019-06-25-ec-schnorr"
     weight = 5
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "Zero knowledge proofs"
     url = "post/2019-08-26-zero-knowledge-proofs"
     weight = 6
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "Elliptic curves"
     url = "post/2019-09-25-elliptic-curves"
     weight = 7
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "Commitment schemes"
     url = "post/2020-02-25-commitment-schemes"
     weight = 8
 [[menu.main]]
-    parent = "crypto"
+    parent = "cryptography"
     name = "Hash functions"
     url = "post/2020-09-15-hash-functions"
     weight = 9
@@ -134,34 +158,19 @@ disqusShortname = "icostan"
     weight = 20
 [[menu.main]]
     parent = "coins"
-    name = "Bitcoin Segwit address"
-    url = "post/2020-02-10-bitcoin-bech32-segwit-address/"
+    name = "Ethereum address"
+    url = "post/2020-10-27-generate-ethereum-address"
     weight = 1
-[[menu.main]]
-    parent = "coins"
-    name = "Bitcoin transaction"
-    url = "post/2018-11-11-bitcoin-transaction/"
-    weight = 2
-[[menu.main]]
-    parent = "coins"
-    name = "Bitcoin address"
-    url = "post/2018-10-09-bitcoin-address/"
-    weight = 3
 [[menu.main]]
     parent = "coins"
     name = "Monero address"
     url = "post/2020-07-18-generate-monero-address"
-    weight = 4
-[[menu.main]]
-    parent = "coins"
-    name = "Ethereum address"
-    url = "post/2020-10-27-generate-ethereum-address"
-    weight = 5
+    weight = 2
 [[menu.main]]
     parent = "coins"
     name = "Iota address"
     url = "post/2020-12-28-generate-iota-address"
-    weight = 6
+    weight = 3
 
 [[menu.main]]
     identifier = "finance"
@@ -199,8 +208,8 @@ disqusShortname = "icostan"
     weight = 50
 [[menu.main]]
     parent = "linux"
-    name = "1. Write Linux kernel module"
-    url = "post/2020-03-24-write-linux-kernel-module"
+    name = "3. Use Linux kernel module"
+    url = "post/2021-09-30-use-linux-kernel-module"
     weight = 1
 [[menu.main]]
     parent = "linux"
@@ -209,8 +218,8 @@ disqusShortname = "icostan"
     weight = 2
 [[menu.main]]
     parent = "linux"
-    name = "3. Use Linux kernel module"
-    url = "post/2021-09-30-use-linux-kernel-module"
+    name = "1. Write Linux kernel module"
+    url = "post/2020-03-24-write-linux-kernel-module"
     weight = 3
 [[menu.main]]
     parent = "linux"
@@ -344,22 +353,22 @@ disqusShortname = "icostan"
     weight = 85
 [[menu.main]]
     parent = "travel"
-    name = "G2: aftermath"
+    name = "4. G2: aftermath"
     url = "post/2021-08-12-gasherbrum2-aftermath/"
     weight = 1
 [[menu.main]]
     parent = "travel"
-    name = "G2: compare gear"
+    name = "3. G2: compare gear"
     url = "post/2021-05-27-gasherbrum2-how-to-compare-gear/"
     weight = 2
 [[menu.main]]
     parent = "travel"
-    name = "G2: gear list"
+    name = "2. G2: gear list"
     url = "post/2021-05-10-gasherbrum2-gear-list/"
     weight = 3
 [[menu.main]]
     parent = "travel"
-    name = "G2: training plan"
+    name = "1. G2: training plan"
     url = "post/2021-04-15-gasherbrum2-training-plan/"
     weight = 4
 [[menu.main]]

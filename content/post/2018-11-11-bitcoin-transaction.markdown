@@ -1,12 +1,10 @@
 ---
 layout: post
-title:  "Bitcoin: transaction"
+title:  "Bitcoin transaction by hand"
 subtitle: Bitcoin
 date:   2018-11-11
 tags: ["bitcoin", "transaction", "cryptography", "math", "ruby"]
 ---
-
-# Transaction
 
 This is Part 2 of 'The hard way - Bitcoin' series and I will start with 'the easy way' section first because even this gets a bit complex, then will continue with the hard stuff, crafting a Bitcoin transaction from scratch using basic math and cryptography.
 

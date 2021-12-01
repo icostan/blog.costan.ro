@@ -3,7 +3,7 @@
 #+date:   2020-02-10
 #+tags[]: bitcoin bech32 segwit address generation derivation
 
-This is how to generate a Bech32 native segwit address (also called P2WPKH - Pay To Witness Public Key Hash) in a few lines of ZSH shell code.
+This is how to generate a Bech32 native segwit address in just a few lines of ZSH shell.
 
 #+begin_src sh :results output
 openssl ecparam -genkey -name secp256k1 -out secret.pem
@@ -220,3 +220,4 @@ Voila!
   - [[https://bitcoin.stackexchange.com/questions/59644/how-do-these-openssl-commands-create-a-bitcoin-private-key-from-a-ecdsa-keypair][Generating ECDSA keypair with OpenSSL]]
   - [[https://medium.com/@MeshCollider/some-of-the-math-behind-bech32-addresses-cf03c7496285][(Some of) the math behind Bech32 addresses]]
   - [[https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki][BIP-144: Segregated Witness (Consensus layer)]]
+  - https://github.com/sipa/bech32

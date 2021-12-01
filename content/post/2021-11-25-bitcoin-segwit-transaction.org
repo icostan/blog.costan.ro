@@ -1,9 +1,9 @@
-#+title: Segwit transaction
+#+title: Segwit transaction by hand
 #+subtitle: Bitcoin
 #+date: 2021-11-25
 #+tags[]: bitcoin segwit transaction
 
-Lets manually craft a SegWit transaction using only [[https://docs.python.org/3/library/functions.html][built-in Python3 functions]] for hex/bytes manipulation and [[https://sagemath.org][Sagemath]] for elliptic curves arithmetic.
+Lets hand craft a SegWit transaction using only [[https://docs.python.org/3/library/functions.html][built-in Python3 functions]] for hex/bytes manipulation and [[https://sagemath.org][Sagemath]] for elliptic curves arithmetic.
 
 ** 0. Utils
    First thing first, a base class /Segwit/ that provides hex representation for all instances
