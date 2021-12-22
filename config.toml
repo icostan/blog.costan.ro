@@ -223,19 +223,24 @@ disqusShortname = "icostan"
     weight = 3
 [[menu.main]]
     parent = "linux"
+    name = "From HDD to SSD w/ EFI"
+    url = "post/2021-12-21-from-hdd-to-ssd-with-efi-boot"
+    weight = 4
+[[menu.main]]
+    parent = "linux"
     name = "Back to my first love"
     url = "post/2019-07-05-back-to-my-first-love/"
-    weight = 4
+    weight = 5
 [[menu.main]]
     parent = "linux"
     name = "Package management"
     url = "post/2019-09-10-package-management"
-    weight = 5
+    weight = 6
 [[menu.main]]
     parent = "linux"
     name = "Config management"
     url = "post/2019-10-22-configuration-management"
-    weight = 6
+    weight = 7
 
 [[menu.main]]
     identifier = "math"

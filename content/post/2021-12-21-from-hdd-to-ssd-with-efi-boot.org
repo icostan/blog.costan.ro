@@ -1,0 +1,205 @@
+#+title: From HDD to SSD w/ EFI boot
+#+subtitle: Linux
+#+date: 2021-12-21
+#+tags[]: linux arch hhd ssd efi boot
+
+Oh, Oh! Santa is back in town and I bought myself a small gift to upgrade my Arch Linux garage server from HDD to SSD, here is the step-by-step how to...
+
+** 0. Before upgrade
+  Cleanup the packages' cache, tmp folder or any other folder that you no longer want.
+  #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+    paccache -rk1
+  #+end_src
+
+  #+RESULTS:
+  :
+  : ==> finished: 664 packages removed (disk space saved: 6.55 GiB)
+
+** 1. Upgrade
+*** 1.1 Partition the disk
+  We are going to create 2 partitions and GUID Partition Table (GPT) using /*gdisk*/ tool.
+
+  #+begin_src sh :dir /sshx:miner@rig|sudo::
+    gdisk /dev/nvme0n1
+  #+end_src
+
+*** 1.2 Make filesystems
+  Partition 1 is FAT32 because it is required by EFI boot.
+  #+begin_src sh
+    mkfs.fat /dev/nvme0n1p1
+    mkfs.ext4 /dev/nvme0n1p2
+  #+end_src
+
+*** 1.3 Mount the partitions
+  #+begin_src sh
+    mkdir -p /mnt/ssd/boot
+    mount /dev/nvme0n1p2 /mnt/ssd
+    mount /dev/nvme0n1p1 /mnt/ssd/boot
+  #+end_src
+
+*** 1.4 Rsync data
+  You can also exclude large folders (e.g. blockchains) as this can be copied after migration.
+  #+begin_src sh
+    rsync -aAXv --exclude={'/dev/*','/proc/*','/sys/*','/tmp/*','/run/*','/mnt/*'} /* /mnt/ssd/
+  #+end_src
+
+*** 1.5 Generage fstab
+ Generate new /etc/fstab file.
+  #+begin_src sh
+    genfstab -U -p /mnt/ssd > /mnt/ssd/etc/fstab
+  #+end_src
+
+*** 1.6 Chroot into system
+  Mount required virtual filesystems and /*chroot*/.
+  #+begin_src sh
+    mount --rbind /dev /mnt/ssd/dev
+    mount --rbind /sys /mnt/ssd/sys
+    mount -t /proc /mnt/ssd/proc
+    chroot /mnt/ssd /bin/zsh
+  #+end_src
+
+*** 1.7 Create EFI entry
+  Before any EFI change we need /efivarsfs/ mounted for user-space tools.
+  #+begin_src sh
+    mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+    efivar-tester
+  #+end_src
+
+  Test it with /efivar-tester/, if you get /*"EFI variables are not supported on this system"*/ error then something is wrong and /efivars/ are not avaialble to user-space.
+
+  #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+    efivar-tester
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  About to test empty
+  testing efi_set_variable()
+  testing efi_get_variable_size()
+  testing efi_get_variable_exists()
+  testing efi_get_variable()
+  testing efi_get_variable_attributes()
+  testing efi_del_variable()
+  testing efi_append_variable()
+  testing efi_get_variable()
+  testing efi_del_variable()
+  ...
+  About to test eleven
+  testing efi_set_variable()
+  testing efi_get_variable_size()
+  testing efi_get_variable_exists()
+  testing efi_get_variable()
+  testing efi_get_variable_attributes()
+  testing efi_del_variable()
+  testing efi_append_variable()
+  testing efi_get_variable()
+  testing efi_del_variable()
+  ...
+  #+end_example
+
+  Alright, if all is good, now is time to get the PARTUUID.
+
+  #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+    lsblk -dno PARTUUID /dev/nvme0n1p2
+  #+end_src
+
+  #+RESULTS:
+  : c74f4ff4-0fa4-4490-90e3-036638b796ac
+
+  Create an EFI entry to boot from SSD using excelent /efibootmgr/ tool.
+  #+begin_src sh
+    efibootmgr --disk /dev/nvme0n1 --part 1 --create --label 'Arch on SSD' \\
+    --loader /vmlinuz-linux \\
+    --unicode 'root=PARTUUID=c74f4ff4-0fa4-4490-90e3-036638b796ac rw initrd=\initramfs-linux.img' \\
+    --verbose
+  #+end_src
+
+  Note: alternatively we can just /*ls*/ the devices to get the PARTUUIDs.
+  #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+    ls -l /dev/disk/by-partuuid/
+  #+end_src
+
+  #+RESULTS:
+  : total 0
+  : lrwxrwxrwx 1 root root 15 Dec 22 08:31 3a0f3b78-ecd4-443c-83e7-cf1f56f9be8e -> ../../nvme0n1p1
+  : lrwxrwxrwx 1 root root 10 Dec 21 07:55 411c9357-34d8-4ef3-9a28-e6699c0d5a0d -> ../../sda1
+  : lrwxrwxrwx 1 root root 15 Dec 22 08:31 c74f4ff4-0fa4-4490-90e3-036638b796ac -> ../../nvme0n1p2
+  : lrwxrwxrwx 1 root root 10 Dec 21 07:55 e514bb6f-5d47-4f8d-a5e6-b46567ea0166 -> ../../sda2
+
+*** 1.8 Boot sequence
+  Temporary boot order for next boot only.
+  #+begin_src sh
+    efibootmgr -n 2
+  #+end_src
+
+  REBOOT!
+
+  #+begin_src sh
+    systemctl reboot
+  #+end_src
+
+  You made it this far... then make boot sequence permanent and cleanup old EFI.
+  #+begin_src sh
+    efibootmgr -o 2,0
+    efibootmgr -b 1 -B
+  #+end_src
+
+  All DONE!
+
+  This is final boot sequene:
+  #+begin_src sh :dir /sshx:miner@rig: :results output
+    efibootmgr
+  #+end_src
+
+  #+RESULTS:
+  : BootCurrent: 0002
+  : Timeout: 1 seconds
+  : BootOrder: 0002,0001
+  : Boot0001* Hard Drive
+  : Boot0002* Arch on SSD
+
+  and partitioning:
+  #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+    df -h -t ext4 -t vfat
+  #+end_src
+
+  #+RESULTS:
+  : Filesystem      Size  Used Avail Use% Mounted on
+  : /dev/nvme0n1p2  916G  507G  363G  59% /
+  : /dev/nvme0n1p1   99M   51M   49M  51% /boot
+
+** 2. After upgrade
+*** TRIM
+  Enable TRIM optimization for SSD devices.
+  #+begin_src sh
+    systemctl enable fstrim.timer
+  #+end_src
+*** Benchmark
+  Performance bench... it should be around 10x better than plain old HDD.
+  #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+    hdparm -Tt /dev/sda
+    hdparm -Tt /dev/nvme0n1
+  #+end_src
+
+  #+RESULTS:
+  :
+  : /dev/sda:
+  :  Timing cached reads:   7260 MB in  2.00 seconds = 3631.83 MB/sec
+  :  Timing buffered disk reads: 660 MB in  3.00 seconds = 219.69 MB/sec
+  :
+  : /dev/nvme0n1:
+  :  Timing cached reads:   7434 MB in  2.00 seconds = 3719.17 MB/sec
+  :  Timing buffered disk reads: 4046 MB in  3.00 seconds = 1348.28 MB/sec
+
+** References
+  - https://wiki.archlinux.org/title/Solid_state_drive
+  - https://wiki.archlinux.org/title/Pacman#Cleaning_the_package_cache
+  - https://wiki.archlinux.org/title/GPT_fdisk
+  - https://wiki.archlinux.org/title/Partitioning
+  - https://wiki.archlinux.org/title/Rsync
+  - https://wiki.archlinux.org/title/Fstab
+  - https://www.rdeeson.com/weblog/157/moving-arch-linux-to-a-new-ssd-with-rsync
+  - https://jivoi.github.io/2016/04/04/move-from-hdd-to-ssd-with-archlinux/
+  - https://wiki.archlinux.org/title/Persistent_block_device_naming
+  - https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface#efibootmgr
+  - https://en.wikipedia.org/wiki/Trim_(computing)

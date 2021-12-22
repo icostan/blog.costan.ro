@@ -29,12 +29,13 @@
 *** literate blogging with Orgmode                       :productivity:emacs:
     - multiple languages
     - evaluate block inline
+    - evaluate remote block inline
     - counting lines
     - pass results between blocks
     - edit block's content in native buffer
     - exporting to multiple formats
     - charts with mindmap, ditta, dot
-    - orgmode is first-class citize in Hugo
+    - orgmode is first-class citizen in Hugo
 *** DONE Week/Day close tradingview indicator
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** cryptographic trap-doors                                   :cryptography:
@@ -216,7 +217,8 @@
     - rings / fields
     - lattices
     - isogenies
-*** derivatives                                                     :trading:
+*** TODO chess vs. derivatives                                      :trading:
+  SCHEDULED: <2022-01-07 Fri>
     explain with price chart, then point extending horizonal expiry dates, vertical strike prices
     - spot: forex, stocks, commods, crypto
     - cfd
@@ -342,7 +344,7 @@
     - https://moontowermeta.com/tails-explained/
     - https://en.wikipedia.org/wiki/Paradox_of_thrift
 *** TODO Taproot by hand
-    SCHEDULED: <2021-12-07 Tue>
+    SCHEDULED: <2022-01-05 Wed>
     - https://bitcointaproot.cc/
     - https://taproot.watch/
     - https://bitcoinops.org/en/topics/taproot/
@@ -364,6 +366,8 @@
     - https://en.wikipedia.org/wiki/Secret_sharing
 *** BLS signature
     - https://medium.com/cryptoadvance/bls-signatures-better-than-schnorr-5a7fe30ea716
+*** DONE migrate from HDD to SSD
+  SCHEDULED: <2021-12-21 Tue>
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -453,10 +457,12 @@
 *** publish code snippets as gists
 *** update *.md posts into *.org
 ** TODO Write new blog post
-    SCHEDULED: <2021-12-07 Tue +2w>
+    SCHEDULED: <2022-01-04 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-11-30 Tue 21:29]
+    :LAST_REPEAT: [2021-12-21 Tue 10:43]
     :END:
+    - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]
+    - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]
     - State "DONE"       from "TODO"       [2021-11-30 Tue 21:29]
     - State "DONE"       from "TODO"       [2021-11-30 Tue 21:29]
     - State "DONE"       from "TODO"       [2021-11-18 Thu 16:18]
