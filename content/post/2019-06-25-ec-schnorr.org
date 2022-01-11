@@ -5,7 +5,7 @@
 
 * Overview
 
-EC-Schnorr, as the name suggests, is a Schnorr-type digital signature scheme over elliptic curve, it's [[/post/2019-04-09-ecdsa][ECDSA]]'s little sister and [[/post/2019-06-19-schnorr][Schnorr]]'s big brother with multiple implementations out there: maybe most widely deployed being [[https://en.wikipedia.org/wiki/EdDSA][EdDSA]] (used in [[https://web.getmonero.org][Monero]]) or the upcoming [[https://blockstream.com/2018/01/23/en-musig-key-aggregation-schnorr-signatures/][MuSig]] implementation in Bitcoin.
+EC-Schnorr, as the name suggests, is a Schnorr-type digital signature scheme over elliptic curve, it's [[/post/2019-04-09-ecdsa][ECDSA]]'s little sister and [[/post/2019-06-19-schnorr][Schnorr]]'s big brother implemented in the upcoming [[https://blockstream.com/2018/01/23/en-musig-key-aggregation-schnorr-signatures/][MuSig]] in Bitcoin.
 
 It is also one of my favorite digital signature scheme because of its simplicity. As you will see later it is just a linear equation that opens the door to multi signatures and signature aggregation.
 

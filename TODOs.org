@@ -40,8 +40,12 @@
     CLOSED: [2019-02-28 Thu] SCHEDULED: <2019-02-28 Thu>
 *** cryptographic trap-doors                                   :cryptography:
     - prime factorization
+    -- RSA
+    - Diffie-Hellman problem
+    -- BLS
     - discrete log
-    -- EC discrete log
+    -- ELGamal
+    -- EC/Schnorr discrete log
     - lattice
     - isogeny
     - hash function
@@ -364,8 +368,10 @@
 *** secret sharing
     - https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
     - https://en.wikipedia.org/wiki/Secret_sharing
-*** BLS signature
+*** TODO BLS signature
     - https://medium.com/cryptoadvance/bls-signatures-better-than-schnorr-5a7fe30ea716
+    - https://en.wikipedia.org/wiki/BLS_digital_signature
+    - https://medium.com/@srikarv/the-bls-signature-scheme-a-short-intro-801c723afffa
 *** DONE migrate from HDD to SSD
   SCHEDULED: <2021-12-21 Tue>
 ** Fixes
@@ -395,7 +401,6 @@
 *** N/A snippets colors
 *** code snippets, line numbers
 *** zero-knowledge proofs tag
-*** replace old md with org files
 *** use org symbols e.g. \phi
 *** DONE fix charts in historical volatility post
 *** DONE HTTPS redirects from iuliancostan.com
@@ -409,6 +414,10 @@
 *** fix ESDSA/Schnorr verification equation
     - s*R = m*G + (R.x)*P
     - s*G = H(R,P,m)*P
+*** fix ElGamal encryption/signature
+    - first based on DH, second based on discrete log
+    - https://en.wikipedia.org/wiki/ElGamal_encryption
+    - https://en.wikipedia.org/wiki/ElGamal_signature_scheme
 ** Tasks
 *** DONE Wakatime reports
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -455,7 +464,10 @@
     - State "DONE"       from "TODO"       [2019-07-05 Fri 13:17]
     https://gitlab.com/help/user/project/pages/lets_encrypt_for_gitlab_pages.md
 *** publish code snippets as gists
-*** update *.md posts into *.org
+*** TODO replace old md with org files
+    - [X] RSA
+    - [ ] ElGamal
+    - [ ] ECDSA
 ** TODO Write new blog post
     SCHEDULED: <2022-01-18 Tue +2w>
     :PROPERTIES:

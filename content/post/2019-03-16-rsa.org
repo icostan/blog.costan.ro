@@ -1,0 +1,184 @@
+#+title:  RSA
+#+subtitle: Cryptography
+#+date: 2019-03-16
+#+tags[]: cryptography rsa factorization math eli5
+
+[[https://en.wikipedia.org/wiki/RSA_(cryptosystem)][RSA]] (Rivest-Shamir-Adleman) needs no introduction, it is well known and most used public-key cryptosystem that governs our digital lives.
+
+Here is my take, a simple implementation in 10 lines of Ruby code that is neither the best implementation nor the most efficient one but is enough for the purpose of this article.
+
+#+begin_src ruby
+  p = 7                                                             # parameters
+  q = 11
+  n = p * q
+  phi = (p-1) * (q-1)
+  gcd = ->(a, b) { while(b != 0) do r, a = a % b, b; b = r end; a } # encryption
+  e = (2..phi).find{|i| gcd.call(i, phi) == 1 }
+  m = 6
+  c = m**e % n
+  d = (2..phi).find{|i| (i * e) % phi == 1 }                        # decryption
+  message = c**d % n
+  m == message ? "YOU ARE A CRYPTOSTAR!" : "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+Except lines /#5/ that involves an algorithm and a while loop, everything else is mid-school math and /**/ is the exponentiation operator in Ruby.
+
+The curious minds please read simple explanations below.
+
+** Integer factorization trapdoor
+
+The very first thing to do is to choose 2 prime numbers, /p/ and /q/:
+
+#+begin_src ruby :session rsa
+  p = 7                                                             # parameters
+  q = 11
+#+end_src
+
+#+RESULTS:
+: 7
+: 11
+
+Next, let's multiply the two numbers:
+
+#+begin_src ruby :session rsa
+  n = p * q
+#+end_src
+
+#+RESULTS:
+: 77
+
+Now it's time to define our first function /phi/:
+
+#+begin_src ruby :session rsa
+  phi = (p-1) * (q-1)
+#+end_src
+
+#+RESULTS:
+: 60
+
+which is [[https://en.wikipedia.org/wiki/Euler%27s_totient_function][Euler's totient function]] defined as number of integers less than /n/ that are [[https://en.wikipedia.org/wiki/Coprime_integers][coprime]] with /n/ and has two interesting properties:
+
+-   the function is multiplicative and /phi(a*b) = phi(a) * phi(b)/
+-   if /n/ is a prime number then /phi(n) = n - 1/
+
+And finally we have the [[https://en.wikipedia.org/wiki/Trapdoor_function][cryptographic trapdoor function]] which is the most important cryptographic primitive to understand. Trapdoors are based on asymmetric computation that is easy to do in one direction but it is very difficult to calculate in the opposite direction.
+
+In our case, if one (an attacker) does not know the initial /p/ and /q/ prime numbers it will be very hard to calculate the /phi/ because [[https://en.wikipedia.org/wiki/Integer_factorization][integer factorization]] of /n/ is known to be infeasible to calculate for very large numbers.
+
+** Message encryption
+
+Now it's time to define our first algorithm, /gcd/ which is the [[https://en.wikipedia.org/wiki/Greatest_common_divisor][greatest common divisor]] and is defined as the largest positive integer that divides both /a/ and /b/.
+
+If single-liner GCD looks scary then here is the formatted version of the [[https://en.wikipedia.org/wiki/Euclidean_algorithm][Euclidean algorithm]].
+
+#+begin_src ruby :results none
+  def gcd(a, b)
+    while(b != 0) do
+      r = a % b
+      a = b
+      b = r
+    end
+    a
+  end
+#+end_src
+
+The /e/ key below is the encryption key and is defined as the smallest value for which /gcd(e, phi) == 1/ is true.
+To keep things simple we will just brute-force and find /e/ but keep in mind that this will be very inefficient for large numbers.
+
+#+begin_src ruby :session rsa :results output
+  gcd = ->(a, b) { while(b != 0) do r, a = a % b, b; b = r end; a } # encryption
+  e = (2..phi).find{|i| gcd.call(i, phi) == 1 }
+#+end_src
+
+#+RESULTS:
+: 7
+
+Message encryption is modulo exponentiation of message /m/ at encryption key /e/.
+
+#+begin_src ruby :session rsa
+  m = 6
+  c = m**e % n
+#+end_src
+
+#+RESULTS:
+: 41
+
+** Message decryption
+
+The /d/ key below is the decryption key (or private/secret key) and is defined as  [[https://en.wikipedia.org/wiki/Multiplicative_inverse][multiplicative inverse]]  of /e/ over  [[https://en.wikipedia.org/wiki/Finite_field][finite field]]  /phi/. Simple put in math terms: /e * d mod phi ≌ 1/.
+
+Again we will just brute-force and calculate the inverse but there are better algorithms to do this, like [[https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm][Extended Euclidean algorithm]].
+
+#+begin_src ruby :session rsa
+  d = (2..phi).find{|i| (i * e) % phi == 1 }                        # decryption
+#+end_src
+
+#+RESULTS:
+: 43
+
+Message decryption is another modulo exponentiation using the encrypted cipher /c/ and decryption key /d/:
+
+#+begin_src ruby :session rsa
+  message = c**d % n
+  m == message ? "YOU ARE A CRYPTOSTAR!" : "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+** Intuition
+
+At first sight it looks like magic right? but if you reason about it, it's very easy.
+
+Starting backwards, with the decryption/encryption formulas:
+
+#+begin_src tex
+  m = c^d mod n #1
+  c = m^e mod n #2
+#+end_src
+
+Let's substitute /#2/ in /#1/:
+
+#+begin_src tex
+  m = (m^e)^d mod n
+#+end_src
+
+Exponentials power rule says that */(a^b)^c ==  a^(b*c)/* and in the end we only need to prove
+
+#+begin_src tex
+  m = m^(e*d) mod n
+#+end_src
+
+or using another form of */e*d ≌ 1 mod phi/* where /c/ is a positive integer
+
+#+begin_src tex
+  m = m^(1 + c * phi) mod n
+#+end_src
+
+apply power rule again
+
+#+begin_src tex
+  m = m^1 * (m^phi)^c mod n
+#+end_src
+
+and last congruence using  [[https://en.wikipedia.org/wiki/Euler%27s_theorem][Euler's theorem]] that says */a^phi(n) ≌ 1 mod n/*
+
+#+begin_src tex
+  m ≌ m * 1^c mod n
+#+end_src
+
+If the intuition is valid then the following expression stands true, where 7 is /e/ and 43 is /d/ in our little example:
+
+#+begin_src ruby
+  6 == 6**(7 * 43) % 77 ? "YOU ARE A CRYPTOSTAR!" : "YOU SUCK!"
+#+end_src
+
+#+RESULTS:
+: YOU ARE A CRYPTOSTAR!
+
+** References
+   - https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+   - https://brilliant.org/wiki/rsa-encryption/
