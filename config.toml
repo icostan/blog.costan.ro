@@ -351,6 +351,11 @@ disqusShortname = "icostan"
     name = "Price breaks indicator"
     url = "/post/2021-10-16-price-hlc-breaks-indicator/"
     weight = 8
+[[menu.main]]
+    parent = "trading"
+    name = "Chess vs Trading"
+    url = "/post/2022-01-11-chess-vs-trading/"
+    weight = 9
 
 [[menu.main]]
     identifier = "travel"

@@ -217,7 +217,7 @@
     - rings / fields
     - lattices
     - isogenies
-*** TODO chess vs. derivatives                                      :trading:
+*** DONE chess vs. derivatives                                      :trading:
   SCHEDULED: <2022-01-07 Fri>
     explain with price chart, then point extending horizonal expiry dates, vertical strike prices
     - spot: forex, stocks, commods, crypto
@@ -457,10 +457,11 @@
 *** publish code snippets as gists
 *** update *.md posts into *.org
 ** TODO Write new blog post
-    SCHEDULED: <2022-01-04 Tue +2w>
+    SCHEDULED: <2022-01-18 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2021-12-21 Tue 10:43]
+    :LAST_REPEAT: [2022-01-05 Wed 12:12]
     :END:
+    - State "DONE"       from "TODO"       [2022-01-05 Wed 12:12]
     - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]
     - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]
     - State "DONE"       from "TODO"       [2021-11-30 Tue 21:29]

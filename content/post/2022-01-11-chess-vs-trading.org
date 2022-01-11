@@ -1,0 +1,76 @@
+#+title: Chess vs. trading
+#+subtitle: Trading
+#+date: 2022-01-11
+
+Just for fun (and maybe some profit) let's do a comparison (a bit far fetched) between chess and trading.
+
+** Overview
+  0. *[[https://www.investopedia.com/terms/f/financialasset.asp][financial asset]]* (capital) is like *[[https://en.wikipedia.org/wiki/King_(chess)][king]]*
+     - in chess you have to protect the kind at all costs
+     - preserve the capital is one of the most important rule in trading
+  1. *[[https://www.investopedia.com/terms/s/spotmarket.asp][spot]]* (*[[https://www.investopedia.com/terms/c/cash_trading.asp][cash]]*) trading is like *[[https://en.wikipedia.org/wiki/Pawn_(chess)][pawn]]*
+     - in chess pawn moves forward 1 (or 2) squares
+     - in trading we buy/sell a single asset and own it (e.g. /*BTC*/)
+  2. *[[https://www.investopedia.com/terms/m/margin.asp][margin]]* trading is like *[[https://en.wikipedia.org/wiki/Bishop_(chess)][bishop]]*
+     - bishop moves multiple cells diagonally (see it as a single dimension)
+     - in trading we go long/short a contract (e.g. /*BTCUSD*/) on margin, but you don't actually own the underlying asset (e.g. /*BTC*/).
+  2. *[[https://www.investopedia.com/terms/f/futures.asp][futures]]* trading is like *[[https://en.wikipedia.org/wiki/Rook_(chess)][rook]]*
+     - rook moves both horizontally or vertically (see it as two dimensions), multiple rows or columns at a time
+     - go long/short futures contracts (e.g. /*BTCUSD-30DEC2022*/) with different expiration times (e.g. /*30DEC2022*/ - time dimension)  created on top of an underlying product (e.g. /*BTCUSD*/ - price dimension)
+  3. *[[https://www.investopedia.com/terms/o/option.asp][options]]* trading is like *[[https://en.wikipedia.org/wiki/Queen_(chess)][queen]]*
+     - queen is both rook/bishop at the same time and moves in all directions
+     - go long/short options contracts (e.g. /*BTCUSD-30DEC2022-50000-C*/) for different strikes (e.g. /*50000*/ - strike dimension) and option types (e.g. /*C*/ aka CALL option type - option dimension) created on top of an underlying contract (e.g. /*BTCUSD-30DEC2022*/)
+  4. *[[https://www.investopedia.com/terms/d/derivative.asp][complex derivatives]]* trading is like *[[https://en.wikipedia.org/wiki/Knight_(chess)][knight]]*
+     - in chess, knight has a special skill and jumps two squares vertically and one horizontally (or vice-versa) over the other pieces
+     - in trading, we have special conditions/variables that make these products unique:
+       - [[https://www.investopedia.com/terms/e/exoticoption.asp][exotic options]] like vanilla options but with even more contract (e.g. /*BTCUSD-30DEC2022-50000-C KO-70000*/) conditions (e.g. /*KO-70000*/ - Knock-Out barrier option)
+       - [[https://www.investopedia.com/terms/v/varianceswap.asp][variance]]/[[https://www.investopedia.com/terms/v/volatilityswap.asp][volatility]]/[[https://www.investopedia.com/terms/i/interestrateswap.asp][interest rate]] swaps that are pure play on volatility regardless the direction of the market
+
+** Details
+  OK now, first thing first, it's very important to understand the difference between buy/sell and long/short.
+  - you sell an asset that you own (e.g. car, house, BTC) or buy something that somebody else owns
+  - while long/short is just a contract between two (or many) parties and you only own the contract, not the asset(s)
+  You can say that you buy a derivative contract (e.g. BTCUSD) which is OK but you can't say that you buy BTCUSD contract and own BTC because you don't. Mind the difference.
+
+*** Spot trading
+  The easiest way to trade is to buy stocks, crypto (or any other asset) on spot market. Stocks, crypto, etc are simple assets that we can buy/sell the same way as we buy a beer. Buy to own.
+
+  The analogy in chess is like playing the game with pawns only and win the game, totally doable.
+*** Margin trading
+  Margin trading is a different beast because we can leverage the equity and long/short financial products (e.g. BTCUSD) on margin (a fraction of the required capital). You can go long, sometimes go short but nothing more, nothing fancy.
+
+  In chess we have pawns and also bishops to play the game.
+
+*** Futures trading
+  Unlike spot/margin where we only have a single product (e.g. BTC/BTCUSD), futures have multiple expires aka multiple contracts (e.g. BTCUSD-30DEC2022, BTCUSD-24MAR22) that span horizontally along the time axis for the same underlying market (e.g. BTCUSD).
+
+  Chess analogy is like playing the game with pawns, bishops from above plus the rooks that can move up/down multiple rows/columns.
+
+*** Options trading
+  Now, lets take each future product above (each expiration date basically) and vertically split along the strike axis and we end up with multiple strikes and option types for each expiration (e.g. BTCUSD-30DEC2022-50000-C, BTCUSD-30DEC2022-40000-P)
+
+  Think in [[https://en.wikipedia.org/wiki/Cartesian_coordinate_system][three dimension Cartesian coordinate system]]:
+  - futures span horizontally in time (along the X axis)
+  - options span
+    - vertically in strikes (along the Y axis)
+    - deep in option types (along the Z axis)
+
+  In chess is like playing with all the pieces above plus the queen, that doubles down the moves of the rooks/bishops.
+
+*** Exotic derivatives trading
+   Advanced trading desks (aka hedge funds, investment banks, etc) use more complex derivatives like exotic options (barriers), swaps (variance/volatilty/interest rate), MBS/CDS or any other alphabet-soup derivatives that was ever created.
+
+   In the realm of chess this is like adding the knight and using all pieces to play the game.
+
+** Conclusions
+*** 1. don't lose money (king vs. capital)
+  OK, everybody knows that the end goal in chess is to capture the king, if you loose the king it's game over. Finito!
+  I would say that the most important rule in trading is to protect your assets. Keep trading.
+*** 2. find your own style (chess tactics vs. spot/futures/options strategies)
+  In chess, there are so many play tactics (opening, pawn islands, etc) and it does not matter which one you play as long as you capture the king and win the game.
+  Same thing in trading, find your own trading style, it does not matter if you trade spot or complex iron condor option strategies, the important thing is to make money. End of story!
+*** 3. fun vs. profit (chess vs. trading)
+  I would say that besides pro chess players (who also make money), all of us play chess mostly for fun.
+  On the opposite side most of the people trade to make money (I get that) but I would argue that making trading fun is also important, without passion it will be difficult to go over the flat/draw-down/losing periods.
+
+Happy castling!!!
