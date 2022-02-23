@@ -173,6 +173,36 @@ disqusShortname = "icostan"
     weight = 3
 
 [[menu.main]]
+    identifier = "emacs"
+    name = "Emacs"
+    weight = 30
+[[menu.main]]
+    parent = "emacs"
+    name = "Completion system"
+    url = "/post/2022-02-22-emacs-completion-system/"
+    weight = 1
+[[menu.main]]
+    parent = "emacs"
+    name = "In-file navigation"
+    url = "/post/2019-11-07-emacs-in-file-navigation/"
+    weight = 2
+[[menu.main]]
+    parent = "emacs"
+    name = "Files/buffers navigation"
+    url = "http://localhost:1313/post/2020-04-04-emacs-file-window-buffer-navigation/"
+    weight = 3
+[[menu.main]]
+    parent = "emacs"
+    name = "From Jekyll to Hugo"
+    url = "/post/2019-04-18-blog-migration/"
+    weight = 4
+[[menu.main]]
+    parent = "emacs"
+    name = "Organizing work/life projects"
+    url = "/post/2020-08-11-oraganizing-work-life-projects/"
+    weight = 5
+
+[[menu.main]]
     identifier = "finance"
     name = "Finance"
     weight = 40

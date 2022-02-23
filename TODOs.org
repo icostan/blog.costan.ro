@@ -2,8 +2,12 @@
 * [[elisp:(org-projectile-open-project%20"blog")][blog]] [0/1]
   :PROPERTIES:
   :CATEGORY: blog
+  :ID:       0d234553-15c0-4fc0-be27-5bbff7300eb6
   :END:
 ** Posts
+   :PROPERTIES:
+   :ID:       18c34acc-9f86-4be8-892e-b66c3d42c195
+   :END:
 *** DONE write 2018 review
     CLOSED: [2019-01-02 Wed] SCHEDULED: <2019-01-02 Wed>
 *** signature aggregation schemes                              :cryptography:
@@ -209,7 +213,6 @@
 *** synthetics                                                      :trading:
     - https://www.theoptionsguide.com/synthetic-position.aspx
     - synthetics image
-*** N/A harvest arbitrage attack
 *** DONE iota address                                                  :coin:
     SCHEDULED: <2020-12-08 Tue>
 *** DONE algebraic structures
@@ -223,6 +226,9 @@
     - isogenies
 *** DONE chess vs. derivatives                                      :trading:
   SCHEDULED: <2022-01-07 Fri>
+  :PROPERTIES:
+  :ID:       d3471821-9d98-4f90-abd9-6e18e2623258
+  :END:
     explain with price chart, then point extending horizonal expiry dates, vertical strike prices
     - spot: forex, stocks, commods, crypto
     - cfd
@@ -348,7 +354,10 @@
     - https://moontowermeta.com/tails-explained/
     - https://en.wikipedia.org/wiki/Paradox_of_thrift
 *** TODO Taproot by hand
-    SCHEDULED: <2022-01-05 Wed>
+    SCHEDULED: <2022-04-21 Thu>
+    :PROPERTIES:
+    :ID:       14d3bee6-1045-4c48-a50a-bc912b9bd42d
+    :END:
     - https://bitcointaproot.cc/
     - https://taproot.watch/
     - https://bitcoinops.org/en/topics/taproot/
@@ -359,7 +368,7 @@
 *** DONE price breaks indicator
     SCHEDULED: <2021-10-16 Sat>
 *** review mind architect season 1
-*** my take on pomodoro technique
+*** roshia - my take on pomodoro technique
 *** bet sizing
     - https://moontowermeta.com/path-how-compounding-alters-return-distributions/
     - https://twitter.com/JustinCzy/status/1317178242655203329?s=20
@@ -374,6 +383,8 @@
     - https://medium.com/@srikarv/the-bls-signature-scheme-a-short-intro-801c723afffa
 *** DONE migrate from HDD to SSD
   SCHEDULED: <2021-12-21 Tue>
+*** TODO Emacs completion system
+    SCHEDULED: <2022-02-22 Tue>
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -468,11 +479,18 @@
     - [X] RSA
     - [ ] ElGamal
     - [ ] ECDSA
+*** research mathjax, tex, orgmode
+    - https://www.zkdocs.com/docs/zkdocs/zero-knowledge-protocols/schnorr/
+    - https://www.mathjax.org/
+    - https://www.tutorialspoint.com/tex_commands/index.htm
+    - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2022-01-18 Tue +2w>
+    SCHEDULED: <2022-02-07 Mon +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-01-05 Wed 12:12]
+    :LAST_REPEAT: [2022-01-28 Fri 12:21]
+    :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2022-01-28 Fri 12:21]
     - State "DONE"       from "TODO"       [2022-01-05 Wed 12:12]
     - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]
     - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]

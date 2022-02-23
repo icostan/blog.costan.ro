@@ -4,8 +4,7 @@
 #+date:   2020-04-04
 #+tags[]: emacs navigation productivity helm projectile
 
-** Intro.
-   In [[/post/2019-11-07-in-file-navigation/][Part 1]] of Emacs series I presented /the movement/ (or navigation within a single buffer/window), in this part I am going to demo /the navigation/ between multiple windows/files/buffers.
+   In [[/post/2019-11-07-emacs-in-file-navigation/][Part 1]] of Emacs series I presented /the movement/ (or navigation within a single buffer/window), in this part I am going to demo /the navigation/ between multiple windows/files/buffers.
 
    In mode-line (status bar) you can see the keys that are being pressed and the functions that are executed.
 

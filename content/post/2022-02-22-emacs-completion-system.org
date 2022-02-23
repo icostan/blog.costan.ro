@@ -1,0 +1,138 @@
+#+title: Completion system
+#+subtitle: Emacs
+#+date: 2022-02-22
+#+tags[]: emacs completion selection ide
+
+** Completion system
+
+... /vertico/, /consult/, /posframe/, /orderless/, /marginalia/, /projectile/ ... /corfu/, /cape/, /eglot/, /kind-icon/ ... Ohhh my!
+
+** History
+   For many years there were two different school of thoughts when it comes to completion system used in Emacs:
+
+   1. the one that comes bundled with Emacs with limited functionality:
+      - [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Icomplete.html][Icomplete]]- the Emacs built-in for interactive completion/selection
+      - [[https://www.gnu.org/software/emacs/manual/html_node/ido/index.html][Ido]] - another package for completion included in Emacs by default
+   2. the one that is built around custom APIs implemented in different frameworks:
+      - [[https://github.com/emacs-helm/helm][Helm]] - fully featured framework for incremental completion and selection
+      - [[https://github.com/abo-abo/swiper#ivy][Ivy]] - light and generic completion mechanism
+      - [[https://www.emacswiki.org/emacs/Icicles][Icicles]] - another library that enhances /minibuffer/ completion
+
+   Until last year! when new kid of the block arrived, composable packages that are fully compliant with default Emacs' completion system:
+      - [[https://gitlab.com/protesilaos/mct][MCT]] - mixes the /minibuffer/ and /Completions/ buffers
+      - [[https://github.com/raxod502/selectrum][Selectrum]] - almost (no filter/sort) compatible with default completion system
+      - [[https://github.com/minad/vertico][Vertico]] - fully compliant with Emacs' completion system
+
+** The power of composability
+   - What have Linux (or Unix), Ethereum and Lisp (or functional programming languages in general) in common?
+   - /*Composability*/! in Linux you can pipe multiple commands to get the result you are looking for, in Ethereum you can compose multiple smart contracts to achieve different functionality (e.g. DeFi) and in functional programming languages you call multiple functions to transform the data.
+
+*** 1. Incremental completion and selection
+   Let's have a close look at the screenshot below, this is my main /*Go To*/ command that I use to switch to different files/projects/buffers/etc.
+
+   [[file:../../img/emacs-completion-system/switch-to.png]]
+
+   All that completion functionality that you see is a mix of half dozen packages that work together:
+   - [[https://github.com/tumashu/posframe][Posframe]] - to display the overlay frame
+   - [[https://github.com/minad/vertico][Vertico]] - for vertical completion minibuffer
+   - [[https://github.com/minad/consult][Consult]] - enhances default Emacs commands with Vertico functionality
+   - [[https://github.com/oantolin/orderless][Orderless]] - provides filtering and sorting
+   - [[https://github.com/minad/marginalia][Marginalia]] - for nice attributes and description next to each candidate
+   - [[https://github.com/bbatsov/projectile][Projectile]] - for project management
+
+*** 2. Completion at point (or auto-completion)
+
+   [[file:../../img/emacs-completion-system/auto-completion.png]]
+
+   Again, a bunch of packages are used:
+   - [[https://github.com/minad/corfu][Corfu]] - for completion at point functionality (auto completion)
+   - [[https://github.com/joaotavora/eglot][Eglot]] - client for Language-Server Protocol (LSP)
+   - [[https://github.com/minad/cape][Cape]] - extra back ends for auto-completion that are missing in LSP servers
+   - [[https://github.com/jdtsmith/kind-icon][Kind-icon]] - nice icons for each candidate type (e.g. function, module, etc)
+
+** Let's get a bit technical
+   Emacs's completion system is beautiful, powerful, yet very simple and at very low-level it is based on two main functions that take a list of candidates and display an interactive selection child frame.
+
+   - /*completing-read*/ function for minibuffer completion
+   - /*completion-in-region*/ function for at-point (in buffer) completion
+
+*** 1. /*completing-read*/ function
+
+  #+begin_src emacs-lisp
+    (completing-read
+     "Complete a foo: "
+     '(("foobar1" 1) ("barfoo" 2) ("foobaz" 3) ("foobar2" 4))
+     nil t "fo")
+  #+end_src
+
+   [[file:../../img/emacs-completion-system/completing-read.png]]
+
+  In the example above we have a static list but it can also be dynamic list created at runtime (e.g. a list of file names).
+
+  #+begin_src emacs-lisp
+    (completing-read
+     "Complete a file: "
+     (completion-table-dynamic
+      (lambda (_)
+        (directory-files ".")))
+     nil t "ema")
+  #+end_src
+
+   [[file:../../img/emacs-completion-system/completing-file.png]]
+
+ Then, on top of it, we have higher level specific commands (e.g. /*read-file-name*/ or /*read-color*/) and so on.
+
+   #+begin_src emacs-lisp
+     (read-color "Color: ")
+  #+end_src
+
+   [[file:../../img/emacs-completion-system/completing-color.png]]
+
+*** 2. /*completion-in-region*/ function
+    The little sister of the above /completing-read/ works the same way but instead of activating the /minibuffer/ it displays a child frame at point.
+
+    #+begin_src emacs-lisp
+      (completion-in-region
+       (point)
+       (point)
+       '(("foobar1" 1) ("barfoo" 2) ("foobaz" 3) ("foobar2" 4)))
+    #+end_src
+
+    [[file:../../img/emacs-completion-system/completion-in-region.png]]
+
+    or dynamically generating the list of candidates
+
+    #+begin_src emacs-lisp :output none
+      (completion-in-region
+       (point)
+       (point)
+       (completion-table-dynamic
+        (lambda (_)
+          (directory-files "."))))
+    #+end_src
+
+    [[file:../../img/emacs-completion-system/completion-in-region-lambda.png]]
+
+    Then we have a higher level command /*completion-at-point*/ where we can create a hook function (of CAPFs - Completion At Point Function) and hook it into /*completion-at-point-functions*/ variable.
+
+    #+begin_src emacs-lisp
+      (defun capf ()
+        (let ((beg (point)) (end (point)))
+          (list beg
+                end
+                (completion-table-dynamic
+                 (lambda (_)
+                   (directory-files "."))))))
+      (setq-local completion-at-point-functions '(capf))
+      ;; eval the above sexps then call 'completion-at-point command to trigger auto-completion
+    #+end_src
+
+    [[file:../../img/emacs-completion-system/completion-at-point.png]]
+
+    This is all folks, we can hook into Emacs' completion system functions and have all flexibility in the world to built any kind of completion functionality we want.
+
+    *Take away*: you got the idea, any time you need to select an item from a list, we can leverage the /*completing-read*/ or /*completion-in-region*/ functions.
+
+** References
+   - https://www.gnu.org/software/emacs/manual/html_node/emacs/Completion.html
+   - https://www.gnu.org/software/emacs/manual/html_node/elisp/Completion.html

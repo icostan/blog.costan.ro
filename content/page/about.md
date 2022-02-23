@@ -12,7 +12,7 @@ These days I trade crypto derivatives to feed my belly and build software to fee
 
 ### Coding activity
 
-<figure><embed src="https://wakatime.com/share/@icostan/b8113d2a-134d-4e60-b329-415dce67837b.svg"></embed></figure>
+<figure><embed src="https://wakatime.com/share/@icostan/d59bbe33-0b4b-4d92-b22f-ba972f1767a7.svg"></embed></figure>
 
 ### Travel activity (powered by [Huveragy](https://github.com/icostan/huveragy))
 

@@ -3,7 +3,7 @@
 #+date:   2021-09-30
 #+tags[]: linux kernel module c
 
-In [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] I wrote a simple Linux kernel module, called World, in [[http://localhost:1313/post/2020-08-25-configure-linux-kernel-module/][Part 2]] I configured that module, now it's time to use that module from within kernel space (another kernel module).
+In [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] I wrote a simple Linux kernel module, called World, in [[/post/2020-08-25-configure-linux-kernel-module/][Part 2]] I configured that module, now it's time to use that module from within kernel space (another kernel module).
 
 * 1. World module
   First of all, let's review /world.c/ module that was used in previous two parts.
