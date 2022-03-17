@@ -140,6 +140,9 @@
     - stacked filesystem vs. block device
     - block ciphers: e.g. aes-xts-plain
     - mode of operation: ECB, CBC, XTS https://en.wikipedia.org/wiki/Disk_encryption_theory
+*** DONE SSH keys on USB
+    SCHEDULED: <2022-03-15 Tue>
+*** GPG keys on USB
 *** DONE surviving Bali
     CLOSED: [2019-11-19 Tue 18:33]
 *** DONE Month breaks trading indicator
@@ -383,7 +386,7 @@
     - https://medium.com/@srikarv/the-bls-signature-scheme-a-short-intro-801c723afffa
 *** DONE migrate from HDD to SSD
   SCHEDULED: <2021-12-21 Tue>
-*** TODO Emacs completion system
+*** DONE Emacs completion system
     SCHEDULED: <2022-02-22 Tue>
 ** Fixes
 *** DONE add Euler's method to RSA
@@ -485,11 +488,13 @@
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2022-02-07 Mon +2w>
+    SCHEDULED: <2022-03-29 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-01-28 Fri 12:21]
+    :LAST_REPEAT: [2022-03-17 Thu 09:03]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2022-03-17 Thu 09:03]
+    - State "DONE"       from "TODO"       [2022-02-23 Wed 11:37]
     - State "DONE"       from "TODO"       [2022-01-28 Fri 12:21]
     - State "DONE"       from "TODO"       [2022-01-05 Wed 12:12]
     - State "DONE"       from "TODO"       [2021-12-21 Tue 10:43]

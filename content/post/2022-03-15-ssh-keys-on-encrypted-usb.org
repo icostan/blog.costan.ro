@@ -120,7 +120,7 @@ This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, un
 
     Start *udiskie* with the following configuration file.
     #+begin_src sh
-      udiskie -c $HOME/.config/udiskie/config.ymll
+      udiskie -c $HOME/.config/udiskie/config.yml
     #+end_src
 
     #+begin_src yaml :tangle /home/icostan/.config/udiskie/config.yml
