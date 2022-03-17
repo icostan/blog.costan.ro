@@ -1,0 +1,214 @@
+#+title:  SSH keys on USB
+#+subtitle: Linux
+#+date:   2022-03-15
+#+tags[]: SSH GPG keys linux USB
+
+This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, unlock the drive on USB insert, automatically load the key then umount/lock, back to safety.
+
+** 0. Introduction
+   The whole shebang works as follows:
+   1. Insert USB drive
+   2. /UDEV,udisks2,udiskie/ tools detect and mount USB under */run/media/$USER/keys*
+   3. *$HOME/.config/systemd/user/keys.service* is triggered
+   4. *keys.service* above executes *$HOME/.local/bin/keys.sh* script
+   5. *keys.sh* script adds SSH key to /ssh-agent/ handled by *$HOME/.config/systemd/user/ssh-agent.service*
+   6. Interactively provide /keyfile/ to decrypt the USB drive and /passphrase/ for SSH key.
+   7. Umount and lock the USB drive
+   8. Party until system restart!
+
+** 1. Visual teaser
+
+   [[file:../../img/ssh-keys-on-usb.gif]]
+
+** 2. How it is made
+
+*** Wipe the USB drive
+    #+begin_src sh
+      wipefs --all --backup /dev/sdb # WARNING: erases headers
+    #+end_src
+
+*** Partition the drive
+    #+begin_src sh
+      gdisk /dev/sdb
+    #+end_src
+
+*** Setup encryption
+
+    It depends on your hardware but on my machine /*aes-xts*/ cipher with /*256-bit*/ key length is the fastest, also /*sha256*/ as password-based key derivation function (PBKDF).
+    #+begin_src sh :results output
+      cryptsetup benchmark
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    # Tests are approximate using memory only (no storage IO).
+    PBKDF2-sha1      1736052 iterations per second for 256-bit key
+    PBKDF2-sha256    2216862 iterations per second for 256-bit key
+    PBKDF2-sha512    1565038 iterations per second for 256-bit key
+    PBKDF2-ripemd160  900838 iterations per second for 256-bit key
+    PBKDF2-whirlpool  674759 iterations per second for 256-bit key
+    argon2i       8 iterations, 1048576 memory, 4 parallel threads (CPUs) for 256-bit key (requested 2000 ms time)
+    argon2id      8 iterations, 1048576 memory, 4 parallel threads (CPUs) for 256-bit key (requested 2000 ms time)
+    #     Algorithm |       Key |      Encryption |      Decryption
+            aes-cbc        128b      1178.6 MiB/s      3409.0 MiB/s
+        serpent-cbc        128b       101.2 MiB/s       753.2 MiB/s
+        twofish-cbc        128b       229.7 MiB/s       405.9 MiB/s
+            aes-cbc        256b       892.9 MiB/s      2818.4 MiB/s
+        serpent-cbc        256b       101.0 MiB/s       753.9 MiB/s
+        twofish-cbc        256b       231.1 MiB/s       411.3 MiB/s
+            aes-xts        256b      3440.2 MiB/s      3416.4 MiB/s
+        serpent-xts        256b       665.6 MiB/s       670.0 MiB/s
+        twofish-xts        256b       386.4 MiB/s       391.3 MiB/s
+            aes-xts        512b      2798.4 MiB/s      2794.7 MiB/s
+        serpent-xts        512b       657.2 MiB/s       665.8 MiB/s
+        twofish-xts        512b       385.7 MiB/s       386.3 MiB/s
+    #+end_example
+
+    Create LUKS partition with given cipher, length and hash function.
+    #+begin_src sh
+      cryptsetup --cipher aes-xts-plain64 --key-size 256 --hash sha256 luksFormat /dev/sdb1
+    #+end_src
+
+    When you create LUKS partition you will be asked to provide a /passphrase/ but optionally you can add multiple passphrases or keyfiles.
+    #+begin_src sh
+      cryptsetup luksAddKey /dev/sdb1  # add new passphrase
+      cryptsetup luksAddKey /dev/sdb1 /path/to/file # add new keyfile
+    #+end_src
+
+    Open our encrypted partition (with either passphrase or keyfile) and it will available under //dev/mapper/NAME/.
+    #+begin_src sh
+      cryptsetup open /dev/sdb1 keys # open with passphrase
+      cryptsetup  --keyfile=/path/to/file open /dev/sdb1 keys # open with keyfile
+    #+end_src
+
+*** Create file-system
+    Standard /ext4/ linux file-system and set the label for our partition, this is important for auto-mounting later.
+    #+begin_src sh
+      mkfs.ext4 /dev/mapper/keys
+      e2label /dev/mapper/keys keys
+    #+end_src
+
+    #+begin_src sh :results output
+      lsblk -f /dev/sdb
+    #+end_src
+
+    #+RESULTS:
+    : NAME     FSTYPE      FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+    : sdb
+    : ├─sdb1   crypto_LUKS 2           40b90bb8-5bf2-44ab-818b-3385ca82b644
+    : │ └─keys ext4        1.0   keys  e36e5613-1f17-4161-a9e6-8b0c1dfe9430
+    : └─sdb2
+
+*** Auto-mount with UDEV, udisks2 and udiskie
+    Create a file //etc/udev/rules.d/66-keys.rules/ and add UDEV rules to trigger mount when USB is inserted (I have two USB drives, main one that I carry with me and backup at home).
+    #+begin_src sh :tangle /etc/udev/rules.d/66-keys.rules
+      # keys1
+      ACTION=="add", ATTRS{idVendor}=="090c", ATTRS{idProduct}=="1000", NAME=keys
+
+      # keys2
+      ACTION=="add", ATTRS{idProduct}=="1643", ATTRS{idVendor}=="0951", NAME=keys
+    #+end_src
+
+    Reload /*UDEV*/ daemon to pick up rules changes.
+    #+begin_src sh
+      udevadm control --reload
+    #+end_src
+
+    To automatically mount USB drive we need two things:
+    1. [[https://wiki.archlinux.org/title/Udisks][udisks2]] - daemon to manipulate storage devices from user-space
+    2. [[https://github.com/coldfix/udiskie][udiskie]] - a front-end for udisks2
+
+    Start *udiskie* with the following configuration file.
+    #+begin_src sh
+      udiskie -c $HOME/.config/udiskie/config.ymll
+    #+end_src
+
+    #+begin_src yaml :tangle /home/icostan/.config/udiskie/config.yml
+      program_options:
+        tray: true
+        menu: nested
+        notify: true
+
+      device_config:
+        - device_file: /dev/loop*
+          ignore: true
+    #+end_src
+
+
+*** Systemd keys.service
+    You can also use /RUN/ action provided by /UDEV/ above to run a script but that is quite limited and this Systemd trigger is a better option.
+    #+begin_src sh :tangle /home/icostan/.config/systemd/user/keys.service
+      [Unit]
+      Description=SSH keys on USB
+      Requires=run-media-icostan-keys.mount
+      After=run-media-icostan-keys.mount
+
+      [Service]
+      Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+      ExecStart=/home/icostan/.local/bin/keys.sh
+
+      [Install]
+      WantedBy=run-media-icostan-keys.mount
+    #+end_src
+
+*** Script keys.sh
+    #+begin_src sh :tangle /home/icostan/.local/bin/keys.sh
+      #!/usr/bin/env sh
+
+      set -e
+
+      SSH_KEY=id_rsa
+      SSH_ADD=/usr/bin/ssh-add
+      USB_LABEL=keys
+      USB_MOUNT=/run/media/$USER/$USB_LABEL
+      UMOUNT_BIN=/usr/bin/udiskie-umount
+
+      $SSH_ADD $USB_MOUNT/$SSH_KEY
+      notify-send "Added $SSH_KEY to ssh-agent!"
+
+      $UMOUNT_BIN $USB_MOUNT
+    #+end_src
+
+*** Systemd ssh-agent.service
+    #+begin_src sh :tangle /home/icostan/.config/systemd/user/ssh-agent.service
+      [Unit]
+      Description=SSH Agent
+
+      [Service]
+      Type=simple
+      Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+      # DISPLAY required for ssh-askpass to work
+      Environment=DISPLAY=:0
+      ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+      [Install]
+      WantedBy=default.target
+    #+end_src
+
+*** SSH key in ssh agent
+    Finally, here is the key fingerprint (redacted) in SSH agent.
+    #+begin_src sh
+      ssh-add -l
+    #+end_src
+
+    #+RESULTS:
+    : 3072 SHA256:--5-T7Z4/k-dqfyoXw-8Li-fB-5r-4F0-wCyfQ-ccJ- icostan@drakarys (RSA)
+
+** Security
+    Attackers still can:
+    1. dump ssh-agent's memory and extract the key - but they need root on my box
+    3. key logger - at the exact same time when I select *keyfile* and fill in *passphrase*
+
+    Secure? so, so ... but still a lot better than keeping SSH keys in *$HOME/.ssh* all the time.
+
+** References
+   - https://wiki.archlinux.org/title/Device_file#Utilities
+   - https://wiki.archlinux.org/title/Dm-crypt/Drive_preparation
+   - https://wiki.archlinux.org/title/Dm-crypt/Device_encryption
+   - https://wiki.archlinux.org/title/Udisks
+   - https://github.com/coldfix/udiskie/wiki/Usage
+   - https://wiki.archlinux.org/title/Udev
+   - https://wiki.archlinux.org/title/SSH_keys
+   - https://www.funtoo.org/OpenSSH_Key_Management,_Part_3
+   - https://blog.0xbadc0de.be/archives/300
+   - https://blog.ledger.com/ssh/
