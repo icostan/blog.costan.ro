@@ -271,6 +271,11 @@ disqusShortname = "icostan"
     name = "Config management"
     url = "post/2019-10-22-configuration-management"
     weight = 7
+[[menu.main]]
+    parent = "linux"
+    name = "SSH keys on USB"
+    url = "post/2022-03-15-ssh-keys-on-usb"
+    weight = 8
 
 [[menu.main]]
     identifier = "math"

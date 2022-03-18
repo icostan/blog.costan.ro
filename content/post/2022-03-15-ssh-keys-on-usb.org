@@ -3,9 +3,9 @@
 #+date:   2022-03-15
 #+tags[]: SSH GPG keys linux USB
 
-This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, unlock the drive on USB insert, automatically load the key then umount/lock, back to safety.
+This is how I keep my SSH key(s) secure and offline, stored on encrypted USB flash-drive. After restart, unlock the drive on USB insert, automatically load the key then umount, lock, back to safety.
 
-** 0. Introduction
+** 0. Overview
    The whole shebang works as follows:
    1. Insert USB drive
    2. /UDEV,udisks2,udiskie/ tools detect and mount USB under */run/media/$USER/keys*
@@ -16,6 +16,8 @@ This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, un
    7. Umount and lock the USB drive
    8. Party until system restart!
 
+   I know there are FIDO/U2F or Smartcard hardware devices that support SSH keys but I like my approach for one main reason: I don't have to carry the USB drive with me all the time, it's only needed when I restart the laptop and this usually happens once a month when I update the entire system and install new Linux Kernel.
+
 ** 1. Visual teaser
 
    [[file:../../img/ssh-keys-on-usb.gif]]
@@ -24,7 +26,7 @@ This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, un
 
 *** Wipe the USB drive
     #+begin_src sh
-      wipefs --all --backup /dev/sdb # WARNING: erases headers
+      wipefs --all --backup /dev/sdb # WARNING: erase headers
     #+end_src
 
 *** Partition the drive
@@ -100,7 +102,7 @@ This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, un
     : └─sdb2
 
 *** Auto-mount with UDEV, udisks2 and udiskie
-    Create a file //etc/udev/rules.d/66-keys.rules/ and add UDEV rules to trigger mount when USB is inserted (I have two USB drives, main one that I carry with me and backup at home).
+    Create a file //etc/udev/rules.d/66-keys.rules/ and add UDEV rules to trigger mount when USB is inserted (I have two USB drives, main one and backup).
     #+begin_src sh :tangle /etc/udev/rules.d/66-keys.rules
       # keys1
       ACTION=="add", ATTRS{idVendor}=="090c", ATTRS{idProduct}=="1000", NAME=keys
@@ -210,5 +212,4 @@ This is how I keep my SSH key(s) secure: stored on encrypted USB flash-drive, un
    - https://wiki.archlinux.org/title/Udev
    - https://wiki.archlinux.org/title/SSH_keys
    - https://www.funtoo.org/OpenSSH_Key_Management,_Part_3
-   - https://blog.0xbadc0de.be/archives/300
    - https://blog.ledger.com/ssh/
