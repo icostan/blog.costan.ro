@@ -1,0 +1,609 @@
+#+title:  Personal email server
+#+subtitle: Linux
+#+date:   2022-04-27
+#+tags[]: archlinux email server smtp imap tls postfix dovecot dkim dmarc spf dns
+
+Given that GMail with cease to provide free hosting service for custom domains I've decided to deploy a fully featured personal email server and migrate everything to my [[https://archlinux.org/][Arch Linux]] box.
+
+Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https://www.mail-tester.com/test-2atnv1dqh][the test results]] look pretty good, see all the details below.
+
+** 1. Dovecot
+  One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/]]
+*** 1.1 Installation
+   #+begin_src sh
+     pacman -S dovecot
+   #+end_src
+*** 1.2 Configuration
+   We are going to use *doveconf* tool or just *cat* the files when needed.
+**** Default config
+   #+begin_src sh
+     mkdir /etc/dovecot
+     cp -r /usr/share/doc/dovecot/example-config/ /etc/dovecot
+   #+end_src
+   Just copy the default provided config, very good as a starting point.
+**** Mail location and type
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     doveconf -n mail_location namespace inbox
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   mail_location = mbox:~/mail:INBOX=/var/mail/%u
+   namespace inbox {
+     inbox = yes
+     location =
+     mailbox Drafts {
+       special_use = \Drafts
+     }
+     mailbox Junk {
+       special_use = \Junk
+     }
+     mailbox Sent {
+       special_use = \Sent
+     }
+     mailbox "Sent Messages" {
+       special_use = \Sent
+     }
+     mailbox Trash {
+       special_use = \Trash
+     }
+     prefix =
+   }
+   #+end_example
+   /*mail_location*/ is one of the most important config, it basically says that it expects [[https://en.wikipedia.org/wiki/Message_transfer_agent][MTA]] (Postfix) to deliver email in /INBOX=/var/mail/USERNAME/ and store mailboxes in /~/mail/
+
+**** Add use to mail group
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     usermod -aG mail dovecot
+     id dovecot
+   #+end_src
+
+   #+RESULTS:
+   : uid=76(dovecot) gid=76(dovecot) groups=76(dovecot),12(mail)
+   Adds /mail/ group to /dovecot/ user that will allow MTA to have access to ///var/mail// dir.
+
+**** Self-signed certificate
+***** config
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/ssl/dovecot-openssl.cnf
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   [ req ]
+   default_bits = 2048
+   encrypt_key = yes
+   distinguished_name = req_dn
+   x509_extensions = cert_type
+   prompt = no
+
+   [ req_dn ]
+   # country (2 letter code)
+   C=RO
+
+   # State or Province Name (full name)
+   ST=Iasi
+
+   # Locality Name (eg. city)
+   L=Iasi
+
+   # Organization (eg. company)
+   O=Matrix
+
+   # Organizational Unit Name (eg. section)
+   OU=Email server
+
+   # Common Name (*.example.com is also possible)
+   CN=*.costan.ro
+
+   # E-mail contact
+   emailAddress=postmaster@costan.ro
+
+   [ cert_type ]
+   nsCertType = server
+   #+end_example
+***** generate
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /usr/lib/dovecot/mkcert.sh
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   #!/bin/sh
+
+   # Generates a self-signed certificate.
+   # Edit dovecot-openssl.cnf before running this.
+
+   umask 077
+   OPENSSL=${OPENSSL-openssl}
+   SSLDIR=${SSLDIR-/etc/ssl}
+   OPENSSLCONFIG=${OPENSSLCONFIG- /etc/ssl/dovecot-openssl.cnf}
+
+   CERTDIR=$SSLDIR/certs
+   KEYDIR=$SSLDIR/private
+
+   CERTFILE=$CERTDIR/dovecot.pem
+   KEYFILE=$KEYDIR/dovecot.pem
+
+   if [ ! -d $CERTDIR ]; then
+     echo "$SSLDIR/certs directory doesn't exist"
+     exit 1
+   fi
+
+   if [ ! -d $KEYDIR ]; then
+     echo "$SSLDIR/private directory doesn't exist"
+     exit 1
+   fi
+
+   if [ -f $CERTFILE ]; then
+     echo "$CERTFILE already exists, won't overwrite"
+     exit 1
+   fi
+
+   if [ -f $KEYFILE ]; then
+     echo "$KEYFILE already exists, won't overwrite"
+     exit 1
+   fi
+
+   $OPENSSL req -new -x509 -nodes -config $OPENSSLCONFIG -out $CERTFILE -keyout $KEYFILE -days 365 || exit 2
+   chmod 0600 $KEYFILE
+   echo
+   $OPENSSL x509 -subject -fingerprint -noout -in $CERTFILE || exit 2
+   #+end_example
+
+   Generate //etc/ssl/{certs,private}/dovecot.pem/ cert files.
+
+**** SSL
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     doveconf ssl ssl_cert ssl_key ssl_require_crl
+   #+end_src
+
+   #+RESULTS:
+   : ssl = yes
+   : ssl_cert = </etc/ssl/certs/dovecot.pem
+   : ssl_key = </etc/ssl/private/dovecot.pem
+   : ssl_require_crl = yes
+
+   Using the certs files generated above.
+
+**** Authentication
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     doveconf -n userdb passdb
+   #+end_src
+
+   #+RESULTS:
+   : userdb {
+   :   driver = passwd
+   : }
+   : passdb {
+   :   driver = pam
+   : }
+   Where/how user/pass is looked up, users in */etc/passwd* and passwords in [[https://en.wikipedia.org/wiki/Pluggable_authentication_module][PAM]].
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/pam.d/dovecot
+   #+end_src
+
+   #+RESULTS:
+   : #%PAM-1.0
+   : auth include system-auth
+   : account include system-auth
+   : session include system-auth
+   : password include system-auth
+
+   PAM configuration is complex and out of the scope of this blog post, take it for granted.
+
+**** Create system user
+   #+begin_src sh :dir /sshx:miner@rig|sudo::
+     useradd iulian -m
+     passwd iulian
+   #+end_src
+   Create system user that need to send/receive email.
+**** Final conf
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     doveconf -n
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   # 2.3.18 (9dd8408c18): /etc/dovecot/dovecot.conf
+   # OS: Linux 5.17.4-arch1-1 x86_64
+   # Hostname: rig
+   mail_location = mbox:~/mail:INBOX=/var/mail/%u
+   namespace inbox {
+     inbox = yes
+     location =
+     mailbox Drafts {
+       special_use = \Drafts
+     }
+     mailbox Junk {
+       special_use = \Junk
+     }
+     mailbox Sent {
+       special_use = \Sent
+     }
+     mailbox "Sent Messages" {
+       special_use = \Sent
+     }
+     mailbox Trash {
+       special_use = \Trash
+     }
+     prefix =
+   }
+   passdb {
+     driver = pam
+   }
+   service auth {
+     unix_listener /var/spool/postfix/private/auth {
+       group = postfix
+       mode = 0660
+       user = postfix
+     }
+   }
+   ssl_cert = </etc/ssl/certs/dovecot.pem
+   ssl_key = # hidden, use -P to show it
+   userdb {
+     driver = passwd
+   }
+   #+end_example
+   The whole Dovecot config is long / complex, these are only the non-defaults values.
+
+*** 1.3 Service
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     systemctl start dovecot.service
+     ufw limit "IMAPS"
+     ufw limit "Mail"
+   #+end_src
+   Start/enable /dovecot.service/ and open the ports in [[https://en.wikipedia.org/wiki/Uncomplicated_Firewall][UFW]] firewall.
+*** 1.4 Testing tools
+  - https://www.dotcom-tools.com/email-server-test
+  Just basic connectivity/speed IMAPS testing, we'll run more advanced tests later on.
+** 2. Postfix
+  I know [[https://en.wikipedia.org/wiki/Sendmail][Sendmail]] is the classic, widely used mail transfer agent but it is a bit old-fashion to me and I'll use [[http://www.postfix.org/][Postfix]] instead.
+*** 2.1 Installation
+   #+begin_src sh
+     pacman -S postfix
+   #+end_src
+*** 2.2 Configuration
+   Again, we will use /postconf/ to show/manage configuration.
+**** Directories
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep -E "directory\s"
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   command_directory = /usr/bin
+   daemon_directory = /usr/lib/postfix/bin
+   data_directory = /var/lib/postfix
+   html_directory = no
+   manpage_directory = /usr/share/man
+   meta_directory = /etc/postfix
+   queue_directory = /var/spool/postfix
+   readme_directory = /usr/share/doc/postfix
+   sample_directory = /etc/postfix
+   shlib_directory = /usr/lib/postfix
+   #+end_example
+   This is mostly Arch Linux specific but is worth seeing where things are installed/stored.
+
+**** Domain
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep ^my
+   #+end_src
+
+   #+RESULTS:
+   : mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+   : mydomain = costan.ro
+   : myhostname = smtp.$mydomain
+   : myorigin = $mydomain
+   /mydomain/, /mydestination/ specify what email recipients should be accepted by my server.
+
+**** Aliases
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep alias
+   #+end_src
+
+   #+RESULTS:
+   : alias_database = $alias_maps
+   : alias_maps = hash:/etc/postfix/aliases
+   : newaliases_path = /usr/bin/newaliases
+   : virtual_alias_maps = hash:/etc/postfix/virtual
+   Email aliases if any.
+
+**** Virtual aliases (catch-all email)
+   #+begin_src sh
+     echo "@costan.ro iulian" > /etc/postfix/virtual
+     postmap /etc/postfix/virtual
+   #+end_src
+   Use virtual aliases to redirect unknown email recipients to my username, then /postmap/ rehashes the virtual db.
+
+**** Secure email with [[https://en.wikipedia.org/wiki/Transport_Layer_Security][TLS]] (Transport Layer Security)
+***** receiving
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep -E "smtpd_tls|smtpd_use_tls"
+   #+end_src
+
+   #+RESULTS:
+   : smtpd_tls_auth_only = yes
+   : smtpd_tls_cert_file = /etc/ssl/certs/dovecot.pem
+   : smtpd_tls_key_file = /etc/ssl/private/dovecot.pem
+   : smtpd_tls_loglevel = 1
+   : smtpd_tls_security_level = may
+   : smtpd_use_tls = yes
+   /smtpd_tls_auth_only/ do not accounce and accept plain auth over unsecured connections.
+
+***** sending
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep smtp_
+   #+end_src
+
+   #+RESULTS:
+   : smtp_tls_loglevel = 1
+   : smtp_tls_security_level = may
+   /smtp_tls_security_level/ optional TLS when sending, since TLS is not enabled in all MTAs.
+
+**** Authentication/authorization
+***** Postfix auth config
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep ^smtpd_sasl
+   #+end_src
+
+   #+RESULTS:
+   : smtpd_sasl_auth_enable = yes
+   : smtpd_sasl_local_domain = $mydomain
+   : smtpd_sasl_path = private/auth
+   : smtpd_sasl_security_options = noanonymous, noplaintext
+   : smtpd_sasl_tls_security_options = noanonymous
+   : smtpd_sasl_type = dovecot
+   /smtpd_sasl_type/, /smtpd_sasl_path/ - backend and unix socket for [[https://en.wikipedia.org/wiki/Simple_Authentication_and_Security_Layer][SASL]]
+   /smtpd_sasl_tls_security_options/ - allow plain text auth over TLS, but no anonymous
+
+***** Dovecot auth integration
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     doveconf -n service auth
+   #+end_src
+
+   #+RESULTS:
+   : service auth {
+   :   unix_listener /var/spool/postfix/private/auth {
+   :     group = postfix
+   :     mode = 0660
+   :     user = postfix
+   :   }
+   : }
+   The other side of the Unix socket configured in Dovecot.
+
+**** Relay and restrictions
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep -E "helo|relay"
+   #+end_src
+
+   #+RESULTS:
+   : smtpd_helo_required = yes
+   : smtpd_helo_restrictions = reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname
+   : smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+   /smtpd_relay_restrictions/ - no open relay ever OK?
+
+**** Mail submission
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -M submission
+   #+end_src
+
+   #+RESULTS:
+   : submission inet  n       -       n       -       -       smtpd -o syslog_name=postfix/submission -o smtpd_tls_security_level=encrypt -o smtpd_sasl_auth_enable=yes -o smtpd_tls_auth_only=yes -o smtpd_reject_unlisted_recipient=no -o smtpd_relay_restrictions= -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject -o milter_macro_daemon_name=ORIGINATING
+   The [[https://en.wikipedia.org/wiki/Message_submission_agent][MSA]] service that listen on 587/tcp port for mail submission from a [[https://en.wikipedia.org/wiki/Email_client][MUA]] (email client).
+
+**** DNS TXT record
+   #+begin_src sh :results output
+     drill -Q costan.ro TXT
+   #+end_src
+
+   #+RESULTS:
+   : "v=spf1 a mx ip4:109.96.82.30 ~all"
+   Sender Policy Framework ([[https://en.wikipedia.org/wiki/Sender_Policy_Framework][SPF]]) is required to detect some forged sender addreses.
+
+**** Final conf
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   alias_database = $alias_maps
+   alias_maps = hash:/etc/postfix/aliases
+   command_directory = /usr/bin
+   compatibility_level = 3.7
+   daemon_directory = /usr/lib/postfix/bin
+   data_directory = /var/lib/postfix
+   debug_peer_level = 2
+   debugger_command = PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin ddd $daemon_directory/$process_name $process_id & sleep 5
+   html_directory = no
+   inet_protocols = ipv4
+   mail_owner = postfix
+   mailq_path = /usr/bin/mailq
+   manpage_directory = /usr/share/man
+   meta_directory = /etc/postfix
+   milter_default_action = accept
+   mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
+   mydomain = costan.ro
+   myhostname = smtp.$mydomain
+   myorigin = $mydomain
+   newaliases_path = /usr/bin/newaliases
+   non_smtpd_milters = $smtpd_milters
+   queue_directory = /var/spool/postfix
+   readme_directory = /usr/share/doc/postfix
+   sample_directory = /etc/postfix
+   sendmail_path = /usr/bin/sendmail
+   setgid_group = postdrop
+   shlib_directory = /usr/lib/postfix
+   smtp_tls_loglevel = 1
+   smtp_tls_security_level = may
+   smtpd_helo_required = yes
+   smtpd_helo_restrictions = reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname
+   smtpd_milters = inet:localhost:8891, inet:localhost:8893
+   smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+   smtpd_sasl_auth_enable = yes
+   smtpd_sasl_local_domain = $mydomain
+   smtpd_sasl_path = private/auth
+   smtpd_sasl_security_options = noanonymous, noplaintext
+   smtpd_sasl_tls_security_options = noanonymous
+   smtpd_sasl_type = dovecot
+   smtpd_tls_auth_only = yes
+   smtpd_tls_cert_file = /etc/ssl/certs/dovecot.pem
+   smtpd_tls_key_file = /etc/ssl/private/dovecot.pem
+   smtpd_tls_loglevel = 1
+   smtpd_tls_security_level = may
+   smtpd_use_tls = yes
+   unknown_local_recipient_reject_code = 550
+   virtual_alias_maps = hash:/etc/postfix/virtual
+   #+end_example
+   Again, these are only the non-default config values.
+
+*** 2.3 Service
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     systemctl start postfix.service
+     ufw limit "SMTP"
+   #+end_src
+*** 2.4 Testing tools
+   For all geeks out there you can use /openssl/ to do basic SMTP testing or more advanced tools.
+   #+begin_src sh
+     openssl s_client -connect smtp.costan.ro:25 -starttls smtp
+   #+end_src
+   - https://mxtoolbox.com/ - excelent tool for different MX, DNS or use /openssl/
+   - https://www.appmaildev.com/
+   - https://www.checktls.com/index.html
+** 3. DomainKeys Identified Mail - DKIM
+  [[https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail][DKIM]] is an email authentication method used to detect forged sender addresses.
+*** 3.1 Installation
+   #+begin_src sh
+     pacman -S opendkim
+   #+end_src
+*** 3.2 Configuration
+**** Minimal config
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     grep -v -e '^#' -e '^[[:space:]]*$' /etc/opendkim/opendkim.conf
+   #+end_src
+
+   #+RESULTS:
+   : Canonicalization	  relaxed/simple
+   : Domain			  costan.ro
+   : KeyFile			  /etc/opendkim/rig.private
+   : Selector		  rig
+   : Socket                    inet:8891@localhost
+   : Syslog			  Yes
+   : UserID                    opendkim:postfix
+   Nothing too complex, domain, private key location and the socket.
+
+**** Generate key file
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     opendkim-genkey --restrict --selector rig --domain costan.ro --directory /etc/opendkim
+   #+end_src
+   Generate /rig.private/ and /rig.txt/ files.
+
+**** Postfix integration
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep milter
+   #+end_src
+
+   #+RESULTS:
+   : milter_default_action = accept
+   : non_smtpd_milters = $smtpd_milters
+   : smtpd_milters = inet:localhost:8891, inet:localhost:8893
+   Socket communication via /inet:localhost:8891/.
+
+**** DNS TXT record
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/opendkim/rig.txt
+   #+end_src
+
+   #+RESULTS:
+   : rig._domainkey	IN	TXT	( "v=DKIM1; k=rsa; s=email; "
+   : 	  "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQFlti46dceD5rk3+RGnoYStK6np+cIucrOrkMHbjoRLcOxNikOfi0ABgG2CxK/0X+VNmiL5PsaWWnXhYGOJWz82LM0zhDzoD1bQ0OIb/PWyPMz22udwnPa6FRypEEnjAdC6c8g7tX8fMovqX/09PHKKjLq4zX0X3CMT+t3QhXlQIDAQAB" )  ; ----- DKIM key rig for costan.ro
+
+   #+begin_src sh :results output
+     drill -Q rig._domainkey.costan.ro TXT
+   #+end_src
+
+   #+RESULTS:
+   : "v=DKIM1; k=rsa; s=email;  	 p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQFlti46dceD5rk3+RGnoYStK6np+cIucrOrkMHbjoRLcOxNikOfi0ABgG2CxK/0X+VNmiL5PsaWWnXhYGOJWz82LM0zhDzoD1bQ0OIb/PWyPMz22udwnPa6FRypEEnjAdC6c8g7tX8fMovqX/09PHKKjLq4zX0X3CMT+t3QhXlQIDAQAB"
+   Public key published as TXT record.
+
+*** 3.3 Service
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     systemctl start opendkim.service
+   #+end_src
+*** 3.4 Testing tools
+  - https://dkimcore.org/tools/
+  - https://dmarcian.com/dkim-inspector/
+
+** 4. Domain-based Message Authentication, Reporting and Conformance - DMARC
+  [[https://en.wikipedia.org/wiki/DMARC][DMARC]] is an email authentication protocol that extends SPF and DKIM to protect domain from email spoofing.
+*** 4.1 Installation
+   #+begin_src sh
+     pacman -S opendmarc
+   #+end_src
+*** 4.2 Configuration
+**** Minimal config
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     grep -v -e '^#' -e '^[[:space:]]*$' /etc/opendmarc/opendmarc.conf
+   #+end_src
+
+   #+RESULTS:
+   : AuthservID HOSTNAME
+   : IgnoreAuthenticatedClients true
+   : Socket inet:8893@localhost
+   : SPFSelfValidate true
+   : UMask 002
+   Socket and some other basic stuff.
+
+**** Postfix integration
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n | grep milter
+   #+end_src
+
+   #+RESULTS:
+   : milter_default_action = accept
+   : non_smtpd_milters = $smtpd_milters
+   : smtpd_milters = inet:localhost:8891, inet:localhost:8893
+   Socket communication via /inet:localhost:8893/
+
+**** DNS TXT record
+   #+begin_src sh :results output
+     drill -Q _dmarc.costan.ro TXT
+   #+end_src
+
+   #+RESULTS:
+   : "v=DMARC1; p=quarantine; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=s; fo=1; pct=10"
+   Enable /p=quarantine/ policy for /pct=10/ percent of the emails that fail the validation.
+
+*** 4.3 Service
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     systemctl start opendmarc.service
+   #+end_src
+
+*** 4.4 Testing tools
+   - https://mxtoolbox.com/DMARC.aspx
+   - https://dmarcian.com/dmarc-inspector/
+
+
+** References
+  - https://wiki.archlinux.org/title/Postfix
+  - https://www.postfix.org/documentation.html
+  - https://www.postfix.org/STANDARD_CONFIGURATION_README.html
+  - https://www.arubacloud.com/tutorial/how-to-configure-a-smtp-mail-server-with-postfix-on-ubuntu-18-04.aspx
+
+  - https://doc.dovecot.org/configuration_manual/quick_configuration/
+  - https://doc.dovecot.org/
+  - https://wiki.dovecot.org/
+  - https://www.arubacloud.com/tutorial/how-to-configure-a-pop3-imap-mail-server-with-dovecot-on-ubuntu-18-04.aspx
+  - https://kevwells.com/it-knowledge-base/installing-dovecot-imap-server/
+
+  - https://wiki.archlinux.org/title/OpenDKIM
+  - http://opendkim.org/
+  - http://dkim.org/
+  - https://wiki.archlinux.org/title/OpenDMARC
+
+  - https://www.linuxbabe.com/mail-server/secure-email-server-ubuntu-postfix-dovecot
+  - https://www.abuseat.org/helocheck.html
+  - https://clean.email/email-blacklist-check
+  - https://en.wikipedia.org/wiki/Email_authentication

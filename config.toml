@@ -276,6 +276,11 @@ disqusShortname = "icostan"
     name = "SSH keys on USB"
     url = "post/2022-03-15-ssh-keys-on-usb"
     weight = 8
+[[menu.main]]
+    parent = "linux"
+    name = "Personal email server"
+    url = "post/2022-04-27-personal-email-server-with-postfix-dovecot"
+    weight = 9
 
 [[menu.main]]
     identifier = "math"

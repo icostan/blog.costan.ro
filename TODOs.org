@@ -388,6 +388,12 @@
   SCHEDULED: <2021-12-21 Tue>
 *** DONE Emacs completion system
     SCHEDULED: <2022-02-22 Tue>
+*** DONE Email server with Postfix and Dovecot
+   SCHEDULED: <2022-04-27 Wed>
+*** understanding SSL/TLS certs
+   - self signed
+   - cacert.org
+   - let's encrypt
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -488,11 +494,14 @@
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2022-03-29 Tue +2w>
+    SCHEDULED: <2022-05-10 Tue +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-03-17 Thu 09:03]
+    :LAST_REPEAT: [2022-05-04 Wed 10:54]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2022-05-04 Wed 10:54]
+    - State "DONE"       from "TODO"       [2022-05-04 Wed 10:54]
+    - State "DONE"       from "TODO"       [2022-05-02 Mon 10:17]
     - State "DONE"       from "TODO"       [2022-03-17 Thu 09:03]
     - State "DONE"       from "TODO"       [2022-02-23 Wed 11:37]
     - State "DONE"       from "TODO"       [2022-01-28 Fri 12:21]
