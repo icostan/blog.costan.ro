@@ -6,9 +6,9 @@ date:   2019-02-14
 tags: ["strava", "runkeeper", "sports", "health", "open-source", "ruby", "ruby-on-rails"]
 ---
 
-I've decided to open-source an old and rusty project called [Actihunt](http://actihunt.iuliancostan.com) that sits there for more than 3 years.
+**<p style="text-align: center;">Project is NOT MAINTAINED/DEPLOYED anymore</p>**
 
-Check it out @ [actihunt.iuliancostan.com](http://actihunt.iuliancostan.com)
+I've decided to open-source an old and rusty project called Actihunt that sits there for more than 3 years.
 
 The project does one thing and one thing only, it synchronizes activities between Runkeeper and Strava, this is all, and it did its job pretty well in all this time.
 

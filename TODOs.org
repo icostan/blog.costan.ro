@@ -156,12 +156,13 @@
     - CryptoBook - 2021
     - An overview of cryptography - 2020
     - Practical cryptography for developers - 2018
-    - Crypto 101 - 2017
     - Serious cryptography - 2018
+    - Crypto 101 - 2017
     - Understanding cryptography - 2010
     - Cryptography and Network Security - 2005
     - Handbook of applied cryptography - 2001
     - Cryptography theory and practice - 1995
+    - http://asecuritysite.com
 *** DONE hash functions
     SCHEDULED: <2020-09-15 Thu>
     - [X] an overview of cryptography
@@ -206,8 +207,9 @@
 *** DONE high-end Maldives
 *** DONE outpost vs. hanoi coworking vs. el nido
 *** WIP review Market Wizards books
+    - [ ] unknown market wizards
     - [X] hedge fund market wizards
-    - [ ] new market wizards
+    - [X] new market wizards
     - [ ] market wizards
 *** DONE generate monero address
 *** DONE first US visit in 2000
@@ -318,7 +320,7 @@
     - vpn:  orchid/ sentinel
     - dns: handshake
     - exchange: uniswap
-    - lending: aave
+    - lending: aave/maker
     - identity: sovrin/pai
     - indexing: thegraph
     - trading
@@ -357,7 +359,7 @@
     - https://moontowermeta.com/tails-explained/
     - https://en.wikipedia.org/wiki/Paradox_of_thrift
 *** TODO Taproot by hand
-    SCHEDULED: <2022-04-21 Thu>
+    SCHEDULED: <2022-05-07 Sat>
     :PROPERTIES:
     :ID:       14d3bee6-1045-4c48-a50a-bc912b9bd42d
     :END:
@@ -517,7 +519,7 @@
     - State "DONE"       from "TODO"       [2021-08-27 Fri 12:15]
     - State "DONE"       from "TODO"       [2021-08-16 Mon 09:44]
     - [X] cryptography
-    - [ ] emacs
+    - [X] emacs
     - [X] market wizards review
     - [X] linux kernel
     - [ ] cryptography
