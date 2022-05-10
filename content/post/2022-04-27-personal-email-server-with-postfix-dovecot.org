@@ -8,7 +8,7 @@ Given that GMail with cease to provide free hosting service for custom domains I
 Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https://www.mail-tester.com/test-2atnv1dqh][the test results]] look pretty good, see all the details below.
 
 ** 1. Dovecot
-  One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/]]
+One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]].
 *** 1.1 Installation
    #+begin_src sh
      pacman -S dovecot
@@ -153,18 +153,25 @@ Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https:
 
    Generate //etc/ssl/{certs,private}/dovecot.pem/ cert files.
 
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     openssl dhparam -out /etc/dovecot/dh.pem 4096
+   #+end_src
+
+   Generate //etc/dovecot/dh.pem/ file.
+
 **** SSL
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
-     doveconf ssl ssl_cert ssl_key ssl_require_crl
+     doveconf ssl ssl_cert ssl_key ssl_dh ssl_require_crl
    #+end_src
 
    #+RESULTS:
    : ssl = yes
    : ssl_cert = </etc/ssl/certs/dovecot.pem
    : ssl_key = </etc/ssl/private/dovecot.pem
+   : ssl_dh = </etc/dovecot/dh.pem
    : ssl_require_crl = yes
 
-   Using the certs files generated above.
+   Path to files generated above.
 
 **** Authentication
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
@@ -573,7 +580,7 @@ Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https:
    #+end_src
 
    #+RESULTS:
-   : "v=DMARC1; p=quarantine; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=s; fo=1; pct=10"
+   : "v=DMARC1; p=none; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=r; aspf=r; fo=1; pct=100"
    Enable /p=quarantine/ policy for /pct=10/ percent of the emails that fail the validation.
 
 *** 4.3 Service
@@ -585,6 +592,25 @@ Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https:
    - https://mxtoolbox.com/DMARC.aspx
    - https://dmarcian.com/dmarc-inspector/
 
+** 5. Imapsync
+  And finally, migrate all emails from Gmail to my personal email server with [[https://github.com/imapsync/imapsync][imapsync]] tool.
+*** 5.1 Installation
+   #+begin_src sh
+     pacman -S imapsync
+   #+end_src
+*** 5.2 Migration
+  #+begin_src sh
+    imapsync --gmail1 --user1 <SRC_USER> --password1 <SRC_PASS> \
+             --host2 localhost --user2 <DST_USER> --password2 <DST_PASS> \
+             --exclude "INBOX|Drafts|Important|Spam|Trash" \
+             --f1f2 "[Gmail]/All Mail"="Archive" \
+             --folderlast "[Gmail]All Mail" \
+             --dry
+  #+end_src
+
+  /Imapsync/ tool has a lots of params but the default /automap/ works just fine, I only need to map Gmail's /All Mail/ to /Archive/ folder (to be synced last) and exclude the folders that I do not want.
+
+  Mind the /--dry/ at the end, to play safe and test out the whole migration first.
 
 ** References
   - https://wiki.archlinux.org/title/Postfix
@@ -607,3 +633,5 @@ Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https:
   - https://www.abuseat.org/helocheck.html
   - https://clean.email/email-blacklist-check
   - https://en.wikipedia.org/wiki/Email_authentication
+
+  - https://imapsync.lamiral.info/
