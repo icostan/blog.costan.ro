@@ -1,0 +1,45 @@
+#+title:  Reminiscences of ... a loss
+#+subtitle: Trading
+#+date:   2022-05-24
+#+tags[]: trading PNL loss FOREX trading212 margincall
+
+Never ask a trader how much he makes but how much he lost... here is a story...
+
+** The beginning (2001)
+
+  My first touch with trading was in late 2001 during the [[https://www.investopedia.com/terms/d/dotcom-bubble.asp][Dotcom bubble]] when everyone wanted to get online. As part of an outsourcing company, I was assigned to work for a client that wanted to implement a Java applet to render stock charts in browser. During that 1 year project I did learn trading/investment lingo, technical indicators, linear/log chart types, candlesticks, etc but this was pretty much it.
+
+** The bug (2005)
+
+  Fast-forward to 2003/2004 when Romanian stock market was getting hot and reached a top in Jan 2005; it got my attention and somehow I started to follow the news, read investment/trading books and [[https://www.investopedia.com/][Investopedia]] articles, playing with demo accounts, etc.
+
+** The first account (2007)
+
+  But it is only mid 2007 when I opened my first real FOREX account with $1000 and I still remember my first trade: long EUR,USD,AUD against the JPY, it was just before the [[https://www.investopedia.com/articles/economics/09/financial-crisis-review.asp][Great Financial crisis]] when every market was sky rocketing, including the [[https://www.investopedia.com/terms/forex/f/forex-market.asp][FOREX]] market.
+
+** The reload (2009)
+
+  Of course I blew that account pretty fast (in less than 1 year or so) but it was only one lost battle, not the war. I did open another [[https://www.trading212.com/][Trading212]] FOREX account, new [[https://tradeville.ro/][Tradeville]] (ex. Vanguard) account to invest in Romanian market, deposit $1k in each, then went deep down the rabbit hole. This is the time when I read lots of trading/investment books, traded any financial instruments that I could get my hands on (stocks, bonds, CFDs) and started to study  derivatives products (futures, options) for the very first time.
+
+** The king of the jungle (2011)
+
+  It's mid 2011, world economy was slowly getting out of the hole but [[https://www.investopedia.com/terms/e/european-sovereign-debt-crisis.asp][European Sovereign Debt Crisis]] (first in Greece then the other [[https://www.investopedia.com/terms/p/piigs.asp][PIIGS]] countries) hit the fan with money started to flow back into [[https://www.investopedia.com/terms/s/safe-haven.asp][safe-haven]] currencies mostly in USD but also in CHF/JPY.
+
+  At the end of 2011 my account was about $40k, a whopping /~40x PNL/ in 4 years since I started trading in 2007. Maybe it was beginner's luck, maybe market conditions but it was not bad for a software engineer without any education in financial markets.
+
+** The incoming call: Margin (2012)
+
+  I still remember that in Feb 2012 I was in Brazil for Rio Carnival and my /USDRON/ position (the big loss ~$31k) was challenging the break-even point at 3.25 RON/USD and I had a quick thought to close it but of course I did not :).
+
+  See for yourself what happened next...
+
+  [[file:../../img/Screen shot 2012-05-26 at 3.45.47 PM.png]]
+
+  ...a screenshot taken on May 26th, 2012; exactly 10 years ago :).
+
+  That /USDRON/ was a [[https://www.investopedia.com/articles/forex/07/carry_trade.asp][carry trade]] position that I did [[https://www.investopedia.com/terms/s/scale-in.asp][scale-in]] during 2009-2010 when [[https://www.investopedia.com/terms/i/interest-rate-differential.asp][interest-rate differential]] was widening; at that time big enough (~9% or something) to worth the risk of being short safe-haven currency (USD) and long emerging currency (RON).
+  Anyway, that position was already a big winner, made quite good profit (the interest was around $30/day) and the strategy worked very well until it didn't.
+
+  Then, in the following months, USD and EUR went to the roof against emerging currencies and my account got crushed, got [[https://www.investopedia.com/terms/m/margincall.asp][margin call]] and the rest is history.
+
+  /to be continued/...
