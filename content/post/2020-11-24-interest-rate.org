@@ -299,7 +299,7 @@ Compound interest is the eighth wonder of the world
      \ln 2 = 0.693
      \]
 
-     while /*2*/ comes from doubling ($2000 / $1000), if you need to find the tripling time just use /*3*/ or /*1.5*/ for halving time.
+     while /*2*/ comes from doubling ($2000 / $1000), if you need to find the tripling time just use /*3*/ or /*1.5*/ for 50% rise.
 
 ** References
    - [[https://www.investopedia.com/terms/c/compoundinterest.asp]]
