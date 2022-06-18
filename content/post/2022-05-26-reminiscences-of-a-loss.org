@@ -1,6 +1,6 @@
 #+title:  Reminiscences of ... a loss
 #+subtitle: Trading
-#+date:   2022-05-24
+#+date:   2022-05-26
 #+tags[]: trading PNL loss FOREX trading212 margincall
 
 Never ask a trader how much he makes but how much he lost... here is a story...

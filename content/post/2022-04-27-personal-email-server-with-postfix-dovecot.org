@@ -307,22 +307,26 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 
 **** Aliases
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
-     postconf -n | grep alias
+     postconf -n | grep -E "^alias|newaliases"
    #+end_src
 
    #+RESULTS:
    : alias_database = $alias_maps
    : alias_maps = hash:/etc/postfix/aliases
    : newaliases_path = /usr/bin/newaliases
-   : virtual_alias_maps = hash:/etc/postfix/virtual
-   Email aliases if any.
+   Email aliases if any; dont forget to run /newaliases/ command to rebuild aliases db.
 
-**** Virtual aliases (catch-all email)
-   #+begin_src sh
-     echo "@costan.ro iulian" > /etc/postfix/virtual
-     postmap /etc/postfix/virtual
+**** Catch-all email
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     postconf -n luser_relay local_recipient_maps
    #+end_src
-   Use virtual aliases to redirect unknown email recipients to my username, then /postmap/ rehashes the virtual db.
+
+   #+RESULTS:
+   : luser_relay = iulian
+   : local_recipient_maps =
+
+   Redirect /*all*/ (mind spam) unknown email recipients to given username.
 
 **** Secure email with [[https://en.wikipedia.org/wiki/Transport_Layer_Security][TLS]] (Transport Layer Security)
 ***** receiving
@@ -337,7 +341,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    : smtpd_tls_loglevel = 1
    : smtpd_tls_security_level = may
    : smtpd_use_tls = yes
-   /smtpd_tls_auth_only/ do not accounce and accept plain auth over unsecured connections.
+   /smtpd_tls_auth_only/ to reject plain auth over unsecured connections.
 
 ***** sending
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
@@ -426,6 +430,8 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    debugger_command = PATH=/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin ddd $daemon_directory/$process_name $process_id & sleep 5
    html_directory = no
    inet_protocols = ipv4
+   local_recipient_maps =
+   luser_relay = iulian
    mail_owner = postfix
    mailq_path = /usr/bin/mailq
    manpage_directory = /usr/share/man
@@ -462,7 +468,6 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    smtpd_tls_security_level = may
    smtpd_use_tls = yes
    unknown_local_recipient_reject_code = 550
-   virtual_alias_maps = hash:/etc/postfix/virtual
    #+end_example
    Again, these are only the non-default config values.
 
@@ -634,5 +639,6 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
   - https://www.abuseat.org/helocheck.html
   - https://clean.email/email-blacklist-check
   - https://en.wikipedia.org/wiki/Email_authentication
+  - https://www.oreilly.com/library/view/postfix-the-definitive/0596002122/ch04s07.html
 
   - https://imapsync.lamiral.info/
