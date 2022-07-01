@@ -5,7 +5,7 @@
 
 Given that GMail with cease to provide free hosting service for custom domains I've decided to deploy a fully featured personal email server and migrate everything to my [[https://archlinux.org/][Arch Linux]] box.
 
-Except a few issues (e.g. reverse DNS that I need to solve with my ISP) [[https://www.mail-tester.com/test-2atnv1dqh][the test results]] look pretty good, see all the details below.
+The [[/email_test_result.pdf][email test results]] look pretty good, 10 out of 10, all the details below, let's begin...
 
 ** 1. Dovecot
 One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]].
@@ -265,6 +265,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 *** 1.4 Testing tools
   - https://www.dotcom-tools.com/email-server-test
   Just basic connectivity/speed IMAPS testing, we'll run more advanced tests later on.
+
 ** 2. Postfix
   I know [[https://en.wikipedia.org/wiki/Sendmail][Sendmail]] is the classic, widely used mail transfer agent but it is a bit old-fashion to me and I'll use [[http://www.postfix.org/][Postfix]] instead.
 *** 2.1 Installation
@@ -407,10 +408,13 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 **** DNS TXT record
    #+begin_src sh :results output
      drill -Q costan.ro TXT
+     drill -Q smtp.costan.ro TXT
    #+end_src
 
    #+RESULTS:
-   : "v=spf1 a mx ip4:109.96.82.30 ~all"
+   : "v=spf1 a mx ip4:86.124.145.184 ~all"
+   : "v=spf1 a mx ip4:86.124.145.184 ~all"
+
    Sender Policy Framework ([[https://en.wikipedia.org/wiki/Sender_Policy_Framework][SPF]]) is required to detect some forged sender addreses.
 
 **** Final conf
@@ -477,13 +481,15 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
      ufw limit "SMTP"
    #+end_src
 *** 2.4 Testing tools
-   For all geeks out there you can use /openssl/ to do basic SMTP testing or more advanced tools.
+   - https://mxtoolbox.com/diagnostic.aspx - excelent tool for MX, DNS
+   - https://www.appmaildev.com/
+   - https://www.checktls.com/index.html
+
+   For all geeks out there you can use /openssl/ to do basic SMTP testing.
    #+begin_src sh
      openssl s_client -connect smtp.costan.ro:25 -starttls smtp
    #+end_src
-   - https://mxtoolbox.com/ - excelent tool for different MX, DNS or use /openssl/
-   - https://www.appmaildev.com/
-   - https://www.checktls.com/index.html
+
 ** 3. DomainKeys Identified Mail - DKIM
   [[https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail][DKIM]] is an email authentication method used to detect forged sender addresses.
 *** 3.1 Installation
@@ -546,7 +552,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    #+end_src
 *** 3.4 Testing tools
   - https://dkimcore.org/tools/
-  - https://dmarcian.com/dkim-inspector/
+  - https://dmarcian.com/dkim-inspector/ - see my [[https://dmarcian.com/dkim-inspector/?domain=costan.ro&selector=rig][test report]]
 
 ** 4. Domain-based Message Authentication, Reporting and Conformance - DMARC
   [[https://en.wikipedia.org/wiki/DMARC][DMARC]] is an email authentication protocol that extends SPF and DKIM to protect domain from email spoofing.
@@ -585,8 +591,9 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    #+end_src
 
    #+RESULTS:
-   : "v=DMARC1; p=none; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=r; aspf=r; fo=1; pct=100"
-   Enable /p=quarantine/ policy for /pct=10/ percent of the emails that fail the validation.
+   : "v=DMARC1; p=quarantine; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=s; aspf=s; fo=1; pct=25"
+
+   Enable /p=quarantine/ policy for /pct=25/ percent of the emails that fail the validation.
 
 *** 4.3 Service
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
@@ -595,7 +602,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 
 *** 4.4 Testing tools
    - https://mxtoolbox.com/DMARC.aspx
-   - https://dmarcian.com/dmarc-inspector/
+   - https://dmarcian.com/dmarc-inspector/ - see my [[https://dmarcian.com/dmarc-inspector/?domain=costan.ro][test report]]
 
 ** 5. Imapsync
   And finally, migrate all emails from Gmail to my personal email server with [[https://github.com/imapsync/imapsync][imapsync]] tool.

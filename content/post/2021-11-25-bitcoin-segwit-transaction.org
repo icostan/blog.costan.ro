@@ -79,7 +79,7 @@ Lets hand craft a SegWit transaction using only [[https://docs.python.org/3/libr
       - /\__bytes__/ - bytes representation
 
 *** Script
-    Bitcoin scriptting, we only use one /scriptPubKey/ type called /P2WPKH/ (Pay 2 Witness Public Key Hash), see [[https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#Examples][BIP-141 Examples]] for more examples.
+    Bitcoin scripting, we only use one /scriptPubKey/ type called /P2WPKH/ (Pay 2 Witness Public Key Hash), see [[https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki#Examples][BIP-141 Examples]] for more examples.
 
     #+begin_src python :session segwit-python :results output
       class Script(object):
@@ -171,7 +171,7 @@ Lets hand craft a SegWit transaction using only [[https://docs.python.org/3/libr
 
 ** 2. Sign transaction
 
-   Lets's get down to signature business but first please take a quick look at few blog posts:
+   Let's get down to signature business but first please take a quick look at few blog posts:
    - [[https://blog.costan.ro/post/2019-04-09-ecdsa/][ECDSA]] - the digital signature algorithm that is used in Segwit
    - [[https://blog.costan.ro/post/2018-11-11-bitcoin-transaction/][Bitcoin transaction]] - Bitcoin transaction v0 by hand written in Ruby
    - [[https://blog.costan.ro/post/2019-09-25-elliptic-curves/][Elliptic curves]] - for a primer on Elliptic curves
