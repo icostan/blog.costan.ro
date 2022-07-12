@@ -417,6 +417,17 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 
    Sender Policy Framework ([[https://en.wikipedia.org/wiki/Sender_Policy_Framework][SPF]]) is required to detect some forged sender addreses.
 
+**** Reverse DNS record
+   #+begin_src sh :results output
+     drill -Q 86.124.145.184 -x
+   #+end_src
+
+   #+RESULTS:
+   : smtp.costan.ro.
+
+   And last, one of the most important configuration, get in touch with your [[https://en.wikipedia.org/wiki/Internet_service_provider][ISP]] to setup the [[https://en.wikipedia.org/wiki/Reverse_DNS_lookup][Reverse DNS (rDNS)]]; otherwise your emails will, most probably, be marked as spam.
+
+
 **** Final conf
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
      postconf -n

@@ -153,15 +153,16 @@
     SCHEDULED: <2021-02-27 Sat>
 *** DONE session breaks indicator
 *** WIP a blog post for each cryptography book/chapter
-    - CryptoBook - 2021
-    - An overview of cryptography - 2020
-    - Practical cryptography for developers - 2018
-    - Serious cryptography - 2018
-    - Crypto 101 - 2017
-    - Understanding cryptography - 2010
-    - Cryptography and Network Security - 2005
-    - Handbook of applied cryptography - 2001
-    - Cryptography theory and practice - 1995
+    - [[https://cryptohack.gitbook.io/cryptobook/][CryptoBook]] - 2021
+    - [[https://www.garykessler.net/library/crypto.html][An overview of cryptography]] - 2020
+    - [[http://toc.cryptobook.us/][A graduated course in applied cryptography]] - 2020
+    - [[https://cryptobook.nakov.com/][Practical cryptography for developers]] - 2018 ***
+    - Serious cryptography - 2018 (pdf)
+    - Crypto 101 - 2017 (pdf)
+    - [[http://swarm.cs.pub.ro/~mbarbulescu/cripto/Understanding%20Cryptography%20by%20Christof%20Paar%20.pdf][Understanding cryptography]] - 2010
+    - [[https://flylib.com/books/en/3.190.1/][Cryptography and network security]] - 2005
+    - [[https://cacr.uwaterloo.ca/hac/][Handbook of Applied cryptography]] - 2001
+    - [[https://cs.uwaterloo.ca/~dstinson/CTAP3/CTAP3.html][Cryptography theory and practice]] - 1995
     - http://asecuritysite.com
 *** DONE hash functions
     SCHEDULED: <2020-09-15 Thu>
@@ -359,7 +360,7 @@
     - https://moontowermeta.com/tails-explained/
     - https://en.wikipedia.org/wiki/Paradox_of_thrift
 *** TODO Taproot by hand
-    SCHEDULED: <2022-06-15 Wed>
+    SCHEDULED: <2022-07-14 Thu>
     :PROPERTIES:
     :ID:       14d3bee6-1045-4c48-a50a-bc912b9bd42d
     :END:
@@ -382,7 +383,8 @@
 *** secret sharing
     - https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing
     - https://en.wikipedia.org/wiki/Secret_sharing
-*** TODO BLS signature
+*** DONE BLS signature
+SCHEDULED: <2022-07-10 Sun>
     - https://medium.com/cryptoadvance/bls-signatures-better-than-schnorr-5a7fe30ea716
     - https://en.wikipedia.org/wiki/BLS_digital_signature
     - https://medium.com/@srikarv/the-bls-signature-scheme-a-short-intro-801c723afffa
@@ -396,6 +398,8 @@
    - self signed
    - cacert.org
    - let's encrypt
+*** object-oriented vs functional vs multiple dispatch
+   - java vs haskell vs julia
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -440,6 +444,7 @@
     - first based on DH, second based on discrete log
     - https://en.wikipedia.org/wiki/ElGamal_encryption
     - https://en.wikipedia.org/wiki/ElGamal_signature_scheme
+*** TODO add links to screenshots
 ** Tasks
 *** DONE Wakatime reports
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
@@ -496,11 +501,13 @@
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2022-06-21 Tue +2w>
+    SCHEDULED: <2022-07-24 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-06-12 Sun 11:20]
+    :LAST_REPEAT: [2022-07-12 Tue 20:32]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2022-07-12 Tue 20:32]
+    - State "DONE"       from "TODO"       [2022-07-04 Mon 11:55]
     - State "DONE"       from "TODO"       [2022-06-12 Sun 11:20]
     - State "DONE"       from "TODO"       [2022-06-12 Sun 11:19]
     - State "DONE"       from "TODO"       [2022-05-20 Fri 07:36]

@@ -151,6 +151,11 @@ disqusShortname = "icostan"
     name = "Hash functions"
     url = "post/2020-09-15-hash-functions"
     weight = 9
+[[menu.main]]
+    parent = "cryptography"
+    name = "BLS"
+    url = "post/2022-06-28-bls-signature-scheme"
+    weight = 10
 
 [[menu.main]]
     identifier = "coins"
