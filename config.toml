@@ -283,9 +283,14 @@ disqusShortname = "icostan"
     weight = 8
 [[menu.main]]
     parent = "linux"
-    name = "Personal email server"
+    name = "1. Personal Email server"
     url = "post/2022-04-27-personal-email-server-with-postfix-dovecot"
     weight = 9
+[[menu.main]]
+    parent = "linux"
+    name = "2. Personal DNS server"
+    url = "post/2022-08-01-personal-dns-server-with-nsd"
+    weight = 10
 
 [[menu.main]]
     identifier = "math"

@@ -1,0 +1,314 @@
+#+title:  Personal DNS server
+#+subtitle: Linux
+#+date:   2022-08-01
+#+tags[]: archlinux dns server nsd
+
+After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal Email server]] the next thing to setup is an Domain Name Server (DNS) server for /costan․ro/ domain with DNSSEC, TLS and everything in between.
+
+** 1. Authoritative DNS with NSD
+  I know [[https://www.isc.org/bind/][Bind]] but this is also a bit old-fashion to me; more than that, I believe in [[https://en.wikipedia.org/wiki/Single-responsibility_principle][SRP]] and since Bind is both caching and authoritative name server, I prefer [[https://www.nlnetlabs.nl/projects/nsd/about/][NSD]] which is authoritative only server, lighter and newer.
+*** 1.1 Installation
+  Just install /nsd/ and /ldnsutils/ package.
+  #+begin_src sh
+    pacman -S nsd ldnsutils
+  #+end_src
+
+*** 1.2 Configuration
+**** Daemon
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     grep -v -e '^[[:space:]]*#' -e '^[[:space:]]*$' /etc/nsd/nsd.conf
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   server:
+       verbosity: 2
+       username: "nsd"
+       zonesdir: "//etc/nsd/zones"
+       hide-version: yes
+       statistics: 86400
+       refuse-any: yes
+   verify:
+       enable: yes
+   remote-control:
+       control-enable: yes
+   zone:
+       name: "costan.ro"
+       zonefile: "costan.ro"
+   #+end_example
+
+   Non-default configuration is pretty basic:
+   - server: /username/, /zonesdir/ for daemon to chdir into; /verbosity/, /statistics/ to show in logs once a day; and last /hide-version/, /refuse-any/ minimal security settings.
+   - verify: to verify each zone
+   - remote-control: to locally control the daemon via /nsd-control/ tool.
+   - zone: zone for my personal domain
+**** Zone
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/nsd/zones/costan.ro
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   ;## NSD authoritative only DNS
+   ;## FORWARD Zone - costan.ro
+
+   $ORIGIN costan.ro.       ; default zone domain
+   $TTL 3600                ; default time to live - 1h
+
+   @ IN SOA ns.costan.ro. admin.costan.ro. (
+              2022072902  ; Serial number
+              3600        ; Refresh - 1h
+              600         ; Retry - 10m
+              1209600     ; Expire - 2w
+              3600        ; Min TTL - 1h
+              )
+
+   @       IN   NS    ns.costan.ro.
+   @       IN   MX    5 smtp.costan.ro.
+
+   @       IN   A     86.124.145.184
+   rig     IN   A     86.124.145.184
+   smtp    IN   A     86.124.145.184
+
+   blog          IN  CNAME   icostan.gitlab.io.
+   deribase      IN  CNAME   rig.costan.ro.
+   gasherbrum2   IN  CNAME   dimensional-ant-eqt6rarkgtemacbmeid10exz.herokudns.com.
+   huveragy      IN  CNAME   icostan.github.io.
+   imap          IN  CNAME   rig.costan.ro.
+   mail          IN  CNAME   rig.costan.ro.
+   www           IN  CNAME   rig.costan.ro.
+
+   @                                     IN  TXT     "v=spf1 a mx ip4:86.124.145.184 ~all"
+   smtp                                  IN  TXT     "v=spf1 a mx ip4:86.124.145.184 ~all"
+   _dmarc                                IN  TXT     "v=DMARC1; p=quarantine; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=s; aspf=s; fo=1; pct=25"
+   rig._domainkey                        IN  TXT     "v=DKIM1; k=rsa; s=email; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQFlti46dceD5rk3+RGnoYStK6np+cIucrOrkMHbjoRLcOxNikOfi0ABgG2CxK/0X+VNmiL5PsaWWnXhYGOJWz82LM0zhDzoD1bQ0OIb/PWyPMz22udwnPa6FRypEEnjAdC6c8g7tX8fMovqX/09PHKKjLq4zX0X3CMT+t3QhXlQIDAQAB"
+   _gitlab-pages-verification-code.blog  IN  TXT     "gitlab-pages-verification-code=3b0fe70a3b7910b2760d02227529e240"
+
+   ;## NSD authoritative only DNS
+   ;## FORWARD Zone - costan.ro
+   #+end_example
+
+*** 1.3 Tuning
+   Enable TCP Fast Open as suggested by /NSD/ daemon on start.
+   #+begin_src sh
+     echo "net.ipv4.tcp_fastopen=2" > /etc/sysctl.d/30-nsd.conf
+   #+end_src
+
+*** 1.4 Service
+   Start/enable the daemon, allow port 53 in firewall and this is it.
+   #+begin_src sh
+     systemctl start nsd
+     systemctl enable nsd
+     ufw limit "DNS"
+   #+end_src
+
+*** 1.5 Testing
+  The easiest test is to query the DNS server directly:
+
+  #+begin_src sh :results output
+    dig @ns.costan.ro rig.costan.ro
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+
+  ; <<>> DiG 9.18.4 <<>> @ns.costan.ro rig.costan.ro
+  ; (1 server found)
+  ;; global options: +cmd
+  ;; Got answer:
+  ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62873
+  ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+  ;; OPT PSEUDOSECTION:
+  ; EDNS: version: 0, flags:; udp: 1280
+  ;; QUESTION SECTION:
+  ;rig.costan.ro.			IN	A
+
+  ;; ANSWER SECTION:
+  rig.costan.ro.		3328	IN	A	86.124.145.184
+
+  ;; Query time: 0 msec
+  ;; SERVER: 86.124.145.184#53(ns.costan.ro) (UDP)
+  ;; WHEN: Mon Aug 01 14:59:29 EEST 2022
+  ;; MSG SIZE  rcvd: 58
+
+  #+end_example
+
+  Or use these 3rd party tools to look deeper into DNS config and security.
+  - https://dnschecker.org/dns-record-validation.php
+  - https://mxtoolbox.com/
+
+
+** 2. Optional (highly recommended) DNS extensions
+  By default [[https://en.wikipedia.org/wiki/Domain_Name_System][DNS]] protocol is old and pretty basic, just a giant hashmap that maps a domain name (e.g. costan.ro) to an IP address (e.g. 86.124.145.184) but there are other extensions for data integrity, privacy, etc.
+*** 2.1 DNSSEC for authentication and integrity
+**** Generate ZSK keypair
+   This will be used to sign the zone file and for now I am OK with /RSASHA256/ standard algorithm, see [[https://www.cloudflare.com/dns/dnssec/ecdsa-and-dnssec/][RSA vs ECDSA in DNSSEC]] for details.
+   #+begin_src sh
+     ldns-keygen -a RSASHA256 -b 1024 costan.ro
+   #+end_src
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ls -l /etc/nsd/zones/Kcostan.ro*
+   #+end_src
+
+   #+RESULTS:
+   : -rw-r--r-- 1 nsd  nsd   239 Jul 29 11:48 /etc/nsd/zones/Kcostan.ro.+008+03304.key
+   : -rw------- 1 root root  939 Jul 29 11:48 /etc/nsd/zones/Kcostan.ro.+008+03304.private
+
+**** Generate KSK keypair
+   This will be used to sign the key file generated above, notice larger keysize for stronger security.
+   #+begin_src sh
+     ldns-keygen -k -a RSASHA256 -b 2048 costan.ro
+   #+end_src
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ls -l /etc/nsd/zones/Kcostan.ro*
+   #+end_src
+
+   #+RESULTS:
+   : -rw-r--r-- 1 nsd  nsd   239 Jul 29 11:48 /etc/nsd/zones/Kcostan.ro.+008+03304.key
+   : -rw------- 1 root root  939 Jul 29 11:48 /etc/nsd/zones/Kcostan.ro.+008+03304.private
+   : -rw-r--r-- 1 nsd  nsd    97 Jul 29 12:40 /etc/nsd/zones/Kcostan.ro.+008+19957.ds
+   : -rw-r--r-- 1 nsd  nsd   412 Jul 29 11:49 /etc/nsd/zones/Kcostan.ro.+008+19957.key
+   : -rw------- 1 root root 1703 Jul 29 11:49 /etc/nsd/zones/Kcostan.ro.+008+19957.private
+
+**** Sign zone
+   This will digitally sign each record in plaintext zone and output the signed zone file plus the public keys above.
+   #+begin_src sh
+     ldns-signzone -n -p costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
+   #+end_src
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ls -l /etc/nsd/zones/costan.ro*
+   #+end_src
+
+   #+RESULTS:
+   : -rw-r--r-- 1 nsd nsd  1888 Jul  9 12:11 /etc/nsd/zones/costan.ro
+   : -rw-r--r-- 1 nsd nsd 13997 Jul 29 11:56 /etc/nsd/zones/costan.ro.signed
+
+**** Configuration
+   Update /nsd.conf/ file to use the signed zone file instead of the plaintext one.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     grep -B 2 costan.ro.signed /etc/nsd/nsd.conf
+   #+end_src
+
+   #+RESULTS:
+   : zone:
+   : 	name: "costan.ro"
+   : 	zonefile: "costan.ro.signed"
+
+**** Service
+   Trigger daemon reconfig and reload zone file.
+   #+begin_src sh
+     nsd-control reconfig
+     nsd-control reload costan.ro
+   #+end_src
+
+**** Test DNSSEC keys
+   After reload we need to check if /DNSKEY/ records are published and propagated.
+   #+begin_src sh :results output
+     dig DNSKEY costan.ro +multiline
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+
+   ; <<>> DiG 9.18.4 <<>> DNSKEY costan.ro +multiline
+   ;; global options: +cmd
+   ;; Got answer:
+   ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44221
+   ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+   ;; OPT PSEUDOSECTION:
+   ; EDNS: version: 0, flags:; udp: 1232
+   ;; QUESTION SECTION:
+   ;costan.ro.		IN DNSKEY
+
+   ;; ANSWER SECTION:
+   costan.ro.		3600 IN	DNSKEY 256 3 8 (
+                   AwEAAckIPA6ENdhhPjlKEJo/57IC7MzfcuWRkS40wXKS
+                   KNh8nZyYVg9K92Kr5SgAD1kSAnaE4eFTOXZgYBE97eS6
+                   lBcljw0iWyPOkQZXaatSCduHCIrMbSg7xGjXeQzAiD8Y
+                   OVbS4X0881h3Gi919zmiZ5tDTmNpHfxAKabEJXv6IfYL
+                   ) ; ZSK; alg = RSASHA256 ; key id = 3304
+   costan.ro.		3600 IN	DNSKEY 257 3 8 (
+                   AwEAAeM6ahMDg1TJ2enWZGaZxMarqrdZIqGm0xqnqR/4
+                   rr1LFYlY9M9cgHpLx++sqFPH6OWfbP/P5L8Y9k1GWHLp
+                   68HKRSuGljlVaKlStoauk+PCk83SNbp0btJQdFSqzuxN
+                   OPppMrhthd4yHsIGzTwy2h+qkyT/EYReV+IwAISvw9PJ
+                   H3xj7XtG+3mvrs/WqrXqfXb4y1+jzbv3GJL2RCsDpUM3
+                   Cut3QTNrjqTJsc48wz/wu0HvXAnlCnyLTL2fJ69Bjf4h
+                   FJaiggvje2cTWxWixdUjiSPuBWRQcu/H5konkxtqV4eZ
+                   R8DiLy7+mKZZUkKMPxTCUZ50qgtmNdLlRNs28zk=
+                   ) ; KSK; alg = RSASHA256 ; key id = 19957
+
+   ;; Query time: 103 msec
+   ;; SERVER: 127.0.0.1#53(127.0.0.1) (UDP)
+   ;; WHEN: Fri Jul 29 21:00:35 EEST 2022
+   ;; MSG SIZE  rcvd: 462
+
+   #+end_example
+
+**** Chain of trust
+   Generate /DS/ (Delegation Signer) record for our signed zone that allows:
+   - DNS resolvers know that my domain is DNSSEC-enabled.
+   - transfer of trust from a trusted parent zone (ro.) and my domain (costan.)
+
+   #+begin_src sh :results output
+     ldns-key2ds costan.ro.signed
+   #+end_src
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/nsd/zones/Kcostan.ro.+008+19957.ds
+   #+end_src
+
+   #+RESULTS:
+   : costan.ro.	3600	IN	DS	19957 8 2 083b1f4914402506d842029241041cc5869fd91c1887f41fb73a832fc78bbb8c
+
+   Update DS record in registrar ([[https://rotld.ro][rotld.ro]] is the top-level registrar for /ro./ TLD zone).
+
+   #+begin_src sh :results output
+     dig DS costan.ro +short
+   #+end_src
+
+   #+RESULTS:
+   : 19957 8 2 083B1F4914402506D842029241041CC5869FD91C1887F41FB73A832F C78BBB8C
+
+**** Test DNSSEC
+  Use excellent 3rd party tools:
+  - https://dnssec-debugger.verisignlabs.com/costan.ro
+  - https://dnsviz.net/
+
+*** 2.2 DNS over TLS for privacy
+  TBD: once I solve one of the following issues:
+  - automate wildcard certificate issuance with Let's Encrypt
+  - figure out and configure [[https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities][DANE]]
+
+** 3. References
+*** Articles
+  - https://wiki.archlinux.org/title/NSD
+  - https://wiki.archlinux.org/title/DNSSEC
+  - https://www.digitalocean.com/community/tutorials/how-to-use-nsd-an-authoritative-only-dns-server-on-ubuntu-14-04
+  - https://www.digitalocean.com/community/tutorials/how-to-set-up-dnssec-on-an-nsd-nameserver-on-ubuntu-14-04
+  - https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en
+  - https://www.cloudflare.com/dns/dnssec/how-dnssec-works/
+  - https://en.wikipedia.org/wiki/Domain_Name_System
+  - https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions
+  - https://en.wikipedia.org/wiki/DNS_over_TLS
+  - https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities
+  - https://tools.cisco.com/security/center/resources/dns_best_practices
+*** Test tools
+  - https://dnschecker.org/all-tools.php
+  - https://dnsviz.net/
+  - https://dnssec-debugger.verisignlabs.com/
+  - https://www.verisign.com/en_US/company-information/verisign-labs/internet-security-tools/index.xhtml
+  - https://dnssec-tools.org/
+*** Test tools for DNSSEC resolvers
+  - https://dnssec.vs.uni-due.de/
+  - http://www.dnssec-or-not.com/
+  - http://www.dnssec-failed.org/
+  - http://en.conn.internet.nl/connection/
+*** Other
+  - https://www.opendnssec.org/
+  - https://ns1.com/blog/glue-records-and-dedicated-dns
+  - https://mxtoolbox.com/problem/dns/dns-bad-glue-detected
