@@ -466,6 +466,11 @@ disqusShortname = "icostan"
     name = "Surviging Bali"
     url = "post/2019-11-19-surviving-bali/"
     weight = 10
+[[menu.main]]
+    parent = "travel"
+    name = "1. Annapurna Circuit: the plan"
+    url = "post/2022-07-28-annapurna-circuit-plan/"
+    weight = 11
 
 [[menu.main]]
     name = "Tags"

@@ -121,10 +121,10 @@ Import [[https://github.com/randombit/pairings.py/][BN256]] elliptic curve pairi
 
 *** 1. Public parameters
 
-Besides message /m/ and generator /G2/ that are show below we also know:
+Besides message /m/ and generator /G2/ that are shown below we also know:
  - elliptic curves /EC2/ and /EC1/ with generator /G1/
  - target extension field /TF/.
-but they are hidden in Barreto-Naehrig 256-bit (BN265) curve implementation.
+but they are hidden in Barreto-Naehrig 256-bit (BN256) curve implementation.
 
 #+begin_src sage :session bls
   # helper function
