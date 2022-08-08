@@ -26,14 +26,14 @@ Highlights:
 note: Dharapani is a good place to stay with good views up both canyons
 *** Dharapani to Bagarchap (2160m): 2 km, 260m, 1.00 hrs
 *** Bagarchap to Danaqyu (2200m): 2 km, 40m, 0.45 hrs
-*** Danaqyu to Koto (2640m):
+*** Danaqyu to Koto (2640m):                                          :SLEEP:
 Highlights: Tibetan Buddhist Monastery, great mountain vistas
 **** Upper trail:
 **** Danaqyu (2200m) to Thanchowk (2570m): 6 km, 370m, 2.15 hrs
 **** Thanchowk (2570m) to Koto (2640m): 4 km, 70m, 1.00 hrs
 **** Lower trail:
 **** Danaqyu (2200m) to Latamarang (2400m): 1.5 km, 200m, 1.00 hrs
-**** Latamarang (2400 m) to Koto (2640m): 5.5 km, 240m, 2.00 hrs      :SLEEP?:
+**** Latamarang (2400 m) to Koto (2640m): 5.5 km, 240m, 2.00 hrs
 note: Koto is small, clean and quiet as compared to the hustle and chaos of Chame.
 *** Koto to Chame (2710m): 2 km, 70m, 0.45 hrs
 Facilities: farmacy, hot showers, many guesthouses, hot springs
@@ -56,7 +56,7 @@ Notes:
   - Ghyaru is high (3700), steep 420m climb, might experience first altitude sickness
   - many of the tours go by jeep to Lower Pisang then start the circuit from here
 **** Upper trail:
-**** Dhukur Pokhari (3240m) to Upper Pisang (3310m): 1.5 km, 70m, 1.30 hrs :SLEEP?:
+**** Dhukur Pokhari (3240m) to Upper Pisang (3310m): 1.5 km, 70m, 1.30 hrs :SLEEP:
 **** Upper Pisang (3310 m) to Ghyaru (3730m): 4.5 km, 420m, 1.45 hrs
 **** Ghyaru (3730 m) to Ngawal (3680m): 5 km, -50m, 1.45 hrs
 **** Ngawal (3680 m) to Humde (3330m): 2 km, -330m, 0.45 hrs
@@ -66,22 +66,25 @@ Notes:
 *** Humde to Bhraga (3450m): 6 km, 120m, 1.45 hrs
 Facilities: hospital, old bakery, sauna @ Himalayan Lodge
 *** Bhraga to Manang (3540m): 2km, 90m, 0.30hrs                       :SLEEP:
-Facilities: medicine, doctor (Himalayan Rescue Association), high altitude sickness class
+Facilities: medicine, doctor (Himalayan Rescue Association), high altitude sickness Trails
 
-Trails: mandatory side trek to Tilicho lake (4920m) for acclimatization or to Manang lake (4000m )
-
+class: mandatory side trek to Tilicho lake (4920m) for acclimatization or to Manang lake (4000m )
 -----
+
 *** Manang to Khangsar (3740m): 5 km, 300m, 3hrs (???)
 *** Khangsar to Shree Kharka (4060m): 3km, 320m, 1h
-Highlights: 2 teahouses + another one after 20 mins
 *** Shree Kharka to Tilicho BC (4150m): 7km, 90m, 3h(?)               :SLEEP:
 Highlights: 2 teahouses
 -----
+
 *** Tilicho BC to Tilicho Lake (4990m): 5km, 840m, 3hrs                 :TOP:
 *** Tilicho lake to Tilicho BC (4150m): 5km, -840m, 2.30 hrs
 *** Tilicho BC to Shree Kharka (4060m): 7km, -90m, 3h(?)              :SLEEP:
+Highlights: 2 teahouses + another one after 20 mins
+
 -----
 *** Shree Kharka to Yak Kharka (4050m): 10km, 510m, 3hrs
+Facilities: hydro power
 Note: only 3 guesthouse but better than Letdar
 *** Yak Kharka to Letdar (4200m): 1 km, 150m, 0.30 hrs
 *** Letdar to Thorang Phedi (4450m): 5 km, 250m, 2.30 hrs             :SLEEP:
@@ -91,11 +94,12 @@ Highlights: bakeries and real coffee, Windhorse restaurant and lodge to socializ
 
 note: leave at 2am and climb over the pass from here
 -----
+
 *** Thorang Phedi to High Camp (4850m): 1 km, 400m, 1.00 hrs
-Highlights: very steep up
+Highlights: very steep up, sunrise viewpoint
 
 Facilities: only one lodge
-*** High Camp to Thorung Pass (5416m): 5 km, 2.15 hrs                 :SLEEP:
+*** High Camp to Thorung Pass (5416m): 5 km, 2.15 hrs
 Highlights: little trail at the top that leads to stunning views
 
 Facilities: two teahouses along the way that serve hot drinks: one after 45min, one at the top of the pass???
@@ -105,7 +109,7 @@ Notes:
   - teahouses at the bottom
 *** Charabu to Muktinath (3800m): 4 km, 1.15 hrs
 Facilities:
-  - hospital
+  - hospital, hydro power all the way to Pokhara
 Highlights:
   - few Hindus/Buddhist temples
   - otherwise desolate place, no stay
@@ -119,11 +123,13 @@ Highlights:
   - hidden alleyways and European like charm
   - MUST STAY
   - high trail: fantastic views of the surrounding mountains
-**** High trail: Muktinath to Jhong: 3 km, 1.5 hrs
-**** High trail: Jhong (3540 m) to Kagbeni: 6 km, 1.45 hrs
+**** High trail: Muktinath to Jhong: 3 km, 1.30 hrs
+**** High trail: Jhong (3540 m) to Kagbeni: 6 km, 1.45 hrs            :SLEEP:
 **** Low trail: Muktinath to Jharkot: 1 km, 1 hrs
 **** Low trail: Jharkot (3550 m) to Khinga: 3 km, 0.45 hrs
 **** Low trail: Khinga (3355 m) to Kagbeni: 6 km, 1.45 hrs
+----
+
 *** Kagbeni to Ekle Bhatti (2740m): 2 km, 1.00 hrs
 Notes:
   - hike windy valley (all the way to Kalopani) and jeep traffic
@@ -182,6 +188,17 @@ Highlights:
 *** Bus to Kathmandu: 6h
 
 
+* Others
+** sim card
+- NTC has better coverage
+- Ncell works in major centres
+** wifi
+- very scarce
+** power charge
+- most teahouses have solar power
+- some places with hydro power
+- queue to get charged, cost: sometimes 200 Rs / charge or hour
+
 * References
 - https://wikitravel.org/en/Trekking_in_Nepal
 - https://ntb.gov.np/plan-your-trip/before-you-come/tims-card
@@ -190,6 +207,10 @@ Highlights:
 - [[https://wikitravel.org/en/Nepal]]
 - https://www.tripadvisor.com/ShowTopic-g424944-i12328-k10477760-Annapurna_Circuit_w_NATT_trails_waste_of_time_money-Annapurna_Region_Gandaki_Zone_Western.html
 - https://wanderingeric.org/category/nepal/
+- https://www.tripadvisor.com/ShowTopic-g293889-i9243-k7721703-Power_on_the_annapurna_circuit-Nepal.html
+- https://www.tripadvisor.com/ShowTopic-g424944-i12328-k9420747-Battery_charging_and_internet_during_Annapurna_circuit_trek-Annapurna_Region_Gandaki_Zone_.html
+- https://www.mountainiq.com/annapurna-circuit-weather/
+- https://www.mountainiq.com/resources/annapurna-circuit-packing-list/
 
 * Videos
 - https://www.youtube.com/watch?v=Hwxc4NUKshI
@@ -203,6 +224,7 @@ Highlights:
 - https://www.actual-adventure.com/nepal/trekking/annapurna/annapurna-natt-trails.html
 - https://www.tourtreknepal.com/annapurna-natt-trails-new-annapurna-trekking-trails.html
 - https://worldalpinetreks.com/packages/annapurna-circuit-trek/
+- https://www.nepalpowerplaces.com/trekking/nepal-tour/annapurna-circuit-trek/
 
 * Maps
 - https://www.magicalnepal.com/annapurna-circuit-trek-map/

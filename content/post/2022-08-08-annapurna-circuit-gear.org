@@ -1,0 +1,139 @@
+#+title: Annapurna circuit - the gear
+#+subtitle: Trekking
+#+date: 2022-08-08
+#+tags[]: annapurna circuit travel highaltitude gear
+
+
+Here is the initial gear list for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][Annapurna Circuit]] keeping in mind that we will experience multiple climates:
+- hot and humid - ~30° - below 2000m (Pokhara)
+- temperate - ~20° - 2000-4000m (most of the circuit)
+- mountain - ~10° - 4000-5000m (after Manang, Tilicho lake)
+- freezing level - ~0° - above 5000m (Thorung La pass)
+
+Note: some sections are finished and marked as DONE with border, the other ones are work in progress.
+
+** Gear
+*** DONE 1. Shoes
+    #+ATTR_HTML: :border 2 :rules none
+    | Type           | Brand      | Model       | Weight[g] | Required | Notes | TODO |
+    |----------------+------------+-------------+-----------+----------+-------+------|
+    | 1. Shoes       |            |             |      2310 |          |       |      |
+    | trekking boots | Garmont    | Rambler GTX |      1270 | yes      |       |      |
+    | sport shoes    | LaSportiva | Classic     |       690 | yes      |       |      |
+    | sandals        | Teva       | Universal   |       350 | yes      |       |      |
+*** 2. Clothing
+    | Type                  | Brand      | Model        | Weight[g] | Required | Notes | TODO    |
+    |-----------------------+------------+--------------+-----------+----------+-------+---------|
+    | 2. Clothing           |            |              |      2086 |          |       |         |
+    | 2.1 Base layer        |            |              |       411 |          |       |         |
+    | briefs                |            |              |           | yes      | 4 pcs |         |
+    | boxers                |            |              |           | yes      | 2 pcs |         |
+    | midweight boxers      | Icebreaker | Anatomica    |        64 |          |       |         |
+    | trekking socks        |            |              |           | yes      | 4 pcs | BUY     |
+    | midweight socks       |            |              |           |          | 2 pcs |         |
+    | t-shirt               |            |              |           | yes      |       |         |
+    | midweight t-shirt     | Trespass   |              |       199 | yes      |       |         |
+    | long sleeve           |            |              |           | yes      | 3 pcs | BUY     |
+    | midweight long sleeve | Mammut     |              |       148 | yes      |       |         |
+    | 2.2 Insulation layer  |            |              |       436 |          |       |         |
+    | down jacket           | Mammut     | Meron Hooded |       436 | yes      |       |         |
+    | fleece jacket         |            |              |           | yes      |       | BUY     |
+    | 2.3 Outer layer       |            |              |      1239 |          |       |         |
+    | convertible pants     | Salomon    | Elemental    |       293 | yes      |       | REPLACE |
+    | trekking pants        |            |              |           | yes      |       | BUY     |
+    | windstop jacket       | Mammut     | Classic      |       486 | yes      |       |         |
+    | hardshell jacket      | Marmot     | Huntley      |       460 |          |       |         |
+
+*** 3. Accessories
+    | Type             | Brand  | Model  | Weight[g] | Required | Notes        | TODO |
+    |------------------+--------+--------+-----------+----------+--------------+------|
+    | 3. Accessories   |        |        |       423 |          |              |      |
+    | 3.1 Head         |        |        |       273 |          |              |      |
+    | hat              | LaFume |        |        58 | yes      | (with cover) |      |
+    | buff             |        |        |        95 | yes      |              |      |
+    | fleece beanie    |        |        |       120 | yes      | (for sleep)  | BUY  |
+    | 3.2 Eyes         |        |        |           |          |              |      |
+    | sport sunglasses |        |        |           | yes      |              |      |
+    | 3.3 Face         |        |        |        78 |          |              |      |
+    | suncream         |        |        |        68 | yes      |              |      |
+    | lip balm         |        |        |        10 | yes      |              |      |
+    | 3.4 Hands        |        |        |        72 |          |              |      |
+    | fleece gloves    | Lowe   | Alpine |        72 |          |              |      |
+
+*** 4. Camping
+    | Type              | Brand   | Model    | Weight[g] | Required | Notes     | TODO |
+    |-------------------+---------+----------+-----------+----------+-----------+------|
+    | 4. Camping        |         |          |      2633 |          |           |      |
+    | 4.1 Sleeping      |         |          |      1433 |          |           |      |
+    | tent assault      | Simond  | Makalu   |      1045 | yes      |           |      |
+    | sleeping bag      |         |          |           | yes      |           |      |
+    | foam pad          | Yate    | Wave Alu |       388 | yes      |           |      |
+    | 4.2 Cooking       |         |          |       200 |          |           |      |
+    | stove             |         |          |           |          |           |      |
+    | fire striker      |         |          |        28 |          |           |      |
+    | metal cup         | Pinguin | 500ml    |       172 |          |           |      |
+    | water bottle      |         | 1L       |           | yes      |           | BUY  |
+    | fuel              |         |          |           |          | KATHMANDU | BUY  |
+    | 4.3 Food & Drinks |         |          |      1000 |          |           |      |
+    | lyofood           |         |          |      1000 |          | 10 pcs    | BUY  |
+
+*** 5. Trekking
+    | Type           | Brand         | Model      | Weight[g] | Required | Notes | TODO |
+    |----------------+---------------+------------+-----------+----------+-------+------|
+    | 5. Trekking    |               |            |      2236 |          |       |      |
+    | backpack       | Gregory       | Baltoro 75 |      2100 | yes      |       |      |
+    | trekking poles |               |            |           | yes      |       | BUY  |
+    | headlamp       | Black Diamond | Revolt 350 |        93 | yes      |       |      |
+    | compass        | Trekmates     | Explorer   |        43 |          |       |      |
+    | paper map      |               |            |           |          |       |      |
+
+*** 6. Toiletries
+   | Type            | Brand  | Model | Weight[g] | Required | Notes   | TODO |
+   |-----------------+--------+-------+-----------+----------+---------+------|
+   | 6. Toiletries   |        |       |       232 |          |         |      |
+   | toilet bag      | Deuter |       |       190 | yes      |         |      |
+   | small towel     |        |       |           | yes      |         |      |
+   | small soap      |        |       |           | yes      | +box    |      |
+   | nail clipper    |        |       |        15 | yes      |         |      |
+   | deodorant stick |        |       |           | yes      |         |      |
+   | parfume         | Zegna  |       |        27 |          |         |      |
+   | toilet paper    |        |       |           | yes      | 2 rolls |      |
+   | drywipes        |        |       |           | yes      |         |      |
+   | tooth brush     |        |       |           | yes      |         |      |
+   | tooth paste     |        |       |           | yes      |         |      |
+   | listerine       |        |       |           | yes      |         |      |
+   | dental floss    |        |       |           | yes      |         |      |
+   | razor           |        |       |           | yes      |         |      |
+   | pee bottle      |        |       |           | yes      |         | BUY  |
+   | trash bags      |        |       |           | yes      |         |      |
+
+*** 7. Technology
+   | Type            | Brand   | Model            | Weight[g] | Required | Notes       | TODO    |
+   |-----------------+---------+------------------+-----------+----------+-------------+---------|
+   | 7. Technology   |         |                  |      1149 |          |             |         |
+   | watch           | Garmin  | Forerunner 920XT |       186 |          | +usb cable  |         |
+   | cell phone      | One+    | T5               |       257 |          | +usb cable  |         |
+   | satellite phone | Thuraya | XT Pro           |       103 |          | +usb cable  |         |
+   | power bank      | Pyramid |                  |           | yes      | heavy       | REPLACE |
+   | solar charger   | Pyramid |                  |       500 |          |             |         |
+   | adapter         |         | Universal        |       103 | yes      | +usb cables |         |
+   | batteries       |         |                  |           |          | 4 pieces    |         |
+
+*** 8. Misc
+   | Type          | Brand | Model | Weight[g] | Required | Notes         | TODO |
+   |---------------+-------+-------+-----------+----------+---------------+------|
+   | 8. Misc       |       |       |       303 |          |               |      |
+   | multitools    |       |       |       303 |          |               |      |
+   | first-aid kit |       |       |           |          | bands, iodine |      |
+
+*** 9. Documents
+   | Type         | Brand | Model | Weight[g] | Required | Notes   | TODO |
+   |--------------+-------+-------+-----------+----------+---------+------|
+   | 9. Documents |       |       |           |          |         |      |
+   | passport     |       |       |           |          |         |      |
+   | vaccination  |       |       |           |          | BOOSTER |      |
+   | cash & card  |       |       |           |          |         |      |
+
+** References
+  - https://www.highcampadventure.com/blog/annapurna-circuit-trek-weather-and-temperature
+  - [[https://www.yr.no/en/map/weather/2-6941676/Nepal/Gandaki%20Pradesh/Mustang/Thorong%20La]]
