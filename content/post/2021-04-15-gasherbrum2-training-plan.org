@@ -43,7 +43,7 @@ With all the above in mind, lets set the goals:
     | day | training type | exercises                                                           | training mask   |
     |-----+---------------+---------------------------------------------------------------------+-----------------|
     | Mon | cross         | walking - 2h, elliptical - 30min, cycling - 1h                      | level1: 2x25min |
-    | Tue | strength      | dead lift: 3x5(+2kg), reverse step-up(+2kg): 3x15, calf-rises: 3x15 | level4: 2x25min |
+    | Tue | strength      | dead lift: 3x5(+2kg), reverse step-up(+2kg): 3x15, calf-raises: 3x15 | level4: 2x25min |
     | Wed | rest day      | walking: 40min, yoga: hatha + laya - 3h                             | level6: 2x25min |
     | Thu | strength      | squats - 5x15, lunges - 5x15, reverse lunges - 5x15 (all +2kg)      | level8: 1x1h    |
     | Fri | cardio        | stairs-stepper - elevation: 750m/1h, swimming - 1h                  | level9: 2x25min |
@@ -57,7 +57,7 @@ With all the above in mind, lets set the goals:
     | Mon | cardio        | stairs-stepper: 600m (50min), swim: 2600m (1h)                                                               | -             |
     | Tue | functional    | calisthenics: freeletics conditioning (50min)                                                                | level12: 1x1h |
     | Wed | rest day      | hatha/laya yoga: 2.5h                                                                                        | level13: 2x1h |
-    | Thu | strength      | dead lift: 3x15 (+2kg), r-step-up: 3x50 (+4kg), calf-rises: 3x15 (+1kg), squats/r-lunges/lunges: 3x25 (+2kg) | level14: 1x2h |
+    | Thu | strength      | dead lift: 3x15 (+2kg), r-step-up: 3x50 (+4kg), calf-raises: 3x15 (+1kg), squats/r-lunges/lunges: 3x25 (+2kg) | level14: 1x2h |
     | Fri | endurance     | walking w/ pack: 2h (+2kg), cycling: 1h                                                                      | level15: 1x1h |
     | Sat | specific      | hill climbing: 700m (+1kg)                                                                                   | level16: 1x2h |
     | Sun | rest day      | walking: 2x40min, yoga: 2.5h                                                                                 | level16: 1x2h |
@@ -67,10 +67,10 @@ With all the above in mind, lets set the goals:
     | day | training type | exercises                                                                                                    | training mask    |
     |-----+---------------+--------------------------------------------------------------------------------------------------------------+------------------|
     | Mon | endurance     | walking w/ pack: 3h (+3kg), cycling: 1h                                                                      | level18: 1x25min |
-    | Tue | functional    | freeletics: beat PB, strength: 15x dead-lift, 50x r-step-up, 15x calf rises                                  | level18: 1x25min |
+    | Tue | functional    | freeletics: beat PB, strength: 15x dead-lift, 50x r-step-up, 15x calf raises                                  | level18: 1x25min |
     | Wed | rest day      | hatha/laya yoga: 3h                                                                                          | level16: 1x2h    |
     | Thu | cardio        | stairs-stepper: 750m, swim: 2100m (1h)                                                                       | -                |
-    | Fri | strength      | dead lift: 4x15 (+2kg), r-step-up: 4x50 (+4kg), calf-rises: 4x15 (+1kg), squats/r-lunges/lunges: 4x25 (+2kg) | level16: 2x1h    |
+    | Fri | strength      | dead lift: 4x15 (+2kg), r-step-up: 4x50 (+4kg), calf-raises: 4x15 (+1kg), squats/r-lunges/lunges: 4x25 (+2kg) | level16: 2x1h    |
     | Sat | specific      | hill climbing: 1000m (+2kg)                                                                                  | level18: 1x25min |
     | Sun | rest day      | Easter break                                                                                                 | level18: 1x25min |
 
@@ -80,7 +80,7 @@ With all the above in mind, lets set the goals:
     |-----+---------------+----------------------------------------------------------------------------------------------------------------------------------------------+------------------|
     | Mon | rest day      | Easter break                                                                                                                                 |                  |
     | Tue | rest day      | Easter break                                                                                                                                 |                  |
-    | Wed | functional    | freeletics: conditioning; s-leg dead lift: 3x15 (+2kg), r-step-up: 3x50 (+5kg), calf-rises: 3x15 (+2kg), squats/r-lunges/lunges: 3x25 (+5kg) | level18: 1x25min |
+    | Wed | functional    | freeletics: conditioning; s-leg dead lift: 3x15 (+2kg), r-step-up: 3x50 (+5kg), calf-raises: 3x15 (+2kg), squats/r-lunges/lunges: 3x25 (+5kg) | level18: 1x25min |
     | Thu | cardio        | stairs-stepper: 900m (+3kg), swim: 2600m                                                                                                     | level16: 1x1h    |
     | Fri | endurance     | walking w/ pack: 2h (+3kg), cycling: 1h                                                                                                      | level16: 1x2h    |
     | Sat | rest day      | walking: 1x40min, hatha/pranayama yoga - 3h                                                                                                  |                  |
@@ -93,7 +93,7 @@ With all the above in mind, lets set the goals:
     | Mon | functional    | calisthenics: freeletics - 1h                                                                                     |               |
     | Tue | cardio        | stairs-stepper: 1200m (+4kg), swim: 50min                                                                         |               |
     | Wed | rest day      | walking: 2x40min, weekly yoga: 3h                                                                                 |               |
-    | Thu | strength      | s-leg dead lift: 3x15 (+2kg), r-step-up: 4x25(+4kg), calf-rises: 4x15 (+1kg), squats/r-lunges/lunges: 4x25 (+4kg) |               |
+    | Thu | strength      | s-leg dead lift: 3x15 (+2kg), r-step-up: 4x25(+4kg), calf-raises: 4x15 (+1kg), squats/r-lunges/lunges: 4x25 (+4kg) |               |
     | Fri | endurance     | unexpected events                                                                                                 |               |
     | Sat | specific      | hill climbing: 1450m (+4kg)                                                                                       |               |
     | Sun | rest day      | lazy day                                                                                                          |               |
@@ -105,7 +105,7 @@ With all the above in mind, lets set the goals:
     | Mon | functional    | hangover :)                                                                                                        |               |
     | Tue | cardio        | stairs-stepper: 1280m (+5kg), swim: 30min                                                                          |               |
     | Wed | rest day      | weekly yoga: 2h                                                                                                    |               |
-    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+5kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+5kg) |               |
+    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+5kg), calf-raises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+5kg) |               |
     | Fri | endurance     | walking w/ pack: 4h, cycling: 1h                                                                                   |               |
     | Sat | specific      | hill climbing: 1550m (+5kg)                                                                                        |               |
     | Sun | rest day      | rest                                                                                                               |               |
@@ -117,7 +117,7 @@ With all the above in mind, lets set the goals:
     | Mon | functional    | calisthenics: freeletics full body (2h)                                                                            |               |
     | Tue | cardio        | stairs-stepper: 1800m (+6kg), swim: 30min                                                                          |               |
     | Wed | rest day      | walking: 2x40min, weekly yoga: 3h                                                                                  |               |
-    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+6kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+6kg) |               |
+    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+6kg), calf-raises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+6kg) |               |
     | Fri | endurance     | walking w/ pack: 3h, cycling: 1h                                                                                   |               |
     | Sat | specific      | hill climbing: 1600m +11kg (7h)                                                                                    |               |
     | Sun | specific      | hill climbing: 1200m +11kg (8h)                                                                                    |               |
@@ -129,7 +129,7 @@ With all the above in mind, lets set the goals:
     | Mon | specific      | hill climbing: 3x300m (5h)                                                                                         |               |
     | Tue | specific      | hill climbing: 2100m (6h)                                                                                          |               |
     | Wed | rest day      | hatha/laya yoga: 2h                                                                                                |               |
-    | Thu | strength      | dead lift: 3x15 (+2kg), reverse step-up: 3x50 (+7kg), calf-rises: 3x15 (+1kg), squats/r-lunges/lunges: 3x25 (+7kg) |               |
+    | Thu | strength      | dead lift: 3x15 (+2kg), reverse step-up: 3x50 (+7kg), calf-raises: 3x15 (+1kg), squats/r-lunges/lunges: 3x25 (+7kg) |               |
     | Fri | endurance     | walking: 5h                                                                                                        |               |
     | Sat | specific      | -                                                                                                                  |               |
     | Sun | rest day      | -                                                                                                                  |               |
@@ -141,7 +141,7 @@ With all the above in mind, lets set the goals:
     | Mon | functional    | calisthenics: 2h                                                                                                   |               |
     | Tue | cardio base   | stairs-stepper: 2400m (+8kg), swim: 1h                                                                             |               |
     | Wed | rest day      | walking: 40min, hatha/laya yoga: 3h                                                                                |               |
-    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+8kg), calf-rises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+8kg) |               |
+    | Thu | strength      | dead lift: 5x15 (+2kg), reverse step-up: 5x50 (+8kg), calf-raises: 5x15 (+1kg), squats/r-lunges/lunges: 5x25 (+8kg) |               |
     | Fri | endurance     | walking w/ pack: 6h (+8kg), cycling: 1h                                                                            |               |
     | Sat | specific      | hill climbing: 3000m (+8kg)                                                                                        |               |
     | Sun | rest day      | hatha yoga: 2h                                                                                                     |               |

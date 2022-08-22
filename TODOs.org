@@ -271,10 +271,10 @@
 *** Paillier cryptosystem
     - https://en.wikipedia.org/wiki/Paillier_cryptosystem
 *** consensus algorithms
-    - pow
-    - pos
-    - post
-    - threshold relay
+    - https://www.youtube.com/watch?v=ah94PuwR1DI&list=WL&index=12
+    - https://unblock.net/cryptocurrency-consensus-algorithms/
+    - https://hackernoon.com/consensuspedia-an-encyclopedia-of-29-consensus-algorithms-e9c4b4b7d08f
+    - pow, pos, post
 *** DONE realized volatility
     SCHEDULED: <2021-03-17 Wed>
     - https://quant.stackexchange.com/questions/3000/how-to-annualize-log-returns
@@ -321,6 +321,7 @@
     - storage: sia/filecoin
     - cloud: akash
     - internet: dfinity
+    - code radicle
     - vpn:  orchid/ sentinel
     - dns: handshake
     - exchange: uniswap
@@ -328,9 +329,9 @@
     - identity: sovrin/pai
     - indexing: thegraph
     - trading
-      -- options: hegic
-      -- futures: perpetual
-      -- assets: synthetix
+      -- options: hegic/?
+      -- futures: perpetual/?
+      -- assets: synthetix/?
     - interest-rate swap: ???
     - payments: ???
     - yield
@@ -439,7 +440,6 @@ SCHEDULED: <2022-08-22 Mon>
 *** finite fields props: https://www.doc.ic.ac.uk/~mrh/330tutor/ch04.html, CAIN props, Abel :)
 *** N/A snippets colors
 *** code snippets, line numbers
-*** zero-knowledge proofs tag
 *** use org symbols e.g. \phi
 *** DONE fix charts in historical volatility post
 *** DONE HTTPS redirects from iuliancostan.com

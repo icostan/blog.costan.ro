@@ -10,7 +10,7 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
 ** Program
   - free-athlete training style - without using any facilities (no gym equip/pool/weights/belts, nada) just man-against-nature
   - train the joints - usually the joints are weaker than muscles and either cause pain (Achilles?) or fail first (knees anyone?)
-  - specific exercises - focus mostly on exercises that are specific to hiking/trekking with only 1 rest and 1 functional day
+  - specific exercises - focus mostly on exercises that are specific to hiking/trekking with only 1 rest day and 1 functional day
   - static training mask - my mask limits the quantity of oxygen only (the ones that change the concentration are much better)
 
 ** Exercises
@@ -30,11 +30,11 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | day | training type | exercises                                               |
     |-----+---------------+---------------------------------------------------------|
     | Mon | none          | hangover... thanks Vali/Radu :)                         |
-    | Tue | functional    | freeletics: beat PB                                     |
+    | Tue | calisthenics  | freeletics: beat PB                                     |
     | Wed | specific      | sl-RDL 6x10, r-SU 6x10, CR 6x10, S/r-S 3x25, S/r-S 3x25 |
     | Thu | walking       | city walk - 12km                                        |
     | Fri | specific      | sl-RDL 3x10, r-SU 3x10, CR 3x10 - slow motion           |
-    | Sat | calisthenics  | freeletics: strength                                    |
+    | Sat | functional    | freeletics: strength                                    |
     | Sun | specific      | hill climbing - d: 9km, h: 500m                         |
 
 ***  Week 2 - Aug 22th [WIP]
@@ -50,13 +50,13 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | Sun | specific      | hill climbing - h: 1000m                                   |
 
 ** References
-**** Single-leg Romanian DeadLift
+**** Single-leg Romanian DeadLift - for hips
   - https://www.youtube.com/watch?v=Zfr6wizR8rs /*MUST WATCH*/
   - https://www.youtube.com/watch?v=ViVhUZGk6i4
   - https://www.youtube.com/watch?v=YyEFwt2CjkA
   - https://www.youtube.com/watch?v=cCm-bahEujM
   - https://theprehabguys.com/single-leg-romanian-deadlift/
-**** Step-up exercises:
+**** Step-up - for knees
   - Step-Up variations: /*MUST WATCH*/
     - [[https://www.youtube.com/watch?v=a20sxQOuhz4][Step-Up variations]]
     - [[https://www.youtube.com/watch?v=V3o6YFQ9sjA][PPP (Patrick, Poloquin, Peterson) step-ups]]
@@ -64,7 +64,7 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
   - https://www.youtube.com/watch?v=qar1OOaG1O8
   - https://www.youtube.com/watch?v=7PV_bGLFlfY
   - https://www.youtube.com/watch?v=l5IuYBdz114
-**** Calf-raises exercice:
+**** Calf-raises - for ankles
   - [[https://www.youtube.com/watch?v=UdrQ8DK1w0w][Heel raise benefits]] /*MUST WATCH*/
   - https://www.youtube.com/watch?v=21inrjhoFkQ
   - https://www.youtube.com/watch?v=3nLjN6muDoA

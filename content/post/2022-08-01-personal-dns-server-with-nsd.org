@@ -1,9 +1,9 @@
 #+title:  Personal DNS server
 #+subtitle: Linux
 #+date:   2022-08-01
-#+tags[]: archlinux dns server nsd
+#+tags[]: archlinux dns nsd server dnssec dot personal
 
-After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal Email server]] the next thing to setup is an Domain Name Server (DNS) server for /costan․ro/ domain with DNSSEC, TLS and everything in between.
+After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal Email server]] the next thing to setup is a Domain Name Server (DNS) server for /costan․ro/ domain with DNSSEC, TLS and everything in between.
 
 ** 1. Authoritative DNS with NSD
   I know [[https://www.isc.org/bind/][Bind]] but this is also a bit old-fashion to me; more than that, I believe in [[https://en.wikipedia.org/wiki/Single-responsibility_principle][SRP]] and since Bind is both caching and authoritative name server, I prefer [[https://www.nlnetlabs.nl/projects/nsd/about/][NSD]] which is authoritative only server, lighter and newer.
@@ -205,7 +205,7 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
    #+end_src
 
 **** Test DNSSEC keys
-   After reload we need to check if /DNSKEY/ records are published and propagated.
+   After reload we need to check if /DNSKEY/ records are published and propagated. These are the public /ZSK, KSK/ keys used by DNS resolvers to verify and authenticate the records.
    #+begin_src sh :results output
      dig DNSKEY costan.ro +multiline
    #+end_src
@@ -284,6 +284,7 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
   - automate wildcard certificate issuance with Let's Encrypt
   - figure out and configure [[https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities][DANE]]
 
+
 ** 3. References
 *** Articles
   - https://wiki.archlinux.org/title/NSD
@@ -297,6 +298,7 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
   - https://en.wikipedia.org/wiki/DNS_over_TLS
   - https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities
   - https://tools.cisco.com/security/center/resources/dns_best_practices
+  - https://blog.cloudflare.com/dnssec-an-introduction/#kaminskysattack
 *** Test tools
   - https://dnschecker.org/all-tools.php
   - https://dnsviz.net/
@@ -310,5 +312,5 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
   - http://en.conn.internet.nl/connection/
 *** Other
   - https://www.opendnssec.org/
-  - https://ns1.com/blog/glue-records-and-dedicated-dns
   - https://mxtoolbox.com/problem/dns/dns-bad-glue-detected
+  - https://www.iana.org/dnssec

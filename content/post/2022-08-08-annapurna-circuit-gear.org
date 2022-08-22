@@ -10,9 +10,30 @@ Here is the initial gear list for [[https://en.wikipedia.org/wiki/Annapurna_Circ
 - mountain - ~10° - 4000-5000m (after Manang, Tilicho lake)
 - freezing level - ~0° - above 5000m (Thorung La pass)
 
-Note: some sections are finished and marked as DONE with border, the other ones are work in progress.
+Note: some sections are finished and marked as DONE (with border), the other ones are work in progress.
 
 ** Gear
+    | Type                  | Brand         | Model            | Weight[g] | Required | Notes         | TODO    |
+    |-----------------------+---------------+------------------+-----------+----------+---------------+---------|
+    | Gear                  |               |                  |     10974 |          |               |         |
+    | 1. Shoes              |               |                  |      2310 |          |               | DONE    |
+    | 2. Clothing           |               |                  |      2940 |          |               |         |
+    | 2.1 Base layer        |               |                  |       946 |          |               |         |
+    | 2.2 Insulation layer  |               |                  |       755 |          |               |         |
+    | 2.3 Outer layer       |               |                  |      1239 |          |               |         |
+    | 3. Accessories        |               |                  |       324 |          |               |         |
+    | 3.1 Head              |               |                  |       174 |          |               | DONE    |
+    | 3.2 Eyes              |               |                  |           |          |               |         |
+    | 3.3 Face              |               |                  |        78 |          |               |         |
+    | 3.4 Hands             |               |                  |        72 |          |               | DONE    |
+    | 4. Camping            |               |                  |       380 |          |               | DONE    |
+    | 4.2 Cooking           |               |                  |       180 |          |               |         |
+    | 4.3 Food & Drinks     |               |                  |       200 |          |               |         |
+    | 5. Trekking           |               |                  |      2776 |          |               | DONE    |
+    | 6. Toiletries         |               |                  |       232 |          |               |         |
+    | 7. Technology         |               |                  |      1709 |          |               |         |
+    | 8. Misc               |               |                  |       303 |          |               |         |
+    | 9. Documents          |               |                  |           |          |               |         |
 *** DONE 1. Shoes
     #+ATTR_HTML: :border 2 :rules none
     | Type           | Brand      | Model       | Weight[g] | Required | Notes | TODO |
@@ -24,20 +45,22 @@ Note: some sections are finished and marked as DONE with border, the other ones 
 *** 2. Clothing
     | Type                  | Brand      | Model        | Weight[g] | Required | Notes | TODO    |
     |-----------------------+------------+--------------+-----------+----------+-------+---------|
-    | 2. Clothing           |            |              |      2086 |          |       |         |
-    | 2.1 Base layer        |            |              |       411 |          |       |         |
-    | briefs                |            |              |           | yes      | 4 pcs |         |
-    | boxers                |            |              |           | yes      | 2 pcs |         |
-    | midweight boxers      | Icebreaker | Anatomica    |        64 |          |       |         |
-    | trekking socks        |            |              |           | yes      | 4 pcs | BUY     |
-    | midweight socks       |            |              |           |          | 2 pcs |         |
+    | 2. Clothing           |            |              |      2940 |          |       |         |
+    | 2.1 Base layer        |            |              |       946 |          |       |         |
+    | briefs                | Kalenji    |              |        85 | yes      | 2 pcs |         |
+    | boxers                |            |              |       130 | yes      | 2 pcs |         |
+    | midweight boxers      | Icebreaker | Anatomica    |        64 | yes      |       |         |
+    | trekking socks        | Quechua    |              |        88 | yes      | 2 pcs |         |
+    | lightweight socks     | Quechua    |              |        83 | yes      | 2 pcs | REPLACE |
+    | midweight socks       | Mund       |              |        52 |          |       |         |
+    | heavyweight socks     | Zajo       | CoolMax      |        97 |          |       |         |
     | t-shirt               |            |              |           | yes      |       |         |
     | midweight t-shirt     | Trespass   |              |       199 | yes      |       |         |
     | long sleeve           |            |              |           | yes      | 3 pcs | BUY     |
     | midweight long sleeve | Mammut     |              |       148 | yes      |       |         |
-    | 2.2 Insulation layer  |            |              |       436 |          |       |         |
-    | down jacket           | Mammut     | Meron Hooded |       436 | yes      |       |         |
-    | fleece jacket         |            |              |           | yes      |       | BUY     |
+    | 2.2 Insulation layer  |            |              |       755 |          |       |         |
+    | down jacket           | Mammut     | Meron Hooded |       436 | yes      | heavy | REPLACE |
+    | fleece jacket         | Marmot     | Reactor 2.0  |       319 | yes      |       |         |
     | 2.3 Outer layer       |            |              |      1239 |          |       |         |
     | convertible pants     | Salomon    | Elemental    |       293 | yes      |       | REPLACE |
     | trekking pants        |            |              |           | yes      |       | BUY     |
@@ -60,32 +83,26 @@ Note: some sections are finished and marked as DONE with border, the other ones 
     | 3.4 Hands        |        |        |        72 |          |              |      |
     | fleece gloves    | Lowe   | Alpine |        72 |          |              |      |
 
-*** 4. Camping
-    | Type              | Brand   | Model    | Weight[g] | Required | Notes     | TODO |
-    |-------------------+---------+----------+-----------+----------+-----------+------|
-    | 4. Camping        |         |          |      2633 |          |           |      |
-    | 4.1 Sleeping      |         |          |      1433 |          |           |      |
-    | tent assault      | Simond  | Makalu   |      1045 | yes      |           |      |
-    | sleeping bag      |         |          |           | yes      |           |      |
-    | foam pad          | Yate    | Wave Alu |       388 | yes      |           |      |
-    | 4.2 Cooking       |         |          |       200 |          |           |      |
-    | stove             |         |          |           |          |           |      |
-    | fire striker      |         |          |        28 |          |           |      |
-    | metal cup         | Pinguin | 500ml    |       172 |          |           |      |
-    | water bottle      |         | 1L       |           | yes      |           | BUY  |
-    | fuel              |         |          |           |          | KATHMANDU | BUY  |
-    | 4.3 Food & Drinks |         |          |      1000 |          |           |      |
-    | lyofood           |         |          |      1000 |          | 10 pcs    | BUY  |
+*** DONE 4. Camping
+    #+ATTR_HTML: :border 2 :rules none
+    | Type              | Brand   | Model | Weight[g] | Required | Notes | TODO |
+    |-------------------+---------+-------+-----------+----------+-------+------|
+    | 4. Camping        |         |       |       380 |          |       |      |
+    | 4.2 Cooking       |         |       |       180 |          |       |      |
+    | water bottle      | Nalgene | 1L    |       180 | yes      |       |      |
+    | 4.3 Food & Drinks |         |       |       200 |          |       |      |
+    | drymeat           |         |       |       200 | yes      | 2 pcs | BUY  |
 
-*** 5. Trekking
+*** DONE 5. Trekking
+    #+ATTR_HTML: :border 2 :rules none
     | Type           | Brand         | Model      | Weight[g] | Required | Notes | TODO |
     |----------------+---------------+------------+-----------+----------+-------+------|
-    | 5. Trekking    |               |            |      2236 |          |       |      |
+    | 5. Trekking    |               |            |      2776 |          |       |      |
     | backpack       | Gregory       | Baltoro 75 |      2100 | yes      |       |      |
-    | trekking poles |               |            |           | yes      |       | BUY  |
+    | trekking poles | Zajo          | Alu Pro    |       540 | yes      |       |      |
     | headlamp       | Black Diamond | Revolt 350 |        93 | yes      |       |      |
-    | compass        | Trekmates     | Explorer   |        43 |          |       |      |
-    | paper map      |               |            |           |          |       |      |
+    | compass        | Trekmates     | Explorer   |        43 | yes      |       |      |
+    | paper map      |               |            |           | yes      |       |      |
 
 *** 6. Toiletries
    | Type            | Brand  | Model | Weight[g] | Required | Notes   | TODO |
@@ -104,7 +121,6 @@ Note: some sections are finished and marked as DONE with border, the other ones 
    | listerine       |        |       |           | yes      |         |      |
    | dental floss    |        |       |           | yes      |         |      |
    | razor           |        |       |           | yes      |         |      |
-   | pee bottle      |        |       |           | yes      |         | BUY  |
    | trash bags      |        |       |           | yes      |         |      |
 
 *** 7. Technology
@@ -137,3 +153,7 @@ Note: some sections are finished and marked as DONE with border, the other ones 
 ** References
   - https://www.highcampadventure.com/blog/annapurna-circuit-trek-weather-and-temperature
   - [[https://www.yr.no/en/map/weather/2-6941676/Nepal/Gandaki%20Pradesh/Mustang/Thorong%20La]]
+
+** Updates
+  - 2022-08-22 - remove camping gear
+  - 2022-08-08 - initial list

@@ -5,11 +5,66 @@
 
 Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][Annapurna Circuit]], segment by segment with highlights, notes and everything that is interesting along the way. Plus updates as I do more research.
 
+** Initial schedule
+#+begin_src mermaid :exports none :file annapurna.png
+  gantt
+     dateFormat YYY-MM-DD
+     axisFormat %d-%b
+
+     section train
+     IAS-BUC-OTP :crit, 2022-09-14, 1d
+
+     section flight
+     OTP-KTM :crit, 2022-09-14, 2d
+
+     section Kathmandu
+     Milestone hotel :hotel, 2022-09-15, 2d
+
+     section bus-start
+     Kathmandu to Besi Sahar :bus, 2022-09-17, 1d
+
+     section AC trek
+     Ngadi :active, day1, 2022-09-17, 1d
+     Jagat :active, day2, after day1, 1d
+     Dharapani :active, day3, after day2, 1d
+     Chame :active, day4, after day3, 1d
+     Upper Pisang :active, day5, after day4, 1d
+     Manang (3540m) :active, day6, after day5, 1d
+     Tilicho BC :active, day7, after day6, 1d
+     Shree Karka :active, day8, after day7, 1d
+     Thorung Phedi (4525m) :active, day9, after day8, 1d
+     Muktinath (3760m) :active, day10, after day9, 1d
+     Jomson :active, day11, after day10, 1d
+     Kokhethanti :active, day12, after day11, 1d
+     Tatopani :active, day13, after day12, 1d
+     Ghorepani :active, day14, after day13, 1d
+     Nayapul :active, day15, after day14, 1d
+
+     section bus-finish
+     Nayapul to Pokhara :active, bus, after day14, 1d
+
+     section Pokhara
+     hotel :hotel, 2022-10-01, 1d
+
+     section bus-return
+     Pokhara to Kathmandu :crit, 2022-10-02, 1d
+
+     section fly-return
+     KTM-OTP :crit, 2022-10-02, 2d
+#+end_src
+
+#+RESULTS:
+[[file:annapurna.png]]
+
+
+[[file:/img/annapurna.png]]
+
+
 ** Segments
 *** Bus from Kathmandu to Besi Sahar (760m): ~7h
 *** Besi Sahar to Khudi (790m): 7 km, 30m, 2.00 hrs
 *** Khudi to Bhulbhule (840m): 2 km, 50m, 0.30 hrs
-*** Bhulbhule to Ngadi (930): 4 km, 90m, 1.15 hrs
+*** Bhulbhule to Ngadi (930): 4 km, 90m, 1.15 hrs                     :SLEEP:
 *** Ngadi to Bahundanda (1310m): 4 km, 380m, 1.45 hrs
 note: Ngadi has good views of the snow-capped mountains in the early morning
 *** Bahundanda to Ghermu (1130m): 5 km, -180m, 1.30 hrs
@@ -20,7 +75,7 @@ note: Ghermu sits in an open valley and is therefore a more pleasant place to sp
 *** Chyamche to Tal (1700m): 5 km, 315m, 2.30 hrs
 note: Tal is a nice place to stay, sitting in an open valley on a naturally dammed section of the river
 *** Tal to Karte (1870m): 4 km, 170m, 1.30 hrs
-*** Karte to Dharapani (1900m): 2 km, 30m, 1.00 hrs
+*** Karte to Dharapani (1900m): 2 km, 30m, 1.00 hrs                   :SLEEP:
 Highlights:
   - excelent side trek to Bimthang
 note: Dharapani is a good place to stay with good views up both canyons
@@ -198,6 +253,8 @@ Highlights:
 - most teahouses have solar power
 - some places with hydro power
 - queue to get charged, cost: sometimes 200 Rs / charge or hour
+** Himalayan bank
+- good exchange
 
 * References
 - https://wikitravel.org/en/Trekking_in_Nepal
@@ -225,8 +282,12 @@ Highlights:
 - https://www.tourtreknepal.com/annapurna-natt-trails-new-annapurna-trekking-trails.html
 - https://worldalpinetreks.com/packages/annapurna-circuit-trek/
 - https://www.nepalpowerplaces.com/trekking/nepal-tour/annapurna-circuit-trek/
+- https://travelexx.com/annapurna-circuit-itinerary/
 
 * Maps
 - https://www.magicalnepal.com/annapurna-circuit-trek-map/
 - https://www.openstreetmap.org/relation/1187310#map=13/28.4082/83.7273&layers=Y
 - https://himalayaguidenepal.com/wp-content/uploads/2019/01/Annapurna-Circuit-Trek-Map.jpg
+
+** Updates
+  - 2022-08-22 - initial schedule as Gantt diagram
