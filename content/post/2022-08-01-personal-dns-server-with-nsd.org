@@ -106,35 +106,31 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
   The easiest test is to query the DNS server directly:
 
   #+begin_src sh :results output
-    dig @ns.costan.ro rig.costan.ro
+    drill rig.costan.ro @ns.costan.ro
   #+end_src
 
   #+RESULTS:
   #+begin_example
-
-  ; <<>> DiG 9.18.4 <<>> @ns.costan.ro rig.costan.ro
-  ; (1 server found)
-  ;; global options: +cmd
-  ;; Got answer:
-  ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62873
-  ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
-
-  ;; OPT PSEUDOSECTION:
-  ; EDNS: version: 0, flags:; udp: 1280
+  ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 11080
+  ;; flags: qr rd ra ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
   ;; QUESTION SECTION:
-  ;rig.costan.ro.			IN	A
+  ;; rig.costan.ro.	IN	A
 
   ;; ANSWER SECTION:
-  rig.costan.ro.		3328	IN	A	86.124.145.184
+  rig.costan.ro.	3555	IN	A	86.124.145.184
 
-  ;; Query time: 0 msec
-  ;; SERVER: 86.124.145.184#53(ns.costan.ro) (UDP)
-  ;; WHEN: Mon Aug 01 14:59:29 EEST 2022
-  ;; MSG SIZE  rcvd: 58
+  ;; AUTHORITY SECTION:
 
+  ;; ADDITIONAL SECTION:
+
+  ;; Query time: 1 msec
+  ;; SERVER: 86.124.145.184
+  ;; WHEN: Sun Aug 28 11:25:50 2022
+  ;; MSG SIZE  rcvd: 47
   #+end_example
 
   Or use these 3rd party tools to look deeper into DNS config and security.
+  - https://intodns.com/costan.ro
   - https://dnschecker.org/dns-record-validation.php
   - https://mxtoolbox.com/
 
@@ -176,15 +172,15 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
 **** Sign zone
    This will digitally sign each record in plaintext zone and output the signed zone file plus the public keys above.
    #+begin_src sh
-     ldns-signzone -n -p costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
+     ldns-signzone -n -p -i 20220729174119 -e 20230729174119 costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
    #+end_src
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
      ls -l /etc/nsd/zones/costan.ro*
    #+end_src
 
    #+RESULTS:
-   : -rw-r--r-- 1 nsd nsd  1888 Jul  9 12:11 /etc/nsd/zones/costan.ro
-   : -rw-r--r-- 1 nsd nsd 13997 Jul 29 11:56 /etc/nsd/zones/costan.ro.signed
+   : -rw-r--r-- 1 nsd nsd  1773 Jul 29 20:39 /etc/nsd/zones/costan.ro
+   : -rw-r--r-- 1 nsd nsd 13869 Aug 28 11:08 /etc/nsd/zones/costan.ro.signed
 
 **** Configuration
    Update /nsd.conf/ file to use the signed zone file instead of the plaintext one.
@@ -207,46 +203,30 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
 **** Test DNSSEC keys
    After reload we need to check if /DNSKEY/ records are published and propagated. These are the public /ZSK, KSK/ keys used by DNS resolvers to verify and authenticate the records.
    #+begin_src sh :results output
-     dig DNSKEY costan.ro +multiline
+     drill -D costan.ro DNSKEY
    #+end_src
 
    #+RESULTS:
    #+begin_example
-
-   ; <<>> DiG 9.18.4 <<>> DNSKEY costan.ro +multiline
-   ;; global options: +cmd
-   ;; Got answer:
-   ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44221
-   ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-
-   ;; OPT PSEUDOSECTION:
-   ; EDNS: version: 0, flags:; udp: 1232
+   ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 3888
+   ;; flags: qr rd ra ad ; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0
    ;; QUESTION SECTION:
-   ;costan.ro.		IN DNSKEY
+   ;; costan.ro.	IN	DNSKEY
 
    ;; ANSWER SECTION:
-   costan.ro.		3600 IN	DNSKEY 256 3 8 (
-                   AwEAAckIPA6ENdhhPjlKEJo/57IC7MzfcuWRkS40wXKS
-                   KNh8nZyYVg9K92Kr5SgAD1kSAnaE4eFTOXZgYBE97eS6
-                   lBcljw0iWyPOkQZXaatSCduHCIrMbSg7xGjXeQzAiD8Y
-                   OVbS4X0881h3Gi919zmiZ5tDTmNpHfxAKabEJXv6IfYL
-                   ) ; ZSK; alg = RSASHA256 ; key id = 3304
-   costan.ro.		3600 IN	DNSKEY 257 3 8 (
-                   AwEAAeM6ahMDg1TJ2enWZGaZxMarqrdZIqGm0xqnqR/4
-                   rr1LFYlY9M9cgHpLx++sqFPH6OWfbP/P5L8Y9k1GWHLp
-                   68HKRSuGljlVaKlStoauk+PCk83SNbp0btJQdFSqzuxN
-                   OPppMrhthd4yHsIGzTwy2h+qkyT/EYReV+IwAISvw9PJ
-                   H3xj7XtG+3mvrs/WqrXqfXb4y1+jzbv3GJL2RCsDpUM3
-                   Cut3QTNrjqTJsc48wz/wu0HvXAnlCnyLTL2fJ69Bjf4h
-                   FJaiggvje2cTWxWixdUjiSPuBWRQcu/H5konkxtqV4eZ
-                   R8DiLy7+mKZZUkKMPxTCUZ50qgtmNdLlRNs28zk=
-                   ) ; KSK; alg = RSASHA256 ; key id = 19957
+   costan.ro.	3564	IN	DNSKEY	257 3 8 AwEAAeM6ahMDg1TJ2enWZGaZxMarqrdZIqGm0xqnqR/4rr1LFYlY9M9cgHpLx++sqFPH6OWfbP/P5L8Y9k1GWHLp68HKRSuGljlVaKlStoauk+PCk83SNbp0btJQdFSqzuxNOPppMrhthd4yHsIGzTwy2h+qkyT/EYReV+IwAISvw9PJH3xj7XtG+3mvrs/WqrXqfXb4y1+jzbv3GJL2RCsDpUM3Cut3QTNrjqTJsc48wz/wu0HvXAnlCnyLTL2fJ69Bjf4hFJaiggvje2cTWxWixdUjiSPuBWRQcu/H5konkxtqV4eZR8DiLy7+mKZZUkKMPxTCUZ50qgtmNdLlRNs28zk= ;{id = 19957 (ksk), size = 2048b}
+   costan.ro.	3564	IN	DNSKEY	256 3 8 AwEAAckIPA6ENdhhPjlKEJo/57IC7MzfcuWRkS40wXKSKNh8nZyYVg9K92Kr5SgAD1kSAnaE4eFTOXZgYBE97eS6lBcljw0iWyPOkQZXaatSCduHCIrMbSg7xGjXeQzAiD8YOVbS4X0881h3Gi919zmiZ5tDTmNpHfxAKabEJXv6IfYL ;{id = 3304 (zsk), size = 1024b}
+   costan.ro.	3564	IN	RRSIG	DNSKEY 8 2 3600 20230729174119 20220729174119 19957 costan.ro. gbwkTvxq94RLUrn+JyQeEXNvs1g5ucF3b+UHsCTJX71oFw/nend/tbRpSyYG/V61YBXo5Z4qT+LazY1wwyaCw5lxz0gnm/ZWyXMAZPYwX0k4yRLhVGIs5sDxL+Qy4MPcvgze4APF+WSmCZBF3hqfiB0J/6in0BnoBPyJmPWd/vM5QL4hue1EmJuu2fgDLvCloUNPcIfVoFau32WjRYgMwTVZyLK22FE6edAPAuPXNvHFnsx0hIJlexdTWyGEGF2IzMEd46DwCzPXnjbYywTV/WSmSJssZT2kQF+uVS1No9PvSQve75KIyusGcT+UFiGbZvV3tH8fIeE0oFCcvYh8wA==
 
-   ;; Query time: 103 msec
-   ;; SERVER: 127.0.0.1#53(127.0.0.1) (UDP)
-   ;; WHEN: Fri Jul 29 21:00:35 EEST 2022
-   ;; MSG SIZE  rcvd: 462
+   ;; AUTHORITY SECTION:
 
+   ;; ADDITIONAL SECTION:
+
+   ;; Query time: 0 msec
+   ;; EDNS: version 0; flags: do ; udp: 1232
+   ;; SERVER: 127.0.0.1
+   ;; WHEN: Sun Aug 28 11:20:15 2022
+   ;; MSG SIZE  rcvd: 759
    #+end_example
 
 **** Chain of trust
@@ -268,16 +248,33 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
    Update DS record in registrar ([[https://rotld.ro][rotld.ro]] is the top-level registrar for /ro./ TLD zone).
 
    #+begin_src sh :results output
-     dig DS costan.ro +short
+     drill costan.ro DS
    #+end_src
 
    #+RESULTS:
-   : 19957 8 2 083B1F4914402506D842029241041CC5869FD91C1887F41FB73A832F C78BBB8C
+   #+begin_example
+   ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 57649
+   ;; flags: qr rd ra ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+   ;; QUESTION SECTION:
+   ;; costan.ro.	IN	DS
+
+   ;; ANSWER SECTION:
+   costan.ro.	35005	IN	DS	19957 8 2 083b1f4914402506d842029241041cc5869fd91c1887f41fb73a832fc78bbb8c
+
+   ;; AUTHORITY SECTION:
+
+   ;; ADDITIONAL SECTION:
+
+   ;; Query time: 0 msec
+   ;; SERVER: 127.0.0.1
+   ;; WHEN: Sun Aug 28 11:27:22 2022
+   ;; MSG SIZE  rcvd: 75
+   #+end_example
 
 **** Test DNSSEC
   Use excellent 3rd party tools:
   - https://dnssec-debugger.verisignlabs.com/costan.ro
-  - https://dnsviz.net/
+  - https://dnsviz.net/d/costan.ro
 
 *** 2.2 DNS over TLS for privacy
   TBD: once I solve one of the following issues:
@@ -293,6 +290,7 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-dnssec-on-an-nsd-nameserver-on-ubuntu-14-04
   - https://www.icann.org/resources/pages/dnssec-what-is-it-why-important-2019-03-05-en
   - https://www.cloudflare.com/dns/dnssec/how-dnssec-works/
+  - https://docs.infoblox.com/space/NAG8/22252229/RRSIG+Resource+Records
   - https://en.wikipedia.org/wiki/Domain_Name_System
   - https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions
   - https://en.wikipedia.org/wiki/DNS_over_TLS
@@ -314,3 +312,7 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
   - https://www.opendnssec.org/
   - https://mxtoolbox.com/problem/dns/dns-bad-glue-detected
   - https://www.iana.org/dnssec
+
+** Updates
+  - 2022-07-29 - initial blog post
+  - 2022-08-28 - increase sig expiry time, use drill instead of dig

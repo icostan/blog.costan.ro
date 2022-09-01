@@ -37,17 +37,29 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | Sat | functional    | freeletics: strength                                    |
     | Sun | specific      | hill climbing - d: 9km, h: 500m                         |
 
-***  Week 2 - Aug 22th [WIP]
+***  Week 2 - Aug 22nd [DONE]
     #+ATTR_HTML: :border 2 :rules none
-    | day | training type | exercises                                                  |
-    |-----+---------------+------------------------------------------------------------|
-    | Mon | functional    | freeletics workout                                         |
-    | Tue | specific      | single-leg Romanian dead lift, reverse step-up, calf-rises |
-    | Wed | cardio        | stairs running                                             |
-    | Thu | rest day      | stretching, flexibility flow                               |
-    | Fri | endurance     | walk w/ pack                                               |
-    | Sat | calisthenics  | sl-RDL, S, L, etc                                          |
-    | Sun | specific      | hill climbing - h: 1000m                                   |
+    | day | training type | exercises                        |
+    |-----+---------------+----------------------------------|
+    | Mon | specific      | sl-RDL, r-SU, CR 3x10            |
+    | Tue | walking       | ~11km                            |
+    | Wed | freeletics    | beat your PB                     |
+    | Thu | walking       | ~8km                             |
+    | Fri | freeletics    | strength workout                 |
+    | Sat | rest day      |                                  |
+    | Sun | specific      | hill climbing - d: 18km, h: 700m |
+
+***  Week 3 - Aug 29th [WIP]
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises |
+    |-----+---------------+-----------|
+    | Mon | calisthenics  |           |
+    | Tue | walking       |           |
+    | Wed | specific      |           |
+    | Thu | rest day      |           |
+    | Fri | freeletics    |           |
+    | Sat | walking       |           |
+    | Sun | specific      |           |
 
 ** References
 **** Single-leg Romanian DeadLift - for hips

@@ -3,9 +3,9 @@
 #+date: 2022-07-28
 #+tags[]: annapurna circuit travel highaltitude
 
-Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][Annapurna Circuit]], segment by segment with highlights, notes and everything that is interesting along the way. Plus updates as I do more research.
+Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][Annapurna Circuit]], segment by segment with highlights, notes and everything that is interesting along the way. Updates as I do more research.
 
-** Initial schedule
+* Initial schedule
 #+begin_src mermaid :exports none :file annapurna.png
   gantt
      dateFormat YYY-MM-DD
@@ -30,8 +30,8 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
      Chame :active, day4, after day3, 1d
      Upper Pisang :active, day5, after day4, 1d
      Manang (3540m) :active, day6, after day5, 1d
-     Tilicho BC :active, day7, after day6, 1d
-     Shree Karka :active, day8, after day7, 1d
+     Tilicho BC (4150m) :active, day7, after day6, 1d
+     Shree Karka (4070m) :active, day8, after day7, 1d
      Thorung Phedi (4525m) :active, day9, after day8, 1d
      Muktinath (3760m) :active, day10, after day9, 1d
      Jomson :active, day11, after day10, 1d
@@ -60,124 +60,124 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
 [[file:/img/annapurna.png]]
 
 
-** Segments
+* Segments
+** 1. Annapurna Circuit trek
 *** Bus from Kathmandu to Besi Sahar (760m): ~7h
+- notes: Gongabu Bus Park, a station around 2.5km north of Thamel (30-45 mins walking) but are often parked a few minutes walk away on the Ring Road, outside BG Mall.
 *** Besi Sahar to Khudi (790m): 7 km, 30m, 2.00 hrs
 *** Khudi to Bhulbhule (840m): 2 km, 50m, 0.30 hrs
-*** Bhulbhule to Ngadi (930): 4 km, 90m, 1.15 hrs                     :SLEEP:
+*** Bhulbhule to Ngadi (930): 4 km, 90m, 1.15 hrs
+- trail: road only
+- highlights: hydro dam
 *** Ngadi to Bahundanda (1310m): 4 km, 380m, 1.45 hrs
-note: Ngadi has good views of the snow-capped mountains in the early morning
+- highlights: Ngadi has good views of the snow-capped mountains in the early morning
 *** Bahundanda to Ghermu (1130m): 5 km, -180m, 1.30 hrs
 *** Syange (1100m): ???
 *** Ghermu Phant to Jagat (1300m): 3 km, 170m, 1.30 hrs
-note: Ghermu sits in an open valley and is therefore a more pleasant place to spend the night than Jagat. Jagat is a dirty, congested village that sits in a narrow chasm.
+- note: Ghermu sits in an open valley and is therefore a more pleasant place to spend the night than Jagat. Jagat is a dirty, congested village that sits in a narrow chasm.
+- highlights: nice terrace at Rainbow Restaurant
+- trails:
+  - walking trail marked blue/white markers to Jagat (longer 7km vs. 4km on road)
+  - road variant is marked with red/white markers
 *** Jagat to Chyamche (1385m): 4 km, 85m, 1.00 hrs
 *** Chyamche to Tal (1700m): 5 km, 315m, 2.30 hrs
-note: Tal is a nice place to stay, sitting in an open valley on a naturally dammed section of the river
+- highlights:
+  - stunning waterfalls, boulders, rock formations along the way
+  - Tal is a nice place to stay, sitting in an open valley on a naturally dammed section of the river
 *** Tal to Karte (1870m): 4 km, 170m, 1.30 hrs
-*** Karte to Dharapani (1900m): 2 km, 30m, 1.00 hrs                   :SLEEP:
-Highlights:
-  - excelent side trek to Bimthang
-note: Dharapani is a good place to stay with good views up both canyons
+*** Karte to Dharapani (1900m): 2 km, 30m, 1.00 hrs
+- highlights: excelent side trek to Bimthang
+- note: Dharapani is a good place to stay with good views up both canyons
+- ACAP checkpoint so make sure to check in with the authorities.
 *** Dharapani to Bagarchap (2160m): 2 km, 260m, 1.00 hrs
+- trail: suspension bridge at the end of the Dharapani village way to Thoche
 *** Bagarchap to Danaqyu (2200m): 2 km, 40m, 0.45 hrs
-*** Danaqyu to Koto (2640m):                                          :SLEEP:
-Highlights: Tibetan Buddhist Monastery, great mountain vistas
+*** Danaqyu to Koto (2640m):
+- highlights: Tibetan Buddhist Monastery, great mountain vistas
+- trail:
+  - a bit confusing: after waterfall, sign for Manang and stairs up to Timang
+  - checkpoint in Koto
+- note: Koto is small, clean and quiet as compared to the hustle and chaos of Chame.
 **** Upper trail:
 **** Danaqyu (2200m) to Thanchowk (2570m): 6 km, 370m, 2.15 hrs
 **** Thanchowk (2570m) to Koto (2640m): 4 km, 70m, 1.00 hrs
 **** Lower trail:
 **** Danaqyu (2200m) to Latamarang (2400m): 1.5 km, 200m, 1.00 hrs
 **** Latamarang (2400 m) to Koto (2640m): 5.5 km, 240m, 2.00 hrs
-note: Koto is small, clean and quiet as compared to the hustle and chaos of Chame.
 *** Koto to Chame (2710m): 2 km, 70m, 0.45 hrs
-Facilities: farmacy, hot showers, many guesthouses, hot springs
+- facilities: big village with farmacy, hot showers, many guesthouses, hot springs, etc
 *** Chame to Bhratang (2850m): 7 km, 140m, 2.00 hrs
-Facilities: cider/apple plant, not many guesthouses
+- highlights: cider/apple farm, sauna, cafe
 *** Bhratang to Dhukur Pokhari (3240m): 6 km, 390m, 1.30 hrs
 *** Dhukur Pokhari to Humde (3330m):
-Highlights:
+- highlights:
   - views along the upper trail are the best of the whole circuit (MUST DO)
   - Upper Pisang: Tibetan Buddhist Monastery for the Sunset and Sunrise chants
-Facilities:
+- facilities:
   - many guesthouses along the trail
   - Upper Pisang: large selection of guesthouses, some are well-insulated with attached bathrooms
   - hospital
-Trails:
+- trails:
   - blue/white trail: drops directly to Humde
   - red/white: high plateau, nicer
-  - trail between Lower and Upper Pisang.
-Notes:
-  - Ghyaru is high (3700), steep 420m climb, might experience first altitude sickness
+  - a trail between Lower and Upper Pisang.
+- notes:
   - many of the tours go by jeep to Lower Pisang then start the circuit from here
 **** Upper trail:
 **** Dhukur Pokhari (3240m) to Upper Pisang (3310m): 1.5 km, 70m, 1.30 hrs :SLEEP:
 **** Upper Pisang (3310 m) to Ghyaru (3730m): 4.5 km, 420m, 1.45 hrs
+- trail: Ghyaru is high (3700), long and steep 420m climb
+- note: might experience first altitude sickness
 **** Ghyaru (3730 m) to Ngawal (3680m): 5 km, -50m, 1.45 hrs
 **** Ngawal (3680 m) to Humde (3330m): 2 km, -330m, 0.45 hrs
 **** Lower trail:
 **** Dhukur Pokhari (3240m) to Lower Pisang (3240m): 6 km, 0m, 1.00 hrs
 **** Lower Pisang (3250 m) to Humde (3330m): 7 km, 80m, 2.00 hrs
 *** Humde to Bhraga (3450m): 6 km, 120m, 1.45 hrs
-Facilities: hospital, old bakery, sauna @ Himalayan Lodge
+- facilities: hospital, old bakery, sauna @ Himalayan Lodge
 *** Bhraga to Manang (3540m): 2km, 90m, 0.30hrs                       :SLEEP:
-Facilities: medicine, doctor (Himalayan Rescue Association), high altitude sickness Trails
-
-class: mandatory side trek to Tilicho lake (4920m) for acclimatization or to Manang lake (4000m )
+- highlights: main centre on AC, Tilicho Hotel with bakery, real coffee, Yak Burger
+- facilities: medicine, doctor, high altitude sickness class, laundry
+- trails: acclimatization side treks to either Tilicho lake (4920m) or to Ice lake (4000m)
 -----
-
-*** Manang to Khangsar (3740m): 5 km, 300m, 3hrs (???)
-*** Khangsar to Shree Kharka (4060m): 3km, 320m, 1h
-*** Shree Kharka to Tilicho BC (4150m): 7km, 90m, 3h(?)               :SLEEP:
-Highlights: 2 teahouses
+*** Manang to Gunsang (3950m): 4km, 500m, 2hrs
+*** Gunsang to Yak Kharka (4050m): 6km, 300m, 1.30hrs
+- facilities: 3 guesthouses?
 -----
-
-*** Tilicho BC to Tilicho Lake (4990m): 5km, 840m, 3hrs                 :TOP:
-*** Tilicho lake to Tilicho BC (4150m): 5km, -840m, 2.30 hrs
-*** Tilicho BC to Shree Kharka (4060m): 7km, -90m, 3h(?)              :SLEEP:
-Highlights: 2 teahouses + another one after 20 mins
-
------
-*** Shree Kharka to Yak Kharka (4050m): 10km, 510m, 3hrs
-Facilities: hydro power
-Note: only 3 guesthouse but better than Letdar
 *** Yak Kharka to Letdar (4200m): 1 km, 150m, 0.30 hrs
+- WARNING: landslide area marked with signs before Phedi
 *** Letdar to Thorang Phedi (4450m): 5 km, 250m, 2.30 hrs             :SLEEP:
-Facilities: high and low camp
-
-Highlights: bakeries and real coffee, Windhorse restaurant and lodge to socialize
-
-note: leave at 2am and climb over the pass from here
+- facilities: high and low camp
+- highlights: bakeries and real coffee, Windhorse restaurant and lodge to socialize
 -----
-
 *** Thorang Phedi to High Camp (4850m): 1 km, 400m, 1.00 hrs
-Highlights: very steep up, sunrise viewpoint
-
-Facilities: only one lodge
-*** High Camp to Thorung Pass (5416m): 5 km, 2.15 hrs
-Highlights: little trail at the top that leads to stunning views
-
-Facilities: two teahouses along the way that serve hot drinks: one after 45min, one at the top of the pass???
+- highlights: very steep up, sunrise viewpoint
+- facilities: only one lodge?
+- note:
+  - leave at 2am and reach the pass at sunrise, breakfast at High Camp
+  - single-file affair, limited space to pass people
+  - marked by yellow/white metal poles and flags
+*** High Camp to Thorung Pass (5416m): 5 km, 600m, 2.15 hrs
+- highlights: little trail at the top that leads to stunning views
+- facilities: two teahouses along the way that serve hot drinks: one after 45min, one at the top of the pass???
 *** Thorung Pass to Charabu (4230m): 6 km, 2.45 hrs
-Notes:
-  - steep descent, might be snow
-  - teahouses at the bottom
+  - trails: very steep descent, might be snow
+  - facilities: teahouses at the bottom
 *** Charabu to Muktinath (3800m): 4 km, 1.15 hrs
-Facilities:
-  - hospital, hydro power all the way to Pokhara
-Highlights:
+- facilities: hospital, hydro power all the way to Pokhara
+- highlights:
   - few Hindus/Buddhist temples
   - otherwise desolate place, no stay
-Notes:
+- notes:
+  - celebratory drinks is Hotel Bob Marley
   - road starts from here
 *** Muktinath to Kagbeni (2800m)
-Facilities:
-  - hospital
-Highlights:
+- facilities: hospital
+- highlights:
   - Kagbeni is charming, in a medieval Tibetan fashion
   - hidden alleyways and European like charm
-  - MUST STAY
   - high trail: fantastic views of the surrounding mountains
+-----
 **** High trail: Muktinath to Jhong: 3 km, 1.30 hrs
 **** High trail: Jhong (3540 m) to Kagbeni: 6 km, 1.45 hrs            :SLEEP:
 **** Low trail: Muktinath to Jharkot: 1 km, 1 hrs
@@ -203,35 +203,28 @@ Highlights:
 Notes:
   - 3h via NATT
 *** Marpha to Tukuche (2590m): 6 km, 1.30 hrs
-Facilities:
-  - hospital
+- facilities: hospital
 *** Tukuche to Kobang (2640m): 4 km, 1.00 hrs
-Facilities:
-  - hospital
+- facilities: hospital
 *** Kobang to Larjung (2550m): 1 km, 1.00 hrs
 *** Larjung to Kokhethanti (2525m): 3 km, 1.00 hrs
 *** Kokhethanti to Kalopani/Lete (2535m): 3 km, 1.00 hrs
-Facilities:
-  - hospital
+- facilities: hospital
 *** Kalopani/Lete to Ghasa (2010m): 7 km, 2.30 hrs
-Facilities:
-  - hospital
+- facilities: hospital
 *** Ghasa to Kopochepani (1480m): 4 km, 1.30 hrs
-Notes:
-  - route to the left (red/white, NATT??) to steep inclide away from the road
+- trails: route to the left (red/white, NATT??) to steep inclide away from the road
 *** Kopochepani to Rupsechhahara (1500m): 2 km, 0.45 hrs
 *** Rupsechhahara to Dana (1400m): 3 km, 1.00 hrs
 *** Dana to Tatopani (1200m): 4 km, 1.30 hrs
-Highlights:
-  - hot springs - 150 NPR
+- highlights: hot springs - 150 NPR
 *** Tatopani to Ghara (1700m): 5 km, 2.15 hrs
 *** Ghara to Sikha (1935m): 6 km, 1.00 hrs
 *** Sikha to Chitre (2350m): 1 km, 1.45 hrs
 *** Chitre to Ghorepani (2870m): 2 km, 1.15 hrs
-Facilities:
-  - hospital
+- facilities: hospital
 *** Ghorepani to Poonhill: 3km, 1.30 hrs
-Highlights:
+- highlights:
   - Poon Hill viewpoint (might be crowded)
   - alternative viewpoint, other on the other side, stone marker and shop snacks/drinks
 *** Ghorepani to Chomrong: ABC side trek
@@ -243,18 +236,41 @@ Highlights:
 *** Bus to Kathmandu: 6h
 
 
+** 2. Tilicho lake side trek (d:41km, h:3500m)
+*** Manang to Khangsar (3740m): 5 km, 300m, 2.30h
+- trail: some maps will show a path along the south side of the valley, but this path is old, unused and wrecked by landslides, stick to the northern side.
+*** Khangsar to Shree Kharka (4060m): 3km, 320m, 1h
+- trail: take the upper path 40 minutes to a monastery and a further 20 minutes
+- highlights: two teahouses, another teahouse about 20 minutes after Shree Kharka
+*** Shree Kharka to Tilicho BC (4150m): 7km, 90m, 2h                  :SLEEP:
+- highlights: 2 teahouses
+-----
+
+*** Tilicho BC to Tilicho Lake (4990m): 5km, 840m, 3 hrs                :TOP:
+*** Tilicho lake to Tilicho BC (4150m): 5km, -840m, 2.30 hrs
+*** Tilicho BC to Shree Kharka (4060m): 7km, -90m, 2h                 :SLEEP:
+- highlights: 2 teahouses + another one after 20 mins
+
+-----
+*** Shree Kharka to Yak Kharka (4050m): 10km, 510m, 4hrs
+- facilities: hydro power
+- note: 3 guesthouse but better than Letdar
+
+
 * Others
 ** sim card
-- NTC has better coverage
-- Ncell works in major centres
+  - NTC has better coverage
+  - Ncell works in major centres
 ** wifi
-- very scarce
+  - very scarce
 ** power charge
-- most teahouses have solar power
-- some places with hydro power
-- queue to get charged, cost: sometimes 200 Rs / charge or hour
+  - most teahouses have solar power
+  - some places with hydro power
+  - queue to get charged, cost: sometimes 200 Rs / charge or hour
 ** Himalayan bank
-- good exchange
+  - good exchange
+** Visa
+  - on arrival ~40USD
 
 * References
 - https://wikitravel.org/en/Trekking_in_Nepal
@@ -291,3 +307,5 @@ Highlights:
 
 ** Updates
   - 2022-08-22 - initial schedule as Gantt diagram
+
+* Updates
