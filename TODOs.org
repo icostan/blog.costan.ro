@@ -414,6 +414,7 @@ SCHEDULED: <2022-08-22 Mon>
     - https://www.youtube.com/watch?v=LBTrX0Ukdvs&list=WL&index=7
       - proof systems overview, arithmetization, STARK + Winterfell
     - https://www.zkdocs.com/docs/zkdocs/
+*** security: ufw, logwatch, fail2ban
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts

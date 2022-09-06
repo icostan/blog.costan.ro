@@ -5,7 +5,7 @@
 
 Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][Annapurna Circuit]], segment by segment with highlights, notes and everything that is interesting along the way. Updates as I do more research.
 
-* Initial schedule
+* Schedule
 #+begin_src mermaid :exports none :file annapurna.png
   gantt
      dateFormat YYY-MM-DD
@@ -18,39 +18,43 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
      OTP-KTM :crit, 2022-09-14, 2d
 
      section Kathmandu
-     Milestone hotel :hotel, 2022-09-15, 2d
+     Milestone Hotel :hotel, 2022-09-15, 1d
 
      section bus-start
-     Kathmandu to Besi Sahar :bus, 2022-09-17, 1d
+     Kathmandu to Besi Sahar :bus, 2022-09-16, 1d
 
      section AC trek
-     Ngadi :active, day1, 2022-09-17, 1d
-     Jagat :active, day2, after day1, 1d
+     Bhulbhule :active, day1, 2022-09-16, 1d
+     Syange :active, day2, after day1, 1d
      Dharapani :active, day3, after day2, 1d
      Chame :active, day4, after day3, 1d
-     Upper Pisang :active, day5, after day4, 1d
-     Manang (3540m) :active, day6, after day5, 1d
-     Tilicho BC (4150m) :active, day7, after day6, 1d
-     Shree Karka (4070m) :active, day8, after day7, 1d
-     Thorung Phedi (4525m) :active, day9, after day8, 1d
-     Muktinath (3760m) :active, day10, after day9, 1d
-     Jomson :active, day11, after day10, 1d
-     Kokhethanti :active, day12, after day11, 1d
-     Tatopani :active, day13, after day12, 1d
+     Pisang :active, day5, after day4, 1d
+     Manang (3540m) :active, day6, after day5, 2d
+     Milestone1 - to Manang, d-90km, h-8000m, t-6d :milestone, m1, 2022-09-21, 2d
+     Tilicho BC (4150m) :active, day8, after m1, 1d
+     Shree Karka (4070m) :active, day9, after day8, 1d
+     Thorung Phedi (4525m) :active, day10, after day9, 1d
+     Muktinath (3760m) :active, day11, after day10, 1d
+     Milestone2 - over Thorung La, d-74km, h-5700m, t-4d :milestone, m2, 2022-09-26, 1d
+     Jomson :active, day12, after day11, 1d
+     Ghasa :active, day13, after day12, 1d
      Ghorepani :active, day14, after day13, 1d
      Nayapul :active, day15, after day14, 1d
 
-     section bus-finish
-     Nayapul to Pokhara :active, bus, after day14, 1d
+     section jeep
+     Nayapul to Pokhara :bus, after day14, 1d
 
      section Pokhara
-     hotel :hotel, 2022-10-01, 1d
+     Hotel at Phewa Tal :hotel, 2022-10-01, 2d
 
      section bus-return
      Pokhara to Kathmandu :crit, 2022-10-02, 1d
 
-     section fly-return
+     section flight-return
      KTM-OTP :crit, 2022-10-02, 2d
+
+     section train-return
+     OTP-IAS :crit, 2022-10-03, 1d
 #+end_src
 
 #+RESULTS:
@@ -58,6 +62,43 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
 
 
 [[file:/img/annapurna.png]]
+
+
+* Cost
+*** Exchange rate (Sep 6th 2022)
+   - 100 NPR = 3.81 RON
+   - 100 NPR = 0.78 EUR
+   - 100 NPR = 0.78 USD
+*** Overview
+   - food: 2000 NPR/day
+   - drinks: 500 NPR/day
+   - room: 500 NPR/night
+   - misc: 500 NPR/day
+   Note: /*daily cost: 3500 NPR/day or around 27 USD/day*/, give or take
+*** Food & drinks
+   - dal bath meat: 600 - 875 NPR (with free refills)
+   - dal bath veggie: 350 - 575 NPR
+   - boiled eggs: 140 - 350 NPR
+   - bread: 150 - 315 NPR
+   - croissant: 70 NPR
+   - snack: 100 - 200 NPR
+   - tea: 70 - 150 NPR
+   - coffee: 90 - 250 NPR
+   - beer: 400-600 NPR
+   Note: The higher you go the more expensive it gets, hence the price range is quite big
+*** Accommodation
+   - tea house - double room: 250 - 500 NPR/night
+   - hotel - double room: 1500 NPR/night
+   Note: if you eat dinner+breakfast at teahouse and ask for it you can get room for free but I personally find this unfair for local people, it's only $5/night folks !!!
+*** Transportation
+   - bus Kathmandu to Besi Sahar: 1000 NPR
+   - taxi Nayapul to Pokhara: 2500 NPR
+   - bus Jomson to Pokhara: 1200 NPR
+   - bus Pokhara to Kathmandu: 1000 NPR
+*** Visa & permits
+   - ACAP: 3000 NPR
+   - TIMS: 2000 NPR
+   - Visa on arrival: ~40 USD (30-day)
 
 
 * Segments
@@ -105,7 +146,7 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
 **** Danaqyu (2200m) to Latamarang (2400m): 1.5 km, 200m, 1.00 hrs
 **** Latamarang (2400 m) to Koto (2640m): 5.5 km, 240m, 2.00 hrs
 *** Koto to Chame (2710m): 2 km, 70m, 0.45 hrs
-- facilities: big village with farmacy, hot showers, many guesthouses, hot springs, etc
+- facilities: big village with farmacy, hot showers, many guesthouses, hot springs, ATM
 *** Chame to Bhratang (2850m): 7 km, 140m, 2.00 hrs
 - highlights: cider/apple farm, sauna, cafe
 *** Bhratang to Dhukur Pokhari (3240m): 6 km, 390m, 1.30 hrs
@@ -137,7 +178,7 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
 - facilities: hospital, old bakery, sauna @ Himalayan Lodge
 *** Bhraga to Manang (3540m): 2km, 90m, 0.30hrs                       :SLEEP:
 - highlights: main centre on AC, Tilicho Hotel with bakery, real coffee, Yak Burger
-- facilities: medicine, doctor, high altitude sickness class, laundry
+- facilities: medicine, doctor, high altitude sickness class, laundry, ATM
 - trails: acclimatization side treks to either Tilicho lake (4920m) or to Ice lake (4000m)
 -----
 *** Manang to Gunsang (3950m): 4km, 500m, 2hrs
@@ -171,13 +212,13 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
 - notes:
   - celebratory drinks is Hotel Bob Marley
   - road starts from here
+-----
 *** Muktinath to Kagbeni (2800m)
 - facilities: hospital
 - highlights:
   - Kagbeni is charming, in a medieval Tibetan fashion
   - hidden alleyways and European like charm
   - high trail: fantastic views of the surrounding mountains
------
 **** High trail: Muktinath to Jhong: 3 km, 1.30 hrs
 **** High trail: Jhong (3540 m) to Kagbeni: 6 km, 1.45 hrs            :SLEEP:
 **** Low trail: Muktinath to Jharkot: 1 km, 1 hrs
@@ -195,6 +236,7 @@ Facilities:
 Notes:
   - flights to Pokhara: 20 mins for $100
   - multi-legs drive to Pokhara: 6h-10h for $20
+-----
 *** Jomsom to Marpha (2670m): 6 km, 1.30 hrs
 Facilities:
   - hospital
@@ -212,6 +254,7 @@ Notes:
 - facilities: hospital
 *** Kalopani/Lete to Ghasa (2010m): 7 km, 2.30 hrs
 - facilities: hospital
+-----
 *** Ghasa to Kopochepani (1480m): 4 km, 1.30 hrs
 - trails: route to the left (red/white, NATT??) to steep inclide away from the road
 *** Kopochepani to Rupsechhahara (1500m): 2 km, 0.45 hrs
@@ -223,6 +266,7 @@ Notes:
 *** Sikha to Chitre (2350m): 1 km, 1.45 hrs
 *** Chitre to Ghorepani (2870m): 2 km, 1.15 hrs
 - facilities: hospital
+-----
 *** Ghorepani to Poonhill: 3km, 1.30 hrs
 - highlights:
   - Poon Hill viewpoint (might be crowded)
@@ -232,7 +276,7 @@ Notes:
 *** Ulleri to Tikhedhunga (1500m): 2 km, 1.00 hrs
 *** Tikhedhunga to Birethanti (1025m): 6 km, 2.00 hrs
 *** Birethanti to Nayapul (1070 m): 1 km, 0.30 hrs
-*** Bus to Pokhara: ?h
+*** Bus to Pokhara (820m): 2h
 *** Bus to Kathmandu: 6h
 
 
@@ -245,16 +289,25 @@ Notes:
 *** Shree Kharka to Tilicho BC (4150m): 7km, 90m, 2h                  :SLEEP:
 - highlights: 2 teahouses
 -----
-
 *** Tilicho BC to Tilicho Lake (4990m): 5km, 840m, 3 hrs                :TOP:
 *** Tilicho lake to Tilicho BC (4150m): 5km, -840m, 2.30 hrs
 *** Tilicho BC to Shree Kharka (4060m): 7km, -90m, 2h                 :SLEEP:
 - highlights: 2 teahouses + another one after 20 mins
-
 -----
 *** Shree Kharka to Yak Kharka (4050m): 10km, 510m, 4hrs
 - facilities: hydro power
 - note: 3 guesthouse but better than Letdar
+
+
+* Trekking Permits
+- Park entry permit - ACAP (Annapurna Conservation Area Permit)
+  - Park entry: NRs. 3,000 per person per entry
+  - https://ntb.gov.np/plan-your-trip/before-you-come/park-entry-fees
+- TIMS (Trekkers’ Information Management Systems)
+  - Free individual trekker (FIT): NRs. 2,000, per trekking route per person per entry.
+  - https://ntb.gov.np/plan-your-trip/before-you-come/tims-card
+- 4 passport size photos - can be taken at Tourism Office
+- https://www.youtube.com/watch?v=6Fdbu5gNKwE&list=WL&index=6
 
 
 * Others
@@ -267,10 +320,10 @@ Notes:
   - most teahouses have solar power
   - some places with hydro power
   - queue to get charged, cost: sometimes 200 Rs / charge or hour
-** Himalayan bank
-  - good exchange
-** Visa
-  - on arrival ~40USD
+** banking
+  - good exchange in Himalayan bank
+  - ATMs in Manang, Chame
+
 
 * References
 - https://wikitravel.org/en/Trekking_in_Nepal
@@ -284,28 +337,37 @@ Notes:
 - https://www.tripadvisor.com/ShowTopic-g424944-i12328-k9420747-Battery_charging_and_internet_during_Annapurna_circuit_trek-Annapurna_Region_Gandaki_Zone_.html
 - https://www.mountainiq.com/annapurna-circuit-weather/
 - https://www.mountainiq.com/resources/annapurna-circuit-packing-list/
+- https://www.youtube.com/watch?v=gPvGHetoqgs
+
 
 * Videos
 - https://www.youtube.com/watch?v=Hwxc4NUKshI
 - https://www.youtube.com/watch?v=3RRJBooRlgs
 - https://www.youtube.com/watch?v=ZQy8rDxEdRU
 - https://www.youtube.com/watch?v=a0IERPDu5TI
-- https://www.youtube.com/watch?v=Hwxc4NUKshI
+
+
+* Playlists
+- [[https://www.youtube.com/playlist?list=PLFMGDjNwfw8b-Rfz9BWD-lTSWicuEy2yv][DIY Annapurna Circuit trek]]
+
 
 * Itineraries
+- https://fulltimeexplorer.com/annapurna-circuit-itinerary/
+- https://travelexx.com/annapurna-circuit-itinerary/
+- https://www.wayfaringhumans.com/annapurna-circuit-cost-breakdown-by-day-11-day-itinerary/
 - https://www.magicalnepal.com/trip/annapurna-circuit-trek/
 - https://www.actual-adventure.com/nepal/trekking/annapurna/annapurna-natt-trails.html
 - https://www.tourtreknepal.com/annapurna-natt-trails-new-annapurna-trekking-trails.html
 - https://worldalpinetreks.com/packages/annapurna-circuit-trek/
 - https://www.nepalpowerplaces.com/trekking/nepal-tour/annapurna-circuit-trek/
-- https://travelexx.com/annapurna-circuit-itinerary/
+
 
 * Maps
 - https://www.magicalnepal.com/annapurna-circuit-trek-map/
 - https://www.openstreetmap.org/relation/1187310#map=13/28.4082/83.7273&layers=Y
 - https://himalayaguidenepal.com/wp-content/uploads/2019/01/Annapurna-Circuit-Trek-Map.jpg
 
-** Updates
-  - 2022-08-22 - initial schedule as Gantt diagram
 
 * Updates
+  - 2022-08-22 - initial schedule as Gantt diagram
+  - 2022-09-06 - cost per items, milesone schedule

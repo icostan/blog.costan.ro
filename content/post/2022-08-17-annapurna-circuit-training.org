@@ -4,7 +4,7 @@
 #+tags[]: trekking annapurna circuit training
 
 Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][Annapurna Circuit]], a bit different than [[/post/2021-04-15-gasherbrum2-training-plan/][Gasherbrum2 training plan]] for a few reasons:
-  - this is mostly endurance trekking ~15km/day for about 15 days
+  - this is mostly endurance trekking d:~15km/day and h:~1000m/day for about 15 days
   - the highest altitude will only be 5400m with 3-4 days above 4000m
 
 ** Program
@@ -49,17 +49,19 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | Sat | rest day      |                                  |
     | Sun | specific      | hill climbing - d: 18km, h: 700m |
 
-***  Week 3 - Aug 29th [WIP]
+***  Week 3 - Aug 29th [DONE]
     #+ATTR_HTML: :border 2 :rules none
-    | day | training type | exercises |
-    |-----+---------------+-----------|
-    | Mon | calisthenics  |           |
-    | Tue | walking       |           |
-    | Wed | specific      |           |
-    | Thu | rest day      |           |
-    | Fri | freeletics    |           |
-    | Sat | walking       |           |
-    | Sun | specific      |           |
+    | day | training type | exercises                           |
+    |-----+---------------+-------------------------------------|
+    | Mon | rest day      |                                     |
+    | Tue | specific      | 3x10 sl-RDL, r-SU, CR, 3x50 S,L,r-L |
+    | Wed | walking       | city walk d: 25km                   |
+    | Thu | rest day      | a bit of knee pain                  |
+    | Fri | freeletics    | beat your PB                        |
+    | Sat | calisthenics  | strength workout                     |
+    | Sun | specific      | hill h:1000m, d:16km, t:4h          |
+
+***  Week 3 - Sep 5th [WIP]
 
 ** References
 **** Single-leg Romanian DeadLift - for hips

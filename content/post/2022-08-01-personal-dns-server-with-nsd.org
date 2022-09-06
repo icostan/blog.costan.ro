@@ -171,9 +171,9 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
 
 **** Sign zone
    This will digitally sign each record in plaintext zone and output the signed zone file plus the public keys above.
-   #+begin_src sh
+   #+begin_example
      ldns-signzone -n -p -i 20220729174119 -e 20230729174119 costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
-   #+end_src
+   #+end_example
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
      ls -l /etc/nsd/zones/costan.ro*
    #+end_src
