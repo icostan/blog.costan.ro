@@ -283,14 +283,19 @@ disqusShortname = "icostan"
     weight = 8
 [[menu.main]]
     parent = "linux"
+    name = "Firewall, monitor, ban. Repeat."
+    url = "post/2022-09-08-firewall-monitor-ban/"
+    weight = 9
+[[menu.main]]
+    parent = "linux"
     name = "1. Personal Email server"
     url = "post/2022-04-27-personal-email-server-with-postfix-dovecot"
-    weight = 9
+    weight = 10
 [[menu.main]]
     parent = "linux"
     name = "2. Personal DNS server"
     url = "post/2022-08-01-personal-dns-server-with-nsd"
-    weight = 10
+    weight = 11
 
 [[menu.main]]
     identifier = "math"

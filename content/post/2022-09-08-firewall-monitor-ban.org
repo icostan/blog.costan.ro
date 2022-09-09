@@ -1,0 +1,258 @@
+#+title: Firewall, monitor, ban. Repeat.
+#+subtitle: Linux
+#+date: 2022-09-07
+#+tags[]: linux security firewall ufw logwatch fail2ban
+
+Having an internet facing [[https://linux-hardware.org/?probe=43311add57][public server]] requires a bit of monitoring and security to keep bad actors out.
+
+** 1. Firewall
+   [[https://launchpad.net/ufw][UFW]] (Uncomplicated FireWall) is an excellent command line utility to manage both [[https://www.netfilter.org/][netfilter]] project's /iptables/ and /nftables/.
+*** 1.1 Install
+   As simple as...
+   #+begin_example
+   pacman -S ufw
+   #+end_example
+*** 1.2 Config
+   Configuration is pretty basic, /*deny all*/ policy by default, enable low level (also default) logging  and enable the firewall for the very first time.
+   #+begin_example
+   ufw default deny
+   ufw logging on
+   ufw enable
+   #+end_example
+
+   Then allow incoming traffic to services that you need.
+   #+begin_example
+   ufw limit SSH
+   ufw allow DNS
+   #+end_example
+
+   And last, enable and start the /ufw/ service.
+   #+begin_example
+   systemctl enable ufw
+   systemctl start ufw
+   #+end_example
+*** 1.3 Status
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ufw status verbose
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   Status: active
+   Logging: on (low)
+   Default: deny (incoming), allow (outgoing), deny (routed)
+   New profiles: skip
+
+   To                         Action      From
+   --                         ------      ----
+   22/tcp (SSH)               LIMIT IN    Anywhere
+   53 (DNS)                   ALLOW IN    Anywhere
+   #+end_example
+
+** 2. Monitor
+   Once we have a firewall up and running we need to keep an eye on incoming traffic, services, logs and so on using [[https://sourceforge.net/projects/logwatch/][Logwatch]].
+*** 2.1 Install
+   #+begin_example
+   pacman -S logwatch
+   #+end_example
+*** 2.2 Config
+   Only the recipient's email address to specify since by default logwatch is configured to send daily email notifications for all enabled services. You can easily disable a service (e.g. sshd) that you don't want.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/logwatch/conf/logwatch.conf
+   #+end_src
+
+   #+RESULTS:
+   : MailTo = logwatch@costan.ro
+   :
+   : #Service = "-sshd"
+
+   Don't forget to enable/start the /logwatch/ service.
+   #+begin_example
+   systemctl enable logwatch
+   systemctl start logwatch
+   #+end_example
+
+*** 2.3 Status
+   This is an example of daily notification for postfix server.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     logwatch --service postfix
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+
+    ################### Logwatch 7.6 (01/22/22) ####################
+           Processing Initiated: Thu Sep  8 10:10:29 2022
+           Date Range Processed: yesterday
+                                 ( 2022-Sep-07 )
+                                 Period is day.
+           Detail Level of Output: 0
+           Type of Output/Format: stdout / text
+           Logfiles for Host: rig
+    ##################################################################
+
+    --------------------- Postfix Begin ------------------------
+
+         637   Miscellaneous warnings                         637
+
+     637.489K  Bytes accepted                             652,789
+     637.489K  Bytes delivered                            652,789
+    ========   ==================================================
+
+          15   Accepted                                    93.75%
+           1   Rejected                                     6.25%
+    --------   --------------------------------------------------
+          16   Total                                      100.00%
+    ========   ==================================================
+
+           1   5xx Reject HELO/EHLO                       100.00%
+    --------   --------------------------------------------------
+           1   Total 5xx Rejects                          100.00%
+    ========   ==================================================
+
+         663   Connections                                    663
+         445   Connections lost (inbound)                     445
+         663   Disconnections                                 663
+          15   Removed from queue                              15
+          15   Delivered                                       15
+
+          85   Timeouts (inbound)                              85
+         107   SMTP dialog errors                             107
+           3   Hostname verification errors (FCRDNS)            3
+          18   TLS connections (server)                        18
+
+
+    ---------------------- Postfix End -------------------------
+
+
+    ###################### Logwatch End #########################
+
+   #+end_example
+
+** 3. Ban
+   [[https://www.fail2ban.org/][Fail2ban]] does an excelent job watching log files and banning bad actors who execute all kind of scans or brute-force attacks against my server.
+*** 3.1 Install
+   #+begin_example
+   pacman -S fail2ban
+   #+end_example
+*** 3.2 Config
+   As far as config goes, we have two main files to play with.
+
+   The first one being the "jail" file where we set couple parameters and enable services to be monitored.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/fail2ban/jail.local
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   [DEFAULT]
+   bantime = 1w
+   findtime = 1h
+   maxretry = 5
+   destemail = fail2ban@costan.ro
+   sender = miner@costan.ro
+   action = %(action_mwl)s
+   banaction = ufw
+
+   [dovecot]
+   enabled = true
+
+   [nsd]
+   enabled = true
+
+   [postfix]
+   enabled = true
+
+   [sshd]
+   enabled = true
+
+   [nginx-botsearch]
+   enabled = true
+
+   #+end_example
+
+   And the second one with settings for /fail2ban/ service itself like logging, unix socket, etc.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     cat /etc/fail2ban/fail2ban.local
+   #+end_src
+
+   #+RESULTS:
+   : [DEFAULT]
+   : loglevel=INFO
+
+   As always, enable and start the /ufw/ service.
+   #+begin_example
+   systemctl enable fail2ban
+   systemctl start fail2ban
+   #+end_example
+
+*** 3.3 Status
+**** Auto ban
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     fail2ban-client status sshd
+   #+end_src
+
+   #+RESULTS:
+   : Status for the jail: sshd
+   : |- Filter
+   : |  |- Currently failed:	14
+   : |  |- Total failed:	290
+   : |  `- Journal matches:	_SYSTEMD_UNIT=sshd.service + _COMM=sshd
+   : `- Actions
+   :    |- Currently banned:	3
+   :    |- Total banned:	3
+   :    `- Banned IP list:	171.251.25.87 116.110.126.53 27.69.254.186
+
+**** Manual ban
+   Sometimes I see weird traffic and I manually ban the IPs.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ufw prepend deny from 195.123.228.224 to any
+   #+end_src
+
+   #+RESULTS:
+   : Rule inserted
+
+** 4. Report
+   Here is the whole shebang in action.
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ufw status verbose
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   Status: active
+   Logging: on (low)
+   Default: deny (incoming), allow (outgoing), deny (routed)
+   New profiles: skip
+
+   To                         Action      From
+   --                         ------      ----
+   Anywhere                   DENY IN     195.123.228.224
+   Anywhere                   REJECT IN   27.69.254.186
+   Anywhere                   REJECT IN   116.110.126.53
+   Anywhere                   DENY IN     5.34.180.33
+   Anywhere                   DENY IN     5.34.180.66
+   Anywhere                   DENY IN     5.34.180.126
+   Anywhere                   DENY IN     5.34.180.161
+   Anywhere                   DENY IN     5.34.180.220
+   Anywhere                   DENY IN     195.123.227.70
+   Anywhere                   DENY IN     195.123.227.62
+   Anywhere                   DENY IN     195.123.227.72
+   Anywhere                   REJECT IN   171.251.25.87
+   993/tcp (IMAPS)            LIMIT IN    Anywhere
+   587/tcp (Mail)             LIMIT IN    Anywhere
+   25/tcp (SMTP)              LIMIT IN    Anywhere
+   80/tcp (WWW)               LIMIT IN    Anywhere
+   22/tcp (SSH)               LIMIT IN    Anywhere
+   8333/tcp (Bitcoin)         ALLOW IN    Anywhere
+   18080/tcp (Monero)         ALLOW IN    Anywhere
+   30303 (Ethereum)           ALLOW IN    Anywhere
+   53 (DNS)                   ALLOW IN    Anywhere
+
+   #+end_example
+
+** References
+  - https://wiki.archlinux.org/title/Uncomplicated_Firewall
+  - https://wiki.archlinux.org/title/Logwatch
+  - https://wiki.archlinux.org/title/Fail2ban

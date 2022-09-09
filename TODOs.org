@@ -515,11 +515,12 @@ SCHEDULED: <2022-08-22 Mon>
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2022-09-04 Sun +2w>
+    SCHEDULED: <2022-09-18 Sun +2w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-08-22 Mon 18:04]
+    :LAST_REPEAT: [2022-09-09 Fri 06:44]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2022-09-09 Fri 06:44]
     - State "DONE"       from "TODO"       [2022-08-22 Mon 18:04]
     - State "DONE"       from "TODO"       [2022-08-08 Mon 21:17]
     - State "DONE"       from "TODO"       [2022-07-28 Thu 19:21]
