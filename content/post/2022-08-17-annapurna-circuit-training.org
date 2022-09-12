@@ -10,7 +10,7 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
 ** Program
   - free-athlete training style - without using any facilities (no gym equip/pool/weights/belts, nada) just man-against-nature
   - train the joints - usually the joints are weaker than muscles and either cause pain (Achilles?) or fail first (knees anyone?)
-  - specific exercises - focus mostly on exercises that are specific to hiking/trekking with only 1 rest day and 1 functional day
+  - specific exercises - focus mostly on exercises that are specific to hiking/trekking with only 1 rest day and 1 functional day per week
   - static training mask - my mask limits the quantity of oxygen only (the ones that change the concentration are much better)
 
 ** Exercises
@@ -22,6 +22,7 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
   - *S*: Squats
   - *j-S*: jump Squats
   - *sl-S*: single-leg Squats
+  - *r-SD*: reverse Step-Down
 
 ** Schedule
 
@@ -30,14 +31,14 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | day | training type | exercises                                               |
     |-----+---------------+---------------------------------------------------------|
     | Mon | none          | hangover... thanks Vali/Radu :)                         |
-    | Tue | calisthenics  | freeletics: beat PB                                     |
+    | Tue | freeletics    | beat your PB                                            |
     | Wed | specific      | sl-RDL 6x10, r-SU 6x10, CR 6x10, S/r-S 3x25, S/r-S 3x25 |
     | Thu | walking       | city walk - 12km                                        |
-    | Fri | specific      | sl-RDL 3x10, r-SU 3x10, CR 3x10 - slow motion           |
-    | Sat | functional    | freeletics: strength                                    |
+    | Fri | specific      | sl-RDL 3x10, r-SU 3x10, CR 3x10 - in slow motion        |
+    | Sat | calisthenics  | strength workout                                        |
     | Sun | specific      | hill climbing - d: 9km, h: 500m                         |
 
-***  Week 2 - Aug 22nd [DONE]
+*** Week 2 - Aug 22nd [DONE]
     #+ATTR_HTML: :border 2 :rules none
     | day | training type | exercises                        |
     |-----+---------------+----------------------------------|
@@ -45,11 +46,11 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | Tue | walking       | ~11km                            |
     | Wed | freeletics    | beat your PB                     |
     | Thu | walking       | ~8km                             |
-    | Fri | freeletics    | strength workout                 |
+    | Fri | calisthenics  | strength workout                 |
     | Sat | rest day      |                                  |
     | Sun | specific      | hill climbing - d: 18km, h: 700m |
 
-***  Week 3 - Aug 29th [DONE]
+*** Week 3 - Aug 29th [DONE]
     #+ATTR_HTML: :border 2 :rules none
     | day | training type | exercises                           |
     |-----+---------------+-------------------------------------|
@@ -58,20 +59,31 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
     | Wed | walking       | city walk d: 25km                   |
     | Thu | rest day      | a bit of knee pain                  |
     | Fri | freeletics    | beat your PB                        |
-    | Sat | calisthenics  | strength workout                     |
-    | Sun | specific      | hill h:1000m, d:16km, t:4h          |
+    | Sat | calisthenics  | strength workout                    |
+    | Sun | specific      | hill h: 1000m, d: 16km, t: 4h       |
 
-***  Week 3 - Sep 5th [WIP]
+*** Week 4 - Sep 5th [DONE]
+    #+ATTR_HTML: :border 2 :rules none
+    | day | training type | exercises                           |
+    |-----+---------------+-------------------------------------|
+    | Mon | freeletics    | beat your PB                        |
+    | Tue | specific      | 4x15 r-SD, CR, sl-RDL, 4x50 S,r-S,L |
+    | Wed | rest day      |                                     |
+    | Thu | walking       | around city d:30km, t:6h            |
+    | Fri | rest day      |                                     |
+    | Sat | calisthenics  | strength workout                    |
+    | Sun | specific      | hill h: 600m, d: 20km, t: 4h40m     |
+
 
 ** References
 **** Single-leg Romanian DeadLift - for hips
-  - https://www.youtube.com/watch?v=Zfr6wizR8rs /*MUST WATCH*/
+  - [[https://www.youtube.com/watch?v=Zfr6wizR8rs][The best Single-Leg RDL (Romanian DeadLift)]] /MUST WATCH/
   - https://www.youtube.com/watch?v=ViVhUZGk6i4
   - https://www.youtube.com/watch?v=YyEFwt2CjkA
   - https://www.youtube.com/watch?v=cCm-bahEujM
   - https://theprehabguys.com/single-leg-romanian-deadlift/
 **** Step-up - for knees
-  - Step-Up variations: /*MUST WATCH*/
+  - Step-Up variations: /MUST WATCH/
     - [[https://www.youtube.com/watch?v=a20sxQOuhz4][Step-Up variations]]
     - [[https://www.youtube.com/watch?v=V3o6YFQ9sjA][PPP (Patrick, Poloquin, Peterson) step-ups]]
   - https://www.youtube.com/watch?v=sDKT6P-ajis
@@ -79,6 +91,10 @@ Here is the 4-week training plan for [[https://en.wikipedia.org/wiki/Annapurna_C
   - https://www.youtube.com/watch?v=7PV_bGLFlfY
   - https://www.youtube.com/watch?v=l5IuYBdz114
 **** Calf-raises - for ankles
-  - [[https://www.youtube.com/watch?v=UdrQ8DK1w0w][Heel raise benefits]] /*MUST WATCH*/
+  - [[https://www.youtube.com/watch?v=UdrQ8DK1w0w][Heel raise benefits]] /MUST WATCH/
   - https://www.youtube.com/watch?v=21inrjhoFkQ
   - https://www.youtube.com/watch?v=3nLjN6muDoA
+
+** Updates
+  - 2022-09-12: final
+  - 2022-08-17: initial training plan

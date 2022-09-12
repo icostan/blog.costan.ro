@@ -198,10 +198,10 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
   - leave at 2am and reach the pass at sunrise, breakfast at High Camp
   - single-file affair, limited space to pass people
   - marked by yellow/white metal poles and flags
-*** High Camp to Thorung Pass (5416m): 5 km, 600m, 2.15 hrs
+*** High Camp to Thorong Pass (5416m): 5 km, 600m, 2.15 hrs
 - highlights: little trail at the top that leads to stunning views
 - facilities: two teahouses along the way that serve hot drinks: one after 45min, one at the top of the pass???
-*** Thorung Pass to Charabu (4230m): 6 km, 2.45 hrs
+*** Thorong Pass to Charabu (4230m): 6 km, 2.45 hrs
   - trails: very steep descent, might be snow
   - facilities: teahouses at the bottom
 *** Charabu to Muktinath (3800m): 4 km, 1.15 hrs
@@ -341,6 +341,7 @@ Notes:
 
 
 * Videos
+- https://www.youtube.com/watch?v=SSYKtOE7EyM
 - https://www.youtube.com/watch?v=Hwxc4NUKshI
 - https://www.youtube.com/watch?v=3RRJBooRlgs
 - https://www.youtube.com/watch?v=ZQy8rDxEdRU
