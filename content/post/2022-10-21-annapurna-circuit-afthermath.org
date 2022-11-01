@@ -1,0 +1,172 @@
+#+title: Annapurna circuit - the aftermath
+#+subtitle: Trekking
+#+date: 2022-10-31
+#+tags[]: trekking annapurna circuit expedition
+
+Here is day by day itinerary with trekking information, cost for food/drinks/accommodation and also a few DOs/DONTs...
+
+** Itinerary
+*** Day 1: Besisahar to Ngadi (after Bhulbhule)
+**** Trekking
+   - start: 14:50, duration: 3h11m
+   - distance: 10.24km, ascent: 354m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5242989][GPX track]] and [[https://maps.suunto.com/move/iuliancostan/63247be092eeb432d7fcc0c7][trek animation]]
+**** Cost
+   - accommodation: 500 NPR @ [[https://www.facebook.com/raj.trekkers][River side teahouse]] (en-suite bathroom)
+   - dinner+breakfast: 2465 NPR
+*** Day 2: Ngadi to Jagat
+**** Trekking
+   - start: 8:10, duration: 6h51m
+   - distance: 18.87km, ascent: 1066m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243199][GPX track]]
+**** Cost
+   - lunch: 842 NPR in Ghermu
+   - accommodation: 200 NPR @ Montblanc teahouse
+   - dinner+breakfast: 2820 NPR
+*** Day 3: Jagat to Dharapani
+**** Trekking
+   - start: 7:35, duration: 7h27m
+   - distance: 22.56km, ascent: 1023m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243251][GPX track]]
+**** Cost
+   - lunch: 200 NPR
+   - accommodation: 300 NPR @ Tibet Lhasa teahouse
+   - dinner+breakfast: 3072 NPR
+*** Day 4: Dharapani to Chame
+**** Trekking
+   - start: 7:22, duration: 7h26m
+   - distance: 20.58km, ascent: 1227m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243279][GPX track]]
+**** Cost
+   - lunch: 580 NPR in Timang
+   - accommodation: 500 NPR @ New Eagle Mountain (en-suite bathroom)
+   - dinner+breakfast: 2381 NPR
+*** Day 5: Chame to Pisang
+**** Trekking
+   - start: 7:40, duration: 5h25m
+   - distance: 16.41km, ascent: 847m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243493][GPX track]]
+**** Cost
+   - lunch: 1144 NPR in Dhukur Pokhari
+   - accommodation: 100 NPR @ Himalayan teahouse
+   - dinner+breakfast: 3362 NPR
+*** Day 6: Pisang to Manang
+**** Trekking
+   - start: 8:05, duration: 6h58m
+   - distance: 20.47km, ascent: 839m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243501][GPX track]]
+**** Cost
+   - lunch: 948 NPR in Bhraga
+   - accommodation: 500 NPR @ Alpine home
+   - cost: 3000 NPR
+*** Day 7: Manang to Tilicho BC
+**** Trekking
+   - start: 7:57, duration: 7h36m
+   - distance: 15.11km, ascent: 962m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243535][GPX track]]
+**** Cost
+   - lunch: 955 in Shree Karka
+   - accommodation: 600 NPR @ Tilicho hotel
+   - dinner+breakfast+lunch: 3106 NPR
+*** Day 8: Tilicho BC to Tilicho lake (5014m) to Shree Karka
+**** Trekking
+   - start: 6:51, duration: 8h14m
+   - distance: 17.39km, ascent: 1166m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243568][GPX track]] and [[https://maps.suunto.com/move/iuliancostan/63304a9ce7921d05067731e1][animation]]
+**** Cost
+   - accommodation: 500 NPR @ Tilicho hotel
+   - dinner+breakfast: 2080 NPR
+*** Day 9: Shree Karka to Thorong Phedi
+**** Trekking
+   - start: 7:33, duration: 8h12m
+   - distance: 18.05km, ascent: 1066m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243667][GPX track]]
+**** Cost
+   - lunch: 830 NPR @ Nirvana
+   - accommodation: FREE @ Gangapurna lodge
+   - dinner+breakfast: 2540 NPR
+*** Day 10: Thorong Phedi to Thorong La (5400m) to Ranipauwa (Muktinath temple)
+**** Trekking
+   - start: 7:25, duration: 7h32m
+   - distance: 12.36km, ascent: 890m, highest point: 5415m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243788][GPX track to Charabu]], [[https://www.openstreetmap.org/user/icostan/traces/5243792][GPX track to Ranipauwa]]  and [[https://maps.suunto.com/move/iuliancostan/63304a81ef538c1852119427][trek animation]]
+**** Cost
+   - brunch: 860 NPR @ Thorong La
+   - late lunch: 510 NPR in Charabu
+   - accommodation: 500 NPR @ Hotel Bob Marley
+   - dinner+breakfast+drinks: 4374 NPR
+*** Day 11: Ranipauwa to Jomson
+**** Trekking
+   - start: 8:38, duration: 6h16m
+   - distance: 22.73km, ascent: 1055m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5243805][GPX track]]
+**** Cost
+   - lunch: 1403 NPR @ Yak Donalds in Kagbeni
+   - accommodation: 400 NPR @ Paradise teahouse
+   - dinner+breakfast: 2230 NPR
+*** Day 12: Jomson to Ghara
+**** Jomson - Tatopani
+   - bus: to Tatopani
+   - cost: 1000 NPR
+**** Tatopani - Ghara
+***** Trekking
+   - start: 12:15, duration: 4h13m
+   - distance: 8.33km, ascent: 675m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5244688][GPX track]]
+***** Cost
+   - lunch: 910 NPR @ Santosh in Birauta
+   - accommodation: 500 NPR @ Namaste teahouse
+   - dinner+breakfast: 1520 NPR
+*** Day 13: Ghara to Ban Thanti
+**** Trekking
+   - start: 7:29, duration: 8h7m
+   - distance: 17.84km, ascent: 1550m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5244991][GPX track]]
+**** Cost
+   - lunch: 644 NPR in Ghorepani
+   - accommodation: 500 NPR @ Sunrise
+   - dinner+breakfast: 2580 NPR
+*** Day 14: Ban Thanti to Tolka
+**** Trekking
+   - start: 7:13, duration: 8h17m
+   - distance: 17.70km, ascent: 767m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5245181][GPX track]]
+**** Cost
+   - accommodation: 500 NPR @ [[https://www.facebook.com/namateguesthouse][Hotel Namaste]]
+   - dinner+breakfast: 4615 NPR
+*** Day 15: Tolka to Kande
+**** Trekking
+   - start: 7:50, duration: 4h00m
+   - distance: 8.65km, ascent: 600m
+   - [[https://www.openstreetmap.org/user/icostan/traces/5245196][GPX track]]
+**** Cost
+   - celebratory drinks: 465 NPR
+*** Kande to Pokhara
+   - bus: 150 NPR, duration: 2h
+
+
+** Summary
+*** Prices
+   Everything is very cheap compared with American/European standard prices and on average the prices are
+   (note that 1 USD = 133 NPR):
+   - alcohol (mostly beers but also local spirits): 600-700 NPR
+   - accommodation per person:
+     - 100-200 NPR with shared bathroom
+     - 500-600 NPR (with en-suite bathroom or higher altitude)
+   - food (both local and international food, pizza/pasta, steaks/burgers):
+     - breakfast: 500 NPR
+     - lunch: 1000 NPR
+     - dinner: 1500 NPR
+   In high season, Oct and Nov add a 20-30% premium on all prices.
+*** DOs/DON'Ts
+   - no point carrying lots of food/drinks, you find teahouses every 1h or max 2h
+   - the end of rainy season with clear sky in the morning and rain the in afternoon, no crazy rain, mostly a mood killer
+   - leeches are very annoying (especially after rain) but won't kill you, see it as free SPA treatment
+   - there are lots of stairs during the trek, be very careful when stairs are wet
+   - and yes, there are also roads and jeeps but is not that bad as other people complain:
+     - I would say that the worst section was between Kagbeni to Jomson, at some point we walked in river bed to avoid the dust
+     - NATT (New Annapurna Trekking Trails) intersect the road here and there, it was fine for us, a good reason to enjoy a cold beer :)
+   - regular trekking clothing works just fine with temperatures:
+       - day: between 5°C (Thorong La at 5400m altitude) and 30°C (near Pokhara)
+       - night: maybe 10°C-15°C (we did not sleep above 4500m)
+   - humidity is very high, start with dry clothes in the morning, after 1h you can feel the moisture on outer layers

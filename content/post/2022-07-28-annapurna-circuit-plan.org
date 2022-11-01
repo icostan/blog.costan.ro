@@ -99,7 +99,10 @@ Here is the initial plan for [[https://en.wikipedia.org/wiki/Annapurna_Circuit][
    - ACAP: 3000 NPR
    - TIMS: 2000 NPR
    - Visa on arrival: ~40 USD (30-day)
-
+*** Internet and ATMs
+   - WiFi access: 200 NPR
+   - SIM card: 500 NPR (1GB, 30-day)
+   - ATM fee: 250 - 500 NPR (limits between 10k - 35k NPR)
 
 * Segments
 ** 1. Annapurna Circuit trek
@@ -315,14 +318,16 @@ Notes:
   - NTC has better coverage
   - Ncell works in major centres
 ** wifi
-  - very scarce
+  - very scarce, mostly after Thorong La
+  - places: Birethati, Ghandruk, Tatopani, Ghandruk, Jomsom, Muktinath
 ** power charge
   - most teahouses have solar power
   - some places with hydro power
   - queue to get charged, cost: sometimes 200 Rs / charge or hour
 ** banking
   - good exchange in Himalayan bank
-  - ATMs in Manang, Chame
+  - ATMs in Manang, Chame and big towns
+  - Nabil Bank ATMs
 
 
 * References
@@ -338,6 +343,10 @@ Notes:
 - https://www.mountainiq.com/annapurna-circuit-weather/
 - https://www.mountainiq.com/resources/annapurna-circuit-packing-list/
 - https://www.youtube.com/watch?v=gPvGHetoqgs
+- https://radianttreks.com/annapurna-circuit-wifi/
+- https://wise.com/us/blog/atms-in-nepal
+- https://www.atmtravelguide.com/atms-in-nepal/
+- https://community.revolut.com/t/the-ultimative-free-atm-withdrawal-list-for-travelling-by-country/61491/372
 
 
 * Videos
