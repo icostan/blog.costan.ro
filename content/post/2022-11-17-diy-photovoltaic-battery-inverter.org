@@ -1,0 +1,89 @@
+#+title: 5kW off-grid photovoltaic system
+#+subtitle: DoItYourself
+#+date: 2022-11-17
+#+tags[]: diy photovoltaic battery inverter off-grid solar
+
+DoItYourself photovoltaic 5kW off-grid system with components, references, specifications, materials, cost breakdown by each component and more.
+
+** Cost
+  The total was around ~15.000 RON (~3.000 USD) + [[https://en.wikipedia.org/wiki/Do_it_yourself][DIY]] study and work.
+  Here is the breakdown by main components: battery, inverter and photovoltaic.
+
+  #+name: solar-balances
+  #+begin_src ledger :cmdline bal Expenses and %solar --depth 5 :noweb yes :exports results
+    include ~/Projects/ledger.d/2022.ledger
+  #+end_src
+
+  #+RESULTS: solar-balances
+  #+begin_example
+          14495.74 RON  Expenses
+           3287.00 RON    Battery
+            692.00 RON      BMS
+            290.00 RON      Box
+             90.00 RON      Fuse
+           2000.00 RON      Li-Ion cells
+            215.00 RON      Materials
+           4050.00 RON    Inverter
+           3800.00 RON      Growatt
+            250.00 RON      Materials
+           6858.74 RON    Photovoltaic
+            129.30 RON      Accessories
+             58.00 RON      Box
+            325.89 RON      Cable
+            137.00 RON      Discharger
+             81.97 RON      Fuse
+           5284.00 RON      Panels
+             50.00 RON      Transportation
+            350.00 RON      Wood
+            300.00 RON    Workmanship
+  --------------------
+          14495.74 RON
+  #+end_example
+
+  Note: exchange rate 1 USD = ~5 RON (give or take, keep it simple)
+
+** Battery
+*** Pack
+  - [[https://www.bak-tech.com/2900mah-blue-18650-batteries-for-ebike-pd43714442.html][Bak 18650 3.6V 2900mAh]]
+  - 18650 Li-Ion battery: 18mm circumference, 65mm long, 0 type cylindrical
+  - /3.6V/ nominal voltage, /4.2V/ max voltage and /2900mAh/ nominal capacity
+  - battery pack is /14S28P/ (14 serie, 28 parallel); total /14*28=/ /392 batteries/
+  - /4.2V * 14S =/ /58.8V/ max voltage
+  - /2.9Ah * 28P =/ /81.2Ah/ max capacity
+*** Battery Management System (BMS)
+  - [[https://www.jkbms.com/products/active-balancer-bms/][JK-B1A24S15P Active Balancer BMS]]
+  - Bluetooth + mobile iOS/Android app
+  - active balance current: 1A
+  - 2 heat sensors
+
+** Inverter
+  - [[https://www.growatt-inverter.com/product/spf-5000-es/][Growatt SPF 5000 ES]]
+  - 3in1 inverter with PV and charge controllers
+  - WiFi + mobile app
+  - nominal power: 5kW
+  - max PV power: 6kW
+  - max PV charge current: 100A
+  - max PV input voltage: 450V
+
+** Photovoltaic (PV)
+*** Panels
+  - [[https://www.todoensolar.com/Solar-Panel-455W-JA-Solar-Mono-PERC][JA Solar 455W]]
+  - Voltage at maximum power (VMPP): 41.82V
+  -  Intensity at maximum power (IMPP): 10.88A
+  - Peak Power (PMAX): 455W
+  - total installed PV power: /455W * 6 panels =/ /2.7kW/
+*** Flatroof system
+  - DIY support system inspired by [[https://www.aerocompact.com/us/solutions/flat-roof/][CompactFlat S15]]
+  - hybrid solution (metal + wood) support with 3rows x 2columns = 6 panels
+  - inclination angle: ~50°
+  - orientation: South
+  - internal shading: ~15° on /Dec 21st/ (winter solstice) at /10am/, Sun azimuth 150°
+
+** References
+  - https://www.allaboutcircuits.com/textbook/
+  - https://off-grid-garage.com/
+  - https://anarchosolarpunk.substack.com/p/offgridsolar
+  - https://re.jrc.ec.europa.eu/pvg_tools/en/tools.html#api_5.2
+  - https://docs.google.com/spreadsheets/u/1/d/1RoigkEBiGSR8b6V3Drg6D1DLQkl3I5PCSVanieEevUI/htmlview#gid=0
+  - https://whereisthenorth.com/guide-to-reading-sun-path-diagrams/
+  - http://andrewmarsh.com/apps/staging/sunpath3d.html
