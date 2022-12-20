@@ -24,7 +24,7 @@
     CLOSED: [2019-02-02 Sat] SCHEDULED: <2019-02-02 Sat>
 *** DONE organize projects with org-mode/agenda/journal
     SCHEDULED: <2020-08-11 Tue>
-    - TODO file per project
+    - file per project
     - agenda: dashboard with tasks/projects
     - journal: daily tasks
 *** DONE Homomorphic commitments: Pedersen vs. ElGamal
@@ -401,6 +401,17 @@ SCHEDULED: <2022-07-10 Sun>
    - self signed
    - cacert.org
    - let's encrypt
+   - https://www.ssl.com/guide/pem-der-crt-and-cer-x-509-encodings-and-conversions/
+   - https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/
+   - https://tls13.xargs.org/
+*** DONE wildcard SSL cert
+SCHEDULED: <2022-12-19 Mon>
+   - https://wiki.archlinux.org/title/Certbot
+   - https://eff-certbot.readthedocs.io/en/stable/
+   - https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579
+   - https://computingforgeeks.com/generating-letsencrypt-wildcard-ssl-certificate/
+   - https://www.digitalocean.com/community/tutorials/how-to-create-let-s-encrypt-wildcard-certificates-with-certbot
+   - https://bobcares.com/blog/letsencrypt-wildcard-howto/
 *** object-oriented vs functional vs multiple dispatch
    - ruby vs haskell vs julia
 *** DONE Annapurna circuit - planning
@@ -414,9 +425,32 @@ SCHEDULED: <2022-08-22 Mon>
     - https://www.youtube.com/watch?v=LBTrX0Ukdvs&list=WL&index=7
       - proof systems overview, arithmetization, STARK + Winterfell
     - https://www.zkdocs.com/docs/zkdocs/
-*** security: ufw, logwatch, fail2ban
+*** DONE security: ufw, logwatch, fail2ban
 *** DONE annapurna: the aftermath
 SCHEDULED: <2022-10-21 Fri>
+*** betsize x P(win/loss) x +/-returns matrix
+   - https://breakingthemarket.com/math-games/
+   - https://breakingthemarket.com/a-random-market/
+   - https://breakingthemarket.com/why-market-index-investing-works/
+   - https://breakingthemarket.com/the-most-misunderstood-force-in-the-universe/
+   - https://www.investopedia.com/ask/answers/06/geometricmean.asp
+   - https://www.investopedia.com/terms/g/geometricmean.asp
+   - https://moontowermeta.com/bet-sizing-is-not-intuitive/
+   - https://moontowermeta.com/the-volatility-drain/
+   - https://moontowermeta.com/path-how-compounding-alters-return-distributions/
+   - https://notion.moontowermeta.com/risk-and-math-of-returns
+   - https://notion.moontowermeta.com/kelly-criterion-resources
+*** Understanding CAGR/IRR formula
+   - https://twitter.com/10kdiver/status/1284536987861446657
+   - https://www.investopedia.com/terms/c/cagr.asp#toc-how-to-calculate-compound-annual-growth-rate-cagr
+   - https://twitter.com/10kdiver/status/1457115966651830272
+*** TODO split returns, metrics post
+SCHEDULED: <2022-12-21 Wed>
+   - https://www.youtube.com/playlist?list=PLDnNDndzmPShymkmjIQ6YKsBLpyIcEcXx
+   - https://www.peterlbrandt.com/metrics-that-matter/
+*** PaaS with Dokku
+   - https://github.com/josegonzalez/dokku-global-cert
+   - postgres plugin
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -491,6 +525,7 @@ SCHEDULED: <2022-10-21 Fri>
     - https://themes.gohugo.io//theme/minimal/post/
     - https://themes.gohugo.io//theme/hugo-now//
     - https://themes.gohugo.io//theme/minimo/
+    - https://mademistakes.com/work/jekyll-themes/minimal-mistakes/
     requirements:
     - [ ] disqus
     - [ ] google analytics
@@ -517,11 +552,13 @@ SCHEDULED: <2022-10-21 Fri>
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2022-11-13 Sun +4w>
+    SCHEDULED: <2023-01-08 Sun +4w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-10-31 Mon 19:49]
+    :LAST_REPEAT: [2022-12-20 Tue 13:56]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2022-12-20 Tue 13:56]
+    - State "DONE"       from "TODO"       [2022-11-18 Fri 14:35]
     - State "DONE"       from "TODO"       [2022-10-31 Mon 19:49]
     - State "DONE"       from "TODO"       [2022-10-31 Mon 19:49]
     - State "DONE"       from "TODO"       [2022-10-04 Tue 08:05]

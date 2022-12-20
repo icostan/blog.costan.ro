@@ -1,0 +1,109 @@
+#+title: Wildcard SSL certificate
+#+subtitle: Linux
+#+date: 2022-12-19
+#+tags[]: letsencrypt wildcard ssl cert
+
+Self-generated certificate is good for bootstrapping purpose but sooner than later we need a valid SSL certificate for all services (IMAPS, HTTPS, DoT etc).
+
+** 1. Install
+  #+begin_src sh
+    pacman -S certbot certbot-nginx
+  #+end_src
+
+** 2.1 Manual generation
+*** Init the certificate generation
+   #+begin_src sh
+     certbot certonly --manual -d "*.costan.ro" -d "costan.ro"
+   #+end_src
+
+   The above tool spits out a DNS challenge that we need to set as a DNS TXT record.
+
+*** Set the DNS TXT record
+   It depends on your DNS provider but usually is as simple as adding a new record.
+
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     grep acme /etc/nsd/zones/costan.ro
+   #+end_src
+
+   #+RESULTS:
+   : _acme-challenge                       IN  TXT     "PDFYVU1v3Jlo6Yeo50-LHiokC8PwNeZl_-FCz13CKPs"
+
+   Check using local DNS server first (mind /@ns.costan.ro/ local DNS server at the end)
+
+   #+begin_src sh
+     dig +short TXT _acme-challenge.costan.ro @ns.costan.ro
+   #+end_src
+
+   #+RESULTS:
+   : PDFYVU1v3Jlo6Yeo50-LHiokC8PwNeZl_-FCz13CKPs
+
+   Wait for DNS propagation and check using public (or default) DNS server. This "wait" part is important otherwise LetsEncrypt won't be able to resolve the DNS challenge and SSL generation process will fail.
+
+   #+begin_src sh
+     dig +short TXT _acme-challenge.costan.ro @8.8.8.8
+   #+end_src
+
+   #+RESULTS:
+   : PDFYVU1v3Jlo6Yeo50-LHiokC8PwNeZl_-FCz13CKPs
+
+*** Finish the certificate generation
+   Once the /DNS TXT/ change is propagated press "ENTER" and /*certbot*/ tool will generate all certificate files.
+
+*** List the certificate
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     certbot certificates
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Found the following certs:
+     Certificate Name: costan.ro
+       Serial Number: 4f6208230dcfb39f339295c19a5eb7781fa
+       Key Type: ECDSA
+       Domains: *.costan.ro
+       Expiry Date: 2023-03-19 12:40:17+00:00 (VALID: 89 days)
+       Certificate Path: /etc/letsencrypt/live/costan.ro/fullchain.pem
+       Private Key Path: /etc/letsencrypt/live/costan.ro/privkey.pem
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   #+end_example
+
+*** Usage
+    Change configuration files for all public services (Postfix, Dovecot, Nsd, etc) and point to newly generated /fullchain.pem/ and /privkey.pem/ files.
+
+    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+      postconf -n | grep -E "smtpd_tls_.*_file"
+    #+end_src
+
+    #+RESULTS:
+    : smtpd_tls_cert_file = /etc/letsencrypt/live/costan.ro/fullchain.pem
+    : smtpd_tls_key_file = /etc/letsencrypt/live/costan.ro/privkey.pem
+
+    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+      doveconf ssl_cert ssl_key
+    #+end_src
+
+    #+RESULTS:
+    : ssl_cert = </etc/letsencrypt/live/costan.ro/fullchain.pem
+    : ssl_key = </etc/letsencrypt/live/costan.ro/privkey.pem
+
+*** Checker
+    And last, check installed SSL cert using an  [[https://www.ssllabs.com/ssltest/analyze.html?d=www.costan.ro][SSLlabs online checker]] or /openssl/ tool.
+
+    #+begin_src sh
+      openssl s_client -connect www.costan.ro:443
+    #+end_src
+
+*** Renew
+    Unfortunately, for /*manual*/ generated certificate there is no way to renew, we can only execute the whole manual process again and generate new certificate.
+
+** 2.2 Automated generation
+   /*TBD*/: in 3 months, before the expiry date above.
+
+** 3. References
+  - https://eff-certbot.readthedocs.io/en/stable/index.html
+  - https://wiki.archlinux.org/title/Certbot
+  - https://www.ssllabs.com/ssltest/analyze.html?d=www.costan.ro&latest
+  - https://tlsprofiler.danielfett.de/
+  - https://www.sslshopper.com/
