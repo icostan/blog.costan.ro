@@ -67,8 +67,9 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
    @       IN   MX    5 smtp.costan.ro.
 
    @       IN   A     86.124.145.184
-   rig     IN   A     86.124.145.184
+   ns      IN   A     86.124.145.184
    smtp    IN   A     86.124.145.184
+   rig     IN   A     86.124.145.184
 
    blog          IN  CNAME   icostan.gitlab.io.
    deribase      IN  CNAME   rig.costan.ro.
@@ -83,6 +84,7 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
    _dmarc                                IN  TXT     "v=DMARC1; p=quarantine; rua=mailto:postmaster@costan.ro; ruf=mailto:forensic@costan.ro; adkim=s; aspf=s; fo=1; pct=25"
    rig._domainkey                        IN  TXT     "v=DKIM1; k=rsa; s=email; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQFlti46dceD5rk3+RGnoYStK6np+cIucrOrkMHbjoRLcOxNikOfi0ABgG2CxK/0X+VNmiL5PsaWWnXhYGOJWz82LM0zhDzoD1bQ0OIb/PWyPMz22udwnPa6FRypEEnjAdC6c8g7tX8fMovqX/09PHKKjLq4zX0X3CMT+t3QhXlQIDAQAB"
    _gitlab-pages-verification-code.blog  IN  TXT     "gitlab-pages-verification-code=3b0fe70a3b7910b2760d02227529e240"
+   _acme-challenge                       IN  TXT     "PDFYVU1v3Jlo6Yeo50-LHiokC8PwNeZl_-FCz13CKPs"
 
    ;## NSD authoritative only DNS
    ;## FORWARD Zone - costan.ro
@@ -316,3 +318,4 @@ After [[/post/2022-04-27-personal-email-server-with-postfix-dovecot/][personal E
 ** Updates
   - 2022-07-29 - initial blog post
   - 2022-08-28 - increase sig expiry time, use drill instead of dig
+  - 2022-12-19 - acme challenge as TXT record, resign zone
