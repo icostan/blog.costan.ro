@@ -1,0 +1,217 @@
+#+title: Risk-adjusted performance metrics
+#+subtitle: Finance
+#+date: 2023-01-27
+#+tags[]: finance trading metrics performance
+
+You can easily double the investment and also double your return right? Not really... read on to see a few metrics that I use.
+
+** Risk-adjusted ratios
+
+   Why doubling the investment is not always a good idea, because you are also doubling the risk, ideally we should increase the return and decrease the risk.
+
+   That's why we need to use risk-adjusted return (ratio) as the ones presented below.
+
+*** Sharpe ratio
+    In financial books Sharpe ratio (and a few others) is defined as excess return (portfolio return rate - risk free rate) divided by volatility.
+
+    \[
+    \textcolor{blue} {
+    Sharpe = \frac{R_p - r_f}{\sigma}
+    }
+    \]
+    but we will keep things simple and only consider portfolio return:
+    \[
+    \textcolor{blue} {
+    Sharpe = \frac{R_p}{\sigma}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - average portfolio return
+    * /*r_{f}*/ - risk-free rate
+    * /*\sigma*/ - standard deviation (both upside and downside volatility)
+
+
+*** Sortino ratio
+    This is very useful to investors and long-only traders/funds to calculate the return for a given bad risk (downside only volatility), because they love upside volatility but hate downside risk.
+
+    \[
+    \textcolor{blue} {
+    Sortino = \frac{R_p}{\sigma_d}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - compound (realized) portfolio return
+    * /*\sigma_{d}*/ - downside volatility
+
+*** Information ratio
+    Portfolio return over active volatility, volatility of active position.
+
+    \[
+    \textcolor{blue} {
+    Information = \frac{R_p}{\sigma_a}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - portfolio return
+    * /*\sigma_{a}*/ - volatility of active returns
+
+*** Ulcer Performance index (UPI)
+    Same as Sharpe ratio but it uses Ulcer Index (UI) as risk measure instead of volatility (\sigma).
+
+    \[
+    \textcolor{blue} {
+    UPI = \frac{R_p}{UI}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - portfolio return
+    * /*UI*/ - Ulcer Index (see below)
+
+*** Return over Maximum Drawdown (RoMaD)
+    Portfolio return over Maximum Drawdown.
+
+    \[
+    \textcolor{blue} {
+    RoMaD = \frac{R_p}{MDD}
+    }
+    \]
+    where:
+    * /*R_{p}*/ - portfolio return
+    * /*MDD*/ - maximum drawdown (see below)
+
+    Note: this is also called Risk-Return-Ratio (RRR).
+
+** Risk metrics
+*** Volatility (\sigma)
+   Standard deviation of log returns.
+
+   \[
+   \textcolor{blue} {
+   \sigma = \frac{1}{N} * \sqrt{\sum_{i=1}^{N} (r_i - \mu)^2}
+   }
+   \]
+   where:
+   * /*r_{i}*/ - return for period i
+   * /*\mu*/ - mean of returns
+   * /*N*/ - number of periods
+
+*** Ulcer Index (UI)
+    \[
+    \textcolor{blue} {
+    UI = \frac{1}{N} * \sqrt{\sum_{i=1}^{N} {(\frac{C_i - MAX_N}{MAX_N})}^2 * 100}
+    }
+    \]
+    where:
+    * /N/ - N-period (eg 14-day)
+    * /C_{i}/ - current close price
+    * /MAX_{N}/ - peak value for given N-period
+
+*** Maximum Drawdown (MDD)
+    Maximum Drawdown measures the largest drop, the difference between a peak and trough for a given period.
+
+    \[
+    \textcolor{blue} {
+    MDD = \frac{T_t - P_t}{P_t}
+    }
+    \]
+    where:
+    * /T_{t}/ - through value for given period /*t*/
+    * /P_{t}/ - peak value
+
+    Note: Sterling, Calmar ratio are different versions of the same MDD-adjusted metric.
+
+** Time-adjusted metrics
+
+*** Compound Annual Growth Rate (CAGR)
+    CAGR is an accurate way to measure how investments have performed over different periods of time but it does not account for risk, only for time.
+
+    \[
+    \textcolor{blue} {
+    CAGR = [ (\frac{C}{P})^{1/n} - 1 ] * 100
+    }
+    \]
+    where:
+    * /C/ - compounded end value
+    * /P/ - investment begin value
+    * n - compounding periods (eg years)
+
+** Other Performance metrics
+   These are not risk/time-adjusted ratios but are good to keep an eye on them.
+
+*** Gain to Pain ratio
+    It calculates the /bang for the buck/ ratio, the amount of loss (pain) that is "needed" to play the game and make some profit (gain).
+
+    \[
+    \textcolor{blue} {
+    GtP = \frac{\sum_{i=1}^n{r_i}}{abs(\sum_{i=1}^m{r_{i,n}})}
+    }
+    \]
+    where:
+    * /*r_{i}*/ - return for period /*i*/ (eg monthly)
+    * /*r_{i,n}*/ - negative return only
+    * /*n*/ - number of trades
+    * /*m*/ - number of negative trades
+    * /*abs*/ - absolute value
+
+*** Profit factor
+    Profit factor is a bit different because it uses profit/loss for each individual trade/strategy instead of return for given period.
+
+    \[
+    \textcolor{blue} {
+    PF = \frac{\sum_{t=1}^n{p_{t}}}{abs(\sum_{t=1}^m{l_{t}})}
+    }
+    \]
+    where:
+    * /*p_{t}*/ - positive return (profit) for each trade (strategy)
+    * /*l_{t}*/ - negative return (loss)
+    * /*n*/ - number of positive trades
+    * /*m*/ - number of negative trades
+
+*** Win rate
+    Number of trades in profit vs. total number of trades.
+
+    \[
+    \textcolor{blue} {
+    WR = \frac{\#\ of\ t_w}{\#\ of\ t_t}
+    }
+    \]
+    where:
+    * /*t_{w}*/ - win trades
+    * /*t_{t}*/ - total trades
+
+*** Avg win vs. loss ratio
+    It compares the average size of win vs. loss trades.
+
+    \[
+    \textcolor{blue} {
+    AWL = \frac{avg(\sum_{i=1}^n{r_{i,p}})}{avg(\sum_{i=1}^n{r_{i,n}})}
+    }
+    \]
+    where:
+    * /*r_{i,p}*/ - positive return for /*i*/ period
+    * /*r_{i,n}*/ - negative return
+    * /*avg*/ - the average
+
+
+** References
+   - https://www.investopedia.com/terms/s/sharperatio.asp
+   - https://www.investopedia.com/terms/s/sortinoratio.asp
+   - https://www.investopedia.com/terms/i/informationratio.asp
+   - https://en.wikipedia.org/wiki/Ulcer_index
+   - https://www.investopedia.com/terms/u/ulcerindex.asp
+   - https://www.investopedia.com/terms/r/return-over-maximum-drawdown-romad.asp
+   - https://www.investopedia.com/terms/m/maximum-drawdown-mdd.asp
+   - https://www.investopedia.com/terms/r/returnoninvestment.asp
+   - https://www.investopedia.com/terms/c/cagr.asp
+   - https://breakingdownfinance.com/finance-topics/performance-measurement/ulcer-index/
+   - https://portfoliooptimizer.io/blog/ulcer-performance-index-optimization/
+   - https://www.youtube.com/playlist?list=PLDnNDndzmPShymkmjIQ6YKsBLpyIcEcXx
+   - https://www.peterlbrandt.com/trading-performance/
+   - https://www.peterlbrandt.com/metrics-that-matter/
+   - https://www.investopedia.com/terms/c/calmarratio.asp
+   - https://en.wikipedia.org/wiki/Sterling_ratio
+   - https://en.wikipedia.org/wiki/Risk_return_ratio
+
+** Updates
+  - [2023-01-27] - split older blog post into [[/post/2021-09-14-linear-log-returns/][returns]] and [[/post/2023-01-27-risk-adjusted-performance-metrics/][risk-adjusted metrics]] posts.
+  - [2023-01-30] - fix/adjust a few metrics

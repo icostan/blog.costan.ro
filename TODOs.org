@@ -444,8 +444,8 @@ SCHEDULED: <2022-10-21 Fri>
    - https://twitter.com/10kdiver/status/1284536987861446657
    - https://www.investopedia.com/terms/c/cagr.asp#toc-how-to-calculate-compound-annual-growth-rate-cagr
    - https://twitter.com/10kdiver/status/1457115966651830272
-*** TODO split returns, metrics post
-SCHEDULED: <2022-12-21 Wed>
+*** DONE split returns, metrics post
+SCHEDULED: <2023-01-27 Fri>
    - https://www.youtube.com/playlist?list=PLDnNDndzmPShymkmjIQ6YKsBLpyIcEcXx
    - https://www.peterlbrandt.com/metrics-that-matter/
 *** PaaS with Dokku
@@ -552,7 +552,7 @@ SCHEDULED: <2022-12-21 Wed>
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2023-01-08 Sun +4w>
+    SCHEDULED: <2023-01-21 Sat +4w>
     :PROPERTIES:
     :LAST_REPEAT: [2022-12-20 Tue 13:56]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f

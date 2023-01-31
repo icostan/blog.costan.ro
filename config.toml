@@ -233,8 +233,8 @@ disqusShortname = "icostan"
     weight = 4
 [[menu.main]]
     parent = "finance"
-    name = "Returns, metrics"
-    url = "post/2021-09-14-returns-risk-adjusted-ratios-metrics/"
+    name = "Linear & Log Returns"
+    url = "post/2021-09-14-linear-log-returns"
     weight = 5
 
 [[menu.main]]

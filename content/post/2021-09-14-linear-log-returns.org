@@ -1,11 +1,10 @@
-#+title: Returns, risk-adjusted ratios, metrics
+#+title: Linear vs log returns
 #+subtitle: Finance
 #+date: 2021-09-14
 #+tags[]: finance trading metrics volatility
 
-You can easily double the investment and also double your return right? Not really, because you are doubling the risk as well... read on to see why.
+The curse and the blessing of returns ... additive vs. compounding land and what are the PROs/CONs between them.
 
-* Returns
 ** Single-period returns
 
 *** Simple return
@@ -30,6 +29,7 @@ You can easily double the investment and also double your return right? Not real
     where:
     * /*R_{t}*/ - log return for period /*t*/
     * /*ln*/ - natural logarithm (base /*e*/ - Euler's number)
+
 
 ** Multi-period returns
 *** Simple return
@@ -175,12 +175,12 @@ You can easily double the investment and also double your return right? Not real
     \textcolor{black} {
     R_t = \ln({\frac{x_t}{x_{t-1}}})
     \\
-    R_t = \ln({\frac{x_t}{x_{t-1}}} - 1 + 1)
+    R_t = \ln({1 + \frac{x_t}{x_{t-1}}} - 1)
     }
     \]
     \[
     \color{blue} {
-    R_t = \ln(r_t + 1)
+    R_t = \ln(1 + r_t)
     }
     \]
     - easy to calculate one given the other
@@ -224,98 +224,6 @@ You can easily double the investment and also double your return right? Not real
     - if data series are volatile use log returns and geometric mean
     - aggregate data over time use log returns
     - aggregate data over different assets use simple returns
-** Risk-adjusted ratios
-
-   Now, with returns out of the way, let's get back to our problem.
-
-   Why doubling the investment is not a good idea, because you also doubling the risk, that's why we need to use risk-adjusted return (ratio) as the ones presented below.
-
-*** Sharpe ratio
-    Sharpe Ratio is defined as excess return (portfolio return rate - risk-free rate) divided by volatility.
-
-    \[
-    \textcolor{blue} {
-    Sharpe\ ratio = \frac{r_p - r_f}{\sigma}
-    }
-    \]
-    where:
-    * /*r_{p}*/ - average portfolio return
-    * /*r_{f}*/ - risk-free rate
-    * /*\sigma*/ - standard deviation (both upside and downside volatility)
-
-*** Sortino ratio
-    This is very useful to investors and long-only traders/funds to calculate the return for a given bad risk (downside only volatility), because they love upside volatility but hate downside risk.
-
-    \[
-    \textcolor{blue} {
-    Sortino\ ratio = \frac{R_p - r_t}{\sigma_d}
-    }
-    \]
-    where:
-    * /*R_{p}*/ - compound (realized) portfolio return
-    * /*r_{t}*/ - target return
-    * /*\sigma_{d}*/ - downside volatility
-
-*** Information ratio
-    \[
-    \textcolor{blue} {
-    Information\ ratio = \frac{R_p - r_b}{\sigma_a}
-    }
-    \]
-    where:
-    * /*R_{p}*/ - portfolio return
-    * /*r_{b}*/ - benchmark return
-    * /*\sigma_{a}*/ - volatility of active returns
-
-** Other metrics
-   These are not risk-adjusted ratios but are good to keep an eye on them.
-
-*** Gain to Pain ratio
-    It calculates the /bang for the buck/ ratio, the amount of loss (pain) that is needed to play the game and make some profit (gain).
-
-    \[
-    \textcolor{blue} {
-    GtP\ ratio = \frac{\sum_{t=1}^n{r_t}}{abs(\sum_{t=1}^n{r_{t,n}})}
-    }
-    \]
-    where:
-    * /*r_{t}*/ - return for period /*t*/
-    * /*r_{t,n}*/ - period with negative return
-    * /*abs*/ - take the absolute value
-
-*** Profit factor
-    Similar to GtP ratio but it uses profitable periods instead of all periods.
-
-    \[
-    \textcolor{blue} {
-    PF\ ratio = \frac{\sum_{t=1}^n{r_{t,p}}}{abs(\sum_{t=1}^n{r_{t,n}})}
-    }
-    \]
-    where:
-    * /*r_{t,p}*/ - period with positive return
-
-*** Win rate
-    Number of trades in profit vs. total number of trades.
-
-    \[
-    \textcolor{blue} {
-    Win\ rate = \frac{\#\ of\ t_w}{\#\ of\ t_t}
-    }
-    \]
-    where:
-    * /*t_{w}*/ - win trades
-    * /*t_{t}*/ - total trades
-
-*** Avg win vs. loss ratio
-    It compares the average size of win vs. loss trades.
-
-    \[
-    \textcolor{blue} {
-    Win\ /Loss = \frac{avg(\sum_{t=1}^n{r_{t,p}})}{avg(\sum_{t=1}^n{r_{t,n}})}
-    }
-    \]
-    where:
-    * /*avg*/ - take the average
 
 ** References
    - https://quantivity.wordpress.com/2011/02/21/why-log-returns/
@@ -327,8 +235,8 @@ You can easily double the investment and also double your return right? Not real
    - https://www.investopedia.com/ask/answers/06/geometricmean.asp
    - https://www.investopedia.com/terms/g/geometricmean.asp
    - https://money.stackexchange.com/questions/24382/what-does-the-average-log-return-value-of-a-stock-mean
-   - https://www.investopedia.com/terms/s/sharperatio.asp
-   - https://www.investopedia.com/terms/s/sortinoratio.asp
-   - https://www.peterlbrandt.com/trading-performance/
    - https://en.wikipedia.org/wiki/Central_limit_theorem
    - https://moontowermeta.com/path-how-compounding-alters-return-distributions/
+
+** Updates
+  - [2023-01-27] - split older blog post into [[/post/2021-09-14-linear-log-returns/][returns]] and [[/post/2023-01-27-risk-adjusted-performance-metrics/][risk-adjusted metrics]] posts.
