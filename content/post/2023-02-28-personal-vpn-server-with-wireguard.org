@@ -1,0 +1,210 @@
+#+title:  Personal VPN server
+#+subtitle: Linux
+#+date:   2023-02-28
+#+tags[]: archlinux vpn wireguard wg personal kernel linux
+
+I was not a big fan of traditional VPN services (which are highly centralized and slow) until Wireguard has arrived and was merged into Linux Kernel; a VPN for this century, peer to peer with state of the art cryptography.
+
+** 1. Install
+[[https://www.wireguard.com/]] is already part of the Linux Kernel, we only need to install user-space tools like /wg/ or /wg-quick/.
+#+begin_src sh
+  pacman -S wireguard-tools
+#+end_src
+
+** 2. Keys generation
+*** 2.1 Private key
+Generate private/public keys with write permission to user only.
+#+begin_src sh :results output
+  umask 077
+  wg genkey | sudo tee /etc/wireguard/private.key
+#+end_src
+
+*** 2.2 Public key
+#+begin_src sh :results output
+  wg pubkey < /etc/wireguard/private.key > /etc/wireguard/public.key
+#+end_src
+
+** 3. Configuration
+Create /etc/wireguard/wg0.conf config files on both client and server as follows.
+
+*** 3.1 Client
+#+begin_src sh :dir /sudo:: :results output
+  cat /etc/wireguard/wg0.conf
+#+end_src
+
+#+RESULTS:
+: [Interface]
+: Address = 10.0.0.10/24
+: PrivateKey = (hidden)
+:
+: [Peer]
+: PublicKey = Z/rQnRAnMQrmW8qcDcRHlNaDMj/h4Xi259x66fm5VRE=
+: Endpoint = rig.costan.ro:51820
+: AllowedIPs = 10.0.0.6/32
+
+*** 3.2 Server
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  cat /etc/wireguard/wg0.conf
+#+end_src
+
+#+RESULTS:
+: [Interface]
+: Address = 10.0.0.6/24
+: PrivateKey = (hidden)
+: ListenPort = 51820
+:
+: [Peer]
+: PublicKey = gyQN7LTMq//bQVD/+K8bZxJu5gWy91rBL9wY3NcIjkE=
+: AllowedIPs = 10.0.0.10/32
+
+** 4. Firewall
+*** 4.1 Server
+First of all enable /forwarding/.
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  cat /etc/ufw/sysctl.conf | grep forward
+#+end_src
+
+#+RESULTS:
+: net/ipv4/ip_forward=1
+: net/ipv6/conf/default/forwarding=1
+: net/ipv6/conf/all/forwarding=1
+
+and accept forwarding to/from /*wg0*/ device.
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  cat /etc/ufw/before.rules | grep wg0
+#+end_src
+
+#+RESULTS:
+: -A ufw-before-forward -i wg0 -j ACCEPT
+: -A ufw-before-forward -o wg0 -j ACCEPT
+
+Then create wireguard UFW app
+
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  cat /etc/ufw/applications.d/wireguard
+#+end_src
+
+#+RESULTS:
+: [Wireguard]
+: title=Wireguard
+: description=Wireguard VPN
+: ports=51820/udp
+
+and /allow/ incoming access in firewall.
+
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  ufw allow wireguard
+#+end_src
+
+*** 4.2 Client
+   Unless you have special filtering rules on host machine it should work out of the box.
+
+** 5. Starting up
+*** 5.1 Manual
+#+begin_src sh
+  wg-quick up wg0
+#+end_src
+
+that adds /*wg0*/ network device
+#+begin_src sh :results output
+  ip link show wg0
+#+end_src
+
+#+RESULTS:
+: 18: wg0: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1420 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+:     link/none
+
+with IP address /10.0.0.10/
+#+begin_src sh :results output
+    ip -brief address show wg0
+#+end_src
+
+#+RESULTS:
+: wg0              UNKNOWN        10.0.0.10/24
+
+and route to /10.0.0.0/24/ network.
+#+begin_src sh :results output
+  ip route | grep wg0
+#+end_src
+
+#+RESULTS:
+: 10.0.0.0/24 dev wg0 proto kernel scope link src 10.0.0.10
+
+*** 5.2 Service
+   It does exactly the same things as the manual step above, automatically, at startup.
+#+begin_src sh
+  systemctl start wg-quick@wg0
+  systemctl enable wg-quick@wg0
+#+end_src
+
+Finally, the working wireguard device on client.
+#+begin_src sh :dir /sudo:: :results output
+  (export WG_COLOR_MODE=never; wg show wg0)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+interface: wg0
+  public key: gyQN7LTMq//bQVD/+K8bZxJu5gWy91rBL9wY3NcIjkE=
+  private key: (hidden)
+  listening port: 56101
+
+peer: Z/rQnRAnMQrmW8qcDcRHlNaDMj/h4Xi259x66fm5VRE=
+  endpoint: 86.124.145.184:51820
+  allowed ips: 10.0.0.6/32
+  latest handshake: 3 minutes, 7 seconds ago
+  transfer: 13.66 KiB received, 11.77 KiB sent
+#+end_example
+
+** 6. Testing
+*** 6.1 From client to server
+#+begin_src sh :results output
+  ping -c 3 10.0.0.6
+#+end_src
+
+#+RESULTS:
+: PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+: 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=4.25 ms
+: 64 bytes from 10.0.0.6: icmp_seq=2 ttl=64 time=3.69 ms
+: 64 bytes from 10.0.0.6: icmp_seq=3 ttl=64 time=6.35 ms
+:
+: --- 10.0.0.6 ping statistics ---
+: 3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+: rtt min/avg/max/mdev = 3.693/4.763/6.348/1.143 ms
+*** 6.2 From server to client
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  ping -c 3 10.0.0.10
+#+end_src
+
+#+RESULTS:
+: PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
+: 64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=4.40 ms
+: 64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=4.16 ms
+: 64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=4.22 ms
+:
+: --- 10.0.0.10 ping statistics ---
+: 3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+: rtt min/avg/max/mdev = 4.161/4.259/4.402/0.103 ms
+
+** 7. Debugging
+For troubleshooting purpose we can enable /wireguard/ debugging in kernel.
+#+begin_src sh
+  echo module wireguard +p > sudoedit tee /sys/kernel/debug/dynamic_debug/control
+#+end_src
+
+#+begin_src sh :dir /sshx:miner@rig.costan.ro|sudo:: :results output
+  journalctl -kn 6 | grep wireguard
+#+end_src
+
+#+RESULTS:
+: Feb 28 09:10:53 rig kernel: wireguard: wg0: Receiving keepalive packet from peer 10 (79.112.64.27:58544)
+: Feb 28 09:10:53 rig kernel: wireguard: wg0: Receiving handshake initiation from peer 10 (79.112.64.27:58544)
+: Feb 28 09:10:53 rig kernel: wireguard: wg0: Sending handshake response to peer 10 (79.112.64.27:58544)
+: Feb 28 09:10:53 rig kernel: wireguard: wg0: Keypair 36 destroyed for peer 10
+: Feb 28 09:10:53 rig kernel: wireguard: wg0: Keypair 38 created for peer 10
+: Feb 28 09:10:53 rig kernel: wireguard: wg0: Receiving keepalive packet from peer 10 (79.112.64.27:58544)
+
+** 8. References
+  - https://www.wireguard.com/
+  - https://wiki.archlinux.org/title/WireGuard
+  - https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04

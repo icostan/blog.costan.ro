@@ -296,6 +296,11 @@ disqusShortname = "icostan"
     name = "2. Personal DNS server"
     url = "post/2022-08-01-personal-dns-server-with-nsd"
     weight = 11
+[[menu.main]]
+    parent = "linux"
+    name = "3. Personal VPN server"
+    url = "post/2023-02-28-personal-vpn-server-with-wireguard"
+    weight = 12
 
 [[menu.main]]
     identifier = "math"

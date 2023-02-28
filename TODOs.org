@@ -451,6 +451,8 @@ SCHEDULED: <2023-01-27 Fri>
 *** PaaS with Dokku
    - https://github.com/josegonzalez/dokku-global-cert
    - postgres plugin
+*** DONE personal VPN with Wireguard
+SCHEDULED: <2023-02-28 Tue>
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -552,11 +554,13 @@ SCHEDULED: <2023-01-27 Fri>
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-    SCHEDULED: <2023-01-21 Sat +4w>
+    SCHEDULED: <2023-03-18 Sat +4w>
     :PROPERTIES:
-    :LAST_REPEAT: [2022-12-20 Tue 13:56]
+    :LAST_REPEAT: [2023-02-28 Tue 12:22]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2023-02-28 Tue 12:22]
+    - State "DONE"       from "TODO"       [2023-01-31 Tue 12:11]
     - State "DONE"       from "TODO"       [2022-12-20 Tue 13:56]
     - State "DONE"       from "TODO"       [2022-11-18 Fri 14:35]
     - State "DONE"       from "TODO"       [2022-10-31 Mon 19:49]
