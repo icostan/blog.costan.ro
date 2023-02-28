@@ -236,6 +236,11 @@ disqusShortname = "icostan"
     name = "Linear & Log Returns"
     url = "post/2021-09-14-linear-log-returns"
     weight = 5
+[[menu.main]]
+    parent = "finance"
+    name = "Risk-adjusted metrics"
+    url = "/post/2023-01-27-risk-adjusted-performance-metrics/"
+    weight = 6
 
 [[menu.main]]
     identifier = "linux"
@@ -288,19 +293,24 @@ disqusShortname = "icostan"
     weight = 9
 [[menu.main]]
     parent = "linux"
+    name = "Wildcard SSL certificate"
+    url = "/post/2022-12-19-wildcard-letsencrypt-ssl-cert/"
+    weight = 10
+[[menu.main]]
+    parent = "linux"
     name = "1. Personal Email server"
     url = "post/2022-04-27-personal-email-server-with-postfix-dovecot"
-    weight = 10
+    weight = 11
 [[menu.main]]
     parent = "linux"
     name = "2. Personal DNS server"
     url = "post/2022-08-01-personal-dns-server-with-nsd"
-    weight = 11
+    weight = 12
 [[menu.main]]
     parent = "linux"
     name = "3. Personal VPN server"
     url = "post/2023-02-28-personal-vpn-server-with-wireguard"
-    weight = 12
+    weight = 13
 
 [[menu.main]]
     identifier = "math"

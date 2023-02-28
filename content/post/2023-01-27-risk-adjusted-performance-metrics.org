@@ -30,7 +30,6 @@ You can easily double the investment and also double your return right? Not real
     * /*r_{f}*/ - risk-free rate
     * /*\sigma*/ - standard deviation (both upside and downside volatility)
 
-
 *** Sortino ratio
     This is very useful to investors and long-only traders/funds to calculate the return for a given bad risk (downside only volatility), because they love upside volatility but hate downside risk.
 
@@ -43,17 +42,19 @@ You can easily double the investment and also double your return right? Not real
     * /*R_{p}*/ - compound (realized) portfolio return
     * /*\sigma_{d}*/ - downside volatility
 
-*** Information ratio
-    Portfolio return over active volatility, volatility of active position.
+*** Calmar ratio
+    Portfolio return over Maximum Drawdown.
 
     \[
     \textcolor{blue} {
-    Information = \frac{R_p}{\sigma_a}
+    Calmar = \frac{R_p}{MDD}
     }
     \]
     where:
     * /*R_{p}*/ - portfolio return
-    * /*\sigma_{a}*/ - volatility of active returns
+    * /*MDD*/ - maximum drawdown (see below)
+
+    Note: this is also called Return over Maximum Drawdown (RoMad) or Risk Return Ratio (RRR) while Sterling ratio is different version of the same MDD-adjusted metric.
 
 *** Ulcer Performance index (UPI)
     Same as Sharpe ratio but it uses Ulcer Index (UI) as risk measure instead of volatility (\sigma).
@@ -67,19 +68,6 @@ You can easily double the investment and also double your return right? Not real
     * /*R_{p}*/ - portfolio return
     * /*UI*/ - Ulcer Index (see below)
 
-*** Return over Maximum Drawdown (RoMaD)
-    Portfolio return over Maximum Drawdown.
-
-    \[
-    \textcolor{blue} {
-    RoMaD = \frac{R_p}{MDD}
-    }
-    \]
-    where:
-    * /*R_{p}*/ - portfolio return
-    * /*MDD*/ - maximum drawdown (see below)
-
-    Note: this is also called Risk-Return-Ratio (RRR).
 
 ** Risk metrics
 *** Volatility (\sigma)
@@ -118,7 +106,6 @@ You can easily double the investment and also double your return right? Not real
     * /T_{t}/ - through value for given period /*t*/
     * /P_{t}/ - peak value
 
-    Note: Sterling, Calmar ratio are different versions of the same MDD-adjusted metric.
 
 ** Time-adjusted metrics
 
@@ -134,6 +121,7 @@ You can easily double the investment and also double your return right? Not real
     * /C/ - compounded end value
     * /P/ - investment begin value
     * n - compounding periods (eg years)
+
 
 ** Other Performance metrics
    These are not risk/time-adjusted ratios but are good to keep an eye on them.
@@ -215,3 +203,4 @@ You can easily double the investment and also double your return right? Not real
 ** Updates
   - [2023-01-27] - split older blog post into [[/post/2021-09-14-linear-log-returns/][returns]] and [[/post/2023-01-27-risk-adjusted-performance-metrics/][risk-adjusted metrics]] posts.
   - [2023-01-30] - fix/adjust a few metrics
+  - [2023-02-10] - use Calmar ratio name instead of RoMad, add note

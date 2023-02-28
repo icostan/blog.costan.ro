@@ -1,7 +1,7 @@
 #+title:  Personal email server
 #+subtitle: Linux
 #+date:   2022-04-27
-#+tags[]: archlinux email server smtp imap tls postfix dovecot dkim dmarc spf dns
+#+tags[]: archlinux email server smtp imap tls postfix dovecot dkim dmarc spf dns personal
 
 Given that GMail with cease to provide free hosting service for custom domains I've decided to deploy a fully featured personal email server and migrate everything to my [[https://archlinux.org/][Arch Linux]] box.
 
@@ -62,6 +62,8 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    : uid=76(dovecot) gid=76(dovecot) groups=76(dovecot),12(mail)
    Adds /mail/ group to /dovecot/ user that will allow MTA to have access to ///var/mail// dir.
 
+**** SSL certificates
+   Check [[/post/2022-12-19-wildcard-letsencrypt-ssl-cert/][Wildcard SSL certificate]] blog post to see how to aquire a Let's Encrypt SSL certificate; or generate a self-signed one below.
 **** Self-signed certificate
 ***** config
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
@@ -166,12 +168,12 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 
    #+RESULTS:
    : ssl = yes
-   : ssl_cert = </etc/ssl/certs/dovecot.pem
-   : ssl_key = </etc/ssl/private/dovecot.pem
+   : ssl_cert = </etc/letsencrypt/live/costan.ro/fullchain.pem
+   : ssl_key = </etc/letsencrypt/live/costan.ro/privkey.pem
    : ssl_dh = </etc/dovecot/dh.pem
    : ssl_require_crl = yes
 
-   Path to files generated above.
+   Path to SSL certificate files.
 
 **** Authentication
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
@@ -337,8 +339,8 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 
    #+RESULTS:
    : smtpd_tls_auth_only = yes
-   : smtpd_tls_cert_file = /etc/ssl/certs/dovecot.pem
-   : smtpd_tls_key_file = /etc/ssl/private/dovecot.pem
+   : smtpd_tls_cert_file = /etc/letsencrypt/live/costan.ro/fullchain.pem
+   : smtpd_tls_key_file = /etc/letsencrypt/live/costan.ro/privkey.pem
    : smtpd_tls_loglevel = 1
    : smtpd_tls_security_level = may
    : smtpd_use_tls = yes
@@ -477,8 +479,8 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    smtpd_sasl_tls_security_options = noanonymous
    smtpd_sasl_type = dovecot
    smtpd_tls_auth_only = yes
-   smtpd_tls_cert_file = /etc/ssl/certs/dovecot.pem
-   smtpd_tls_key_file = /etc/ssl/private/dovecot.pem
+   smtpd_tls_cert_file = /etc/letsencrypt/live/costan.ro/fullchain.pem
+   smtpd_tls_key_file = /etc/letsencrypt/live/costan.ro/privkey.pem
    smtpd_tls_loglevel = 1
    smtpd_tls_security_level = may
    smtpd_use_tls = yes
@@ -660,3 +662,6 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
   - https://www.oreilly.com/library/view/postfix-the-definitive/0596002122/ch04s07.html
 
   - https://imapsync.lamiral.info/
+
+** Updates
+  - [2023-02-21] Use costan.ro certs instead of self-generated Dovecot certs
