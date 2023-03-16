@@ -95,11 +95,109 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
       openssl s_client -connect www.costan.ro:443
     #+end_src
 
-*** Renew
-    Unfortunately, for /*manual*/ generated certificate there is no way to renew, we can only execute the whole manual process again and generate new certificate.
+** 2.2 Semi-automated renewal
+*** Config file
+    Basic config files with a few cmd line settings.
+    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+      cat /etc/letsencrypt/cli.ini
+    #+end_src
 
-** 2.2 Automated generation
-   /*TBD*/: in 3 months, before the expiry date above.
+    #+RESULTS:
+    : key-type = ecdsa
+    : email = letsencrypt@costan.ro
+    : authenticator = manual
+    : agree-tos = true
+
+*** Auth script
+    This script will update /_acme-challenge/ in DNS config, sign and reload the zone.
+
+    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+      cat /etc/letsencrypt/renewal-hooks/auth.sh
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    #!/usr/bin/env sh
+
+    echo CERTBOT_DOMAIN=$CERTBOT_DOMAIN
+    echo CERTBOT_VALIDATION=$CERTBOT_VALIDATION
+    echo CERTBOT_REMAINING_CHALLENGES=$CERTBOT_REMAINING_CHALLENGES
+    echo CERTBOT_ALL_DOMAINS=$CERTBOT_ALL_DOMAINS
+
+    echo Sed: replace _acme_challenge in /etc/nsd/zones/$CERTBOT_DOMAIN ...:
+    sed -Ei "s/_acme-challenge(.+)\"(.+)\"/_acme-challenge\1\"$CERTBOT_VALIDATION\"/" /etc/nsd/zones/$CERTBOT_DOMAIN
+
+    echo NSD: sign/reload $CERTBOT_DOMAIN zone...
+    cd /etc/nsd/zones/
+    ldns-signzone -n -p -e 20240316174119 costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
+    nsd-control reconfig
+    nsd-control reload $CERTBOT_DOMAIN
+
+    echo Wait for DNS propagation...
+    sleep 15s
+
+    echo "DONE."
+    #+end_example
+
+*** Renew
+    And finally the magic command.
+    #+begin_src sh
+      certbot renew --manual-auth=/etc/letsencrypt/renewal-hooks/auth.sh -v
+    #+end_src
+
+    #+begin_example
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Processing /etc/letsencrypt/renewal/costan.ro.conf
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Certificate is due for renewal, auto-renewing...
+    Plugins selected: Authenticator manual, Installer None
+    Renewing an existing certificate for *.costan.ro
+    Performing the following challenges:
+    dns-01 challenge for costan.ro
+    Running manual-auth-hook command: /etc/letsencrypt/renewal-hooks/auth.sh
+    Hook '--manual-auth-hook' for costan.ro ran with output:
+    CERTBOT_DOMAIN=costan.ro
+    CERTBOT_VALIDATION=uY5-sXNpcCtIQoVmA7jy-kIg4-ipseBLjjOzyoTQzpI
+    CERTBOT_REMAINING_CHALLENGES=0
+    CERTBOT_ALL_DOMAINS=costan.ro
+    Sed: replace _acme_challenge in /etc/nsd/zones/costan.ro ...:
+    NSD: sign/reload costan.ro zone...
+    reconfig start, read /etc/nsd/nsd.conf
+    ok
+    ok
+    Wait for DNS propagation...
+    DONE.
+    Waiting for verification...
+    Cleaning up challenges
+
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Congratulations, all renewals succeeded:
+    /etc/letsencrypt/live/costan.ro/fullchain.pem (success)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #+end_example
+
+*** Testing
+    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+      certbot certificates
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Found the following certs:
+      Certificate Name: costan.ro
+        Serial Number: 3fc9af33d62a240238dc4c1fb3a3dc616e6
+        Key Type: ECDSA
+        Domains: *.costan.ro
+        Expiry Date: 2023-06-14 10:13:39+00:00 (VALID: 89 days)
+        Certificate Path: /etc/letsencrypt/live/costan.ro/fullchain.pem
+        Private Key Path: /etc/letsencrypt/live/costan.ro/privkey.pem
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    #+end_example
+
+** 2.3 Fully-automated renewal
+   /*TBD*/: in 3 months, before the expiry date above
 
 ** 3. References
   - https://eff-certbot.readthedocs.io/en/stable/index.html
@@ -107,3 +205,6 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
   - https://www.ssllabs.com/ssltest/analyze.html?d=www.costan.ro&latest
   - https://tlsprofiler.danielfett.de/
   - https://www.sslshopper.com/
+
+** Updates
+  - [2023-03-16] - manual renew of wildcard certificate

@@ -16,7 +16,7 @@ pygmentsCodeFences = true
 # pygmentsUseClassic = true
 # pygmentsOptions = "linenos=inline"
 
-disqusShortname = "icostan"
+# disqusShortname = "icostan"
 # googleAnalytics = "UA-354095-4"
 
 [Params]
@@ -26,7 +26,7 @@ disqusShortname = "icostan"
   dateFormat = "January 2, 2006"
   commit = false
   rss = true
-  comments = true
+  comments = false
   readingTime = true
   wordCount = true
   useHLJS = false

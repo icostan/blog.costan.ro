@@ -208,3 +208,4 @@ For troubleshooting purpose we can enable /wireguard/ debugging in kernel.
   - https://www.wireguard.com/
   - https://wiki.archlinux.org/title/WireGuard
   - https://www.digitalocean.com/community/tutorials/how-to-set-up-wireguard-on-ubuntu-20-04
+  - https://www.procustodibus.com/blog/2021/03/wireguard-logs/
