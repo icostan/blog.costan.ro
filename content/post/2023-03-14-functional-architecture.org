@@ -1,0 +1,360 @@
+#+title: Functional architecture
+#+subtitle: Elixir
+#+date:   2023-03-14
+#+tags[]: architecture design functional programming elixir erlang otp
+
+A functional architecture design that has a "/*functional core*/" layer for business logic, then a "/*state servers*/" layer for state management and finally an "/*imperative shells*/" layer for side-effects.
+
+Many years ago I heard about the "functional core, imperative shell" design in [[https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell][Destroy All Software]] screencast by Gary Bernhart and recently I read James Edward Gray 2's [[https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/][Designing Elixir systems with OTP]] book where he presents a more complex design quoted "Do Fun Things with Big Loud Worker-bees" aka "Data, Functional, Tests, Boundaries, Lifecycle, Workers".
+
+And here is my take, a hybrid design that is based on the assumption that most user cases fall into 3 categories:
+  - /ingest/ data into system - /imperative shell to state server/ flow
+  - /execute/ the business logic - /state server and functional core/ loop
+  - /save/ data to external system - /state server to imperative shell/ flow
+
+Let's begin!
+
+** 1. Functional core
+
+*** 1.1 Business logic
+
+We have to build a system that /increments/ a given /number/.
+
+#+begin_src elixir
+  defmodule Counter.Core do
+    @spec inc(integer) :: integer
+    def inc(i) do
+      add(i, 1)
+    end
+
+    defp add(x, y) do
+      x + y
+    end
+  end
+#+end_src
+
+Let's manually test the feature.
+
+#+begin_src elixir
+  1 |> Counter.Core.inc()
+#+end_src
+
+#+RESULTS:
+: 2
+
+and add an unit test.
+
+#+begin_src elixir
+  defmodule Counter.CoreTest do
+    use ExUnit.Case
+
+    test "inc" do
+      assert 2 = Counter.Core.inc(1)
+    end
+  end
+#+end_src
+
+#+begin_src elixir
+  ExUnit.start(autorun: false, colors: [enabled: false])
+  ExUnit.run([Counter.CoreTest])
+#+end_src
+
+#+RESULTS:
+: .
+: Finished in 0.00 seconds (0.00s async, 0.00s sync)
+: 1 test, 0 failures
+:
+: Randomized with seed 706575
+: %{excluded: 0, failures: 0, skipped: 0, total: 1}
+
+
+*** 1.2 Data type
+
+New requirement arrived and we have to modify our logic to /increment/ by a given /step/.
+
+#+begin_src elixir
+  defmodule Counter.Core.Counter do
+    @type t :: %__MODULE__{
+            step: integer
+          }
+    @enforce_keys [:step]
+    defstruct [:step]
+
+    @spec build(Keyword.t()) :: t
+    def build(step: step) do
+      struct!(__MODULE__, step: step)
+    end
+
+    @spec inc(integer, t) :: integer
+    def inc(i, counter) do
+      add(i, counter.step)
+    end
+
+    defp add(x, y) do
+      x + y
+    end
+  end
+#+end_src
+
+Create a counter and inc a number,
+
+#+begin_src elixir
+  counter = Counter.Core.Counter.build(step: 2)
+  1 |> Counter.Core.Counter.inc(counter)
+#+end_src
+
+#+RESULTS:
+: 3
+
+and the unit test.
+
+#+begin_src elixir
+  defmodule Counter.Core.CounterTest do
+    use ExUnit.Case
+
+    test "inc" do
+      counter = Counter.Core.Counter.build(step: 2)
+      assert 3 = Counter.Core.Counter.inc(1, counter)
+    end
+  end
+#+end_src
+
+#+begin_src elixir
+  ExUnit.start(autorun: false, colors: [enabled: false])
+  ExUnit.run([Counter.Core.CounterTest])
+#+end_src
+
+#+RESULTS:
+: ..
+: Finished in 0.00 seconds (0.00s async, 0.00s sync)
+: 1 tests, 0 failures
+:
+: Randomized with seed 706575
+: %{excluded: 0, failures: 0, skipped: 0, total: 1}
+
+*** 1.3 Takeaways
+   - pure functions only
+     - it returns the same output for a given input
+     - no side effects, no state, nothing
+   - no external dependencies - all data/functions are contained within core layer
+   - very easy to test
+
+** 2. State servers
+
+This layer is as complex as it ever gets and leverages the awesome Erlang's /GenServer/ (Generic Server) machinery to hold state. I won't explain how /GenServer/ works but you can read [[https://elixir-lang.org/getting-started/mix-otp/genserver.html][getting started]] guide, [[https://hexdocs.pm/elixir/GenServer.html][official docs]] or excellent [[https://anuragpeshne.github.io/essays/understanding-genserver.html][Understanding GenServer]] tutorial.
+
+#+begin_src elixir
+  defmodule Counter.State.Server do
+    use GenServer
+
+    @type counter :: Counter.Core.Counter.t()
+
+    @enforce_keys [:count]
+    defstruct [:count]
+
+    @spec start(Keyword.t()) :: pid
+    def start(initial_count: initial_count) do
+      __MODULE__ |> GenServer.start(initial_count)
+    end
+
+    @impl true
+    def init(initial_count) do
+      state = struct!(__MODULE__, count: initial_count)
+      {:ok, state}
+    end
+
+    @spec get_count(pid) :: integer
+    def get_count(pid) do
+      pid |> GenServer.call(:get_count)
+    end
+
+    @impl true
+    def handle_call(:get_count, _from, state) do
+      {:reply, state.count, state}
+    end
+
+    @spec inc(pid, counter) :: :ok
+    def inc(pid, counter) do
+      pid |> GenServer.cast({:inc, counter})
+    end
+
+    @impl true
+    def handle_cast({:inc, counter}, state) do
+      new_count = state.count |> Counter.Core.Counter.inc(counter)
+      new_state = state |> Map.put(:count, new_count)
+      {:noreply, new_state}
+    end
+
+    @spec stop(pid) :: :ok
+    def stop(pid) do
+      pid |> GenServer.stop()
+    end
+  end
+#+end_src
+
+See the state server in action
+
+#+begin_src elixir
+  {:ok, server} = Counter.State.Server.start(initial_count: 3)
+  Counter.State.Server.get_count(server)
+#+end_src
+
+#+RESULTS:
+: 3
+
+and both /functional core/ and /state server/ layers working together.
+
+#+begin_src elixir
+  Counter.State.Server.inc(server, counter)
+  Counter.State.Server.get_count(server)
+#+end_src
+
+#+RESULTS:
+: 5
+
+*** 2.2 Takeaways
+   - state server is dumb, it manages system's state and this is it
+   - it delegates to functional core for business logic execution
+   - internal state management and details are hidden from outside audience
+
+
+** 3. Imperative shells
+
+Alright, so far, so good, we have our business logic, state management and now it's time to interact with external world.
+
+First, the /Storage/ module for persistence.
+
+#+begin_src elixir
+  defmodule Counter.Shell.Storage do
+    @type t :: %__MODULE__{
+            filename: Path.t()
+          }
+    @enforce_keys [:filename]
+    defstruct [:filename]
+
+    @spec build(Path.t()) :: {:ok, t}
+    def build(filename) do
+      {:ok, struct!(__MODULE__, filename: filename)}
+    end
+
+    @spec save_count(integer, t) :: :ok | {:error, binary}
+    def save_count(count, storage) do
+      storage.filename |> File.write(Integer.to_string(count))
+    end
+  end
+#+end_src
+
+imperative shell in action,
+
+#+begin_src elixir
+  {:ok, storage} = Counter.Shell.Storage.build("counter.dat")
+  1|> Counter.Shell.Storage.save_count(storage)
+#+end_src
+
+#+RESULTS:
+: :ok
+
+#+begin_src sh
+  cat "counter.dat"
+#+end_src
+
+#+RESULTS:
+: 1
+
+and finally, state server and imperative shell tied together.
+
+#+begin_src elixir
+  Counter.State.Server.get_count(server) |> Counter.Shell.Storage.save_count(storage)
+#+end_src
+
+#+RESULTS:
+: :ok
+
+#+begin_src sh
+  cat "counter.dat"
+#+end_src
+
+#+RESULTS:
+: 5
+
+Last, the /World/ module that returns current time, just an input into our system.
+
+#+begin_src elixir
+  defmodule Counter.Shell.World do
+    @spec initial_count() :: integer
+    def initial_count() do
+      System.system_time()
+    end
+  end
+#+end_src
+
+#+begin_src elixir
+  Counter.Shell.World.initial_count()
+#+end_src
+
+#+RESULTS:
+: 1679405075142781134
+
+*** 3.3 Takeaways
+   - /imperative shell/ brings side-effects to our system
+   - it wraps and uses other layers to set/get data to/from
+   - data types (e.g Storage struct) isolated to this layer only
+
+** 4. The whole shebang
+
+Let's see the ingestion, execution and persistence flows, also note the name of the modules: /Core/, /State/, /Shell/ and the data flow between each other.
+
+#+begin_src elixir
+  # imperative shell to state server flow - ingestion
+  server =
+    with initial_count = Counter.Shell.World.initial_count(),
+         {:ok, server} = Counter.State.Server.start(initial_count: initial_count) do
+      count = Counter.State.Server.get_count(server)
+      count |> IO.inspect(label: "initial state")
+      server
+    end
+
+  # state server to functional core - business logic
+  counter = Counter.Core.Counter.build(step: 2)
+  counter |> IO.inspect(label: "counter")
+  server |> Counter.State.Server.inc(counter)
+  server |> Counter.State.Server.inc(counter)
+
+  # state server to imperative shell flow - persistence
+  with count = Counter.State.Server.get_count(server),
+       {:ok, storage} = Counter.Shell.Storage.build("counter.dat") do
+    storage |> IO.inspect(label: "storage")
+    count |> Counter.Shell.Storage.save_count(storage)
+  end
+#+end_src
+
+#+RESULTS:
+: initial state: 1679410567553771747
+: counter: %Counter.Core.Counter{step: 2}
+: storage: %Counter.Shell.Storage{filename: "counter.dat"}
+: :ok
+
+The final result:
+
+#+begin_src sh
+  cat "counter.dat"
+#+end_src
+
+#+RESULTS:
+: 1679410567553771751
+
+This is all, server stop.
+
+#+begin_src elixir
+  Counter.State.Server.stop(server)
+#+end_src
+
+#+RESULTS:
+: :ok
+
+** References
+  - https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell
+  - https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/
+  - https://elixir-lang.org/getting-started/mix-otp/genserver.html
+  - https://hexdocs.pm/elixir/GenServer.html
+  - https://anuragpeshne.github.io/essays/understanding-genserver.html

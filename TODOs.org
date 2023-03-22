@@ -453,6 +453,8 @@ SCHEDULED: <2023-01-27 Fri>
    - postgres plugin
 *** DONE personal VPN with Wireguard
 SCHEDULED: <2023-02-28 Tue>
+*** TODO functional architecture - onion
+SCHEDULED: <2023-03-22 Wed>
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
