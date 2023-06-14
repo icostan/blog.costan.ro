@@ -453,8 +453,9 @@ SCHEDULED: <2023-01-27 Fri>
    - postgres plugin
 *** DONE personal VPN with Wireguard
 SCHEDULED: <2023-02-28 Tue>
-*** TODO functional architecture - onion
+*** DONE functional architecture - onion
 SCHEDULED: <2023-03-22 Wed>
+*** TODO deribase terra architecture
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts
@@ -555,12 +556,12 @@ SCHEDULED: <2023-03-22 Wed>
     - https://www.mathjax.org/
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
-** TODO Write new blog post
-    SCHEDULED: <2023-03-18 Sat +4w>
+** Write new blog post
     :PROPERTIES:
-    :LAST_REPEAT: [2023-02-28 Tue 12:22]
+    :LAST_REPEAT: [2023-03-25 Sat 07:48]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2023-03-25 Sat 07:48]
     - State "DONE"       from "TODO"       [2023-02-28 Tue 12:22]
     - State "DONE"       from "TODO"       [2023-01-31 Tue 12:11]
     - State "DONE"       from "TODO"       [2022-12-20 Tue 13:56]

@@ -197,7 +197,54 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
     #+end_example
 
 ** 2.3 Fully-automated renewal
-   /*TBD*/: in 3 months, before the expiry date above
+   Start systemd service that runs twice a day and checks/executes any due renewal.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     systemctl start certbot-renew.timer
+     systemctl enable certbot-renew.timer
+   #+end_src
+
+   After automatic generation ran we end up with brand new certificate.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     certbot certificates
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   Found the following certs:
+     Certificate Name: costan.ro
+       Serial Number: 3f385ce1c48f559cac06c8ba0f7bd13521c
+       Key Type: ECDSA
+       Domains: *.costan.ro
+       Expiry Date: 2023-09-12 02:57:29+00:00 (VALID: 89 days)
+       Certificate Path: /etc/letsencrypt/live/costan.ro/fullchain.pem
+       Private Key Path: /etc/letsencrypt/live/costan.ro/privkey.pem
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   #+end_example
+
+   And now we have 3 certificates in Let's Encrypt archive, one at each 3 months.
+   #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+     ls -l /etc/letsencrypt/archive/costan.ro/
+   #+end_src
+
+   #+RESULTS:
+   #+begin_example
+   total 60
+   -rw-r--r-- 1 root root 1558 Dec 19 15:40 cert1.pem
+   -rw-r--r-- 1 root root 1558 Mar 16 13:13 cert2.pem
+   -rw-r--r-- 1 root root 1558 Jun 14 06:57 cert3.pem
+   -rw-r--r-- 1 root root 3749 Dec 19 15:40 chain1.pem
+   -rw-r--r-- 1 root root 3749 Mar 16 13:13 chain2.pem
+   -rw-r--r-- 1 root root 3749 Jun 14 06:57 chain3.pem
+   -rw-r--r-- 1 root root 5307 Dec 19 15:40 fullchain1.pem
+   -rw-r--r-- 1 root root 5307 Mar 16 13:13 fullchain2.pem
+   -rw-r--r-- 1 root root 5307 Jun 14 06:57 fullchain3.pem
+   -rw------- 1 root root  241 Dec 19 15:40 privkey1.pem
+   -rw------- 1 root root  241 Mar 16 13:13 privkey2.pem
+   -rw------- 1 root root  241 Jun 14 06:57 privkey3.pem
+   #+end_example
+
 
 ** 3. References
   - https://eff-certbot.readthedocs.io/en/stable/index.html
@@ -207,4 +254,6 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
   - https://www.sslshopper.com/
 
 ** Updates
+  - [2022-12-19] - initial wildcard certificate
   - [2023-03-16] - manual renew of wildcard certificate
+  - [2023-06-14] - automatic renew of wildcard certificate
