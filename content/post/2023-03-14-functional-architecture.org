@@ -10,7 +10,7 @@ My inspiration comes from:
 - then more recently I read James Edward Gray 2's [[https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/][Designing Elixir systems with OTP]] book where he presents a more complex design quoted "Do Fun Things with Big Loud Worker-bees" aka "Data, Functional, Tests, Boundaries, Lifecycle, Workers"
 - and last [[https://pragprog.com/titles/lhelph/functional-web-development-with-elixir-otp-and-phoenix/][Functional Web Development with Elixir, OTP, and Phoenix]] by Lance Halvorsen, an excelent architecture book, regardless the "Web" term in title.
 
-And here is my take, a hybrid design that is based on the assumption that most user cases fall into 3 categories:
+And here is my take, a hybrid design that is based on the assumption that most use-cases fall into 3 categories:
   - /ingest/ data into system - /imperative shell to state server/ flow
   - /execute/ the business logic - /state server and functional core/ loop
   - /save/ data to external system - /state server to imperative shell/ flow

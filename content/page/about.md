@@ -8,7 +8,7 @@ comments: false
 
 An old fashion "Jack of all trades" kind of a guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto realm.
 
-These days I trade crypto derivatives to feed my belly and build software to feed my soul.
+These days I trade macro derivatives to feed my belly and build software to feed my soul.
 
 ### Coding activity
 
