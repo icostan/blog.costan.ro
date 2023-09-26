@@ -456,6 +456,8 @@ SCHEDULED: <2023-02-28 Tue>
 *** DONE functional architecture - onion
 SCHEDULED: <2023-03-22 Wed>
 *** TODO deribase terra architecture
+*** DONE Nginx SSL-offloader for Dokku
+SCHEDULED: <2023-09-26 Tue>
 ** Fixes
 *** DONE add Euler's method to RSA
 *** DONE add tags to all posts

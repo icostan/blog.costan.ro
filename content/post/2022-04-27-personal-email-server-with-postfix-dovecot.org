@@ -5,7 +5,8 @@
 
 Given that GMail with cease to provide free hosting service for custom domains I've decided to deploy a fully featured personal email server and migrate everything to my [[https://archlinux.org/][Arch Linux]] box.
 
-The [[/email_test_result.pdf][email test results]] look pretty good, 10 out of 10, all the details below, let's begin...
+[[https://mail-tester.com][mail-tester.com]] tests reports on [[/email_test_result.pdf][Jul 7, 2022]] and [[/email-test-0xvtfceb5.pdf][Jul 29, 2023]] look pretty good, 10 out of 10.
+All the details below, let's begin...
 
 ** 1. Dovecot
 One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]].
@@ -497,6 +498,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    - https://mxtoolbox.com/diagnostic.aspx - excelent tool for MX, DNS
    - https://www.appmaildev.com/
    - https://www.checktls.com/index.html
+   - https://decoder.link/sslchecker/smtp.costan.ro/25
 
    For all geeks out there you can use /openssl/ to do basic SMTP testing.
    #+begin_src sh
