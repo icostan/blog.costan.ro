@@ -6,7 +6,7 @@ comments: false
 
 "I work for no one, I trust no one, I am a free man" - Julius Cornelius
 
-An old fashion "Jack of all trades" kind of a guy with 15+ years experience in software development, 10+ years in derivatives trading and 5+ years in crypto realm.
+An old fashion "Jack of all trades" kind of a guy with 20+ years experience in software development, 15+ years in derivatives trading, 10+ years in entrepreneurship, and 5+ years in crypto realm.
 
 These days I trade macro derivatives to feed my belly and build software to feed my soul.
 

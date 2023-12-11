@@ -53,7 +53,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    #+end_example
    /*mail_location*/ is one of the most important config, it basically says that it expects [[https://en.wikipedia.org/wiki/Message_transfer_agent][MTA]] (Postfix) to deliver email in /INBOX=/var/mail/USERNAME/ and store mailboxes in /~/mail/
 
-**** Add use to mail group
+**** Add dovecot to mail group
    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
      usermod -aG mail dovecot
      id dovecot

@@ -412,8 +412,10 @@ SCHEDULED: <2022-12-19 Mon>
    - https://computingforgeeks.com/generating-letsencrypt-wildcard-ssl-certificate/
    - https://www.digitalocean.com/community/tutorials/how-to-create-let-s-encrypt-wildcard-certificates-with-certbot
    - https://bobcares.com/blog/letsencrypt-wildcard-howto/
-*** object-oriented vs functional vs multiple dispatch
-   - ruby vs haskell vs julia
+*** imperative vs functional vs multiple dispatch
+   - vertical vs horizonal vs diagonal? code styles
+   - ruby vs elixir vs julia
+   - https://readreplica.io/functional-arrays-in-elixir-erlang/
 *** DONE Annapurna circuit - planning
 SCHEDULED: <2022-07-28 Thu>
 *** DONE Annapurna circuit - gear
