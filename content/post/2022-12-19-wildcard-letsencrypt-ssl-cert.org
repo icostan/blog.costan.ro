@@ -129,7 +129,7 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
 
     echo NSD: sign/reload $CERTBOT_DOMAIN zone...
     cd /etc/nsd/zones/
-    ldns-signzone -n -p -e 20240316174119 costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
+    ldns-signzone -n -p -e $(date -d "$(date) +3 month" +%Y%m%d%H%M%S) costan.ro Kcostan.ro.+008+03304 Kcostan.ro.+008+19957
     nsd-control reconfig
     nsd-control reload $CERTBOT_DOMAIN
 

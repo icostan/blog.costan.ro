@@ -26,6 +26,6 @@ static void __exit hello_exit(void)
 module_init(hello_init);
 module_exit(hello_exit);
 
-MODULE_AUTHOR("Iulian Costan <blog@costan.ro");
+MODULE_AUTHOR("Iulian Costan <kernel@costan.ro");
 MODULE_DESCRIPTION("Hello module that depends on World module");
 MODULE_LICENSE("Dual BSD/GPL");

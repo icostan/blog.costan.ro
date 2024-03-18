@@ -33,7 +33,7 @@ In [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] I wrote a simple Linu
   }
   module_exit(world_exit);
 
-  MODULE_AUTHOR("Iulian Costan <blog@costan.ro>");
+  MODULE_AUTHOR("Iulian Costan <kernel@costan.ro>");
   MODULE_DESCRIPTION("World module that exports a symbol");
   MODULE_LICENSE("Dual BSD/GPL");
 #+end_src
@@ -70,7 +70,7 @@ In [[/post/2020-03-24-write-linux-kernel-module/][Part 1]] I wrote a simple Linu
   module_init(hello_init);
   module_exit(hello_exit);
 
-  MODULE_AUTHOR("Iulian Costan <blog@costan.ro");
+  MODULE_AUTHOR("Iulian Costan <kernel@costan.ro");
   MODULE_DESCRIPTION("Hello module that depends on World module");
   MODULE_LICENSE("Dual BSD/GPL");
 #+end_src
@@ -93,7 +93,7 @@ Notice the /depends/ line below, *Hello* module depends on *World* module and /p
 filename:       /home/icostan/Projects/blog/content/post/hello.ko
 license:        Dual BSD/GPL
 description:    Hello module that depends on World module
-author:         Iulian Costan <blog@costan.ro
+author:         Iulian Costan <kernel@costan.ro
 srcversion:     BB1B2CF1CD93B39F4366E4F
 depends:        world
 retpoline:      Y

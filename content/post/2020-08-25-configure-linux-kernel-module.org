@@ -38,7 +38,7 @@ static void __exit world_exit(void)
 }
 module_exit(world_exit);
 
-MODULE_AUTHOR("Iulian Costan <blog@costan.ro>");
+MODULE_AUTHOR("Iulian Costan <kernel@costan.ro>");
 MODULE_DESCRIPTION("World module that exports a symbol");
 MODULE_LICENSE("Dual BSD/GPL");
 #+end_src

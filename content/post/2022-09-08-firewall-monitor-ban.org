@@ -150,7 +150,7 @@ Having an internet facing [[https://linux-hardware.org/?probe=43311add57][public
    findtime = 1h
    maxretry = 5
    destemail = fail2ban@costan.ro
-   sender = miner@costan.ro
+   sender = fail2ban@costan.ro
    action = %(action_mwl)s
    banaction = ufw
 
