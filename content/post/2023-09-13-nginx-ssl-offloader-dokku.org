@@ -3,11 +3,11 @@
 #+date: 2023-09-26
 #+tags[]: nginx ssl letsencrypt dokku
 
-I use [[https://dokku.com/]] as Platform As A Service (PaaS) tool, which is very convenient until you have dozen of apps deployed (like I do) and hit Let's Encrypt limits.
+I use [[https://dokku.com/][Dokku]] as Platform As A Service (PaaS) tool, which is very convenient until you have dozen of apps deployed (like I do) and hit Let's Encrypt limits.
 
 Enter [[/post/2022-12-19-wildcard-letsencrypt-ssl-cert/][Wildcard SSL certificate]] land.
 
-It turns out that it is pretty easy to configure [[https://nginx.org/]] to act as a SSL-offloader for all Dokku apps, as simple as 1,2,3...
+It turns out that it is pretty easy to configure [[https://nginx.org/][Nginx]] to act as a SSL-offloader for all Dokku apps, as simple as 1,2,3...
 
 ** 1. Create SSL config file
 #+begin_src sh :dir /sshx:miner@rig.matrix:~

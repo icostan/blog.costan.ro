@@ -139,6 +139,29 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
     echo "DONE."
     #+end_example
 
+*** Deploy script
+    This script restarts all services that uses widlcard certificate.
+
+    #+begin_src sh :dir /sshx:miner@rig|sudo:: :results output
+      cat /etc/letsencrypt/renewal-hooks/deploy/deploy.sh
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    #!/usr/bin/env sh
+
+    echo Restarting Nginx...
+    systemctl restart nginx
+
+    echo Restarting Postfix...
+    systemctl restart postfix
+
+    echo Restarting Dovecot...
+    systemctl restart dovecot
+
+    echo DEPLOY-HOOK: DONE.
+    #+end_example
+
 *** Renew
     And finally the magic command.
     #+begin_src sh
@@ -257,3 +280,4 @@ Self-generated certificate is good for bootstrapping purpose but sooner than lat
   - [2022-12-19] - initial wildcard certificate
   - [2023-03-16] - manual renew of wildcard certificate
   - [2023-06-14] - automatic renew of wildcard certificate
+  - [2024-04-16] - add deploy.sh script
