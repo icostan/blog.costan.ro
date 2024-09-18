@@ -316,8 +316,9 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
 
    #+RESULTS:
    : alias_database = $alias_maps
-   : alias_maps = hash:/etc/postfix/aliases
+   : alias_maps = lmdb:/etc/postfix/aliases
    : newaliases_path = /usr/bin/newaliases
+
    Email aliases if any; dont forget to run /newaliases/ command to rebuild aliases db.
 
 **** Catch-all email

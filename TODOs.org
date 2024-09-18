@@ -504,6 +504,9 @@ SCHEDULED: <2023-09-26 Tue>
     - https://en.wikipedia.org/wiki/ElGamal_encryption
     - https://en.wikipedia.org/wiki/ElGamal_signature_scheme
 *** TODO add links to screenshots
+*** DONE fix dark mode
+   - https://github.com/halogenica/beautifulhugo/issues/512
+   - https://github.com/halogenica/beautifulhugo/pull/500
 ** Tasks
 *** DONE Wakatime reports
     CLOSED: [2019-03-14 Thu] SCHEDULED: <2019-03-14 Thu>
