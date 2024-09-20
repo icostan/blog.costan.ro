@@ -1,0 +1,19 @@
+#+title: Click, Percent, Zscore changes
+#+subtitle: Tradingview
+#+date: 2024-09-18
+#+tags[]: tradingview trading indicator changes clickchange percentchange zscorechange
+
+As a wise man once said:
+1. beginners think in $ change,
+2. intermediates think in % change,
+3. pros think in Z change.
+
+
+Introducing new Tradingview [[https://www.tradingview.com/script/V5Q1JgyM-Outlier-changes-alert/][Outlier changes alert]] indicator that calculates click (price change), percentage change, and Z-score (standard deviation multiple) changes while displaying outliers based on defined ranges.
+
+Outlier Detection:
+Mark outliers (for price, percentage, Z-score) based on user-defined thresholds. For example, any price movement exceeding a certain Z-score or percentage change could be marked as an outlier and displayed on chart.
+
+[[/img/cpz-changes.png][file:../../img/cpz-changes.png]]
+
+Happy changes!

@@ -384,8 +384,8 @@ pygmentsCodeFences = true
     weight = 1
 [[menu.main]]
     parent = "trading"
-    name = "Slices of Bitcoin"
-    url = "post/2019-05-31-slices-of-bitcoin"
+    name = "Outlier changes alert"
+    url = "post/2024-09-18-click-percent-zscore-changes"
     weight = 2
 [[menu.main]]
     parent = "trading"
