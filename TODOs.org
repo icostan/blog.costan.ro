@@ -563,11 +563,14 @@ SCHEDULED: <2023-09-26 Tue>
     - https://www.mathjax.org/
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
-** Write new blog post
+** TODO Write new blog post
+SCHEDULED: <2024-11-20 Wed +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2023-03-25 Sat 07:48]
+    :LAST_REPEAT: [2024-10-30 Wed 16:39]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2024-10-30 Wed 16:39]
+    - State "DONE"       from "TODO"       [2024-09-20 Fri 16:22]
     - State "DONE"       from "TODO"       [2023-03-25 Sat 07:48]
     - State "DONE"       from "TODO"       [2023-02-28 Tue 12:22]
     - State "DONE"       from "TODO"       [2023-01-31 Tue 12:11]
