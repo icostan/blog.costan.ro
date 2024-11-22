@@ -1,0 +1,342 @@
+#+title: The Power of Mnesia
+#+subtitle: Erlang/Elixir
+#+date: 2024-11-21
+#+tags[]: mnesia erlang elixir distributed storage memento
+
+[[https://www.erlang.org/doc/apps/mnesia/api-reference.html][Mnesia]] is the master-less distributed storage built-in Erlang and by default it inherits all the goodies of Erlang cluster distribution. Lets give it a try.
+
+** 1. Node 1 (n1@drakarys)
+*** 1.1 Start first node
+
+#+begin_src sh
+  iex --sname n1
+#+end_src
+
+Mind the IEX prompt for (n1@drakarys) node name; drakarys is my laptop.
+
+#+begin_src elixir :sname n1 :session s1
+  Node.self()
+#+end_src
+
+#+RESULTS:
+: iex(n1@drakarys)3>
+: :n1@drakarys
+: iex(n1@drakarys)4>
+
+*** 1.2 Install deps
+
+We are going to use a Mnesia wrapper written in Elixir called [[https://github.com/sheharyarn/memento][Memento]].
+
+#+begin_src elixir :session s1
+  Mix.install([
+    {:memento, "~> 0.4"}
+  ])
+#+end_src
+
+#+RESULTS:
+: iex(n1@drakarys)5>
+: :ok
+: iex(n1@drakarys)6>
+
+*** 1.3 Define and compile author module
+
+#+begin_src sh :results output
+  cat author.ex
+#+end_src
+
+#+RESULTS:
+: defmodule Blog.Author do
+:   use Memento.Table, attributes: [:username, :fullname]
+: end
+
+#+begin_src elixir :session s1
+  c("author.ex")
+#+end_src
+
+#+RESULTS:
+: iex(n1@drakarys)7>
+: [Blog.Author]
+: iex(n1@drakarys)8>
+
+*** 1.4 Create author table
+#+begin_src elixir :session s1
+  Memento.Table.create(Blog.Author)
+#+end_src
+
+#+RESULTS:
+: iex(n1@drakarys)9>
+: :ok
+: iex(n1@drakarys)10>
+
+*** 1.5 Create an author
+#+begin_src elixir :session s1
+  Memento.transaction! fn ->
+    Memento.Query.write(%Blog.Author{username: :sarah, fullname: "Sarah Molton"})
+  end
+#+end_src
+
+#+RESULTS:
+: iex(n1@drakarys)11>
+: %Blog.Author{
+:   __meta__: Memento.Table,
+:   username: :sarah,
+:   fullname: "Sarah Molton"
+: }
+: iex(n1@drakarys)12>
+
+*** 1.6 Read authors
+#+begin_src elixir :session s1
+  Memento.transaction! fn ->
+    Memento.Query.all(Blog.Author)
+  end
+#+end_src
+
+#+RESULTS:
+: iex(n1@drakarys)15>
+: [
+:   %Blog.Author{
+:     __meta__: Memento.Table,
+:     username: :sarah,
+:     fullname: "Sarah Molton"
+:   }
+: ]
+: iex(n1@drakarys)16>
+
+So far so good, nothing new under the sun, just basic storage /Create, Read/ stuff.
+
+** 2. Node 2 (n2@drakarys)
+The same start/install/create things for the second node as well.
+*** 2.1 Init the second node
+#+begin_src sh
+  iex --sname n2
+#+end_src
+
+#+begin_src elixir :sname n2 :session s2
+  Node.self()
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)3>
+: :n2@drakarys
+: iex(n2@drakarys)4>
+
+#+begin_src elixir :session s2
+  Mix.install([
+    {:memento, "~> 0.4"}
+  ])
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)5>
+: :ok
+: iex(n2@drakarys)6>
+
+#+begin_src elixir :session s2
+  c("author.ex")
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)7>
+: [Blog.Author]
+: iex(n2@drakarys)8>
+
+*** 2.4 Read authors
+
+Trying to fetch authors will end up with error because we did not create the table on this node.
+
+#+begin_src elixir :session s2
+  Memento.transaction! fn ->
+    Memento.Query.all(Blog.Author)
+  end
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)9>
+: ** (Memento.Error) Transaction Failed with: {:no_exists, Blog.Author}
+:     (memento 0.4.1) lib/memento/transaction.ex:178: Memento.Transaction.handle_result/1
+:     iex:1: (file)
+: iex(n2@drakarys)9>
+
+and we only have a single Mnesia node running.
+#+begin_src elixir :session s2
+  Memento.system |> Keyword.get(:running_db_nodes)
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)10>
+: [:n2@drakarys]
+: iex(n2@drakarys)11>
+
+*** 2.4 Add node in Erlang cluster
+Let's connect the two Erlang nodes.
+#+begin_src elixir :session s2
+  Node.connect(:n1@drakarys)
+  Node.list
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)12>
+: [:n1@drakarys]
+: iex(n2@drakarys)13>
+
+*** 2.5 Add node in Mnesia
+also connect the nodes in Mnesia.
+
+#+begin_src elixir :session s2
+  Memento.add_nodes(:n1@drakarys)
+  Memento.system |> Keyword.get(:running_db_nodes)
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)14>
+: [:n1@drakarys, :n2@drakarys]
+: iex(n2@drakarys)15>
+
+*** 2.6 Read authors
+#+begin_src elixir :session s2
+  Memento.transaction! fn ->
+    Memento.Query.all(Blog.Author)
+  end
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)16>
+: [
+:   %Blog.Author{
+:     __meta__: Memento.Table,
+:     username: :sarah,
+:     fullname: "Sarah Molton"
+:   }
+: ]
+: iex(n2@drakarys)17>
+
+BAM! MAGIC! Mnesia automatically synchronize the two nodes in cluster and returns the author table.
+
+** 3. Migration
+Unfortunately the migration is not implemented in Memento yet (maybe I will give it a try...) and we have to get down to underlying Mnesia Erlang library, is Elixir it is referenced via /:mnesia/.
+*** 3.1 Migrate Author table
+To keep things simple we will just add new property (column) called /age/ with default value of 21.
+#+begin_src elixir :session s2
+  case :mnesia.create_table(Blog.Author, [attributes: [:username, :fullname, :age]]) do
+    {:aborted, {:already_exists, Blog.Author}} ->
+      case :mnesia.table_info(Blog.Author, :attributes) do
+        [:username, :fullname] ->
+          :mnesia.wait_for_tables([Blog.Author], 5000)
+          :mnesia.transform_table(
+            Blog.Author,
+            fn ({Blog.Author, username, fullname}) ->
+              {Blog.Author, username, fullname, 21}
+            end,
+            [:username, :fullname, :age]
+            )
+        [:username, :fullname, :age] ->
+          :ok
+        other ->
+          {:error, other}
+      end
+    other ->
+      {:ok, other}
+  end
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)18>
+: {:atomic, :ok}
+: iex(n2@drakarys)19>
+
+*** 3.2 Read author with Mnesia
+
+Now, let's read migrated author using plain :mnesia.
+
+#+begin_src elixir :session s2
+  :mnesia.transaction(fn ->
+    :mnesia.read({Blog.Author, :sarah})
+  end)
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)20>
+: {:atomic, [{Blog.Author, :sarah, "Sarah Molton", 21}]}
+: iex(n2@drakarys)21>
+
+*** 3.3 Read author with Memento
+
+In Memento we need to recompile the new author module with /age/ property first.
+
+#+begin_src elixir :session s2
+  c("author.ex")
+#+end_src
+
+#+RESULTS:
+#+begin_example
+iex(n2@drakarys)26>
+    warning: redefining module Blog.Author (current version defined in memory)
+    │
+  1 │ defmodule Blog.Author do
+    │ ~~~~~~~~~~~~~~~~~~~~~~~~
+    │
+    └─ author.ex:1: Blog.Author (module)
+
+[Blog.Author]
+iex(n2@drakarys)27>
+#+end_example
+
+#+begin_src elixir :session s2
+  Memento.transaction! fn ->
+    Memento.Query.all(Blog.Author)
+  end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+iex(n2@drakarys)28>
+[
+  %Blog.Author{
+    __meta__: Memento.Table,
+    username: :sarah,
+    fullname: "Sarah Molton",
+    age: 21
+  }
+]
+iex(n2@drakarys)29>
+#+end_example
+
+BAM! MAGIC! again, we can see the newly added default value for /age/ property.
+
+** 4. Persisting to disk
+And last thing, persistence, by default Mnesia works in memory but we can easily persist specific tables to disk.
+*** 4.1 Change table storage type
+#+begin_src elixir :session s2
+  # List of nodes where you want to persist
+  nodes = [ node() ]
+
+  # Create the schema
+  Memento.stop
+  Memento.Schema.create(nodes)
+  Memento.start
+
+  # Create your tables with disc_copies_o (only the ones you want persisted on disk)
+  Memento.Table.create(Blog.Author, disc_copies: nodes)
+#+end_src
+
+#+RESULTS:
+: iex(n2@drakarys)30>
+: 08:05:44.043 [notice] Application mnesia exited: :stopped
+: :ok
+: iex(n2@drakarys)31>
+
+*** 4.2 List storage
+#+begin_src sh :results output
+  ls -l Mnesia.n2@drakarys
+#+end_src
+
+#+RESULTS:
+: total 20
+: -rw-r--r-- 1 icostan users  145 Nov 22 08:08 DECISION_TAB.LOG
+: -rw-r--r-- 1 icostan users    8 Nov 22 08:05 Elixir.Blog.Author.DCD
+: -rw-r--r-- 1 icostan users   87 Nov 22 08:08 LATEST.LOG
+: -rw-r--r-- 1 icostan users 6775 Nov 22 08:05 schema.DAT
+
+This is it for this post, in later installment I will talk about performance and how everything fits together in a cloud-agnostic cluster environment distributed across multiple continents.
+
+Happy distributed storage with Erlang and Mnesia!

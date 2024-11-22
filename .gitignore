@@ -10,3 +10,4 @@ public/
 a.out
 modules.order
 Module.symvers
+Mnesia.*
