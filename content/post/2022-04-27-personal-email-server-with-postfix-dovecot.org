@@ -500,6 +500,7 @@ One of the most popular IMAP/POP3 server is [[https://www.dovecot.org/][Dovecot]
    - https://www.appmaildev.com/
    - https://www.checktls.com/index.html
    - https://decoder.link/sslchecker/smtp.costan.ro/25
+   - https://check.spamhaus.org/results?query=86.124.145.184
 
    For all geeks out there you can use /openssl/ to do basic SMTP testing.
    #+begin_src sh
