@@ -1,0 +1,31 @@
+#+title: OneRidge: Eastern Carpathians
+#+subtitle: Trekking
+#+date: 2024-12-21
+#+tags[]: oneridge trekking hiking carpathian mountains
+
+Eastern Carpathians (Carpații Orientali in Romanian) mountain range stretching from the northern border of Romania down to the Prahova Valley.
+
+  - Known for rolling hills, deep valleys, and some volcanic formations.
+  - [[https://ro.wikipedia.org/wiki/Carpații_Orientali]]
+
+** 1. Eastern Carpathians groups
+*** 1.1 North group
+    - Distance: 159km
+    - Uphill: 6966m
+    - GPX: [[/oneridge/OneRidge_Eastern_North.gpx][OneRidge_Eastern_North.gpx]]
+*** 1.2 Center group
+    - Distance: 252km
+    - Uphill: 10412m
+    - GPX: [[/oneridge/OneRidge_Eastern_Center.gpx][OneRidge_Eastern_Center.gpx]]
+*** 1.2 South group
+    - Distance: 220km
+    - Uphill: 8067m
+    - GPX: [[/oneridge/OneRidge_Eastern_South.gpx][OneRidge_Eastern_South.gpx]]
+
+[[/oneridge/OneRidge_Eastern.png][file:../../oneridge/OneRidge_Eastern.png]]
+
+** References
+  - https://www.hartaturistului.com/munte/carpatii-orientali/
+  - [[https://enciclopediaromaniei.ro/wiki/Carpaţii_Orientali]]
+  - https://www.tourismguide.ro/x/carpatii_orientali/
+  - https://muntii-nostri.ro/
