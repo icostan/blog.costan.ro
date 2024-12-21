@@ -209,6 +209,21 @@ pygmentsCodeFences = true
     weight = 5
 
 [[menu.main]]
+    identifier = "elixir"
+    name = "Elixir"
+    weight = 35
+[[menu.main]]
+    parent = "elixir"
+    name = "The Power of Mnesia"
+    url = "/post/2024-11-21-power-of-mnesia/"
+    weight = 1
+[[menu.main]]
+    parent = "elixir"
+    name = "Functional architecture"
+    url = "/post/2023-03-14-functional-architecture/"
+    weight = 2
+
+[[menu.main]]
     identifier = "finance"
     name = "Finance"
     weight = 40
@@ -299,44 +314,54 @@ pygmentsCodeFences = true
     weight = 10
 [[menu.main]]
     parent = "linux"
+    name = "SSL-offloader for Dokku"
+    url = "/post/2023-09-13-nginx-ssl-offloader-dokku/"
+    weight = 11
+[[menu.main]]
+    parent = "linux"
     name = "1. Personal Email server"
     url = "post/2022-04-27-personal-email-server-with-postfix-dovecot"
-    weight = 11
+    weight = 12
 [[menu.main]]
     parent = "linux"
     name = "2. Personal DNS server"
     url = "post/2022-08-01-personal-dns-server-with-nsd"
-    weight = 12
+    weight = 13
 [[menu.main]]
     parent = "linux"
     name = "3. Personal VPN server"
     url = "post/2023-02-28-personal-vpn-server-with-wireguard"
-    weight = 13
+    weight = 14
 
 [[menu.main]]
-    identifier = "math"
-    name = "Math"
+    identifier = "science"
+    name = "Science"
     weight = 60
 [[menu.main]]
-    parent = "math"
+    parent = "science"
     name = "Complexities with graphs"
     url = "post/2020-06-04-bigo-complexity-with-graphs"
     weight = 1
 [[menu.main]]
-    parent = "math"
+    parent = "science"
     name = "Algebraic structures"
     url = "post/2020-11-11-algebraic-structures-set-group-ring"
     weight = 2
 [[menu.main]]
-    parent = "math"
+    parent = "science"
     name = "Ternary (Trinary) system"
     url = "post/2020-12-30-ternary-trinary-binary-systems"
     weight = 3
 [[menu.main]]
-    parent = "math"
+    parent = "science"
     name = "Bias vs. variance"
     url = "post/2021-03-30-bias-vs-variance"
     weight = 4
+[[menu.main]]
+    parent = "science"
+    name = "5kW off-grid photovoltaic system"
+    url = "post/2022-11-17-diy-photovoltaic-battery-inverter/"
+    weight = 5
 
 [[menu.main]]
     identifier = "opensource"
@@ -379,23 +404,28 @@ pygmentsCodeFences = true
     weight = 80
 [[menu.main]]
     parent = "trading"
+    name = "Reminiscences of ... a loss"
+    url = "/post/2022-05-26-reminiscences-of-a-loss"
+    weight = 1
+[[menu.main]]
+    parent = "trading"
+    name = "Chess vs Trading"
+    url = "/post/2022-01-11-chess-vs-trading/"
+    weight = 2
+[[menu.main]]
+    parent = "trading"
     name = "Weekly Monthly Close"
     url = "post/2019-02-28-weekly-monthly-close"
-    weight = 1
+    weight = 3
 [[menu.main]]
     parent = "trading"
     name = "Outlier changes alert"
     url = "post/2024-09-18-click-percent-zscore-changes"
-    weight = 2
+    weight = 4
 [[menu.main]]
     parent = "trading"
     name = "Month Breaks"
     url = "post/2019-12-16-month-breaks"
-    weight = 3
-[[menu.main]]
-    parent = "trading"
-    name = "COVID-19 indicators"
-    url = "post/2020-05-07-covid-19-indicators"
     weight = 4
 [[menu.main]]
     parent = "trading"
@@ -424,13 +454,13 @@ pygmentsCodeFences = true
     weight = 8
 [[menu.main]]
     parent = "trading"
-    name = "Chess vs Trading"
-    url = "/post/2022-01-11-chess-vs-trading/"
-    weight = 9
+    name = "COVID-19 indicators"
+    url = "/post/2020-05-07-covid-19-indicators"
+    weight = 10
 [[menu.main]]
     parent = "trading"
-    name = "Reminiscences of ... a loss"
-    url = "/post/2022-05-26-reminiscences-of-a-loss"
+    name = "Click, Percent, Zscore changes"
+    url = "/post/2024-09-18-click-percent-zscore-changes/"
     weight = 10
 
 [[menu.main]]
@@ -439,22 +469,22 @@ pygmentsCodeFences = true
     weight = 85
 [[menu.main]]
     parent = "travel"
-    name = "4. G2: aftermath"
+    name = "4. Gasherbrum2: aftermath"
     url = "post/2021-08-12-gasherbrum2-aftermath/"
     weight = 1
 [[menu.main]]
     parent = "travel"
-    name = "3. G2: compare gear"
+    name = "3. Gasherbrum2: compare gear"
     url = "post/2021-05-27-gasherbrum2-how-to-compare-gear/"
     weight = 2
 [[menu.main]]
     parent = "travel"
-    name = "2. G2: gear list"
+    name = "2. Gasherbrum2: gear list"
     url = "post/2021-05-10-gasherbrum2-gear-list/"
     weight = 3
 [[menu.main]]
     parent = "travel"
-    name = "1. G2: training plan"
+    name = "1. Gasherbrum2: training plan"
     url = "post/2021-04-15-gasherbrum2-training-plan/"
     weight = 4
 [[menu.main]]
