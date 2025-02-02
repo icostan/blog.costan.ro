@@ -1,0 +1,457 @@
+#+title: Unit Testing Elixir
+#+subtitle: Elixir
+#+date: 2025-01-31
+#+tags[]: unit_testing elixir erlang tipsntricks exunit mox mimic
+
+Tips & tricks for testing Elixir applications...
+there are tons of libraries for testing, each one with different syntactic sugar, runtime (sync vs. async) and implementation details but all we need for unit testing are these 3: ExUnit, Hammox and Mimic.
+
+** Anatomy of a test
+
+#+begin_src elixir
+  defmodule MathTest do
+    # 1. use, require, import testing libraries
+    # 2. setup
+    # 3. run
+    # 4. assert
+    # 5. cleanup
+  end
+#+end_src
+
+** Tips & Tricks
+
+*** 1. Use, require, import test libraries
+#+begin_src elixir
+  ExUnit.start(autorun: false, colors: [enabled: false])
+  defmodule UseTest do
+    use ExUnit.Case
+  end
+  ExUnit.run([UseTest])
+#+end_src
+
+#+RESULTS:
+: Finished in 0.00 seconds (0.00s async, 0.00s sync)
+: 0 failures
+: %{total: 0, failures: 0, excluded: 0, skipped: 0}
+
+*** 2. Setup all (per test suite)
+Defines a callback to be run before all tests in a case.
+#+begin_src elixir
+  defmodule SetupAllTest do
+    use ExUnit.Case
+    setup_all(_context) do
+      IO.puts("setup_all runs only once before test suite")
+      %{x: 1}
+    end
+    test "add x", %{x: x}, do: assert 2 = x + 1
+    test "sub x", %{x: x}, do: assert 0 = x - 1
+  end
+  ExUnit.run([SetupAllTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+setup_all runs only once before test suite
+..
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 2.1 Setup (per test)
+Defines a callback to be run before each test in a case.
+#+begin_src elixir
+  defmodule SetupTest do
+    use ExUnit.Case
+    setup(_context) do # block setup
+      IO.write("setup runs once before each test")
+      %{x: 1}
+    end
+    test "add x", %{x: x}, do: assert 2 = x + 1
+    test "sub x", %{x: x}, do: assert 0 = x - 1
+  end
+  ExUnit.run([SetupTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+setup runs once before each test.setup runs once before each test.
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 2.2 Setup functions (shared between test suites)
+Setup functions receive the /test context/ as argument and return a /test context/.
+#+begin_src elixir
+  defmodule Helpers do
+    def setup_x(_context), do: %{x: 1}
+    def setup_y(_context), do: %{y: 1}
+  end
+  defmodule SetupFunctionsAddTest do
+    use ExUnit.Case
+    import Helpers
+    setup [:setup_x, :setup_y] # atoms naming imported functions
+    test "add x", %{x: x, y: y}, do: assert 2 = x + y
+  end
+  defmodule SetupFunctionsSubTest do
+    use ExUnit.Case
+    setup [{Helpers, :setup_x}, {Helpers, :setup_y}] # list of {module, function} tuple
+    test "sub x", %{x: x, y: y}, do: assert 0 = x - y
+  end
+  ExUnit.run([SetupFunctionsAddTest, SetupFunctionsSubTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+..
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 2.3 Setup tags (per test)
+Test specific tags are merged into /context/ and passed as arguments to setup functions.
+#+begin_src elixir
+  defmodule Helpers do
+    def setup_x(%{type: :integer}), do: %{x: 1}
+    def setup_x(%{type: :float}), do: %{x: 1.0}
+  end
+  defmodule SetupTagTest do
+    use ExUnit.Case
+    setup {Helpers, :setup_x}
+    @tag type: :integer
+    test "add x integer", %{x: x}, do: assert 2 = x + 1
+    @tag type: :float
+    test "add x float", %{x: x}, do: assert 2.0 = x + 1.0
+  end
+  ExUnit.run([SetupTagTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+..
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 2.4 Setup tags (per test group)
+Tags are merged into each test of describe group.
+#+begin_src elixir
+  defmodule Helpers do
+    def setup_x(%{type: :integer}), do: %{x: 1}
+    def setup_x(%{type: :float}), do: %{x: 1.0}
+  end
+  defmodule SetupTagTest do
+    use ExUnit.Case
+    import Helpers
+    setup :setup_x
+    describe "add" do
+      @describetag type: :integer
+      test "add x integer", %{x: x}, do: assert 2 = x + 1
+      test "sub x integer", %{x: x}, do: assert 0 = x - 1
+    end
+    describe "sub" do
+      @describetag type: :float
+      test "add x float", %{x: x}, do: assert 2.0 = x + 1.0
+      test "sub x float", %{x: x}, do: assert 0.0 = x - 1.0
+    end
+  end
+  ExUnit.run([SetupTagTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+....
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+4 tests, 0 failures
+%{total: 4, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 2.5 Setup DRY using macros
+Fine-tune setup functions with metaprogramming code injection.
+#+begin_src elixir
+  defmodule TestMacros do
+    defmacro __using__(only: fixtures) do
+      for fixture <- fixtures, is_atom(fixture), do: apply(__MODULE__, fixture, [])
+    end
+    def integers() do
+      quote do
+        def setup_x(%{type: :integer}), do: %{x: 1}
+      end
+    end
+    def floats() do
+      quote do
+        def setup_x(%{type: :float}), do: %{x: 1.0}
+      end
+    end
+  end
+  defmodule DryMacrosTest do
+    use ExUnit.Case
+    use TestMacros, only: [:integers]
+    setup :setup_x
+    @tag type: :integer
+    test "add x integer", %{x: x}, do: assert 2 = x + 1
+  end
+  ExUnit.run([DryMacrosTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+.
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+1 test, 0 failures
+%{total: 1, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 2.5 Setup DRY using ExUnit.CaseTemplate
+Use standard ExUnit's CaseTemplate to provide test support functions.
+#+begin_src elixir
+  defmodule TestCase do
+    use ExUnit.CaseTemplate
+    using(opts) do
+      quote do
+        import TestCase, unquote(opts)
+      end
+    end
+    def setup_x(%{type: :integer}), do: %{x: 1}
+    def setup_x(%{type: :float}), do: %{x: 1.0}
+    def setup_y(%{}), do: %{y: 1}
+  end
+  defmodule DryTest do
+    use TestCase, only: [setup_x: 1]
+    setup [:setup_x]
+    @tag type: :integer
+    test "add x integer", %{x: x}, do: assert 2 = x + 1
+    @tag type: :float
+    test "add x float", %{x: x}, do: assert 2.0 = x + 1.0
+  end
+  ExUnit.run([DryTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+..
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 3.1 Run mocks with Hammox (Mox)
+
+If you own the behaviour of the dependency module it is recommended to use [[https://hexdocs.pm/hammox/][Hammox]] (or [[https://hexdocs.pm/mox/][Mox]]). The advantage of Hammox over Mox is that it also checks callback' typespecs.
+
+#+begin_src elixir :session hammox
+  Mix.install([
+    {:hammox, "~> 0.7"}
+  ])
+  ExUnit.start(autorun: false, colors: [enabled: false])
+
+  defmodule Math do
+    @callback pow(x :: number, y :: number) :: number
+  end
+  defmodule RealMath do
+    @behaviour Math
+    def pow(x, y), do: x**y
+  end
+  Mox.defmock(MockMath, for: Math)
+  Application.put_env(:blog, :math, MockMath)
+
+  defmodule HammoxMath do
+    def work(x, y), do: math().pow(x, y)
+    defp math(), do: Application.get_env(:blog, :math, RealMath)
+  end
+  defmodule HammoxMathTest do
+    use ExUnit.Case, async: true
+    import Mox
+    test ".work/2" do
+      expect MockMath, :pow, fn 1, 1 -> 99 end
+      assert 99 = HammoxMath.work(1, 1)
+    end
+  end
+  ExUnit.run([HammoxMathTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+.
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+1 test, 0 failures
+%{total: 1, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 3.2 Run mocks with Mimic
+
+If you do not own the behaviour of the dependency module (use an external library) then use [[https://hexdocs.pm/mimic/][Mimic]] which can check the typespecs as well with experimental /type_check: true/ option.
+
+Note: due to implementation details Mimic has to be initialized before ExUnit library.
+
+#+begin_src elixir :session mimic
+  Mix.install([
+    {:math, "~> 0.7"},
+    {:mimic, "~> 1.11"}
+  ])
+  Mimic.copy(Math, type_check: true)
+  ExUnit.start(autorun: false, colors: [enabled: false])
+
+  defmodule MimicMath do
+    def work(x, y), do: Math.pow(x, y)
+  end
+  defmodule MimicMathTest do
+    use ExUnit.Case, async: true
+    use Mimic
+    test ".work/2" do
+      expect Math, :pow, fn x, y -> 99 end
+      assert 99 = MimicMath.work(1, 1)
+    end
+  end
+  ExUnit.run([MimicMathTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+.
+Finished in 0.1 seconds (0.1s async, 0.00s sync)
+1 test, 0 failures
+%{total: 1, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 4.1 Assert functions
+Pros of Functions:
+- simpler to write and understand
+- runtime validation
+- can be passed as arguments
+- can use pattern matching
+#+begin_src elixir
+  defmodule AssertFunctionsTest do
+    use ExUnit.Case
+    test "assert functions" do
+      assert_operator 2, 1, 1, &+/2, "hairy math"
+      assert_operator 0, 1, 1, &-/2
+    end
+    defp assert_operator(r, a, b, operator, message \\ "") do
+      assert ^r = operator.(a, b), message
+    end
+  end
+  ExUnit.run([AssertFunctionsTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+.
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+1 test, 0 failures
+%{total: 1, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*** 4.1 Assert macros
+Pros of Macros:
+- better error messages with source code context
+- can capture the actual expression being tested
+- can manipulate AST before execution
+- access to compile-time information
+#+begin_src elixir
+  defmodule AssertMacrosTest do
+    use ExUnit.Case
+    defmacro assert_equal(result, expr) do
+      quote do
+        if unquote(result) != unquote(expr) do
+          IO.puts """
+          ASSERT_EQUAL FAILURE:
+            Expected: "#{inspect unquote(result)}"
+            to be equal to: #{inspect unquote(Macro.to_string(expr))}
+          """
+        end
+        assert unquote(result) == unquote(expr)
+      end
+    end
+    test "assert macros" do
+      assert_equal 2, 1 + 1
+      assert_equal 2, 1 - 1
+    end
+  end
+  ExUnit.run([AssertMacrosTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+ASSERT_EQUAL FAILURE:
+  Expected: "2"
+  to be equal to: "1 - 1"
+
+
+
+  1) test assert macros (AssertMacrosTest)
+     iex:15
+     Assertion with == failed
+     code:  assert 2 == 1 - 1
+     left:  2
+     right: 0
+     stacktrace:
+       iex:17: (test)
+
+
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+1 test, 1 failure
+%{total: 1, failures: 1, excluded: 0, skipped: 0}
+#+end_example
+
+*** 5.1 Cleanup (per test)
+Cleanup workaround that runs once at test exit.
+#+begin_src elixir
+  defmodule CleanupAllTest do
+    use ExUnit.Case
+    setup(_context) do
+      on_exit(fn ->
+        IO.write("cleanup runs once after each test")
+      end)
+    end
+    test "add", do: assert 2 = 1 + 1
+    test "sub", do: assert 0 = 1 - 1
+  end
+  ExUnit.run([CleanupAllTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+cleanup runs once after each test.cleanup runs once after each test.
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+
+*** 5.2 Cleanup all (per test suite)
+Cleanup_all workaround that runs once per test suite.
+#+begin_src elixir
+#+begin_src elixir
+  defmodule CleanupAllTest do
+    use ExUnit.Case
+    setup_all(_context) do
+      on_exit(fn ->
+        IO.write("cleanup_all runs once after test suite")
+      end)
+    end
+    test "add", do: assert 2 = 1 + 1
+    test "sub", do: assert 0 = 1 - 1
+  end
+  ExUnit.run([CleanupAllTest])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+..cleanup_all runs once after test suite
+Finished in 0.00 seconds (0.00s async, 0.00s sync)
+2 tests, 0 failures
+%{total: 2, failures: 0, excluded: 0, skipped: 0}
+#+end_example
+
+*Happy testing...*
+
+** References
+  - https://dashbit.co/blog/mocks-and-explicit-contracts
+  - [[https://furlough.merecomplexities.com/elixir/tdd/mocks/2023/03/24/elixir-mock-stub-fake-testing-seams-a-modest-proposal.html]]
+  - [[https://blog.appsignal.com/2023/04/11/an-introduction-to-mocking-tools-for-elixir.html]]
+  - [[https://pdx.su/blog/2023-06-14-some-elixir-test-tricks/]]
+  - [[https://medium.com/wttj-tech/exploring-various-approaches-for-testing-external-calls-in-elixir-4f22e8c8fdae]]

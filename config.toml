@@ -214,14 +214,19 @@ pygmentsCodeFences = true
     weight = 35
 [[menu.main]]
     parent = "elixir"
-    name = "The Power of Mnesia"
-    url = "/post/2024-11-21-power-of-mnesia/"
+    name = "Functional architecture"
+    url = "/post/2023-03-14-functional-architecture/"
     weight = 1
 [[menu.main]]
     parent = "elixir"
-    name = "Functional architecture"
-    url = "/post/2023-03-14-functional-architecture/"
+    name = "The Power of Mnesia"
+    url = "/post/2024-11-21-power-of-mnesia/"
     weight = 2
+[[menu.main]]
+    parent = "elixir"
+    name = "Testing Elixir"
+    url = "/post/2025-01-31-testing-elixir/"
+    weight = 3
 
 [[menu.main]]
     identifier = "finance"
