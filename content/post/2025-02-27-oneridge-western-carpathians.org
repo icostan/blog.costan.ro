@@ -1,0 +1,38 @@
+#+title: OneRidge: Western Carpathians
+#+subtitle: Trekking
+#+date: 2025-02-27
+#+tags[]: oneridge trekking hiking carpathian mountains
+
+The Western Carpathians (Apuseni Mountains) form a distinct mountain group in northwestern Romania, separated from the main Carpathian chain by the Transylvanian Plateau.
+
+Key features:
+- Medium altitude mountains with highest peak Cucurbata Mare (1,849m)
+- Notable for extensive karst formations with over 7,000 caves including Scarisoara Ice Cave
+- Rich biodiversity with approximately 1,550 plant species
+- Main mountain ranges include Bihor, Vladeasa, Metaliferi, and Trascau
+- Historical importance for mining (gold, silver, copper)
+- Cultural significance as home to the Moti people, known for traditional woodworking
+- Major rivers: Crisul Repede, Crisul Negru, Aries, and Somesul Mic
+
+** 1. Western Carpathians groups
+*** 1.1 Bihor group
+    - Distance: 149km
+    - Uphill: 3800m
+    - GPX: [[/oneridge/OneRidge_Western_Bihor.gpx][OneRidge_Western_Bihor.gpx]]
+*** 1.2 Poiana Rusca group
+    - Distance: 116km
+    - Uphill: 1800m
+    - GPX: [[/oneridge/OneRidge_Western_Rusca.gpx][OneRidge_Western_Rusca.gpx]]
+*** 1.3 Apuseni group
+    - Distance: 126km
+    - Uphill: 4400m
+    - GPX: [[/oneridge/OneRidge_Western_Apuseni.gpx][OneRidge_Western_Apuseni.gpx]]
+
+[[/oneridge/OneRidge_Western.png][file:../../oneridge/OneRidge_Western.png]]
+
+
+** References
+  - [[https://ro.wikipedia.org/wiki/Carpa%C8%9Bii_Occidentali_Rom%C3%A2ne%C8%99ti]]
+  - https://ro.wikipedia.org/wiki/Muntii_Apuseni
+  - [[https://ro.wikipedia.org/wiki/Mun%C8%9Bii_Poiana_Rusc%C4%83]]
+  - [[https://ro.wikipedia.org/wiki/Mun%C8%9Bii_Banatului]]
