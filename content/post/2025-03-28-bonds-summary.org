@@ -1,0 +1,163 @@
+#+title: Bonds summary
+#+subtitle: Trading
+#+date: 2025-03-28
+#+tags[]: trading bonds yield rates fixedincome
+
+The bond market uses several important rate/date/price concepts that investors need to understand. Here's an explanation of the most significant ones.
+
+** Key Rates
+The bond market revolves around various interest rates that influence pricing, trading decisions, and overall market dynamics.
+*** Coupon Rate
+- The fixed interest rate paid by the bond issuer
+- Expressed as a percentage of the bond's face value
+- Determines the periodic interest payments
+- Example: A 5% coupon on a $1,000 bond pays $50 annually
+
+*** Yield to Maturity (YTM)
+- The total return anticipated if a bond is held until maturity
+- Accounts for coupon payments, current price, face value, and time to maturity
+- The internal rate of return (IRR) that equates future cash flows to current price
+- The most comprehensive measure of a bond's return
+
+*** Current Yield
+- Annual coupon payment divided by the current market price
+- Simpler than YTM but only considers coupon income, not capital gains/losses
+
+*** Yield to Call (YTC)
+- Similar to YTM but assumes the bond will be called at the earliest call date
+- Important for evaluating callable bonds trading at a premium
+- Investors should consider the lower of YTM and YTC as the "yield to worst"
+
+*** Forward Rates
+- Implied future interest rates derived from the current yield curve
+- Represent market expectations of future interest rate movements
+- Used for forecasting and derivative pricing
+
+*** Real Interest Rate
+- The interest rate adjusted for inflation
+- Nominal rate minus expected inflation rate
+- Measured by yields on Treasury Inflation-Protected Securities (TIPS)
+
+*** Policy Rates
+- Central bank interest rates that influence the entire market
+- In the US, the Federal Funds Rate set by the Federal Reserve
+- Changes in policy rates cascade through the entire fixed-income market
+
+*** Benchmark Rates
+- Treasury yields that serve as reference points for other fixed-income securities
+- Key benchmarks include 2-year, 5-year, 10-year, and 30-year Treasury yields
+- Credit spreads are measured against these benchmark rates
+
+*** Credit Spreads
+- The additional yield over comparable Treasury securities
+- Compensates investors for credit risk
+- Widens during market stress and narrows during economic stability
+
+** Key Dates
+*** Issue Date
+- The date when the bond is first issued and begins to accrue interest
+- Marks the official start of the bond's life
+- The point from which the maturity period is measured
+
+*** Trade Date
+- The trade date is when the transaction is agreed upon (price, quantity, etc.)
+- When the order is matched and executed in the market
+
+*** Settlement Date
+- The date when the bond transaction is completed
+- The buyer pays the seller and officially takes ownership
+- Generally 1-3 business days after the trade date (T+1, T+2, or T+3 depending on the market)
+- The dirty price (including accrued interest) is calculated based on this date
+
+*** Coupon Payment Dates
+- The dates when interest payments are distributed to bondholders
+- Typically semi-annual or annual, but can be quarterly or monthly
+- Fixed schedule throughout the life of the bond
+
+*** Ex-Coupon Date (Ex-Date)
+- The first date when the bond trades without the right to the next coupon payment
+- Typically 1-3 business days before the record date
+- If you buy a bond on or after this date, you won't receive the upcoming interest payment
+- The bond's price typically drops by approximately the coupon amount on this date
+
+*** Record Date
+- The date when the issuer checks its registry to determine who receives the upcoming coupon payment
+- Only investors listed as owners on this date will receive the payment
+- Usually 1-2 days after the ex-date
+
+*** Payable Date
+- The actual date when coupon payments are distributed to eligible bondholders
+- Typically a few business days after the record date
+
+*** Call Date(s)
+- For callable bonds, the date(s) when the issuer can redeem the bond before maturity
+- Multiple call dates may exist with different call prices
+- The first call date is when the bond becomes callable for the first time
+
+*** Put Date(s)
+- For putable bonds, the date(s) when the bondholder can sell the bond back to the issuer
+- Gives investors protection against rising interest rates
+
+*** Maturity Date
+- The date when the bond expires and the principal amount is repaid
+- Marks the end of the bond's life
+- Final interest payment is typically made on this date as well
+
+
+** Key Prices
+*** Par Value (Face Value)
+- The principal amount the issuer promises to pay at maturity
+- Typically $1,000 per bond for corporate bonds, $100 for Treasury bonds
+- Serves as the reference point for calculating coupon payments
+- Bonds can trade above par (premium), at par, or below par (discount)
+
+*** Clean Price
+- The quoted price in the market, excluding accrued interest
+- Used for bond price quotes on trading platforms and financial media
+- Makes it easier to compare bonds with different coupon cycles
+- Example: When you see a bond quoted at "98.5," it means $985 per $1,000 face value
+
+*** Dirty Price (Full Price)
+- The actual amount the buyer pays: Clean Price + Accrued Interest
+- Represents the true economic value of the bond
+- Changes daily as interest accrues between coupon payments
+- Used for actual settlement of trades
+
+*** Accrued Interest
+- Interest earned since the last coupon payment but not yet paid
+- Calculated daily based on the day count convention of the bond
+- Paid by the buyer to the seller when purchasing a bond between coupon dates
+- Resets to zero on coupon payment dates
+
+*** Market Price
+The current trading price of the bond in the secondary market.
+Determined by supply and demand, influenced by:
+
+- Prevailing interest rates
+- Credit quality of the issuer
+- Time to maturity
+- Market liquidity
+
+*** Issue Price
+- The price at which a new bond is initially offered to investors
+- Can be at par, at a premium, or at a discount
+- Determined during the bond's underwriting process
+
+*** Redemption Price
+- The amount paid to the bondholder when the bond matures or is called
+- Usually equal to the par value, but can differ in certain structures
+
+*** Call Price
+- For callable bonds, the price the issuer will pay to redeem the bond early
+- Often set at a premium to par value (e.g., 102% of face value)
+- May decline over time according to a predetermined schedule
+
+Understanding these different concepts is crucial for bond investors to accurately value securities, compare investment opportunities, and calculate potential returns.
+
+** References
+  - https://www.home.saxo/insights/education/courses?tag=product-bonds
+  - https://learnbonds.com/news/bull-flattener-bear-flattener-bull-steepener-and-bear-steepener-explained/
+  - https://academy.ts.finance/how-to-measure-a-bonds-interest-rate-risk-enter-duration-dv01-convexity/
+  - https://www.docdroid.net/7i5KzXl/the-ultimate-tourist-guide-to-bondistan-pdf
+  - https://www.convexitymaven.com/wp-content/uploads/2024/03/Convexity-Maven-The-Cost-of-Carry.pdf
+  - https://advisor.visualcapitalist.com/the-largest-bond-markets-in-the-world/
