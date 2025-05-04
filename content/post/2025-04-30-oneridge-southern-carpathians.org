@@ -1,6 +1,6 @@
 #+title: OneRidge: Southern Carpathians
 #+subtitle: Trekking
-#+date: 2025-04-31
+#+date: 2025-04-30
 #+tags[]: oneridge trekking hiking carpathian mountains
 
 The Southern Carpathians (also known as the Transylvanian Alps) extend approximately 300km from the Prahova Valley in the east to the Iron Gates in the west, forming the highest and most rugged section of Romania's Carpathian chain.
@@ -15,27 +15,27 @@ Key features:
 - Notable landmarks: Bucegi Sphinx, Babele, Transfagarasan Highway, Transalpina Road
 - Significant national parks: Retezat, Piatra Craiului, Domogled-Valea Cernei
 
-** 2. Southern Carpathians groups
+** 1. Southern Carpathians groups
 
-*** 2.1 Retezat-Godeanu Mountains group
+[[/oneridge/OneRidge_Meridionali.png][file:../../oneridge/OneRidge_Meridionali.png]]
+
+*** 1.1 Retezat-Godeanu Mountains group
     - Distance: 202km
     - Uphill: 10400m
     - GPX: [[/oneridge/OneRidge_Retezat_Godeanu.gpx][OneRidge_Retezat_Godeanu.gpx]]
-*** 2.2 Parang Mountains group
+*** 1.2 Parang Mountains group
     - Distance: 111km
     - Uphill: 4900m
     - GPX: [[/oneridge/OneRidge_Parang.gpx][OneRidge_Parang.gpx]]
-*** 2.3 Fagaras Mountains group
+*** 1.3 Fagaras Mountains group
     - Distance: 186km
     - Uphill: 11200m
     - GPX: [[/oneridge/OneRidge_Fagaras.gpx][OneRidge_Fagaras.gpx]]
     Note: I consider Piatra Craiului Mountains as part of the Fagaras group (not Bucegi group as mentioned in geography books) because it fits better into overall continuous route.
-*** 2.4 Bucegi Mountains group
+*** 1.4 Bucegi Mountains group
     - Distance: 86km
     - Uphill: 4300m
     - GPX: [[/oneridge/OneRidge_Bucegi.gpx][OneRidge_Bucegi.gpx]]
-
-[[/oneridge/OneRidge_Meridionali.png][file:../../oneridge/OneRidge_Meridionali.png]]
 
 ** References
   - https://en.wikipedia.org/wiki/Southern_Carpathians
