@@ -14,39 +14,18 @@ The Carpathian Mountains in Romania are typically divided into three main groups
 *** 1. Eastern Carpathians (Carpații Orientali)
   - Stretching from the northern border of Romania down to the Prahova Valley.
   - Known for rolling hills, deep valleys, and some volcanic formations.
-  - [[https://ro.wikipedia.org/wiki/Carpații_Orientali]]
+  - [[/post/2024-12-21-oneridge-eastern-carpathians/][Read more about Eastern Carpathians]]
 
 *** 2. Southern Carpathians (Carpații Meridionali)
   - Also known as the Transylvanian Alps, located between the Prahova Valley and the Iron Gates.
   - Characterized by rugged peaks, deep gorges, and some of the highest peaks in Romania, including Moldoveanu and Negoiu.
-  - https://en.wikipedia.org/wiki/Southern_Carpathians
+  - [[/post/2025-04-31-oneridge-southern-carpathians/][Read more about Southern Carpathians]]
 
 *** 3. Western Carpathians (Carpații Occidentali)
   - Also known as the Apuseni Mountains, found in the western part of Romania, primarily within Transylvania.
   - Known for karst formations, caves, and picturesque landscapes with lower elevations compared to the Southern and Eastern Carpathians.
-  - https://en.wikipedia.org/wiki/Western_Romanian_Carpathians
+  - [[/post/2025-02-27-oneridge-western-carpathians/][Read more about Western Carpathians]]
 
-** 2. Southern Carpathians groups
-
-[[/oneridge/OneRidge_Meridionali.png][file:../../oneridge/OneRidge_Meridionali.png]]
-
-*** 2.1 Retezat-Godeanu Mountains group
-    - Distance: 202km
-    - Uphill: 10400m
-    - GPX: [[/oneridge/OneRidge_Retezat_Godeanu.gpx][OneRidge_Retezat_Godeanu.gpx]]
-*** 2.2 Parang Mountains group
-    - Distance: 111km
-    - Uphill: 4900m
-    - GPX: [[/oneridge/OneRidge_Parang.gpx][OneRidge_Parang.gpx]]
-*** 2.3 Fagaras Mountains group
-    - Distance: 186km
-    - Uphill: 11200m
-    - GPX: [[/oneridge/OneRidge_Fagaras.gpx][OneRidge_Fagaras.gpx]]
-    Note: I consider Piatra Craiului Mountains as part of the Fagaras group (not Bucegi group as mentioned in geography books) because it fits better into overall continuous route.
-*** 2.4 Bucegi Mountains group
-    - Distance: 86km
-    - Uphill: 4300m
-    - GPX: [[/oneridge/OneRidge_Bucegi.gpx][OneRidge_Bucegi.gpx]]
 
 
 ** TO BE CONTINUED...

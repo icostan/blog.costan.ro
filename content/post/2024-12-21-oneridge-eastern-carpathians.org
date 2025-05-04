@@ -3,10 +3,17 @@
 #+date: 2024-12-21
 #+tags[]: oneridge trekking hiking carpathian mountains
 
-Eastern Carpathians (Carpații Orientali in Romanian) mountain range stretching from the northern border of Romania down to the Prahova Valley.
+The Eastern Carpathians stretch approximately 600km through northeastern Romania, running through the historical regions of Maramures, Bukovina, and Moldova.
 
-  - Known for rolling hills, deep valleys, and some volcanic formations.
-  - [[https://ro.wikipedia.org/wiki/Carpații_Orientali]]
+Key features:
+- Three parallel mountain chains: Outer Eastern Carpathians, Inner Eastern Carpathians, and Volcanic Mountains
+- Moderate elevations with highest peak Pietrosul Rodnei (2,303m) in the Rodna Mountains
+- Distinctive volcanic formations in the Calimani-Gurghiu-Harghita range
+- Rich biodiversity including large carnivore populations (bears, wolves, lynx)
+- Important mountain passes: Prislop, Tihuta, Bicaz, Oituz
+- Major rivers originating here: Mures, Olt, Siret, Prut
+- Notable landmarks: Bicaz Gorge, Red Lake, Twelve Apostles rock formation
+- Significant national parks: Rodna Mountains, Calimani, Ceahlau
 
 ** 1. Eastern Carpathians groups
 *** 1.1 North group
@@ -25,6 +32,7 @@ Eastern Carpathians (Carpații Orientali in Romanian) mountain range stretching 
 [[/oneridge/OneRidge_Eastern.png][file:../../oneridge/OneRidge_Eastern.png]]
 
 ** References
+  - [[https://ro.wikipedia.org/wiki/Carpații_Orientali]]
   - https://www.hartaturistului.com/munte/carpatii-orientali/
   - [[https://enciclopediaromaniei.ro/wiki/Carpaţii_Orientali]]
   - https://www.tourismguide.ro/x/carpatii_orientali/

@@ -1,0 +1,44 @@
+#+title: OneRidge: Southern Carpathians
+#+subtitle: Trekking
+#+date: 2025-04-31
+#+tags[]: oneridge trekking hiking carpathian mountains
+
+The Southern Carpathians (also known as the Transylvanian Alps) extend approximately 300km from the Prahova Valley in the east to the Iron Gates in the west, forming the highest and most rugged section of Romania's Carpathian chain.
+
+Key features:
+- Highest peaks in Romania including Moldoveanu (2,544m) and Negoiu (2,535m) in the Fagaras Mountains
+- Characterized by alpine landscapes with glacial lakes, steep ridges, and deep valleys
+- Four main mountain groups: Bucegi, Fagaras, Parang, and Retezat-Godeanu
+- Rich biodiversity with large carnivore populations and alpine flora
+- Important mountain passes: Olt Valley, Jiu Valley, and Timis-Cerna corridor
+- Major rivers: Olt, Jiu, Mures, and tributaries of the Danube
+- Notable landmarks: Bucegi Sphinx, Babele, Transfagarasan Highway, Transalpina Road
+- Significant national parks: Retezat, Piatra Craiului, Domogled-Valea Cernei
+
+** 2. Southern Carpathians groups
+
+*** 2.1 Retezat-Godeanu Mountains group
+    - Distance: 202km
+    - Uphill: 10400m
+    - GPX: [[/oneridge/OneRidge_Retezat_Godeanu.gpx][OneRidge_Retezat_Godeanu.gpx]]
+*** 2.2 Parang Mountains group
+    - Distance: 111km
+    - Uphill: 4900m
+    - GPX: [[/oneridge/OneRidge_Parang.gpx][OneRidge_Parang.gpx]]
+*** 2.3 Fagaras Mountains group
+    - Distance: 186km
+    - Uphill: 11200m
+    - GPX: [[/oneridge/OneRidge_Fagaras.gpx][OneRidge_Fagaras.gpx]]
+    Note: I consider Piatra Craiului Mountains as part of the Fagaras group (not Bucegi group as mentioned in geography books) because it fits better into overall continuous route.
+*** 2.4 Bucegi Mountains group
+    - Distance: 86km
+    - Uphill: 4300m
+    - GPX: [[/oneridge/OneRidge_Bucegi.gpx][OneRidge_Bucegi.gpx]]
+
+[[/oneridge/OneRidge_Meridionali.png][file:../../oneridge/OneRidge_Meridionali.png]]
+
+** References
+  - https://en.wikipedia.org/wiki/Southern_Carpathians
+  - https://www.hartaturistului.com/munte/carpatii-meridionali/
+  - https://muntii-nostri.ro/
+  - https://www.tourismguide.ro/x/carpatii_meridionali/
