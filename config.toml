@@ -9,9 +9,10 @@ theme = "beautifulhugo"
 metaDataFormat = "yaml"
 summaryLength = 16
 
-pygmentsUseClasses = true
-pygmentsStyle = "monokai"
 pygmentsCodeFences = true
+pygmentsUseClasses = true
+# pygmentsStyle = "monokai"
+
 # pygmentsCodefencesGuessSyntax = true
 # pygmentsUseClassic = true
 # pygmentsOptions = "linenos=inline"
