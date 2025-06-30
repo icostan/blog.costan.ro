@@ -6,6 +6,8 @@
 Tips & tricks for testing Elixir applications...
 there are tons of libraries for testing, each one with different syntactic sugar, runtime (sync vs. async) and implementation details but all we need for unit testing are these 3: ExUnit, Hammox and Mimic.
 
+[[file:/img/2025-01-31-unit-testing-elixir.png]]
+
 ** Anatomy of a test
 
 #+begin_src elixir
