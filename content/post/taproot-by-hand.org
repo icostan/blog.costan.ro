@@ -1,0 +1,31 @@
+#+title: Schnorr and taproot by hand
+#+subtitle: Bitcoin
+#+date: 2022-06-15
+#+tags[]: bitcoin taproot schnorr python
+
+* References
+  - https://www.youtube.com/watch?v=YSUVRj8iznU&list=WL&index=69&t=25s
+  - https://aboutbitcoin.io/bitcoin-taproot-explained/
+  - https://bitcoinmagazine.com/technical/taproot-coming-what-it-and-how-it-will-benefit-bitcoin
+  - https://bitcoinops.org/en/preparing-for-taproot/
+  - https://bitcoinops.org/en/schorr-taproot-workshop/
+  - https://reyify.com/blog/the-soundness-of-musig
+  - https://bitcoinops.org/en/topics/taproot/
+  - https://www.youtube.com/watch?v=YSUVRj8iznU
+  - https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2018-January/015614.html
+  - https://bitcoin.stackexchange.com/questions/108006/how-to-make-a-taproot-transaction-with-bitcoin-cli
+  - https://bitcoin.stackexchange.com/questions/107452/how-can-i-spend-from-a-p2tr-address-on-signet-with-the-bitcoin-core-wallet-in-22
+  - https://github.com/bitcoin/bips/tree/708ce10bbc3c3be6d4293b50f56a1cae23c8b358/bip-0340
+  - https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2021-October/019543.html
+
+* BIPs
+  - https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0343.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0114.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0116.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0117.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0350.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0086.mediawiki
+  - https://github.com/bitcoin/bips/blob/master/bip-0008.mediawiki

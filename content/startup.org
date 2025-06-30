@@ -1,0 +1,10 @@
+* Startup
+
+*** PROs:
+ - implement basic features and release the MVP ASAP - as an old saying goes: "if you are not ashamed with your first release you are already too late"
+ - setup initial users base and aim for 10x customer acquisition
+ - roll-out new features and get into fail-fast feedback loop
+
+*** CONs:
+ - early optimizations/scale and security - the defaults provided by the framework is more than enough for initial bootstrapping stage
+ - long scheduled releases - this kills the early feedback loop and might lead the project into wrong directions

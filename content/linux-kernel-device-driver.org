@@ -1,0 +1,72 @@
+* Device driver
+
+  Lifecycle of a device driver:
+  1. init
+  2. open
+  3. commands
+     - read/write
+     - ioctl
+  5. release
+  7. exit
+
+#+begin_src c :tangle driver.c
+  #include <linux/init.h>
+  #include <linux/module.h>
+  #include <linux/cdev.h>
+
+  static char *world_name = "world";
+  static int world_major = 6;
+  static int world_minor = 0;
+
+  struct world_device {
+          char *whom;
+	  size_t size;
+	  struct cdev cdev;
+  };
+
+  void world_print(char* greet)
+  {
+	  printk(KERN_ALERT "%s, %s\n", greet, whom);
+  }
+  EXPORT_SYMBOL(world_print);
+
+  struct file_operations world_fops = {
+	  .owner = THIS_MODULE,
+	  /* .read = world_read, */
+	  /* .write = world_write, */
+	  .open = world_open,
+	  .release = world_release,
+  };
+
+  static int __init world_init(void)
+  {
+	  printk(KERN_ALERT "Init, World\n");
+
+	  // register char device
+	  devt = MKDEV(world_major, world_minor);
+	  result = register_chrdev_region(devt, 0, world_name);
+	  if (result < 0) {
+		  printk(KERN_WARNING "world: can't get major %d\n", world_major);
+		  return result;
+	  }
+
+	  // init/add char device
+	  cdev_init(cdev, &world_fops);
+	  cdev->owner = THIS_MODULE;
+	  cdev->ops = &world_fops;
+	  cdev_add(cdev, devt, 1);
+
+	  return 0;
+  }
+  module_init(world_init);
+
+  static void __exit world_exit(void)
+  {
+	  printk(KERN_ALERT "Exit, %s\n", whom);
+  }
+  module_exit(world_exit);
+
+  MODULE_AUTHOR("Iulian Costan <kernel@costan.ro>");
+  MODULE_DESCRIPTION("World char device driver");
+  MODULE_LICENSE("Dual BSD/GPL");
+#+end_src
