@@ -564,11 +564,13 @@ SCHEDULED: <2023-09-26 Tue>
     - https://www.tutorialspoint.com/tex_commands/index.htm
     - https://www.gnu.org/software/emacs/manual/html_node/emacs/TeX-Mode.html
 ** TODO Write new blog post
-SCHEDULED: <2025-06-25 Wed +1m>
+SCHEDULED: <2025-08-25 Mon +1m>
     :PROPERTIES:
-    :LAST_REPEAT: [2025-06-06 Fri 09:32]
+    :LAST_REPEAT: [2025-08-01 Fri 08:37]
     :ID:       5e3b7428-3d40-41c7-aadc-5dbab3d26f0f
     :END:
+    - State "DONE"       from "TODO"       [2025-08-01 Fri 08:37]
+    - State "DONE"       from "TODO"       [2025-06-30 Mon 19:51]
     - State "DONE"       from "TODO"       [2025-06-06 Fri 09:32]
     - State "DONE"       from "TODO"       [2025-05-04 Sun 18:47]
     - State "DONE"       from "TODO"       [2025-04-02 Wed 09:41]

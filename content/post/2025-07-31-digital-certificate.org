@@ -1,0 +1,133 @@
+#+TITLE: Understanding Digital Certificates
+#+OPTIONS: toc:nil num:nil
+#+subtitle: Cryptography
+#+date: 2025-07-31
+#+tags[]: cryptography signature publickey privatekey certificate
+
+A digital certificate, specifically an X.509 digital certificate, is a standardized electronic document that binds a public key to an identity. It's like a digital ID card, issued and signed by a trusted third party, the Certificate Authority (CA), to verify the authenticity of a public key.
+
+**Key takeaways:**
+- Certificates bind public keys to identities.
+- Issued and signed by Certificate Authorities (CAs).
+- Based on the X.509 standard.
+
+**File Formats for Certificates and Keys:**
+- =DER= (binary, certificate only)
+- =PEM= (ASCII, versatile, widely used)
+- =P12/PFX= (binary, certificate(s) + private key, password-protected)
+- =JKS/JCEKS= (Java-specific keystore)
+- =KDB= (IBM-specific keystore)
+
+**Understanding Certificate Fields:**
+- **Version:** X.509 version.
+- **Serial Number:** Unique identifier from the CA.
+- **Issuer Name:** CA that issued the certificate.
+- **Validity Period:** =Not Before= and =Not After= dates.
+- **Subject Name:** Identity associated with the public key.
+- **Subject Public Key Info:** The actual public key.
+- **Extensions (V3):** Additional features like =SAN=, =Key Usage=, =EKU=.
+- **Signature Algorithm:** Algorithm used by CA for signing.
+- **Signature Value:** CA's digital signature over the certificate.
+
+**For a practical understanding of certificate file formats and their contents, refer to the sections below.**
+
+* Certificate Fields (X.509 Standard)
+
+The X.509 standard defines the format for public key certificates. Here are the key fields found in most digital certificates:
+
+1.  *Version:*
+    * Indicates the X.509 version of the certificate. Currently, versions 1, 2, and 3 are in use. Version 3 is the most common as it supports extensions.
+
+2.  *Serial Number:*
+    * A unique positive integer assigned by the Certificate Authority (CA) to each certificate it issues. This number is unique within the scope of the issuing CA.
+
+3.  *Issuer Name:*
+    * The distinguished name (DN) of the Certificate Authority (CA) that issued and signed this certificate. It includes fields like Common Name (CN), Organization (O), Organizational Unit (OU), Locality (L), State/Province (ST), and Country (C).
+
+4.  *Validity Period:*
+    * Defines the timeframe during which the certificate is considered valid.
+        * *Not Before:* The date and time from which the certificate is valid.
+        * *Not After:* The date and time at which the certificate expires. Certificates outside this period are considered invalid.
+
+5.  *Subject Name:*
+    * The distinguished name (DN) of the entity (person, server, organization) to whom the public key in the certificate belongs. Similar to the Issuer Name, it includes fields like Common Name (CN), Organization (O), etc. For a website certificate, the CN typically contains the domain name (e.g., =www.example.com=).
+
+6.  *Subject Public Key Information:*
+    * This is the core purpose of the certificate – to convey the subject's public key.
+        * *Public Key Algorithm:* Specifies the algorithm of the public key (e.g., RSA, DSA, EC).
+        * *Public Key:* The actual public key value.
+
+7. *Extensions (Version 3 only):*
+    * This is a critical part of modern certificates, allowing for additional information and features. Extensions can be marked as "critical" or "non-critical." If a system doesn't understand a critical extension, it must reject the certificate.
+        * *Subject Alternative Name (SAN):* Allows a certificate to be valid for multiple hostnames or IP addresses. Crucial for web servers that host multiple domains or have multiple subdomains (e.g., =www.example.com=, =blog.example.com=, =example.com=).
+        * *Key Usage:* Defines the specific purposes for which the public key in the certificate can be used (e.g., digital signature, key encipherment, data encipherment, certificate signing, CRL signing).
+        * *Extended Key Usage (EKU):* Provides more specific purposes than Key Usage (e.g., Server Authentication, Client Authentication, Code Signing, Email Protection).
+        * *Basic Constraints:* Used in CA certificates to indicate whether the subject is a CA and, if so, the maximum path length (how many intermediate CAs can exist below it in the chain).
+        * *Authority Key Identifier (AKI):* Identifies the public key used to sign this certificate, often by the issuer's public key hash or serial number. Helps in building certificate chains.
+        * *Subject Key Identifier (SKI):* Identifies the public key of the subject of this certificate.
+        * *Certificate Policies:* States the policies under which the certificate was issued and the purposes for which it may be used.
+        * *CRL Distribution Points:* Specifies locations (URLs) where Certificate Revocation Lists (CRLs) can be obtained to check if the certificate has been revoked.
+        * *Authority Information Access (AIA):* Specifies locations for accessing CA certificates (e.g., OCSP URLs for real-time revocation checks, or URLs to download issuer certificates for chain building).
+
+8.  *Signature Algorithm Identifier:*
+    * Specifies the algorithm used by the CA to sign the certificate. This includes the hashing algorithm (e.g., SHA-256) and the public-key algorithm (e.g., RSA or ECDSA) used for the digital signature.
+
+9. *Signature Value:*
+    * The digital signature created by the CA using its private key over the entire certificate data (excluding the signature itself). This signature is what allows clients to verify the certificate's authenticity and integrity using the CA's public key.
+
+* Certificate File Formats
+
+Certificates and their associated keys are stored in various file formats, primarily differing in their encoding (binary vs. ASCII) and whether they contain just the certificate, the private key, or a combination.
+
+1.  *DER (Distinguished Encoding Rules)*
+    * *Description:* A binary encoding format for X.509 certificates. It's a precise and unambiguous way to represent ASN.1 (Abstract Syntax Notation One) data structures.
+    * *File Extensions:* =.der=, =.cer= (sometimes, though =.cer= can also be PEM).
+    * *Content:*
+        * *Only the Certificate:* DER files typically contain /only/ the X.509 digital certificate. They do not include the private key.
+    * *Usage:* Commonly used in Java environments, Windows systems, and when a compact binary representation is preferred.
+
+2.  *PEM (Privacy-Enhanced Mail)*
+    * *Description:* An ASCII (Base64 encoded) encoding format. It's essentially a text file that contains cryptographic data, often enclosed by "BEGIN" and "END" delimiters (e.g., =-----BEGIN CERTIFICATE-----=, =-----END PRIVATE KEY-----=).
+    * *File Extensions:* =.pem=, =.crt=, =.cer=, =.key= (for private keys).
+    * *Content:*
+        * *Only the Certificate:* A =.pem= or =.crt= file can contain /only/ the X.509 digital certificate.
+        * *Only the Private Key:* A =.pem= or =.key= file can contain /only/ the private key (often encrypted with a passphrase).
+        * *Certificate Chain:* A single =.pem= file can contain multiple certificates concatenated together, forming a chain (e.g., server certificate followed by intermediate certificates). This is very common for web servers.
+        * *Certificate and Private Key (Less Common in one file):* While possible to concatenate, it's generally considered bad practice to store an unencrypted private key directly alongside its certificate in a single PEM file, especially for production web servers, due to security risks. However, if the private key is encrypted, it's sometimes found this way for convenience in development or specific applications.
+    * *Usage:* The most widely used format, especially in Linux/Unix environments, Apache, Nginx, OpenSSL, and various command-line tools. Its text-based nature makes it easy to view and manipulate.
+
+3.  *P12 / PFX (PKCS#12 - Personal Information Exchange Syntax)*
+    * *Description:* A binary format used to store a private key and its corresponding public key certificate(s) (and often the entire certificate chain) in a single, password-protected file.
+    * *File Extensions:* =.p12=, =.pfx=
+    * *Content:*
+        * *Certificate(s) and Private Key:* This format is specifically designed to bundle one or more certificates (including the full chain, if desired) /and/ the associated private key into a single, encrypted file.
+    * *Usage:* Very common in Microsoft environments (IIS, Exchange), for importing/exporting certificates and private keys. It's also used for client certificates where the user needs their private key for authentication. Ideal for moving a certificate and its key from one system to another.
+
+4.  *JKS / JCEKS (Java KeyStore / Java Cryptography Extension KeyStore)*
+    * *Description:* Proprietary keystore formats used by Java applications. They are essentially databases that can store multiple cryptographic keys and certificates.
+    * *File Extensions:* =.jks=, =.keystore=
+    * *Content:*
+        * *Certificates, Private Keys, and other secret keys:* These formats can store individual certificates (as "trusted certificates") and also key pairs (private key + certificate chain).
+    * *Usage:* Exclusively used within Java applications (e.g., Tomcat, JBoss). You typically manage these using the =keytool= utility.
+
+5.  *KDB (Key Database)*
+    * *Description:* IBM's proprietary keystore format, used by products like IBM HTTP Server (based on Apache) and WebSphere.
+    * *File Extensions:* =.kdb=
+    * *Content:*
+        * *Certificates, Private Keys:* Similar to JKS, they are databases for storing keys and certificates.
+    * *Usage:* Specific to IBM products, managed by the =ikeyman= utility.
+
+* Summary of File Formats:
+
+| File Format   | Certificate | Private Key | Certificate Chain | Password Protected | Common Use Cases                                                              |
+|---------------+-------------+-------------+-------------------+--------------------+-------------------------------------------------------------------------------|
+| *DER* | Yes         | No          | No (usually 1 cert) | No                 | Binary certificate transfer, specific application requirements              |
+| *PEM* | Yes         | Yes (separate files, or concatenated) | Yes (concatenated) | Yes (for private key files) | Most common for web servers (Apache, Nginx), OpenSSL, general text-based use |
+| *P12/PFX* | Yes         | Yes         | Yes               | Yes                | Export/import key pairs (Windows), client certificates                     |
+| *JKS/JCEKS* | Yes         | Yes         | Yes               | Yes                | Java applications (Tomcat, JBoss)                                           |
+| *KDB* | Yes         | Yes         | Yes               | Yes                | IBM products (HTTP Server, WebSphere)                                       |
+
+In summary, understanding these details is crucial for correctly handling, deploying, and troubleshooting digital certificates in various computing environments. Each field and format serves a specific purpose in establishing trust and securing communications.
+
+* References
+- https://tls13.xargs.org/certificate.html
