@@ -11,3 +11,5 @@ a.out
 modules.order
 Module.symvers
 Mnesia.*
+.gemini/
+GEMINI.md
