@@ -13,3 +13,4 @@ Module.symvers
 Mnesia.*
 .gemini/
 GEMINI.md
+.hugo_build.lock
