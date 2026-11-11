@@ -52,6 +52,9 @@ pygmentsUseClasses = true
 #  src = "img/hexagon.jpg"
 #  desc = "Hexagon"
 
+[security]
+  allowContent = ['.*']
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
